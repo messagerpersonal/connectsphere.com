@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#5b4bdb">
+<meta name="description" content="ConnectSphere - private messaging and social connections">
+<title>ConnectSphere</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f5fb;
+  color:#171724;
+}
+button,input{
+  font:inherit;
+}
+button{cursor:pointer;border:0}
+.app{
+  max-width:1100px;
+  min-height:100vh;
+  margin:auto;
+  background:white;
+  position:relative;
+}
+header{
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+  border-bottom:1px solid #eee;
+  position:sticky;
+  top:0;
+  background:white;
+  z-index:10;
+}
+.logo{
+  font-size:22px;
+  font-weight:800;
+  color:#5b4bdb;
+}
+.header-actions{
+  display:flex;
+  gap:8px;
+}
+.icon-btn{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#f1f1f7;
+}
+main{
+  padding:20px;
+  padding-bottom:90px;
+}
+.page{display:none}
+.page.active{display:block}
+h1{font-size:26px;margin-bottom:8px}
+.subtitle{color:#777;margin-bottom:20px}
+.search-box{
+  width:100%;
+  padding:14px 16px;
+  border:1px solid #ddd;
+  border-radius:14px;
+  outline:none;
+  margin-bottom:18px;
+}
+.search-box:focus{
+  border-color:#5b4bdb;
+}
+.card{
+  background:white;
+  border:1px solid #eee;
+  border-radius:18px;
+  padding:16px;
+  margin-bottom:12px;
+  box-shadow:0 3px 12px rgba(0,0,0,.04);
+}
+.user-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.avatar{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#5b4bdb;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  flex-shrink:0;
+}
+.user-info{flex:1}
+.user-info strong{display:block}
+.user-info span{
+  color:#777;
+  font-size:13px;
+}
+.primary{
+  background:#5b4bdb;
+  color:white;
+  padding:10px 15px;
+  border-radius:10px;
+  font-weight:600;
+}
+.secondary{
+  background:#eeeef5;
+  color:#333;
+  padding:10px 15px;
+  border-radius:10px;
+  font-weight:600;
+}
+.danger{
+  background:#ffe8e8;
+  color:#c62828;
+  padding:10px 15px;
+  border-radius:10px;
+}
+.actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.profile{
+  text-align:center;
+}
+.profile .avatar{
+  width:90px;
+  height:90px;
+  margin:0 auto 12px;
+  font-size:30px;
+}
+.profile h2{margin-bottom:5px}
+.profile p{color:#777;margin-bottom:18px}
+.stat-row{
+  display:flex;
+  justify-content:center;
+  gap:45px;
+  margin:20px 0;
+}
+.stat strong{
+  display:block;
+  font-size:20px;
+}
+.stat span{
+  color:#777;
+  font-size:13px;
+}
+.setting{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:16px 4px;
+  border-bottom:1px solid #eee;
+}
+.setting:last-child{border-bottom:0}
+.setting small{display:block;color:#777;margin-top:4px}
+.chat{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 4px;
+  border-bottom:1px solid #eee;
+  cursor:pointer;
+}
+.chat:last-child{border-bottom:0}
+.chat-text{flex:1}
+.chat-text strong{display:block}
+.chat-text span{color:#777;font-size:13px}
+.badge{
+  background:#5b4bdb;
+  color:white;
+  border-radius:20px;
+  padding:3px 8px;
+  font-size:12px;
+}
+.empty{
+  text-align:center;
+  padding:40px 15px;
+  color:#888;
+}
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(1100px,100%);
+  height:70px;
+  background:white;
+  border-top:1px solid #eee;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  z-index:20;
+}
+.nav-btn{
+  background:none;
+  color:#777;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+  font-size:12px;
+}
+.nav-btn.active{color:#5b4bdb;font-weight:bold}
+.nav-icon{font-size:21px}
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  z-index:50;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.modal.show{display:flex}
+.modal-box{
+  width:min(500px,100%);
+  background:white;
+  border-radius:20px;
+  padding:20px;
+}
+.modal-box h2{margin-bottom:15px}
+.close{
+  float:right;
+  background:#eee;
+  border-radius:50%;
+  width:34px;
+  height:34px;
+}
+.message-area{
+  height:300px;
+  overflow:auto;
+  background:#f7f7fb;
+  border-radius:14px;
+  padding:15px;
+  margin-bottom:10px;
+}
+.message{
+  max-width:75%;
+  padding:10px 13px;
+  border-radius:15px;
+  margin-bottom:8px;
+  background:white;
+}
+.message.me{
+  margin-left:auto;
+  background:#5b4bdb;
+  color:white;
+}
+.message-input{
+  display:flex;
+  gap:8px;
+}
+.message-input input{
+  flex:1;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:12px;
+}
+@media(max-width:600px){
+  main{padding:16px;padding-bottom:90px}
+  header{padding:0 14px}
+  h1{font-size:23px}
+  .primary,.secondary,.danger{padding:9px 12px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header>
+  <div class="logo">ConnectSphere</div>
+  <div class="header-actions">
+    <button class="icon-btn" onclick="openSettings()">⚙️</button>
+  </div>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section id="home" class="page active">
+  <h1>Welcome 👋</h1>
+  <p class="subtitle">Connect with people and start conversations.</p>
+
+  <div class="card">
+    <div class="user-row">
+      <div class="avatar" id="homeAvatar">Y</div>
+      <div class="user-info">
+        <strong id="homeName">Your Name</strong>
+        <span id="homeUsername">@yourusername</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>People you may know</h3>
+    <br>
+    <div id="suggestions"></div>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<section id="search" class="page">
+  <h1>Search</h1>
+  <p class="subtitle">Find people by username or name.</p>
+
+  <input
+    id="searchInput"
+    class="search-box"
+    placeholder="Search people..."
+    oninput="searchUsers()"
+  >
+
+  <div id="searchResults">
+    <div class="empty">Start typing to search.</div>
+  </div>
+</section>
+
+<!-- REQUESTS -->
+<section id="requests" class="page">
+  <h1>Requests</h1>
+  <p class="subtitle">Manage connection requests.</p>
+  <div id="requestList"></div>
+</section>
+
+<!-- CHATS -->
+<section id="chats" class="page">
+  <h1>Messages</h1>
+  <p class="subtitle">Your conversations.</p>
+  <div class="card" id="chatList"></div>
+</section>
+
+<!-- PROFILE -->
+<section id="profile" class="page">
+  <div class="card profile">
+    <div class="avatar" id="profileAvatar">Y</div>
+    <h2 id="profileName">Your Name</h2>
+    <p id="profileUsername">@yourusername</p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <strong id="connectionCount">0</strong>
+        <span>Connections</span>
+      </div>
+      <div class="stat">
+        <strong id="requestCount">0</strong>
+        <span>Requests</span>
+      </div>
+    </div>
+
+    <button class="primary" onclick="editProfile()">Edit Profile</button>
+  </div>
+
+  <div class="card">
+    <h3>About</h3>
+    <br>
+    <p id="profileBio">Your bio will appear here.</p>
+  </div>
+</section>
+
+<!-- SETTINGS -->
+<section id="settings" class="page">
+  <h1>Settings</h1>
+  <p class="subtitle">Control your account and privacy.</p>
+
+  <div class="card">
+    <div class="setting">
+      <div>
+        <strong>Private account</strong>
+        <small>Require requests before connecting.</small>
+      </div>
+      <input type="checkbox" id="privateAccount" onchange="saveSettings()">
+    </div>
+
+    <div class="setting">
+      <div>
+        <strong>Show online status</strong>
+        <small>Allow connections to see when you're online.</small>
+      </div>
+      <input type="checkbox" id="onlineStatus" checked onchange="saveSettings()">
+    </div>
+
+    <div class="setting">
+      <div>
+        <strong>Allow messages</strong>
+        <small>Allow connected users to message you.</small>
+      </div>
+      <input type="checkbox" id="allowMessages" checked onchange="saveSettings()">
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Account</h3><br>
+    <div class="actions">
+      <button class="secondary" onclick="editProfile()">Edit profile</button>
+      <button class="danger" onclick="resetDemo()">Reset demo data</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Privacy & Security 🔐</h3>
+    <br>
+    <p style="color:#777;line-height:1.6">
+      This first version stores demo information locally in your browser.
+      Real authentication, secure database rules and properly implemented
+      end-to-end encryption will be added in later stages.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <button class="nav-btn active" onclick="showPage('home',this)">
+    <span class="nav-icon">🏠</span>Home
+  </button>
+
+  <button class="nav-btn" onclick="showPage('search',this)">
+    <span class="nav-icon">🔎</span>Search
+  </button>
+
+  <button class="nav-btn" onclick="showPage('requests',this)">
+    <span class="nav-icon">👥</span>Requests
+  </button>
+
+  <button class="nav-btn" onclick="showPage('chats',this)">
+    <span class="nav-icon">💬</span>Chats
+  </button>
+
+  <button class="nav-btn" onclick="showPage('profile',this)">
+    <span class="nav-icon">👤</span>Profile
+  </button>
+</nav>
+
+</div>
+
+<!-- PROFILE MODAL -->
+<div class="modal" id="profileModal">
+  <div class="modal-box">
+    <button class="close" onclick="closeModal('profileModal')">×</button>
+    <h2>Edit Profile</h2>
+
+    <input id="editName"
+      class="search-box"
+      placeholder="Your name">
+
+    <input id="editUsername"
+      class="search-box"
+      placeholder="Username">
+
+    <input id="editBio"
+      class="search-box"
+      placeholder="Bio">
+
+    <button class="primary" onclick="saveProfile()">Save Profile</button>
+  </div>
+</div>
+
+<!-- CHAT MODAL -->
+<div class="modal" id="chatModal">
+  <div class="modal-box">
+    <button class="close" onclick="closeModal('chatModal')">×</button>
+    <h2 id="chatTitle">Chat</h2>
+
+    <div class="message-area" id="messageArea"></div>
+
+    <div class="message-input">
+      <input id="messageInput" placeholder="Type a message..."
+             onkeydown="if(event.key==='Enter')sendMessage()">
+      <button class="primary" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* -----------------------------
+   LOCAL DEMO DATA
+----------------------------- */
+
+const demoUsers = [
+  {
+    id:1,
+    name:"Alex",
+    username:"alex01",
+    bio:"Hello 👋",
+    status:"online"
+  },
+  {
+    id:2,
+    name:"Sam",
+    username:"sam_connect",
+    bio:"Love technology",
+    status:"offline"
+  },
+  {
+    id:3,
+    name:"Jordan",
+    username:"jordan23",
+    bio:"Let's connect!",
+    status:"online"
+  },
+  {
+    id:4,
+    name:"Taylor",
+    username:"taylorx",
+    bio:"Welcome to ConnectSphere",
+    status:"offline"
+  }
+];
+
+let data = JSON.parse(localStorage.getItem("connectSphereData")) || {
+  profile:{
+    name:"Your Name",
+    username:"yourusername",
+    bio:"Your bio will appear here."
+  },
+  sent:[],
+  received:[
+    {id:2}
+  ],
+  connections:[],
+  chats:{},
+  settings:{
+    privateAccount:false,
+    onlineStatus:true,
+    allowMessages:true
+  }
+};
+
+let activeChat = null;
+
+/* -----------------------------
+   SAVE
+----------------------------- */
+
+function saveData(){
+  localStorage.setItem(
+    "connectSphereData",
+    JSON.stringify(data)
+  );
+}
+
+/* -----------------------------
+   PAGE NAVIGATION
+----------------------------- */
+
+function showPage(page,button){
+
+  document.querySelectorAll(".page")
+    .forEach(p=>p.classList.remove("active"));
+
+  document.getElementById(page)
+    .classList.add("active");
+
+  document.querySelectorAll(".nav-btn")
+    .forEach(b=>b.classList.remove("active"));
+
+  if(button){
+    button.classList.add("active");
+  }
+
+  if(page==="requests") renderRequests();
+  if(page==="chats") renderChats();
+  if(page==="home") renderSuggestions();
+  if(page==="profile") updateProfile();
+}
+
+/* -----------------------------
+   PROFILE
+----------------------------- */
+
+function updateProfile(){
+
+  const p=data.profile;
+
+  document.getElementById("profileName").textContent=p.name;
+  document.getElementById("profileUsername").textContent="@"+p.username;
+  document.getElementById("profileBio").textContent=p.bio;
+
+  document.getElementById("homeName").textContent=p.name;
+  document.getElementById("homeUsername").textContent="@"+p.username;
+
+  const letter=(p.name||"Y").charAt(0).toUpperCase();
+
+  document.getElementById("profileAvatar").textContent=letter;
+  document.getElementById("homeAvatar").textContent=letter;
+
+  document.getElementById("connectionCount")
+    .textContent=data.connections.length;
+
+  document.getElementById("requestCount")
+    .textContent=data.received.length;
+}
+
+function editProfile(){
+
+  document.getElementById("editName").value=data.profile.name;
+  document.getElementById("editUsername").value=data.profile.username;
+  document.getElementById("editBio").value=data.profile.bio;
+
+  document.getElementById("profileModal")
+    .classList.add("show");
+}
+
+function saveProfile(){
+
+  const name=document.getElementById("editName").value.trim();
+  const username=document.getElementById("editUsername").value.trim();
+  const bio=document.getElementById("editBio").value.trim();
+
+  if(!name || !username){
+    alert("Please enter your name and username.");
+    return;
+  }
+
+  data.profile={
+    name,
+    username,
+    bio
+  };
+
+  saveData();
+  updateProfile();
+  closeModal("profileModal");
+}
+
+/* -----------------------------
+   USER SEARCH
+----------------------------- */
+
+function searchUsers(){
+
+  const query=document.getElementById("searchInput")
+    .value
+    .toLowerCase()
+    .trim();
+
+  const container=document.getElementById("searchResults");
+
+  if(!query){
+    container.innerHTML='<div class="empty">Start typing to search.</div>';
+    return;
+  }
+
+  const results=demoUsers.filter(u =>
+    u.username.toLowerCase().includes(query) ||
+    u.name.toLowerCase().includes(query)
+  );
+
+  if(!results.length){
+    container.innerHTML='<div class="empty">No users found.</div>';
+    return;
+  }
+
+  container.innerHTML=results.map(userCard).join("");
+}
+
+function userCard(user){
+
+  const connected=data.connections.includes(user.id);
+  const sent=data.sent.includes(user.id);
+
+  let button="";
+
+  if(connected){
+    button='<button class="secondary">Connected</button>';
+  }else if(sent){
+    button='<button class="secondary">Requested</button>';
+  }else{
+    button=`<button class="primary"
+      onclick="sendRequest(${user.id})">Connect</button>`;
+  }
+
+  return `
+    <div class="card">
+      <div class="user-row">
+        <div class="avatar">${user.name.charAt(0)}</div>
+
+        <div class="user-info">
+          <strong>${escapeHTML(user.name)}</strong>
+          <span>@${escapeHTML(user.username)}</span>
+          <span>${escapeHTML(user.bio)}</span>
+        </div>
+
+        ${button}
+      </div>
+    </div>
+  `;
+}
+
+/* -----------------------------
+   REQUESTS
+----------------------------- */
+
+function renderRequests(){
+
+  const container=document.getElementById("requestList");
+
+  if(!data.received.length){
+    container.innerHTML=
+      '<div class="empty">No connection requests.</div>';
+    updateProfile();
+    return;
+  }
+
+  container.innerHTML=data.received.map(id=>{
+
+    const user=demoUsers.find(u=>u.id===id);
+
+    if(!user)return "";
+
+    return `
+      <div class="card">
+        <div class="user-row">
+          <div class="avatar">${user.name.charAt(0)}</div>
+
+          <div class="user-info">
+            <strong>${escapeHTML(user.name)}</strong>
+            <span>@${escapeHTML(user.username)}</span>
+          </div>
+        </div>
+
+        <br>
+
+        <div class="actions">
+          <button class="primary"
+            onclick="acceptRequest(${id})">
+            Accept
+          </button>
+
+          <button class="secondary"
+            onclick="rejectRequest(${id})">
+            Reject
+          </button>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  updateProfile();
+}
+
+function sendRequest(id){
+
+  if(data.sent.includes(id)){
+    return;
+  }
+
+  data.sent.push(id);
+  saveData();
+
+  alert("Connection request sent!");
+  searchUsers();
+  renderSuggestions();
+}
+
+function acceptRequest(id){
+
+  data.received=data.received.filter(x=>x!==id);
+
+  if(!data.connections.includes(id)){
+    data.connections.push(id);
+  }
+
+  saveData();
+  renderRequests();
+}
+
+function rejectRequest(id){
+
+  data.received=data.received.filter(x=>x!==id);
+
+  saveData();
+  renderRequests();
+}
+
+/* -----------------------------
+   SUGGESTIONS
+----------------------------- */
+
+function renderSuggestions(){
+
+  const container=document.getElementById("suggestions");
+
+  container.innerHTML=demoUsers
+    .slice(0,3)
+    .map(userCard)
+    .join("");
+}
+
+/* -----------------------------
+   CHATS
+----------------------------- */
+
+function renderChats(){
+
+  const container=document.getElementById("chatList");
+
+  const chatUsers=demoUsers.filter(u =>
+    data.connections.includes(u.id)
+  );
+
+  if(!chatUsers.length){
+    container.innerHTML=
+      '<div class="empty">Accept a connection request to start chatting.</div>';
+    return;
+  }
+
+  container.innerHTML=chatUsers.map(user=>{
+
+    const messages=data.chats[user.id] || [];
+
+    const last=messages.length
+      ? messages[messages.length-1].text
+      : "Start a conversation";
+
+    return `
+      <div class="chat" onclick="openChat(${user.id})">
+        <div class="avatar">${user.name.charAt(0)}</div>
+
+        <div class="chat-text">
+          <strong>${escapeHTML(user.name)}</strong>
+          <span>${escapeHTML(last)}</span>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+function openChat(id){
+
+  const user=demoUsers.find(u=>u.id===id);
+
+  if(!user)return;
+
+  activeChat=id;
+
+  document.getElementById("chatTitle").textContent=
+    user.name;
+
+  renderMessages();
+
+  document.getElementById("chatModal")
+    .classList.add("show");
+}
+
+function renderMessages(){
+
+  const area=document.getElementById("messageArea");
+
+  const messages=data.chats[activeChat] || [];
+
+  if(!messages.length){
+    area.innerHTML=
+      '<div class="empty">No messages yet.</div>';
+    return;
+  }
+
+  area.innerHTML=messages.map(m=>`
+    <div class="message ${m.me ? "me":""}">
+      ${escapeHTML(m.text)}
+    </div>
+  `).join("");
+
+  area.scrollTop=area.scrollHeight;
+}
+
+function sendMessage(){
+
+  const input=document.getElementById("messageInput");
+
+  const text=input.value.trim();
+
+  if(!text || !activeChat)return;
+
+  if(!data.chats[activeChat]){
+    data.chats[activeChat]=[];
+  }
+
+  data.chats[activeChat].push({
+    text:text,
+    me:true,
+    time:Date.now()
+  });
+
+  input.value="";
+
+  saveData();
+  renderMessages();
+  renderChats();
+}
+
+/* -----------------------------
+   SETTINGS
+----------------------------- */
+
+function openSettings(){
+
+  showPage("settings");
+
+  document.querySelectorAll(".nav-btn")
+    .forEach(b=>b.classList.remove("active"));
+}
+
+function saveSettings(){
+
+  data.settings.privateAccount=
+    document.getElementById("privateAccount").checked;
+
+  data.settings.onlineStatus=
+    document.getElementById("onlineStatus").checked;
+
+  data.settings.allowMessages=
+    document.getElementById("allowMessages").checked;
+
+  saveData();
+}
+
+function loadSettings(){
+
+  document.getElementById("privateAccount").checked=
+    data.settings.privateAccount;
+
+  document.getElementById("onlineStatus").checked=
+    data.settings.onlineStatus;
+
+  document.getElementById("allowMessages").checked=
+    data.settings.allowMessages;
+}
+
+/* -----------------------------
+   RESET
+----------------------------- */
+
+function resetDemo(){
+
+  if(!confirm("Reset all demo data?"))return;
+
+  localStorage.removeItem("connectSphereData");
+  location.reload();
+}
+
+/* -----------------------------
+   MODALS
+----------------------------- */
+
+function closeModal(id){
+
+  document.getElementById(id)
+    .classList.remove("show");
+}
+
+/* -----------------------------
+   BASIC HTML PROTECTION
+----------------------------- */
+
+function escapeHTML(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+/* -----------------------------
+   START
+----------------------------- */
+
+updateProfile();
+renderSuggestions();
+renderRequests();
+renderChats();
+loadSettings();
+</script>
+
+</body>
+</html>
