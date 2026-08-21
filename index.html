@@ -29,16 +29,23 @@ h1{font-size:26px;margin-bottom:8px}
 .user-row{display:flex;align-items:center;gap:12px}
 .avatar{width:48px;height:48px;border-radius:50%;background:#5b4bdb;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0}
 .profile .avatar{width:90px;height:90px;margin:0 auto 12px;font-size:30px}
-.user-info{flex:1}.user-info strong{display:block}.user-info span{color:#777;font-size:13px;display:block;margin-top:3px}
-.profile{text-align:center}.profile h2{margin-bottom:5px}.profile p{color:#777;margin-bottom:18px}
+.user-info{flex:1}
+.user-info strong{display:block}
+.user-info span{color:#777;font-size:13px;display:block;margin-top:3px}
+.profile{text-align:center}
+.profile h2{margin-bottom:5px}
+.profile p{color:#777;margin-bottom:18px}
 .stat-row{display:flex;justify-content:center;gap:45px;margin:20px 0}
-.stat strong{display:block;font-size:20px}.stat span{color:#777;font-size:13px}
+.stat strong{display:block;font-size:20px}
+.stat span{color:#777;font-size:13px}
 .setting{display:flex;align-items:center;justify-content:space-between;padding:16px 4px;border-bottom:1px solid #eee}
-.setting:last-child{border-bottom:0}.setting small{display:block;color:#777;margin-top:4px}
+.setting:last-child{border-bottom:0}
+.setting small{display:block;color:#777;margin-top:4px}
 .empty{text-align:center;padding:40px 15px;color:#888}
 .bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(1100px,100%);height:70px;background:white;border-top:1px solid #eee;display:flex;justify-content:space-around;align-items:center;z-index:20}
 .nav-btn{background:none;color:#777;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px}
-.nav-btn.active{color:#5b4bdb;font-weight:bold}.nav-icon{font-size:21px}
+.nav-btn.active{color:#5b4bdb;font-weight:bold}
+.nav-icon{font-size:21px}
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;align-items:center;justify-content:center;padding:20px}
 .modal.show{display:flex}
 .modal-box{width:min(500px,100%);background:white;border-radius:20px;padding:20px;max-height:90vh;overflow:auto}
@@ -80,6 +87,7 @@ h1{font-size:23px}
 
 <body>
 
+<!-- AUTHENTICATION -->
 <div id="authScreen" class="auth-screen">
   <div class="auth-box">
 
@@ -98,12 +106,15 @@ h1{font-size:23px}
 
     <div class="password-wrap">
       <input id="authPassword" type="password" placeholder="Password">
+
       <button
         type="button"
         class="password-toggle"
         id="passwordToggle"
         onclick="togglePassword()"
-        aria-label="Show password">👁️</button>
+        aria-label="Show password">
+        👁️
+      </button>
     </div>
 
     <button id="authButton" class="primary" onclick="handleAuth()">
@@ -112,6 +123,7 @@ h1{font-size:23px}
 
     <div class="auth-switch">
       <span id="switchText">Already have an account?</span>
+
       <button onclick="toggleAuthMode()" id="switchButton">
         Log in
       </button>
@@ -120,43 +132,93 @@ h1{font-size:23px}
   </div>
 </div>
 
+
+<!-- APP -->
 <div id="app" class="app hidden">
 
 <header>
-  <div class="logo">ConnectSphere</div>
-  <div>
-    <button class="icon-btn" onclick="showPage('settings')">⚙️</button>
+
+  <div class="logo">
+    ConnectSphere
   </div>
+
+  <div>
+    <button
+      class="icon-btn"
+      onclick="showPage('settings')">
+      ⚙️
+    </button>
+  </div>
+
 </header>
 
 <main>
 
+<!-- HOME -->
 <section id="home" class="page active">
+
   <h1>Welcome 👋</h1>
-  <p class="subtitle">Connect with people and start conversations.</p>
+
+  <p class="subtitle">
+    Connect with people and start conversations.
+  </p>
 
   <div class="card">
+
     <div class="user-row">
-      <div class="avatar" id="homeAvatar">Y</div>
-      <div class="user-info">
-        <strong id="homeName">Your Name</strong>
-        <span id="homeUsername">@username</span>
+
+      <div class="avatar" id="homeAvatar">
+        Y
       </div>
+
+      <div class="user-info">
+
+        <strong id="homeName">
+          Your Name
+        </strong>
+
+        <span id="homeUsername">
+          @username
+        </span>
+
+      </div>
+
     </div>
+
   </div>
 
+
   <div class="card">
-    <h3>People on ConnectSphere</h3>
+
+    <h3>
+      People on ConnectSphere
+    </h3>
+
     <br>
+
     <div id="suggestions">
-      <div class="empty">Loading profiles...</div>
+
+      <div class="empty">
+        Loading profiles...
+      </div>
+
     </div>
+
   </div>
+
 </section>
 
+
+<!-- SEARCH -->
 <section id="search" class="page">
-  <h1>Search</h1>
-  <p class="subtitle">Find registered ConnectSphere users.</p>
+
+  <h1>
+    Search
+  </h1>
+
+  <p class="subtitle">
+    Find registered ConnectSphere users.
+  </p>
 
   <input
     id="searchInput"
@@ -165,61 +227,112 @@ h1{font-size:23px}
     oninput="searchUsers()">
 
   <div id="searchResults">
-    <div class="empty">Start typing to search.</div>
+
+    <div class="empty">
+      Start typing to search.
+    </div>
+
   </div>
+
 </section>
 
+
+<!-- REQUESTS -->
 <section id="requests" class="page">
-  <h1>Requests</h1>
-  <p class="subtitle">Manage connection requests.</p>
+
+  <h1>
+    Requests
+  </h1>
+
+  <p class="subtitle">
+    Manage connection requests.
+  </p>
 
   <div class="empty">
     Connection requests will be added next.
   </div>
+
 </section>
 
+
+<!-- CHATS -->
 <section id="chats" class="page">
-  <h1>Messages</h1>
-  <p class="subtitle">Your conversations.</p>
+
+  <h1>
+    Messages
+  </h1>
+
+  <p class="subtitle">
+    Your conversations.
+  </p>
 
   <div class="empty">
     Real-time encrypted messaging will be added after the account system is working.
   </div>
+
 </section>
 
+
+<!-- PROFILE -->
 <section id="profile" class="page">
 
   <div class="card profile">
 
-    <div class="avatar" id="profileAvatar">Y</div>
+    <div class="avatar" id="profileAvatar">
+      Y
+    </div>
 
-    <h2 id="profileName">Your Name</h2>
+    <h2 id="profileName">
+      Your Name
+    </h2>
 
-    <p id="profileUsername">@username</p>
+    <p id="profileUsername">
+      @username
+    </p>
 
     <div class="stat-row">
 
       <div class="stat">
-        <strong>0</strong>
-        <span>Connections</span>
+
+        <strong>
+          0
+        </strong>
+
+        <span>
+          Connections
+        </span>
+
       </div>
 
       <div class="stat">
-        <strong>0</strong>
-        <span>Requests</span>
+
+        <strong>
+          0
+        </strong>
+
+        <span>
+          Requests
+        </span>
+
       </div>
 
     </div>
 
-    <button class="primary" onclick="editProfile()">
+    <button
+      class="primary"
+      onclick="editProfile()">
       Edit Profile
     </button>
 
   </div>
 
+
   <div class="card">
 
-    <h3>About</h3>
+    <h3>
+      About
+    </h3>
+
     <br>
 
     <p id="profileBio">
@@ -230,29 +343,52 @@ h1{font-size:23px}
 
 </section>
 
+
+<!-- SETTINGS -->
 <section id="settings" class="page">
 
-  <h1>Settings</h1>
-  <p class="subtitle">Control your account.</p>
+  <h1>
+    Settings
+  </h1>
+
+  <p class="subtitle">
+    Control your account.
+  </p>
+
 
   <div class="card">
 
     <div class="setting">
 
       <div>
-        <strong>Private account</strong>
-        <small>Require requests before connecting.</small>
+
+        <strong>
+          Private account
+        </strong>
+
+        <small>
+          Require requests before connecting.
+        </small>
+
       </div>
 
       <input type="checkbox">
 
     </div>
 
+
     <div class="setting">
 
       <div>
-        <strong>Show online status</strong>
-        <small>Allow connections to see your status.</small>
+
+        <strong>
+          Show online status
+        </strong>
+
+        <small>
+          Allow connections to see your status.
+        </small>
+
       </div>
 
       <input type="checkbox" checked>
@@ -261,31 +397,45 @@ h1{font-size:23px}
 
   </div>
 
+
   <div class="card">
 
-    <h3>Account</h3>
+    <h3>
+      Account
+    </h3>
+
     <br>
 
-    <button class="secondary" onclick="editProfile()">
+    <button
+      class="secondary"
+      onclick="editProfile()">
       Edit profile
     </button>
 
     <br><br>
 
-    <button class="danger" onclick="logout()">
+    <button
+      class="danger"
+      onclick="logout()">
       Log out
     </button>
 
   </div>
 
+
   <div class="card">
 
-    <h3>Security 🔐</h3>
+    <h3>
+      Security 🔐
+    </h3>
+
     <br>
 
     <p style="color:#777;line-height:1.6">
+
       Your account uses Supabase Authentication and database Row Level Security.
       End-to-end encrypted messaging will be implemented separately.
+
     </p>
 
   </div>
@@ -294,63 +444,116 @@ h1{font-size:23px}
 
 </main>
 
+
+<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
 
-  <button class="nav-btn active" onclick="showPage('home',this)">
-    <span class="nav-icon">🏠</span>
+  <button
+    class="nav-btn active"
+    onclick="showPage('home',this)">
+
+    <span class="nav-icon">
+      🏠
+    </span>
+
     Home
+
   </button>
 
-  <button class="nav-btn" onclick="showPage('search',this)">
-    <span class="nav-icon">🔎</span>
+
+  <button
+    class="nav-btn"
+    onclick="showPage('search',this)">
+
+    <span class="nav-icon">
+      🔎
+    </span>
+
     Search
+
   </button>
 
-  <button class="nav-btn" onclick="showPage('requests',this)">
-    <span class="nav-icon">👥</span>
+
+  <button
+    class="nav-btn"
+    onclick="showPage('requests',this)">
+
+    <span class="nav-icon">
+      👥
+    </span>
+
     Requests
+
   </button>
 
-  <button class="nav-btn" onclick="showPage('chats',this)">
-    <span class="nav-icon">💬</span>
+
+  <button
+    class="nav-btn"
+    onclick="showPage('chats',this)">
+
+    <span class="nav-icon">
+      💬
+    </span>
+
     Chats
+
   </button>
 
-  <button class="nav-btn" onclick="showPage('profile',this)">
-    <span class="nav-icon">👤</span>
+
+  <button
+    class="nav-btn"
+    onclick="showPage('profile',this)">
+
+    <span class="nav-icon">
+      👤
+    </span>
+
     Profile
+
   </button>
 
 </nav>
 
 </div>
 
+
+<!-- PROFILE MODAL -->
 <div class="modal" id="profileModal">
 
   <div class="modal-box">
 
-    <button class="close" onclick="closeModal('profileModal')">
+    <button
+      class="close"
+      onclick="closeModal('profileModal')">
       ×
     </button>
 
-    <h2>Edit Profile</h2>
+    <h2>
+      Edit Profile
+    </h2>
+
 
     <input
       id="editName"
       class="search-box"
       placeholder="Your name">
 
+
     <input
       id="editUsername"
       class="search-box"
       placeholder="Username">
+
 
     <input
       id="editBio"
       class="search-box"
       placeholder="Bio">
 
-    <button class="primary" onclick="saveProfile()">
+
+    <button
+      class="primary"
+      onclick="saveProfile()">
       Save Profile
     </button>
 
@@ -358,9 +561,15 @@ h1{font-size:23px}
 
 </div>
 
+
+<!-- SUPABASE -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+
+/* ==========================================
+   SUPABASE CONNECTION
+========================================== */
 
 const SUPABASE_URL =
   "https://hwjojlqhzeqtfcxmfrjk.supabase.co";
@@ -379,7 +588,9 @@ let currentProfile = null;
 let loginMode = false;
 
 
-/* PASSWORD */
+/* ==========================================
+   PASSWORD
+========================================== */
 
 function togglePassword(){
 
@@ -392,19 +603,33 @@ function togglePassword(){
   if(password.type === "password"){
 
     password.type = "text";
+
     button.textContent = "🙈";
+
+    button.setAttribute(
+      "aria-label",
+      "Hide password"
+    );
 
   }else{
 
     password.type = "password";
+
     button.textContent = "👁️";
+
+    button.setAttribute(
+      "aria-label",
+      "Show password"
+    );
 
   }
 
 }
 
 
-/* AUTH MODE */
+/* ==========================================
+   AUTH MODE
+========================================== */
 
 function toggleAuthMode(){
 
@@ -413,12 +638,17 @@ function toggleAuthMode(){
   document
     .getElementById("signupFields")
     .classList
-    .toggle("hidden",loginMode);
+    .toggle(
+      "hidden",
+      loginMode
+    );
 
   document
     .getElementById("authButton")
     .textContent =
-      loginMode ? "Log In" : "Sign Up";
+      loginMode
+        ? "Log In"
+        : "Sign Up";
 
   document
     .getElementById("authSubtitle")
@@ -437,61 +667,87 @@ function toggleAuthMode(){
   document
     .getElementById("switchButton")
     .textContent =
-      loginMode ? "Sign Up" : "Log In";
+      loginMode
+        ? "Sign Up"
+        : "Log In";
 
   clearMessages();
 
 }
 
 
-/* AUTH */
+/* ==========================================
+   AUTHENTICATION
+========================================== */
 
 async function handleAuth(){
 
   clearMessages();
 
   const email =
-    document.getElementById("authEmail").value.trim();
+    document
+      .getElementById("authEmail")
+      .value
+      .trim();
 
   const password =
-    document.getElementById("authPassword").value;
+    document
+      .getElementById("authPassword")
+      .value;
 
   if(!email || !password){
 
-    showError("Please enter your email and password.");
+    showError(
+      "Please enter your email and password."
+    );
 
     return;
   }
 
   try{
 
+    /* LOGIN */
+
     if(loginMode){
 
       const {data,error} =
-        await supabaseClient.auth.signInWithPassword({
+        await supabaseClient
+          .auth
+          .signInWithPassword({
 
-          email:email,
-          password:password
+            email:email,
+            password:password
 
-        });
+          });
 
       if(error) throw error;
 
-      currentUser = data.user;
+      currentUser =
+        data.user;
 
       if(!currentUser){
 
-        showError("Login succeeded, but no user was returned.");
+        showError(
+          "Login succeeded, but no user was returned."
+        );
 
         return;
       }
 
       await loadProfile();
 
-    }else{
+    }
+
+
+    /* SIGN UP */
+
+    else{
 
       const name =
-        document.getElementById("signupName").value.trim();
+        document
+          .getElementById("signupName")
+          .value
+          .trim();
 
       const username =
         document
@@ -502,12 +758,16 @@ async function handleAuth(){
 
       if(!name || !username){
 
-        showError("Please enter your name and username.");
+        showError(
+          "Please enter your name and username."
+        );
 
         return;
       }
 
-      if(!/^[a-z0-9_]{3,30}$/.test(username)){
+      if(
+        !/^[a-z0-9_]{3,30}$/.test(username)
+      ){
 
         showError(
           "Username must be 3-30 characters using letters, numbers or underscore."
@@ -517,19 +777,27 @@ async function handleAuth(){
       }
 
       const {data,error} =
-        await supabaseClient.auth.signUp({
+        await supabaseClient
+          .auth
+          .signUp({
 
-          email:email,
-          password:password,
+            email:email,
 
-          options:{
-            data:{
-              display_name:name,
-              username:username
+            password:password,
+
+            options:{
+
+              data:{
+
+                display_name:name,
+
+                username:username
+
+              }
+
             }
-          }
 
-        });
+          });
 
       if(error) throw error;
 
@@ -555,7 +823,8 @@ async function handleAuth(){
 
       document
         .getElementById("authButton")
-        .textContent = "Log In";
+        .textContent =
+          "Log In";
 
       document
         .getElementById("authSubtitle")
@@ -576,7 +845,10 @@ async function handleAuth(){
 
   }catch(error){
 
-    console.error("Authentication error:",error);
+    console.error(
+      "Authentication error:",
+      error
+    );
 
     showError(
       error.message ||
@@ -588,7 +860,9 @@ async function handleAuth(){
 }
 
 
-/* LOAD PROFILE */
+/* ==========================================
+   LOAD PROFILE
+========================================== */
 
 async function loadProfile(){
 
@@ -598,12 +872,18 @@ async function loadProfile(){
     await supabaseClient
       .from("profiles")
       .select("*")
-      .eq("id",currentUser.id)
+      .eq(
+        "id",
+        currentUser.id
+      )
       .maybeSingle();
 
   if(error){
 
-    console.error("Profile lookup error:",error);
+    console.error(
+      "Profile lookup error:",
+      error
+    );
 
     showError(
       "Could not load your profile: " +
@@ -613,6 +893,7 @@ async function loadProfile(){
     return;
   }
 
+
   if(!data){
 
     const metadata =
@@ -620,7 +901,8 @@ async function loadProfile(){
 
     const displayName =
       metadata.display_name ||
-      currentUser.email?.split("@")[0] ||
+      currentUser.email
+        ?.split("@")[0] ||
       "User";
 
     const username =
@@ -632,20 +914,26 @@ async function loadProfile(){
           .slice(0,8)
       );
 
+
     const {data:newProfile,error:createError} =
       await supabaseClient
         .from("profiles")
         .insert({
 
           id:currentUser.id,
+
           username:username,
+
           display_name:displayName,
+
           bio:"",
-          avatar:null
+
+          avatar_url:null
 
         })
         .select()
         .single();
+
 
     if(createError){
 
@@ -662,11 +950,13 @@ async function loadProfile(){
       return;
     }
 
-    currentProfile = newProfile;
+    currentProfile =
+      newProfile;
 
   }else{
 
-    currentProfile = data;
+    currentProfile =
+      data;
 
   }
 
@@ -679,7 +969,9 @@ async function loadProfile(){
 }
 
 
-/* SHOW APP */
+/* ==========================================
+   SHOW APP
+========================================== */
 
 function showApp(){
 
@@ -696,7 +988,9 @@ function showApp(){
 }
 
 
-/* PROFILE UI */
+/* ==========================================
+   PROFILE UI
+========================================== */
 
 function updateProfileUI(){
 
@@ -714,50 +1008,96 @@ function updateProfileUI(){
     currentProfile.bio ||
     "Your bio will appear here.";
 
-  document.getElementById("homeName").textContent = name;
 
-  document.getElementById("homeUsername").textContent =
-    "@" + username;
+  document
+    .getElementById("homeName")
+    .textContent =
+      name;
 
-  document.getElementById("profileName").textContent = name;
 
-  document.getElementById("profileUsername").textContent =
-    "@" + username;
+  document
+    .getElementById("homeUsername")
+    .textContent =
+      "@" + username;
 
-  document.getElementById("profileBio").textContent = bio;
+
+  document
+    .getElementById("profileName")
+    .textContent =
+      name;
+
+
+  document
+    .getElementById("profileUsername")
+    .textContent =
+      "@" + username;
+
+
+  document
+    .getElementById("profileBio")
+    .textContent =
+      bio;
+
 
   const letter =
-    name.charAt(0).toUpperCase() || "Y";
+    name
+      .charAt(0)
+      .toUpperCase() ||
+      "Y";
 
-  document.getElementById("homeAvatar").textContent = letter;
 
-  document.getElementById("profileAvatar").textContent = letter;
+  document
+    .getElementById("homeAvatar")
+    .textContent =
+      letter;
+
+
+  document
+    .getElementById("profileAvatar")
+    .textContent =
+      letter;
 
 }
 
 
-/* PEOPLE */
+/* ==========================================
+   PEOPLE
+========================================== */
 
 async function loadPeople(){
 
   const {data,error} =
     await supabaseClient
       .from("profiles")
-      .select("id,username,display_name,bio,avatar")
-      .neq("id",currentUser.id)
+      .select(
+        "id,username,display_name,bio,avatar_url"
+      )
+      .neq(
+        "id",
+        currentUser.id
+      )
       .limit(20);
+
 
   if(error){
 
-    console.error("People loading error:",error);
+    console.error(
+      "People loading error:",
+      error
+    );
 
-    document.getElementById("suggestions").innerHTML =
-      '<div class="empty">Unable to load profiles.</div>';
+    document
+      .getElementById("suggestions")
+      .innerHTML =
+        '<div class="empty">Unable to load profiles.</div>';
 
     return;
   }
 
-  renderPeople(data || []);
+
+  renderPeople(
+    data || []
+  );
 
 }
 
@@ -765,7 +1105,9 @@ async function loadPeople(){
 function renderPeople(users){
 
   const container =
-    document.getElementById("suggestions");
+    document
+      .getElementById("suggestions");
+
 
   if(!users.length){
 
@@ -775,9 +1117,13 @@ function renderPeople(users){
     return;
   }
 
+
   container.innerHTML =
     users
-      .map(user => profileCard(user))
+      .map(
+        user =>
+          profileCard(user)
+      )
       .join("");
 
 }
@@ -790,7 +1136,10 @@ function profileCard(user){
     "User";
 
   const letter =
-    name.charAt(0).toUpperCase();
+    name
+      .charAt(0)
+      .toUpperCase();
+
 
   return `
 
@@ -835,7 +1184,9 @@ function profileCard(user){
 }
 
 
-/* SEARCH - FIXED */
+/* ==========================================
+   SEARCH
+========================================== */
 
 async function searchUsers(){
 
@@ -847,7 +1198,9 @@ async function searchUsers(){
       .toLowerCase();
 
   const container =
-    document.getElementById("searchResults");
+    document
+      .getElementById("searchResults");
+
 
   if(!query){
 
@@ -857,6 +1210,7 @@ async function searchUsers(){
     return;
   }
 
+
   if(!currentUser){
 
     container.innerHTML =
@@ -865,23 +1219,27 @@ async function searchUsers(){
     return;
   }
 
-  try{
 
-    /*
-      Search username first.
-      This avoids the previous .or() query
-      that was causing Search Failed.
-    */
+  try{
 
     const {data,error} =
       await supabaseClient
         .from("profiles")
-        .select("id,username,display_name,bio,avatar")
-        .neq("id",currentUser.id)
-        .ilike("username",`%${query}%`)
+        .select(
+          "id,username,display_name,bio,avatar_url"
+        )
+        .neq(
+          "id",
+          currentUser.id
+        )
+        .or(
+          `username.ilike.%${query}%,display_name.ilike.%${query}%`
+        )
         .limit(20);
 
+
     if(error) throw error;
+
 
     if(!data || !data.length){
 
@@ -891,28 +1249,34 @@ async function searchUsers(){
       return;
     }
 
+
     container.innerHTML =
       data
-        .map(user => profileCard(user))
+        .map(
+          user =>
+            profileCard(user)
+        )
         .join("");
+
 
   }catch(error){
 
-    console.error("Search error:",error);
+    console.error(
+      "Search error:",
+      error
+    );
 
     container.innerHTML =
-      '<div class="empty">Search failed: ' +
-      escapeHTML(
-        error.message || "Unknown error"
-      ) +
-      '</div>';
+      '<div class="empty">Search failed. Please try again.</div>';
 
   }
 
 }
 
 
-/* VIEW PROFILE */
+/* ==========================================
+   VIEW PROFILE
+========================================== */
 
 async function viewProfile(id){
 
@@ -920,22 +1284,33 @@ async function viewProfile(id){
     await supabaseClient
       .from("profiles")
       .select("*")
-      .eq("id",id)
+      .eq(
+        "id",
+        id
+      )
       .single();
+
 
   if(error){
 
-    alert("Unable to load profile.");
+    alert(
+      "Unable to load profile."
+    );
 
     return;
   }
 
+
   alert(
 
     (data.display_name || "User") +
+
     "\n@" +
+
     (data.username || "") +
+
     "\n\n" +
+
     (data.bio || "")
 
   );
@@ -943,20 +1318,32 @@ async function viewProfile(id){
 }
 
 
-/* EDIT PROFILE */
+/* ==========================================
+   EDIT PROFILE
+========================================== */
 
 function editProfile(){
 
   if(!currentProfile) return;
 
-  document.getElementById("editName").value =
-    currentProfile.display_name || "";
 
-  document.getElementById("editUsername").value =
-    currentProfile.username || "";
+  document
+    .getElementById("editName")
+    .value =
+      currentProfile.display_name || "";
 
-  document.getElementById("editBio").value =
-    currentProfile.bio || "";
+
+  document
+    .getElementById("editUsername")
+    .value =
+      currentProfile.username || "";
+
+
+  document
+    .getElementById("editBio")
+    .value =
+      currentProfile.bio || "";
+
 
   document
     .getElementById("profileModal")
@@ -974,6 +1361,7 @@ async function saveProfile(){
       .value
       .trim();
 
+
   const username =
     document
       .getElementById("editUsername")
@@ -981,20 +1369,27 @@ async function saveProfile(){
       .trim()
       .toLowerCase();
 
+
   const bio =
     document
       .getElementById("editBio")
       .value
       .trim();
 
+
   if(!name || !username){
 
-    alert("Name and username are required.");
+    alert(
+      "Name and username are required."
+    );
 
     return;
   }
 
-  if(!/^[a-z0-9_]{3,30}$/.test(username)){
+
+  if(
+    !/^[a-z0-9_]{3,30}$/.test(username)
+  ){
 
     alert(
       "Username must be 3-30 characters using letters, numbers or underscore."
@@ -1003,90 +1398,129 @@ async function saveProfile(){
     return;
   }
 
+
   const {data,error} =
     await supabaseClient
       .from("profiles")
       .update({
 
         display_name:name,
+
         username:username,
+
         bio:bio
 
       })
-      .eq("id",currentUser.id)
+      .eq(
+        "id",
+        currentUser.id
+      )
       .select()
       .single();
 
+
   if(error){
 
-    if(error.code === "23505"){
+    if(
+      error.code === "23505"
+    ){
 
-      alert("That username is already taken.");
+      alert(
+        "That username is already taken."
+      );
 
     }else{
 
-      alert(error.message);
+      alert(
+        error.message
+      );
 
     }
 
     return;
   }
 
-  currentProfile = data;
+
+  currentProfile =
+    data;
 
   updateProfileUI();
 
-  closeModal("profileModal");
+  closeModal(
+    "profileModal"
+  );
 
-  alert("Profile updated successfully.");
+  alert(
+    "Profile updated successfully."
+  );
 
 }
 
 
-/* NAVIGATION */
+/* ==========================================
+   NAVIGATION
+========================================== */
 
 function showPage(page,button){
 
   document
     .querySelectorAll(".page")
     .forEach(
-      p => p.classList.remove("active")
+      p =>
+        p.classList
+          .remove("active")
     );
+
 
   document
     .getElementById(page)
     .classList
     .add("active");
 
+
   document
     .querySelectorAll(".nav-btn")
     .forEach(
-      b => b.classList.remove("active")
+      b =>
+        b.classList
+          .remove("active")
     );
+
 
   if(button){
 
-    button.classList.add("active");
+    button
+      .classList
+      .add("active");
 
   }
 
 }
 
 
-/* LOGOUT */
+/* ==========================================
+   LOGOUT
+========================================== */
 
 async function logout(){
 
-  await supabaseClient.auth.signOut();
+  await supabaseClient
+    .auth
+    .signOut();
 
-  currentUser = null;
 
-  currentProfile = null;
+  currentUser =
+    null;
+
+  currentProfile =
+    null;
+
 
   document
     .getElementById("app")
     .classList
     .add("hidden");
+
 
   document
     .getElementById("authScreen")
@@ -1096,7 +1530,9 @@ async function logout(){
 }
 
 
-/* MODALS */
+/* ==========================================
+   MODALS
+========================================== */
 
 function closeModal(id){
 
@@ -1108,21 +1544,30 @@ function closeModal(id){
 }
 
 
-/* MESSAGES */
+/* ==========================================
+   MESSAGES
+========================================== */
 
 function showError(message){
 
   const box =
-    document.getElementById("authError");
+    document
+      .getElementById("authError");
 
-  box.textContent = message;
 
-  box.style.display = "block";
+  box.textContent =
+    message;
+
+
+  box.style.display =
+    "block";
+
 
   document
     .getElementById("authSuccess")
     .style
-    .display = "none";
+    .display =
+      "none";
 
 }
 
@@ -1130,16 +1575,23 @@ function showError(message){
 function showSuccess(message){
 
   const box =
-    document.getElementById("authSuccess");
+    document
+      .getElementById("authSuccess");
 
-  box.textContent = message;
 
-  box.style.display = "block";
+  box.textContent =
+    message;
+
+
+  box.style.display =
+    "block";
+
 
   document
     .getElementById("authError")
     .style
-    .display = "none";
+    .display =
+      "none";
 
 }
 
@@ -1149,32 +1601,58 @@ function clearMessages(){
   document
     .getElementById("authError")
     .style
-    .display = "none";
+    .display =
+      "none";
+
 
   document
     .getElementById("authSuccess")
     .style
-    .display = "none";
+    .display =
+      "none";
 
 }
 
 
-/* SECURITY */
+/* ==========================================
+   SECURITY
+========================================== */
 
 function escapeHTML(value){
 
   return String(value)
 
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
 
 }
 
 
-/* EXISTING SESSION */
+/* ==========================================
+   CHECK EXISTING SESSION
+========================================== */
 
 async function startApp(){
 
@@ -1182,6 +1660,7 @@ async function startApp(){
     await supabaseClient
       .auth
       .getSession();
+
 
   if(data.session){
 
@@ -1205,14 +1684,20 @@ async function startApp(){
 supabaseClient
   .auth
   .onAuthStateChange(
-    async (event,session)=>{
+    async (
+      event,
+      session
+    ) => {
 
-      if(event === "SIGNED_OUT"){
+      if(
+        event === "SIGNED_OUT"
+      ){
 
         document
           .getElementById("app")
           .classList
           .add("hidden");
+
 
         document
           .getElementById("authScreen")
