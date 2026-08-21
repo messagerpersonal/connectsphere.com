@@ -80,7 +80,6 @@ h1{font-size:23px}
 
 <body>
 
-<!-- AUTHENTICATION -->
 <div id="authScreen" class="auth-screen">
   <div class="auth-box">
 
@@ -121,7 +120,6 @@ h1{font-size:23px}
   </div>
 </div>
 
-<!-- APP -->
 <div id="app" class="app hidden">
 
 <header>
@@ -296,7 +294,6 @@ h1{font-size:23px}
 
 </main>
 
-<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
 
   <button class="nav-btn active" onclick="showPage('home',this)">
@@ -328,7 +325,6 @@ h1{font-size:23px}
 
 </div>
 
-<!-- PROFILE MODAL -->
 <div class="modal" id="profileModal">
 
   <div class="modal-box">
@@ -362,14 +358,9 @@ h1{font-size:23px}
 
 </div>
 
-<!-- SUPABASE -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-
-/* ==========================================
-   SUPABASE CONNECTION
-========================================== */
 
 const SUPABASE_URL =
   "https://hwjojlqhzeqtfcxmfrjk.supabase.co";
@@ -388,9 +379,7 @@ let currentProfile = null;
 let loginMode = false;
 
 
-/* ==========================================
-   PASSWORD SHOW / HIDE
-========================================== */
+/* PASSWORD */
 
 function togglePassword(){
 
@@ -404,22 +393,18 @@ function togglePassword(){
 
     password.type = "text";
     button.textContent = "🙈";
-    button.setAttribute("aria-label","Hide password");
 
   }else{
 
     password.type = "password";
     button.textContent = "👁️";
-    button.setAttribute("aria-label","Show password");
 
   }
 
 }
 
 
-/* ==========================================
-   AUTH MODE
-========================================== */
+/* AUTH MODE */
 
 function toggleAuthMode(){
 
@@ -455,42 +440,30 @@ function toggleAuthMode(){
       loginMode ? "Sign Up" : "Log In";
 
   clearMessages();
+
 }
 
 
-/* ==========================================
-   AUTH
-========================================== */
+/* AUTH */
 
 async function handleAuth(){
 
   clearMessages();
 
   const email =
-    document
-      .getElementById("authEmail")
-      .value
-      .trim();
+    document.getElementById("authEmail").value.trim();
 
   const password =
-    document
-      .getElementById("authPassword")
-      .value;
+    document.getElementById("authPassword").value;
 
   if(!email || !password){
 
-    showError(
-      "Please enter your email and password."
-    );
+    showError("Please enter your email and password.");
 
     return;
   }
 
   try{
-
-    /* =========================
-       LOGIN
-    ========================= */
 
     if(loginMode){
 
@@ -508,36 +481,17 @@ async function handleAuth(){
 
       if(!currentUser){
 
-        showError(
-          "Login succeeded, but no user was returned."
-        );
+        showError("Login succeeded, but no user was returned.");
 
         return;
       }
 
-      /*
-       Profile is loaded here.
-
-       If the profile doesn't exist yet,
-       it will be created while the user
-       is authenticated.
-      */
-
       await loadProfile();
 
-    }
-
-    /* =========================
-       SIGN UP
-    ========================= */
-
-    else{
+    }else{
 
       const name =
-        document
-          .getElementById("signupName")
-          .value
-          .trim();
+        document.getElementById("signupName").value.trim();
 
       const username =
         document
@@ -548,16 +502,12 @@ async function handleAuth(){
 
       if(!name || !username){
 
-        showError(
-          "Please enter your name and username."
-        );
+        showError("Please enter your name and username.");
 
         return;
       }
 
-      if(
-        !/^[a-z0-9_]{3,30}$/.test(username)
-      ){
+      if(!/^[a-z0-9_]{3,30}$/.test(username)){
 
         showError(
           "Username must be 3-30 characters using letters, numbers or underscore."
@@ -570,19 +520,13 @@ async function handleAuth(){
         await supabaseClient.auth.signUp({
 
           email:email,
-
           password:password,
 
           options:{
-
             data:{
-
               display_name:name,
-
               username:username
-
             }
-
           }
 
         });
@@ -597,18 +541,6 @@ async function handleAuth(){
 
         return;
       }
-
-      /*
-       IMPORTANT:
-
-       We DO NOT insert into profiles here.
-
-       Email confirmation is enabled, so the user
-       may not yet have an authenticated session.
-
-       The profile will be created after the user
-       confirms the email and logs in.
-      */
 
       showSuccess(
         "Account created! Check your email, confirm your account, then log in."
@@ -644,7 +576,7 @@ async function handleAuth(){
 
   }catch(error){
 
-    console.error(error);
+    console.error("Authentication error:",error);
 
     showError(
       error.message ||
@@ -656,9 +588,7 @@ async function handleAuth(){
 }
 
 
-/* ==========================================
-   LOAD / CREATE PROFILE
-========================================== */
+/* LOAD PROFILE */
 
 async function loadProfile(){
 
@@ -673,10 +603,7 @@ async function loadProfile(){
 
   if(error){
 
-    console.error(
-      "Profile lookup error:",
-      error
-    );
+    console.error("Profile lookup error:",error);
 
     showError(
       "Could not load your profile: " +
@@ -686,13 +613,6 @@ async function loadProfile(){
     return;
   }
 
-  /*
-   If profile doesn't exist, create it now.
-
-   At this point the user is authenticated,
-   so auth.uid() = currentUser.id.
-  */
-
   if(!data){
 
     const metadata =
@@ -700,8 +620,7 @@ async function loadProfile(){
 
     const displayName =
       metadata.display_name ||
-      currentUser.email
-        ?.split("@")[0] ||
+      currentUser.email?.split("@")[0] ||
       "User";
 
     const username =
@@ -719,13 +638,9 @@ async function loadProfile(){
         .insert({
 
           id:currentUser.id,
-
           username:username,
-
           display_name:displayName,
-
           bio:"",
-
           avatar:null
 
         })
@@ -764,9 +679,7 @@ async function loadProfile(){
 }
 
 
-/* ==========================================
-   SHOW APP
-========================================== */
+/* SHOW APP */
 
 function showApp(){
 
@@ -783,9 +696,7 @@ function showApp(){
 }
 
 
-/* ==========================================
-   PROFILE UI
-========================================== */
+/* PROFILE UI */
 
 function updateProfileUI(){
 
@@ -803,70 +714,45 @@ function updateProfileUI(){
     currentProfile.bio ||
     "Your bio will appear here.";
 
-  document
-    .getElementById("homeName")
-    .textContent = name;
+  document.getElementById("homeName").textContent = name;
 
-  document
-    .getElementById("homeUsername")
-    .textContent =
-      "@" + username;
+  document.getElementById("homeUsername").textContent =
+    "@" + username;
 
-  document
-    .getElementById("profileName")
-    .textContent = name;
+  document.getElementById("profileName").textContent = name;
 
-  document
-    .getElementById("profileUsername")
-    .textContent =
-      "@" + username;
+  document.getElementById("profileUsername").textContent =
+    "@" + username;
 
-  document
-    .getElementById("profileBio")
-    .textContent = bio;
+  document.getElementById("profileBio").textContent = bio;
 
   const letter =
-    name
-      .charAt(0)
-      .toUpperCase() || "Y";
+    name.charAt(0).toUpperCase() || "Y";
 
-  document
-    .getElementById("homeAvatar")
-    .textContent = letter;
+  document.getElementById("homeAvatar").textContent = letter;
 
-  document
-    .getElementById("profileAvatar")
-    .textContent = letter;
+  document.getElementById("profileAvatar").textContent = letter;
 
 }
 
 
-/* ==========================================
-   PEOPLE
-========================================== */
+/* PEOPLE */
 
 async function loadPeople(){
 
   const {data,error} =
     await supabaseClient
       .from("profiles")
-      .select(
-        "id,username,display_name,bio,avatar"
-      )
-      .neq(
-        "id",
-        currentUser.id
-      )
+      .select("id,username,display_name,bio,avatar")
+      .neq("id",currentUser.id)
       .limit(20);
 
   if(error){
 
-    console.error(error);
+    console.error("People loading error:",error);
 
-    document
-      .getElementById("suggestions")
-      .innerHTML =
-        '<div class="empty">Unable to load profiles.</div>';
+    document.getElementById("suggestions").innerHTML =
+      '<div class="empty">Unable to load profiles.</div>';
 
     return;
   }
@@ -879,8 +765,7 @@ async function loadPeople(){
 function renderPeople(users){
 
   const container =
-    document
-      .getElementById("suggestions");
+    document.getElementById("suggestions");
 
   if(!users.length){
 
@@ -905,9 +790,7 @@ function profileCard(user){
     "User";
 
   const letter =
-    name
-      .charAt(0)
-      .toUpperCase();
+    name.charAt(0).toUpperCase();
 
   return `
 
@@ -952,9 +835,7 @@ function profileCard(user){
 }
 
 
-/* ==========================================
-   SEARCH
-========================================== */
+/* SEARCH - FIXED */
 
 async function searchUsers(){
 
@@ -966,8 +847,7 @@ async function searchUsers(){
       .toLowerCase();
 
   const container =
-    document
-      .getElementById("searchResults");
+    document.getElementById("searchResults");
 
   if(!query){
 
@@ -977,50 +857,62 @@ async function searchUsers(){
     return;
   }
 
-  const {data,error} =
-    await supabaseClient
-      .from("profiles")
-      .select(
-        "id,username,display_name,bio,avatar"
-      )
-      .neq(
-        "id",
-        currentUser.id
-      )
-      .or(
-        `username.ilike.%${query}%,display_name.ilike.%${query}%`
-      )
-      .limit(20);
-
-  if(error){
-
-    console.error(error);
+  if(!currentUser){
 
     container.innerHTML =
-      '<div class="empty">Search failed.</div>';
+      '<div class="empty">Please log in again.</div>';
 
     return;
   }
 
-  if(!data.length){
+  try{
+
+    /*
+      Search username first.
+      This avoids the previous .or() query
+      that was causing Search Failed.
+    */
+
+    const {data,error} =
+      await supabaseClient
+        .from("profiles")
+        .select("id,username,display_name,bio,avatar")
+        .neq("id",currentUser.id)
+        .ilike("username",`%${query}%`)
+        .limit(20);
+
+    if(error) throw error;
+
+    if(!data || !data.length){
+
+      container.innerHTML =
+        '<div class="empty">No users found.</div>';
+
+      return;
+    }
 
     container.innerHTML =
-      '<div class="empty">No users found.</div>';
+      data
+        .map(user => profileCard(user))
+        .join("");
 
-    return;
+  }catch(error){
+
+    console.error("Search error:",error);
+
+    container.innerHTML =
+      '<div class="empty">Search failed: ' +
+      escapeHTML(
+        error.message || "Unknown error"
+      ) +
+      '</div>';
+
   }
-
-  container.innerHTML =
-    data
-      .map(user => profileCard(user))
-      .join("");
 
 }
 
 
-/* ==========================================
-   VIEW PROFILE
-========================================== */
+/* VIEW PROFILE */
 
 async function viewProfile(id){
 
@@ -1033,9 +925,7 @@ async function viewProfile(id){
 
   if(error){
 
-    alert(
-      "Unable to load profile."
-    );
+    alert("Unable to load profile.");
 
     return;
   }
@@ -1043,13 +933,9 @@ async function viewProfile(id){
   alert(
 
     (data.display_name || "User") +
-
     "\n@" +
-
     (data.username || "") +
-
     "\n\n" +
-
     (data.bio || "")
 
   );
@@ -1057,28 +943,20 @@ async function viewProfile(id){
 }
 
 
-/* ==========================================
-   EDIT PROFILE
-========================================== */
+/* EDIT PROFILE */
 
 function editProfile(){
 
   if(!currentProfile) return;
 
-  document
-    .getElementById("editName")
-    .value =
-      currentProfile.display_name || "";
+  document.getElementById("editName").value =
+    currentProfile.display_name || "";
 
-  document
-    .getElementById("editUsername")
-    .value =
-      currentProfile.username || "";
+  document.getElementById("editUsername").value =
+    currentProfile.username || "";
 
-  document
-    .getElementById("editBio")
-    .value =
-      currentProfile.bio || "";
+  document.getElementById("editBio").value =
+    currentProfile.bio || "";
 
   document
     .getElementById("profileModal")
@@ -1111,16 +989,12 @@ async function saveProfile(){
 
   if(!name || !username){
 
-    alert(
-      "Name and username are required."
-    );
+    alert("Name and username are required.");
 
     return;
   }
 
-  if(
-    !/^[a-z0-9_]{3,30}$/.test(username)
-  ){
+  if(!/^[a-z0-9_]{3,30}$/.test(username)){
 
     alert(
       "Username must be 3-30 characters using letters, numbers or underscore."
@@ -1135,16 +1009,11 @@ async function saveProfile(){
       .update({
 
         display_name:name,
-
         username:username,
-
         bio:bio
 
       })
-      .eq(
-        "id",
-        currentUser.id
-      )
+      .eq("id",currentUser.id)
       .select()
       .single();
 
@@ -1152,9 +1021,7 @@ async function saveProfile(){
 
     if(error.code === "23505"){
 
-      alert(
-        "That username is already taken."
-      );
+      alert("That username is already taken.");
 
     }else{
 
@@ -1171,24 +1038,19 @@ async function saveProfile(){
 
   closeModal("profileModal");
 
-  alert(
-    "Profile updated successfully."
-  );
+  alert("Profile updated successfully.");
 
 }
 
 
-/* ==========================================
-   NAVIGATION
-========================================== */
+/* NAVIGATION */
 
 function showPage(page,button){
 
   document
     .querySelectorAll(".page")
     .forEach(
-      p =>
-        p.classList.remove("active")
+      p => p.classList.remove("active")
     );
 
   document
@@ -1199,30 +1061,23 @@ function showPage(page,button){
   document
     .querySelectorAll(".nav-btn")
     .forEach(
-      b =>
-        b.classList.remove("active")
+      b => b.classList.remove("active")
     );
 
   if(button){
 
-    button
-      .classList
-      .add("active");
+    button.classList.add("active");
 
   }
 
 }
 
 
-/* ==========================================
-   LOGOUT
-========================================== */
+/* LOGOUT */
 
 async function logout(){
 
-  await supabaseClient
-    .auth
-    .signOut();
+  await supabaseClient.auth.signOut();
 
   currentUser = null;
 
@@ -1241,9 +1096,7 @@ async function logout(){
 }
 
 
-/* ==========================================
-   MODALS
-========================================== */
+/* MODALS */
 
 function closeModal(id){
 
@@ -1255,20 +1108,16 @@ function closeModal(id){
 }
 
 
-/* ==========================================
-   MESSAGES
-========================================== */
+/* MESSAGES */
 
 function showError(message){
 
   const box =
-    document
-      .getElementById("authError");
+    document.getElementById("authError");
 
   box.textContent = message;
 
-  box.style.display =
-    "block";
+  box.style.display = "block";
 
   document
     .getElementById("authSuccess")
@@ -1281,13 +1130,11 @@ function showError(message){
 function showSuccess(message){
 
   const box =
-    document
-      .getElementById("authSuccess");
+    document.getElementById("authSuccess");
 
   box.textContent = message;
 
-  box.style.display =
-    "block";
+  box.style.display = "block";
 
   document
     .getElementById("authError")
@@ -1312,45 +1159,22 @@ function clearMessages(){
 }
 
 
-/* ==========================================
-   SECURITY
-========================================== */
+/* SECURITY */
 
 function escapeHTML(value){
 
   return String(value)
 
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 
 }
 
 
-/* ==========================================
-   CHECK EXISTING SESSION
-========================================== */
+/* EXISTING SESSION */
 
 async function startApp(){
 
