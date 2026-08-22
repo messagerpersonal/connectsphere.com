@@ -149,9 +149,7 @@ h1{
 
 .user-info{flex:1}
 
-.user-info strong{
-  display:block
-}
+.user-info strong{display:block}
 
 .user-info span{
   color:#777;
@@ -162,9 +160,7 @@ h1{
 
 .profile{text-align:center}
 
-.profile h2{
-  margin-bottom:5px
-}
+.profile h2{margin-bottom:5px}
 
 .profile p{
   color:#777;
@@ -196,9 +192,7 @@ h1{
   border-bottom:1px solid #eee
 }
 
-.setting:last-child{
-  border-bottom:0
-}
+.setting:last-child{border-bottom:0}
 
 .setting small{
   display:block;
@@ -266,9 +260,7 @@ h1{
   overflow:auto
 }
 
-.modal-box h2{
-  margin-bottom:15px
-}
+.modal-box h2{margin-bottom:15px}
 
 .close{
   float:right;
@@ -317,9 +309,7 @@ h1{
 
 .password-wrap{position:relative}
 
-.password-wrap input{
-  padding-right:50px
-}
+.password-wrap input{padding-right:50px}
 
 .password-toggle{
   position:absolute;
@@ -384,9 +374,7 @@ h1{
   align-items:flex-start
 }
 
-.schedule-top>div:first-child{
-  flex:1
-}
+.schedule-top>div:first-child{flex:1}
 
 .schedule-title{
   font-weight:700;
@@ -415,9 +403,7 @@ h1{
 
 .completed{opacity:.65}
 
-.completed .schedule-title{
-  text-decoration:line-through
-}
+.completed .schedule-title{text-decoration:line-through}
 
 .badge{
   display:inline-block;
@@ -472,30 +458,20 @@ h1{
     padding-bottom:90px
   }
 
-  header{
-    padding:0 14px
-  }
+  header{padding:0 14px}
 
-  h1{
-    font-size:23px
-  }
+  h1{font-size:23px}
 
-  .bottom-nav{
-    overflow-x:auto
-  }
+  .bottom-nav{overflow-x:auto}
 
-  .nav-btn{
-    min-width:65px
-  }
+  .nav-btn{min-width:65px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- AUTH SCREEN -->
 <div id="authScreen" class="auth-screen">
-
   <div class="auth-box">
 
     <h1>ConnectSphere</h1>
@@ -508,30 +484,14 @@ h1{
     <div id="authSuccess" class="success"></div>
 
     <div id="signupFields">
-      <input
-        id="signupName"
-        placeholder="Full name"
-      >
-
-      <input
-        id="signupUsername"
-        placeholder="Username"
-      >
+      <input id="signupName" placeholder="Full name">
+      <input id="signupUsername" placeholder="Username">
     </div>
 
-    <input
-      id="authEmail"
-      type="email"
-      placeholder="Email"
-    >
+    <input id="authEmail" type="email" placeholder="Email">
 
     <div class="password-wrap">
-
-      <input
-        id="authPassword"
-        type="password"
-        placeholder="Password"
-      >
+      <input id="authPassword" type="password" placeholder="Password">
 
       <button
         type="button"
@@ -539,59 +499,39 @@ h1{
         id="passwordToggle"
         onclick="togglePassword()"
       >👁️</button>
-
     </div>
 
-    <button
-      id="authButton"
-      class="primary"
-      onclick="handleAuth()"
-    >
+    <button id="authButton" class="primary" onclick="handleAuth()">
       Sign Up
     </button>
 
     <div class="auth-switch">
+      <span id="switchText">Already have an account?</span>
 
-      <span id="switchText">
-        Already have an account?
-      </span>
-
-      <button
-        onclick="toggleAuthMode()"
-        id="switchButton"
-      >
+      <button onclick="toggleAuthMode()" id="switchButton">
         Log in
       </button>
-
     </div>
 
   </div>
-
 </div>
 
 
-<!-- MAIN APP -->
 <div id="app" class="app hidden">
 
 <header>
-
-  <div class="logo">
-    ConnectSphere
-  </div>
+  <div class="logo">ConnectSphere</div>
 
   <div>
-    <button
-      class="icon-btn"
-      onclick="showPage('settings')"
-    >⚙️</button>
+    <button class="icon-btn" onclick="showPage('settings')">
+      ⚙️
+    </button>
   </div>
-
 </header>
 
 
 <main>
 
-<!-- HOME -->
 <section id="home" class="page active">
 
   <h1>Welcome 👋</h1>
@@ -604,20 +544,11 @@ h1{
 
     <div class="user-row">
 
-      <div class="avatar" id="homeAvatar">
-        Y
-      </div>
+      <div class="avatar" id="homeAvatar">Y</div>
 
       <div class="user-info">
-
-        <strong id="homeName">
-          Your Name
-        </strong>
-
-        <span id="homeUsername">
-          @username
-        </span>
-
+        <strong id="homeName">Your Name</strong>
+        <span id="homeUsername">@username</span>
       </div>
 
     </div>
@@ -627,18 +558,12 @@ h1{
 
   <div class="card">
 
-    <h3>
-      People on ConnectSphere
-    </h3>
+    <h3>People on ConnectSphere</h3>
 
     <br>
 
     <div id="suggestions">
-
-      <div class="empty">
-        Loading profiles...
-      </div>
-
+      <div class="empty">Loading profiles...</div>
     </div>
 
   </div>
@@ -646,7 +571,6 @@ h1{
 </section>
 
 
-<!-- SEARCH -->
 <section id="search" class="page">
 
   <h1>Search</h1>
@@ -663,17 +587,12 @@ h1{
   >
 
   <div id="searchResults">
-
-    <div class="empty">
-      Start typing to search.
-    </div>
-
+    <div class="empty">Start typing to search.</div>
   </div>
 
 </section>
 
 
-<!-- REQUESTS -->
 <section id="requests" class="page">
 
   <h1>Requests</h1>
@@ -689,7 +608,6 @@ h1{
 </section>
 
 
-<!-- CHATS -->
 <section id="chats" class="page">
 
   <h1>Messages</h1>
@@ -706,34 +624,25 @@ h1{
 </section>
 
 
-<!-- SCHEDULE -->
 <section id="schedule" class="page">
 
-  <h1>
-    My Schedule 📅
-  </h1>
+  <h1>My Schedule 📅</h1>
 
   <p class="subtitle">
     Build daily habits, weekly plans and one-time reminders.
   </p>
 
-
   <div class="card">
 
-    <div
-      style="
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        gap:10px
-      "
-    >
+    <div style="
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px
+    ">
 
       <div>
-
-        <strong>
-          Progress
-        </strong>
+        <strong>Progress</strong>
 
         <div
           id="scheduleProgressText"
@@ -745,96 +654,55 @@ h1{
         >
           0% completed
         </div>
-
       </div>
 
-      <button
-        class="primary"
-        onclick="openScheduleModal()"
-      >
+      <button class="primary" onclick="openScheduleModal()">
         + Add
       </button>
 
     </div>
 
     <div class="progress-bar">
-
       <div
         id="scheduleProgressFill"
         class="progress-fill"
       ></div>
-
     </div>
 
   </div>
 
-
   <div id="scheduleList">
-
-    <div class="empty">
-      Loading your schedules...
-    </div>
-
+    <div class="empty">Loading your schedules...</div>
   </div>
 
 </section>
 
 
-<!-- PROFILE -->
 <section id="profile" class="page">
 
   <div class="card profile">
 
-    <div
-      class="avatar"
-      id="profileAvatar"
-    >
-      Y
-    </div>
+    <div class="avatar" id="profileAvatar">Y</div>
 
-    <h2 id="profileName">
-      Your Name
-    </h2>
+    <h2 id="profileName">Your Name</h2>
 
-    <p id="profileUsername">
-      @username
-    </p>
-
+    <p id="profileUsername">@username</p>
 
     <div class="stat-row">
 
       <div class="stat">
-
-        <strong>
-          0
-        </strong>
-
-        <span>
-          Connections
-        </span>
-
+        <strong>0</strong>
+        <span>Connections</span>
       </div>
 
-
       <div class="stat">
-
-        <strong>
-          0
-        </strong>
-
-        <span>
-          Requests
-        </span>
-
+        <strong>0</strong>
+        <span>Requests</span>
       </div>
 
     </div>
 
-
-    <button
-      class="primary"
-      onclick="editProfile()"
-    >
+    <button class="primary" onclick="editProfile()">
       Edit Profile
     </button>
 
@@ -843,9 +711,7 @@ h1{
 
   <div class="card">
 
-    <h3>
-      About
-    </h3>
+    <h3>About</h3>
 
     <br>
 
@@ -858,39 +724,28 @@ h1{
 </section>
 
 
-<!-- SETTINGS -->
 <section id="settings" class="page">
 
-  <h1>
-    Settings
-  </h1>
+  <h1>Settings</h1>
 
   <p class="subtitle">
     Control your account.
   </p>
 
 
-  <!-- ACCOUNT SETTINGS -->
   <div class="card">
 
     <div class="setting">
 
       <div>
-
-        <strong>
-          Private account
-        </strong>
+        <strong>Private account</strong>
 
         <small>
           Require requests before connecting.
         </small>
-
       </div>
 
-      <input
-        type="checkbox"
-        id="privateAccount"
-      >
+      <input type="checkbox" id="privateAccount">
 
     </div>
 
@@ -898,38 +753,26 @@ h1{
     <div class="setting">
 
       <div>
-
-        <strong>
-          Show online status
-        </strong>
+        <strong>Show online status</strong>
 
         <small>
           Allow connections to see your status.
         </small>
-
       </div>
 
-      <input
-        type="checkbox"
-        id="onlineStatus"
-        checked
-      >
+      <input type="checkbox" id="onlineStatus" checked>
 
     </div>
 
   </div>
 
 
-  <!-- NOTIFICATIONS -->
   <div class="card">
 
-    <h3>
-      Notifications 🔔
-    </h3>
+    <h3>Notifications 🔔</h3>
 
     <p class="notification-status">
-      Enable browser notifications for ConnectSphere
-      reminders.
+      Enable browser notifications for ConnectSphere reminders.
     </p>
 
     <br>
@@ -952,54 +795,35 @@ h1{
   </div>
 
 
-  <!-- ACCOUNT -->
   <div class="card">
 
-    <h3>
-      Account
-    </h3>
+    <h3>Account</h3>
 
     <br>
 
-    <button
-      class="secondary"
-      onclick="editProfile()"
-    >
+    <button class="secondary" onclick="editProfile()">
       Edit profile
     </button>
 
-    <br>
-    <br>
+    <br><br>
 
-    <button
-      class="danger"
-      onclick="logout()"
-    >
+    <button class="danger" onclick="logout()">
       Log out
     </button>
 
   </div>
 
 
-  <!-- SECURITY -->
   <div class="card">
 
-    <h3>
-      Security 🔐
-    </h3>
+    <h3>Security 🔐</h3>
 
     <br>
 
-    <p
-      style="
-        color:#777;
-        line-height:1.6
-      "
-    >
+    <p style="color:#777;line-height:1.6">
       Your account uses Supabase Authentication
       and database Row Level Security.
-      Schedule data is protected by user-level
-      RLS policies.
+      Schedule data is protected by user-level RLS policies.
     </p>
 
   </div>
@@ -1009,58 +833,34 @@ h1{
 </main>
 
 
-<!-- BOTTOM NAVIGATION -->
 <nav class="bottom-nav">
 
-  <button
-    class="nav-btn active"
-    onclick="showPage('home',this)"
-  >
+  <button class="nav-btn active" onclick="showPage('home',this)">
     <span class="nav-icon">🏠</span>
     Home
   </button>
 
-
-  <button
-    class="nav-btn"
-    onclick="showPage('search',this)"
-  >
+  <button class="nav-btn" onclick="showPage('search',this)">
     <span class="nav-icon">🔎</span>
     Search
   </button>
 
-
-  <button
-    class="nav-btn"
-    onclick="showPage('requests',this)"
-  >
+  <button class="nav-btn" onclick="showPage('requests',this)">
     <span class="nav-icon">👥</span>
     Requests
   </button>
 
-
-  <button
-    class="nav-btn"
-    onclick="showPage('chats',this)"
-  >
+  <button class="nav-btn" onclick="showPage('chats',this)">
     <span class="nav-icon">💬</span>
     Chats
   </button>
 
-
-  <button
-    class="nav-btn"
-    onclick="showPage('schedule',this)"
-  >
+  <button class="nav-btn" onclick="showPage('schedule',this)">
     <span class="nav-icon">📅</span>
     Schedule
   </button>
 
-
-  <button
-    class="nav-btn"
-    onclick="showPage('profile',this)"
-  >
+  <button class="nav-btn" onclick="showPage('profile',this)">
     <span class="nav-icon">👤</span>
     Profile
   </button>
@@ -1070,30 +870,17 @@ h1{
 </div>
 
 
-<!-- PROFILE MODAL -->
-<div
-  class="modal"
-  id="profileModal"
->
+<div class="modal" id="profileModal">
 
   <div class="modal-box">
 
-    <button
-      class="close"
-      onclick="closeModal('profileModal')"
-    >
+    <button class="close" onclick="closeModal('profileModal')">
       ×
     </button>
 
-    <h2>
-      Edit Profile
-    </h2>
+    <h2>Edit Profile</h2>
 
-    <input
-      id="editName"
-      class="search-box"
-      placeholder="Your name"
-    >
+    <input id="editName" class="search-box" placeholder="Your name">
 
     <input
       id="editUsername"
@@ -1101,16 +888,9 @@ h1{
       placeholder="Username"
     >
 
-    <input
-      id="editBio"
-      class="search-box"
-      placeholder="Bio"
-    >
+    <input id="editBio" class="search-box" placeholder="Bio">
 
-    <button
-      class="primary"
-      onclick="saveProfile()"
-    >
+    <button class="primary" onclick="saveProfile()">
       Save Profile
     </button>
 
@@ -1119,39 +899,24 @@ h1{
 </div>
 
 
-<!-- SCHEDULE MODAL -->
-<div
-  class="modal"
-  id="scheduleModal"
->
+<div class="modal" id="scheduleModal">
 
   <div class="modal-box">
 
-    <button
-      class="close"
-      onclick="closeModal('scheduleModal')"
-    >
+    <button class="close" onclick="closeModal('scheduleModal')">
       ×
     </button>
 
-    <h2 id="scheduleModalTitle">
-      Add Schedule
-    </h2>
+    <h2>Add Schedule</h2>
 
-
-    <label class="form-label">
-      Title
-    </label>
+    <label class="form-label">Title</label>
 
     <input
       id="scheduleTitle"
       placeholder="Example: Study for 30 minutes"
     >
 
-
-    <label class="form-label">
-      Description
-    </label>
+    <label class="form-label">Description</label>
 
     <textarea
       id="scheduleDescription"
@@ -1159,49 +924,24 @@ h1{
       placeholder="Optional details"
     ></textarea>
 
+    <label class="form-label">Type</label>
 
-    <label class="form-label">
-      Type
-    </label>
+    <select id="scheduleType" onchange="updateScheduleFields()">
 
-    <select
-      id="scheduleType"
-      onchange="updateScheduleFields()"
-    >
-
-      <option value="daily">
-        Daily
-      </option>
-
-      <option value="weekly">
-        Weekly
-      </option>
-
-      <option value="once">
-        One-time
-      </option>
+      <option value="daily">Daily</option>
+      <option value="weekly">Weekly</option>
+      <option value="once">One-time</option>
 
     </select>
 
+    <label class="form-label">Reminder time</label>
 
-    <label class="form-label">
-      Reminder time
-    </label>
-
-    <input
-      id="scheduleTime"
-      type="time"
-    >
+    <input id="scheduleTime" type="time">
 
 
-    <div
-      id="weeklyField"
-      class="hidden"
-    >
+    <div id="weeklyField" class="hidden">
 
-      <label class="form-label">
-        Day of week
-      </label>
+      <label class="form-label">Day of week</label>
 
       <select id="scheduleDay">
 
@@ -1218,29 +958,18 @@ h1{
     </div>
 
 
-    <div
-      id="onceField"
-      class="hidden"
-    >
+    <div id="onceField" class="hidden">
 
-      <label class="form-label">
-        Date
-      </label>
+      <label class="form-label">Date</label>
 
-      <input
-        id="scheduleDate"
-        type="date"
-      >
+      <input id="scheduleDate" type="date">
 
     </div>
 
 
     <button
       class="primary"
-      style="
-        width:100%;
-        margin-top:8px
-      "
+      style="width:100%;margin-top:8px"
       onclick="saveSchedule()"
     >
       Save Schedule
@@ -1251,10 +980,13 @@ h1{
 </div>
 
 
-<!-- SUPABASE -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+
+/* =========================================================
+   SUPABASE
+========================================================= */
 
 const SUPABASE_URL =
   "https://hwjojlqhzeqtfcxmfrjk.supabase.co";
@@ -1269,11 +1001,24 @@ const supabaseClient =
   );
 
 
-/* PUSH FUNCTION */
+/* =========================================================
+   PUSH NOTIFICATIONS
+========================================================= */
 
 const PUSH_FUNCTION_URL =
   SUPABASE_URL +
   "/functions/v1/hyper-processor";
+
+
+/*
+  VAPID PUBLIC KEY
+
+  This is safe to place in frontend code.
+  The PRIVATE key must remain in Supabase Secrets.
+*/
+
+const VAPID_PUBLIC_KEY =
+  "BPXQwAeUakIVhv46REqOG4rbgPeOG2vA3XD4dcU62Njv_QBuiumeMdMKaP-slpYsWEKt7k8oWRDNNt4qpJX670A";
 
 
 let currentUser = null;
@@ -1281,7 +1026,9 @@ let currentProfile = null;
 let loginMode = false;
 
 
-/* AUTH */
+/* =========================================================
+   AUTH
+========================================================= */
 
 function togglePassword(){
 
@@ -1337,9 +1084,7 @@ function toggleAuthMode(){
   document
     .getElementById("switchButton")
     .textContent =
-      loginMode
-        ? "Sign Up"
-        : "Log In";
+      loginMode ? "Sign Up" : "Log In";
 
   clearMessages();
 
@@ -1351,24 +1096,17 @@ async function handleAuth(){
   clearMessages();
 
   const email =
-    document
-      .getElementById("authEmail")
-      .value
-      .trim();
+    document.getElementById("authEmail").value.trim();
 
   const password =
-    document
-      .getElementById("authPassword")
-      .value;
-
+    document.getElementById("authPassword").value;
 
   if(!email || !password){
 
-    showError(
-      "Please enter your email and password."
-    );
+    showError("Please enter your email and password.");
 
     return;
+
   }
 
 
@@ -1376,21 +1114,15 @@ async function handleAuth(){
 
     if(loginMode){
 
-      const {
-        data,
-        error
-      } =
-      await supabaseClient.auth.signInWithPassword({
-        email,
-        password
-      });
-
+      const {data,error} =
+        await supabaseClient.auth.signInWithPassword({
+          email,
+          password
+        });
 
       if(error) throw error;
 
-
       currentUser = data.user;
-
 
       if(!currentUser){
 
@@ -1399,19 +1131,15 @@ async function handleAuth(){
         );
 
         return;
+
       }
 
-
       await loadProfile();
-
 
     }else{
 
       const name =
-        document
-          .getElementById("signupName")
-          .value
-          .trim();
+        document.getElementById("signupName").value.trim();
 
       const username =
         document
@@ -1420,7 +1148,6 @@ async function handleAuth(){
           .trim()
           .toLowerCase();
 
-
       if(!name || !username){
 
         showError(
@@ -1428,8 +1155,8 @@ async function handleAuth(){
         );
 
         return;
-      }
 
+      }
 
       if(!/^[a-z0-9_]{3,30}$/.test(username)){
 
@@ -1438,35 +1165,29 @@ async function handleAuth(){
         );
 
         return;
+
       }
 
+      const {data,error} =
+        await supabaseClient.auth.signUp({
 
-      const {
-        data,
-        error
-      } =
-      await supabaseClient.auth.signUp({
+          email,
 
-        email,
+          password,
 
-        password,
+          options:{
+            emailRedirectTo:
+              "https://messagerpersonal.github.io/connectsphere.com/",
 
-        options:{
-          emailRedirectTo:
-            "https://messagerpersonal.github.io/connectsphere.com/",
-
-          data:{
-            display_name:name,
-            username
+            data:{
+              display_name:name,
+              username
+            }
           }
 
-        }
-
-      });
-
+        });
 
       if(error) throw error;
-
 
       if(!data.user){
 
@@ -1475,13 +1196,12 @@ async function handleAuth(){
         );
 
         return;
-      }
 
+      }
 
       showSuccess(
         "Account created! Check your email, confirm your account, then log in."
       );
-
 
       loginMode = true;
 
@@ -1513,14 +1233,10 @@ async function handleAuth(){
 
   }catch(error){
 
-    console.error(
-      "Authentication error:",
-      error
-    );
+    console.error("Authentication error:",error);
 
     showError(
-      error.message ||
-      "Authentication failed."
+      error.message || "Authentication failed."
     );
 
   }
@@ -1528,23 +1244,20 @@ async function handleAuth(){
 }
 
 
-/* PROFILE */
+/* =========================================================
+   PROFILE
+========================================================= */
 
 async function loadProfile(){
 
   if(!currentUser) return;
 
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select("*")
-    .eq("id",currentUser.id)
-    .maybeSingle();
-
+  const {data,error} =
+    await supabaseClient
+      .from("profiles")
+      .select("*")
+      .eq("id",currentUser.id)
+      .maybeSingle();
 
   if(error){
 
@@ -1556,6 +1269,7 @@ async function loadProfile(){
     );
 
     return;
+
   }
 
 
@@ -1564,12 +1278,10 @@ async function loadProfile(){
     const metadata =
       currentUser.user_metadata || {};
 
-
     const displayName =
       metadata.display_name ||
       currentUser.email?.split("@")[0] ||
       "User";
-
 
     const username =
       metadata.username ||
@@ -1580,29 +1292,18 @@ async function loadProfile(){
           .slice(0,8)
       );
 
-
-    const {
-      data:newProfile,
-      error:createError
-    } =
-    await supabaseClient
-      .from("profiles")
-      .insert({
-
-        id:currentUser.id,
-
-        username,
-
-        display_name:displayName,
-
-        bio:"",
-
-        avatar_url:null
-
-      })
-      .select()
-      .single();
-
+    const {data:newProfile,error:createError} =
+      await supabaseClient
+        .from("profiles")
+        .insert({
+          id:currentUser.id,
+          username,
+          display_name:displayName,
+          bio:"",
+          avatar_url:null
+        })
+        .select()
+        .single();
 
     if(createError){
 
@@ -1614,8 +1315,8 @@ async function loadProfile(){
       );
 
       return;
-    }
 
+    }
 
     currentProfile = newProfile;
 
@@ -1624,7 +1325,6 @@ async function loadProfile(){
     currentProfile = data;
 
   }
-
 
   showApp();
 
@@ -1658,98 +1358,66 @@ function updateProfileUI(){
 
   if(!currentProfile) return;
 
-
   const name =
-    currentProfile.display_name ||
-    "Your Name";
-
+    currentProfile.display_name || "Your Name";
 
   const username =
-    currentProfile.username ||
-    "username";
-
+    currentProfile.username || "username";
 
   const bio =
-    currentProfile.bio ||
-    "Your bio will appear here.";
-
+    currentProfile.bio || "Your bio will appear here.";
 
   const letter =
-    name.charAt(0).toUpperCase() ||
-    "Y";
+    name.charAt(0).toUpperCase() || "Y";
 
+  document.getElementById("homeName").textContent = name;
 
-  document
-    .getElementById("homeName")
-    .textContent = name;
+  document.getElementById("homeUsername").textContent =
+    "@" + username;
 
+  document.getElementById("profileName").textContent =
+    name;
 
-  document
-    .getElementById("homeUsername")
-    .textContent =
-      "@" + username;
+  document.getElementById("profileUsername").textContent =
+    "@" + username;
 
+  document.getElementById("profileBio").textContent =
+    bio;
 
-  document
-    .getElementById("profileName")
-    .textContent = name;
+  document.getElementById("homeAvatar").textContent =
+    letter;
 
-
-  document
-    .getElementById("profileUsername")
-    .textContent =
-      "@" + username;
-
-
-  document
-    .getElementById("profileBio")
-    .textContent = bio;
-
-
-  document
-    .getElementById("homeAvatar")
-    .textContent = letter;
-
-
-  document
-    .getElementById("profileAvatar")
-    .textContent = letter;
+  document.getElementById("profileAvatar").textContent =
+    letter;
 
 }
 
 
-/* PEOPLE */
+/* =========================================================
+   PEOPLE
+========================================================= */
 
 async function loadPeople(){
 
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select(
-      "id,username,display_name,bio,avatar_url"
-    )
-    .neq("id",currentUser.id)
-    .limit(20);
-
+  const {data,error} =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "id,username,display_name,bio,avatar_url"
+      )
+      .neq("id",currentUser.id)
+      .limit(20);
 
   if(error){
 
-    console.error(
-      "People loading error:",
-      error
-    );
+    console.error(error);
 
-    document
-      .getElementById("suggestions")
-      .innerHTML =
-        '<div class="empty">Unable to load profiles.</div>';
+    document.getElementById("suggestions").innerHTML =
+      '<div class="empty">Unable to load profiles.</div>';
 
     return;
-  }
 
+  }
 
   renderPeople(data || []);
 
@@ -1761,15 +1429,14 @@ function renderPeople(users){
   const container =
     document.getElementById("suggestions");
 
-
   if(!users.length){
 
     container.innerHTML =
       '<div class="empty">No other users yet.</div>';
 
     return;
-  }
 
+  }
 
   container.innerHTML =
     users.map(profileCard).join("");
@@ -1780,13 +1447,10 @@ function renderPeople(users){
 function profileCard(user){
 
   const name =
-    user.display_name ||
-    "User";
-
+    user.display_name || "User";
 
   const letter =
     name.charAt(0).toUpperCase();
-
 
   return `
     <div class="card">
@@ -1837,10 +1501,8 @@ async function searchUsers(){
       .trim()
       .toLowerCase();
 
-
   const container =
     document.getElementById("searchResults");
-
 
   if(!query){
 
@@ -1848,8 +1510,8 @@ async function searchUsers(){
       '<div class="empty">Start typing to search.</div>';
 
     return;
-  }
 
+  }
 
   if(!currentUser){
 
@@ -1857,44 +1519,36 @@ async function searchUsers(){
       '<div class="empty">Please log in again.</div>';
 
     return;
-  }
 
+  }
 
   const safeQuery =
     query
       .replace(/[%_]/g,"\\$&")
       .replace(/,/g,"");
 
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select(
-      "id,username,display_name,bio,avatar_url"
-    )
-    .neq("id",currentUser.id)
-    .or(
-      `username.ilike.%${safeQuery}%,display_name.ilike.%${safeQuery}%`
-    )
-    .limit(20);
-
+  const {data,error} =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "id,username,display_name,bio,avatar_url"
+      )
+      .neq("id",currentUser.id)
+      .or(
+        `username.ilike.%${safeQuery}%,display_name.ilike.%${safeQuery}%`
+      )
+      .limit(20);
 
   if(error){
 
-    console.error(
-      "Search error:",
-      error
-    );
+    console.error(error);
 
     container.innerHTML =
       '<div class="empty">Search failed.</div>';
 
     return;
-  }
 
+  }
 
   if(!data || !data.length){
 
@@ -1902,8 +1556,8 @@ async function searchUsers(){
       '<div class="empty">No users found.</div>';
 
     return;
-  }
 
+  }
 
   container.innerHTML =
     data.map(profileCard).join("");
@@ -1913,26 +1567,20 @@ async function searchUsers(){
 
 async function viewProfile(id){
 
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select("*")
-    .eq("id",id)
-    .single();
-
+  const {data,error} =
+    await supabaseClient
+      .from("profiles")
+      .select("*")
+      .eq("id",id)
+      .single();
 
   if(error){
 
-    alert(
-      "Unable to load profile."
-    );
+    alert("Unable to load profile.");
 
     return;
-  }
 
+  }
 
   alert(
     (data.display_name || "User") +
@@ -1949,24 +1597,14 @@ function editProfile(){
 
   if(!currentProfile) return;
 
+  document.getElementById("editName").value =
+    currentProfile.display_name || "";
 
-  document
-    .getElementById("editName")
-    .value =
-      currentProfile.display_name || "";
+  document.getElementById("editUsername").value =
+    currentProfile.username || "";
 
-
-  document
-    .getElementById("editUsername")
-    .value =
-      currentProfile.username || "";
-
-
-  document
-    .getElementById("editBio")
-    .value =
-      currentProfile.bio || "";
-
+  document.getElementById("editBio").value =
+    currentProfile.bio || "";
 
   document
     .getElementById("profileModal")
@@ -1979,11 +1617,7 @@ function editProfile(){
 async function saveProfile(){
 
   const name =
-    document
-      .getElementById("editName")
-      .value
-      .trim();
-
+    document.getElementById("editName").value.trim();
 
   const username =
     document
@@ -1992,23 +1626,16 @@ async function saveProfile(){
       .trim()
       .toLowerCase();
 
-
   const bio =
-    document
-      .getElementById("editBio")
-      .value
-      .trim();
-
+    document.getElementById("editBio").value.trim();
 
   if(!name || !username){
 
-    alert(
-      "Name and username are required."
-    );
+    alert("Name and username are required.");
 
     return;
-  }
 
+  }
 
   if(!/^[a-z0-9_]{3,30}$/.test(username)){
 
@@ -2017,24 +1644,20 @@ async function saveProfile(){
     );
 
     return;
+
   }
 
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .update({
-      display_name:name,
-      username,
-      bio
-    })
-    .eq("id",currentUser.id)
-    .select()
-    .single();
-
+  const {data,error} =
+    await supabaseClient
+      .from("profiles")
+      .update({
+        display_name:name,
+        username,
+        bio
+      })
+      .eq("id",currentUser.id)
+      .select()
+      .single();
 
   if(error){
 
@@ -2045,8 +1668,8 @@ async function saveProfile(){
     );
 
     return;
-  }
 
+  }
 
   currentProfile = data;
 
@@ -2054,48 +1677,38 @@ async function saveProfile(){
 
   closeModal("profileModal");
 
-  alert(
-    "Profile updated successfully."
-  );
+  alert("Profile updated successfully.");
 
 }
 
 
-/* SCHEDULES */
+/* =========================================================
+   SCHEDULES
+========================================================= */
 
 async function loadSchedules(){
 
   if(!currentUser) return;
 
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("schedules")
-    .select("*")
-    .eq("user_id",currentUser.id)
-    .order("created_at",{ascending:false});
-
+  const {data,error} =
+    await supabaseClient
+      .from("schedules")
+      .select("*")
+      .eq("user_id",currentUser.id)
+      .order("created_at",{ascending:false});
 
   if(error){
 
-    console.error(
-      "Schedule loading error:",
-      error
-    );
+    console.error(error);
 
-    document
-      .getElementById("scheduleList")
-      .innerHTML =
-        '<div class="empty">Unable to load schedules: ' +
-        escapeHTML(error.message) +
-        '</div>';
+    document.getElementById("scheduleList").innerHTML =
+      '<div class="empty">Unable to load schedules: ' +
+      escapeHTML(error.message) +
+      '</div>';
 
     return;
-  }
 
+  }
 
   renderSchedules(data || []);
 
@@ -2117,7 +1730,6 @@ function formatSchedule(s){
 
   }
 
-
   if(s.schedule_type === "weekly"){
 
     const days = [
@@ -2130,7 +1742,6 @@ function formatSchedule(s){
       "Saturday"
     ];
 
-
     return (
       "Every " +
       days[Number(s.day_of_week)] +
@@ -2142,7 +1753,6 @@ function formatSchedule(s){
     );
 
   }
-
 
   return (
     "One-time" +
@@ -2168,11 +1778,9 @@ function formatTime(t){
   const [h,m] =
     t.split(":").map(Number);
 
-
   const d = new Date();
 
   d.setHours(h,m,0,0);
-
 
   return d.toLocaleTimeString(
     [],
@@ -2190,7 +1798,6 @@ function renderSchedules(list){
   const container =
     document.getElementById("scheduleList");
 
-
   if(!list.length){
 
     container.innerHTML =
@@ -2199,17 +1806,15 @@ function renderSchedules(list){
     updateScheduleProgress([]);
 
     return;
-  }
 
+  }
 
   container.innerHTML =
     list.map(s => `
 
-      <div
-        class="schedule-item ${
-          s.completed ? "completed" : ""
-        }"
-      >
+      <div class="schedule-item ${
+        s.completed ? "completed" : ""
+      }">
 
         <div class="schedule-top">
 
@@ -2243,7 +1848,6 @@ function renderSchedules(list){
 
         </div>
 
-
         <div class="schedule-actions">
 
           ${
@@ -2268,7 +1872,6 @@ function renderSchedules(list){
             </button>`
           }
 
-
           <button
             class="danger"
             onclick="deleteSchedule('${s.id}')"
@@ -2282,7 +1885,6 @@ function renderSchedules(list){
 
     `).join("");
 
-
   updateScheduleProgress(list);
 
 }
@@ -2291,31 +1893,21 @@ function renderSchedules(list){
 function updateScheduleProgress(list){
 
   const done =
-    list.filter(
-      x => x.completed
-    ).length;
+    list.filter(x => x.completed).length;
 
-
-  const total =
-    list.length;
-
+  const total = list.length;
 
   const pct =
     total
       ? Math.round(done / total * 100)
       : 0;
 
-
-  document
-    .getElementById("scheduleProgressText")
+  document.getElementById("scheduleProgressText")
     .textContent =
       `${pct}% completed (${done}/${total})`;
 
-
-  document
-    .getElementById("scheduleProgressFill")
-    .style
-    .width =
+  document.getElementById("scheduleProgressFill")
+    .style.width =
       pct + "%";
 
 }
@@ -2323,39 +1915,20 @@ function updateScheduleProgress(list){
 
 function openScheduleModal(){
 
-  document
-    .getElementById("scheduleTitle")
-    .value = "";
+  document.getElementById("scheduleTitle").value = "";
 
+  document.getElementById("scheduleDescription").value = "";
 
-  document
-    .getElementById("scheduleDescription")
-    .value = "";
+  document.getElementById("scheduleType").value = "daily";
 
+  document.getElementById("scheduleTime").value = "";
 
-  document
-    .getElementById("scheduleType")
-    .value = "daily";
+  document.getElementById("scheduleDate").value = "";
 
-
-  document
-    .getElementById("scheduleTime")
-    .value = "";
-
-
-  document
-    .getElementById("scheduleDate")
-    .value = "";
-
-
-  document
-    .getElementById("scheduleDay")
-    .value =
-      String(new Date().getDay());
-
+  document.getElementById("scheduleDay").value =
+    String(new Date().getDay());
 
   updateScheduleFields();
-
 
   document
     .getElementById("scheduleModal")
@@ -2368,27 +1941,17 @@ function openScheduleModal(){
 function updateScheduleFields(){
 
   const type =
-    document
-      .getElementById("scheduleType")
-      .value;
-
+    document.getElementById("scheduleType").value;
 
   document
     .getElementById("weeklyField")
     .classList
-    .toggle(
-      "hidden",
-      type !== "weekly"
-    );
-
+    .toggle("hidden",type !== "weekly");
 
   document
     .getElementById("onceField")
     .classList
-    .toggle(
-      "hidden",
-      type !== "once"
-    );
+    .toggle("hidden",type !== "once");
 
 }
 
@@ -2397,114 +1960,77 @@ async function saveSchedule(){
 
   if(!currentUser){
 
-    alert(
-      "Please log in again."
-    );
+    alert("Please log in again.");
 
     return;
+
   }
 
-
   const title =
-    document
-      .getElementById("scheduleTitle")
-      .value
-      .trim();
-
+    document.getElementById("scheduleTitle")
+      .value.trim();
 
   const description =
-    document
-      .getElementById("scheduleDescription")
-      .value
-      .trim();
-
+    document.getElementById("scheduleDescription")
+      .value.trim();
 
   const type =
-    document
-      .getElementById("scheduleType")
-      .value;
-
+    document.getElementById("scheduleType").value;
 
   const time =
-    document
-      .getElementById("scheduleTime")
-      .value ||
-      null;
-
+    document.getElementById("scheduleTime").value || null;
 
   if(!title){
 
-    alert(
-      "Please enter a schedule title."
-    );
+    alert("Please enter a schedule title.");
 
     return;
-  }
 
+  }
 
   let payload = {
 
     user_id:currentUser.id,
-
     title,
-
     description,
-
     schedule_type:type,
-
     reminder_time:time,
-
     reminder_date:null,
-
     day_of_week:null,
-
     completed:false
 
   };
-
 
   if(type === "weekly"){
 
     payload.day_of_week =
       Number(
-        document
-          .getElementById("scheduleDay")
-          .value
+        document.getElementById("scheduleDay").value
       );
 
   }
 
-
   if(type === "once"){
 
     const date =
-      document
-        .getElementById("scheduleDate")
-        .value;
-
+      document.getElementById("scheduleDate").value;
 
     if(!date){
 
-      alert(
-        "Please choose a date."
-      );
+      alert("Please choose a date.");
 
       return;
-    }
 
+    }
 
     payload.reminder_date = date;
 
   }
 
-
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("schedules")
-    .insert(payload);
-
+  const {error} =
+    await supabaseClient
+      .from("schedules")
+      .insert(payload);
 
   if(error){
 
@@ -2516,38 +2042,28 @@ async function saveSchedule(){
     );
 
     return;
+
   }
 
-
-  closeModal(
-    "scheduleModal"
-  );
-
+  closeModal("scheduleModal");
 
   await loadSchedules();
 
 }
 
 
-async function setScheduleCompleted(
-  id,
-  value
-){
+async function setScheduleCompleted(id,value){
 
   if(!currentUser) return;
 
-
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("schedules")
-    .update({
-      completed:value
-    })
-    .eq("id",id)
-    .eq("user_id",currentUser.id);
-
+  const {error} =
+    await supabaseClient
+      .from("schedules")
+      .update({
+        completed:value
+      })
+      .eq("id",id)
+      .eq("user_id",currentUser.id);
 
   if(error){
 
@@ -2557,8 +2073,8 @@ async function setScheduleCompleted(
     );
 
     return;
-  }
 
+  }
 
   await loadSchedules();
 
@@ -2569,21 +2085,14 @@ async function deleteSchedule(id){
 
   if(!currentUser) return;
 
+  if(!confirm("Delete this schedule?")) return;
 
-  if(!confirm(
-    "Delete this schedule?"
-  )) return;
-
-
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("schedules")
-    .delete()
-    .eq("id",id)
-    .eq("user_id",currentUser.id);
-
+  const {error} =
+    await supabaseClient
+      .from("schedules")
+      .delete()
+      .eq("id",id)
+      .eq("user_id",currentUser.id);
 
   if(error){
 
@@ -2593,37 +2102,31 @@ async function deleteSchedule(id){
     );
 
     return;
-  }
 
+  }
 
   await loadSchedules();
 
 }
 
 
-/* PUSH NOTIFICATIONS */
+/* =========================================================
+   VAPID / PUSH
+========================================================= */
 
-function urlBase64ToUint8Array(
-  base64String
-){
+function urlBase64ToUint8Array(base64String){
 
   const padding =
     "=".repeat(
       (4 - base64String.length % 4) % 4
     );
 
-
   const base64 =
-    (
-      base64String + padding
-    )
+    (base64String + padding)
       .replace(/-/g,"+")
       .replace(/_/g,"/");
 
-
-  const rawData =
-    atob(base64);
-
+  const rawData = atob(base64);
 
   return Uint8Array.from(
     [...rawData].map(
@@ -2634,47 +2137,50 @@ function urlBase64ToUint8Array(
 }
 
 
+/*
+  First try the public VAPID key already included above.
+
+  If the Edge Function returns a different valid public key,
+  that key can also be used.
+*/
+
 async function getVapidPublicKey(){
 
-  const response =
-    await fetch(
-      PUSH_FUNCTION_URL,
-      {
-        method:"GET",
-        headers:{
-          apikey:
-            SUPABASE_PUBLISHABLE_KEY
+  try{
+
+    const response =
+      await fetch(
+        PUSH_FUNCTION_URL,
+        {
+          method:"GET",
+          headers:{
+            apikey:SUPABASE_PUBLISHABLE_KEY
+          }
         }
+      );
+
+    if(response.ok){
+
+      const data =
+        await response.json();
+
+      if(data && data.publicKey){
+
+        return data.publicKey;
+
       }
-    );
 
+    }
 
-  if(!response.ok){
+  }catch(error){
 
-    throw new Error(
-      "Unable to get notification configuration."
-    );
-
-  }
-
-
-  const data =
-    await response.json();
-
-
-  if(
-    !data.success ||
-    !data.publicKey
-  ){
-
-    throw new Error(
-      "VAPID public key was not returned."
+    console.warn(
+      "Could not read VAPID key from function. Using configured public key."
     );
 
   }
 
-
-  return data.publicKey;
+  return VAPID_PUBLIC_KEY;
 
 }
 
@@ -2682,18 +2188,14 @@ async function getVapidPublicKey(){
 async function enablePushNotifications(){
 
   const status =
-    document
-      .getElementById(
-        "notificationStatus"
-      );
-
+    document.getElementById(
+      "notificationStatus"
+    );
 
   const button =
-    document
-      .getElementById(
-        "enableNotificationsBtn"
-      );
-
+    document.getElementById(
+      "enableNotificationsBtn"
+    );
 
   try{
 
@@ -2705,7 +2207,6 @@ async function enablePushNotifications(){
 
     }
 
-
     if(!("serviceWorker" in navigator)){
 
       throw new Error(
@@ -2713,7 +2214,6 @@ async function enablePushNotifications(){
       );
 
     }
-
 
     if(!("PushManager" in window)){
 
@@ -2723,16 +2223,13 @@ async function enablePushNotifications(){
 
     }
 
-
     button.disabled = true;
 
     status.textContent =
       "Requesting notification permission...";
 
-
     const permission =
       await Notification.requestPermission();
-
 
     if(permission !== "granted"){
 
@@ -2742,33 +2239,35 @@ async function enablePushNotifications(){
 
     }
 
-
     status.textContent =
       "Registering notification service...";
 
-
     const registration =
       await navigator.serviceWorker.register(
-        "./sw.js"
+        "./sw.js",
+        {scope:"./"}
       );
-
 
     await navigator.serviceWorker.ready;
 
-
     status.textContent =
-      "Getting notification configuration...";
-
+      "Preparing secure push connection...";
 
     const publicKey =
       await getVapidPublicKey();
 
+    if(!publicKey){
+
+      throw new Error(
+        "VAPID public key is missing."
+      );
+
+    }
 
     let subscription =
       await registration
         .pushManager
         .getSubscription();
-
 
     if(!subscription){
 
@@ -2788,18 +2287,13 @@ async function enablePushNotifications(){
 
     }
 
-
     localStorage.setItem(
       "connectsphere_push_subscription",
-      JSON.stringify(
-        subscription
-      )
+      JSON.stringify(subscription)
     );
-
 
     status.textContent =
       "Sending test notification...";
-
 
     await sendPushNotification(
       subscription,
@@ -2807,14 +2301,11 @@ async function enablePushNotifications(){
       "Notifications are working successfully!"
     );
 
-
     status.textContent =
       "Notifications enabled successfully ✅";
 
-
     button.textContent =
       "Notifications Enabled";
-
 
   }catch(error){
 
@@ -2823,11 +2314,9 @@ async function enablePushNotifications(){
       error
     );
 
-
     status.textContent =
       error.message ||
       "Unable to enable notifications.";
-
 
     button.disabled = false;
 
@@ -2846,23 +2335,17 @@ async function sendPushNotification(
     await fetch(
       PUSH_FUNCTION_URL,
       {
-
         method:"POST",
 
         headers:{
-          "Content-Type":
-            "application/json",
-
-          apikey:
-            SUPABASE_PUBLISHABLE_KEY
+          "Content-Type":"application/json",
+          apikey:SUPABASE_PUBLISHABLE_KEY
         },
 
         body:JSON.stringify({
 
           subscription,
-
           title,
-
           message
 
         })
@@ -2870,10 +2353,8 @@ async function sendPushNotification(
       }
     );
 
-
   const data =
     await response.json();
-
 
   if(
     !response.ok ||
@@ -2887,7 +2368,6 @@ async function sendPushNotification(
 
   }
 
-
   return data;
 
 }
@@ -2896,21 +2376,16 @@ async function sendPushNotification(
 async function checkNotificationStatus(){
 
   const status =
-    document
-      .getElementById(
-        "notificationStatus"
-      );
-
+    document.getElementById(
+      "notificationStatus"
+    );
 
   const button =
-    document
-      .getElementById(
-        "enableNotificationsBtn"
-      );
-
+    document.getElementById(
+      "enableNotificationsBtn"
+    );
 
   if(!status || !button) return;
-
 
   if(!("Notification" in window)){
 
@@ -2920,7 +2395,6 @@ async function checkNotificationStatus(){
     return;
 
   }
-
 
   if(
     Notification.permission ===
@@ -2935,7 +2409,6 @@ async function checkNotificationStatus(){
 
   }
 
-
   if(
     Notification.permission ===
     "denied"
@@ -2949,12 +2422,11 @@ async function checkNotificationStatus(){
 }
 
 
-/* NAVIGATION */
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-function showPage(
-  page,
-  button
-){
+function showPage(page,button){
 
   document
     .querySelectorAll(".page")
@@ -2962,10 +2434,8 @@ function showPage(
       p => p.classList.remove("active")
     );
 
-
   const target =
     document.getElementById(page);
-
 
   if(target){
 
@@ -2973,13 +2443,11 @@ function showPage(
 
   }
 
-
   document
     .querySelectorAll(".nav-btn")
     .forEach(
       b => b.classList.remove("active")
     );
-
 
   if(button){
 
@@ -2990,15 +2458,13 @@ function showPage(
     const matching =
       Array.from(
         document.querySelectorAll(".nav-btn")
-      )
-      .find(
+      ).find(
         b =>
           b.getAttribute("onclick") &&
           b.getAttribute("onclick").includes(
             "'" + page + "'"
           )
       );
-
 
     if(matching){
 
@@ -3011,7 +2477,9 @@ function showPage(
 }
 
 
-/* GENERAL */
+/* =========================================================
+   GENERAL
+========================================================= */
 
 async function logout(){
 
@@ -3019,16 +2487,13 @@ async function logout(){
     .auth
     .signOut();
 
-
   currentUser = null;
   currentProfile = null;
-
 
   document
     .getElementById("app")
     .classList
     .add("hidden");
-
 
   document
     .getElementById("authScreen")
@@ -3051,16 +2516,11 @@ function closeModal(id){
 function showError(message){
 
   const box =
-    document.getElementById(
-      "authError"
-    );
-
+    document.getElementById("authError");
 
   box.textContent = message;
 
-  box.style.display =
-    "block";
-
+  box.style.display = "block";
 
   document
     .getElementById("authSuccess")
@@ -3073,16 +2533,11 @@ function showError(message){
 function showSuccess(message){
 
   const box =
-    document.getElementById(
-      "authSuccess"
-    );
-
+    document.getElementById("authSuccess");
 
   box.textContent = message;
 
-  box.style.display =
-    "block";
-
+  box.style.display = "block";
 
   document
     .getElementById("authError")
@@ -3099,7 +2554,6 @@ function clearMessages(){
     .style
     .display = "none";
 
-
   document
     .getElementById("authSuccess")
     .style
@@ -3111,52 +2565,30 @@ function clearMessages(){
 function escapeHTML(value){
 
   return String(value)
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 
 }
 
 
-/* START APP */
+/* =========================================================
+   START APP
+========================================================= */
 
 async function startApp(){
 
-  const {
-    data
-  } =
-  await supabaseClient
-    .auth
-    .getSession();
-
+  const {data} =
+    await supabaseClient
+      .auth
+      .getSession();
 
   if(data.session){
 
     currentUser =
       data.session.user;
-
 
     await loadProfile();
 
@@ -3183,7 +2615,6 @@ supabaseClient
           .getElementById("app")
           .classList
           .add("hidden");
-
 
         document
           .getElementById("authScreen")
