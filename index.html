@@ -452,6 +452,51 @@ h1{
   margin-top:10px
 }
 
+/* Notification ON/OFF switch */
+.switch{
+  position:relative;
+  display:inline-block;
+  width:52px;
+  height:30px;
+  flex-shrink:0
+}
+
+.switch input{
+  opacity:0;
+  width:0;
+  height:0
+}
+
+.slider{
+  position:absolute;
+  inset:0;
+  cursor:pointer;
+  background:#ccc;
+  border-radius:30px;
+  transition:.25s
+}
+
+.slider:before{
+  content:"";
+  position:absolute;
+  width:24px;
+  height:24px;
+  left:3px;
+  top:3px;
+  background:white;
+  border-radius:50%;
+  transition:.25s;
+  box-shadow:0 1px 4px rgba(0,0,0,.2)
+}
+
+.switch input:checked + .slider{
+  background:#5b4bdb
+}
+
+.switch input:checked + .slider:before{
+  transform:translateX(22px)
+}
+
 @media(max-width:600px){
   main{
     padding:16px;
@@ -472,61 +517,60 @@ h1{
 <body>
 
 <div id="authScreen" class="auth-screen">
-  <div class="auth-box">
+<div class="auth-box">
 
-    <h1>ConnectSphere</h1>
+<h1>ConnectSphere</h1>
 
-    <p id="authSubtitle">
-      Create your account and connect.
-    </p>
+<p id="authSubtitle">
+Create your account and connect.
+</p>
 
-    <div id="authError" class="error"></div>
-    <div id="authSuccess" class="success"></div>
+<div id="authError" class="error"></div>
+<div id="authSuccess" class="success"></div>
 
-    <div id="signupFields">
-      <input id="signupName" placeholder="Full name">
-      <input id="signupUsername" placeholder="Username">
-    </div>
+<div id="signupFields">
+<input id="signupName" placeholder="Full name">
+<input id="signupUsername" placeholder="Username">
+</div>
 
-    <input id="authEmail" type="email" placeholder="Email">
+<input id="authEmail" type="email" placeholder="Email">
 
-    <div class="password-wrap">
-      <input id="authPassword" type="password" placeholder="Password">
+<div class="password-wrap">
+<input id="authPassword" type="password" placeholder="Password">
 
-      <button
-        type="button"
-        class="password-toggle"
-        id="passwordToggle"
-        onclick="togglePassword()"
-      >👁️</button>
-    </div>
+<button
+type="button"
+class="password-toggle"
+id="passwordToggle"
+onclick="togglePassword()"
+>👁️</button>
+</div>
 
-    <button id="authButton" class="primary" onclick="handleAuth()">
-      Sign Up
-    </button>
+<button id="authButton" class="primary" onclick="handleAuth()">
+Sign Up
+</button>
 
-    <div class="auth-switch">
-      <span id="switchText">Already have an account?</span>
+<div class="auth-switch">
+<span id="switchText">Already have an account?</span>
+<button onclick="toggleAuthMode()" id="switchButton">
+Log in
+</button>
+</div>
 
-      <button onclick="toggleAuthMode()" id="switchButton">
-        Log in
-      </button>
-    </div>
-
-  </div>
+</div>
 </div>
 
 
 <div id="app" class="app hidden">
 
 <header>
-  <div class="logo">ConnectSphere</div>
+<div class="logo">ConnectSphere</div>
 
-  <div>
-    <button class="icon-btn" onclick="showPage('settings')">
-      ⚙️
-    </button>
-  </div>
+<div>
+<button class="icon-btn" onclick="showPage('settings')">
+⚙️
+</button>
+</div>
 </header>
 
 
@@ -534,299 +578,311 @@ h1{
 
 <section id="home" class="page active">
 
-  <h1>Welcome 👋</h1>
+<h1>Welcome 👋</h1>
 
-  <p class="subtitle">
-    Connect with people and start conversations.
-  </p>
+<p class="subtitle">
+Connect with people and start conversations.
+</p>
 
-  <div class="card">
+<div class="card">
 
-    <div class="user-row">
+<div class="user-row">
 
-      <div class="avatar" id="homeAvatar">Y</div>
+<div class="avatar" id="homeAvatar">Y</div>
 
-      <div class="user-info">
-        <strong id="homeName">Your Name</strong>
-        <span id="homeUsername">@username</span>
-      </div>
+<div class="user-info">
+<strong id="homeName">Your Name</strong>
+<span id="homeUsername">@username</span>
+</div>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
+<div class="card">
 
-  <div class="card">
+<h3>People on ConnectSphere</h3>
 
-    <h3>People on ConnectSphere</h3>
+<br>
 
-    <br>
+<div id="suggestions">
+<div class="empty">Loading profiles...</div>
+</div>
 
-    <div id="suggestions">
-      <div class="empty">Loading profiles...</div>
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
 <section id="search" class="page">
 
-  <h1>Search</h1>
+<h1>Search</h1>
 
-  <p class="subtitle">
-    Find registered ConnectSphere users.
-  </p>
+<p class="subtitle">
+Find registered ConnectSphere users.
+</p>
 
-  <input
-    id="searchInput"
-    class="search-box"
-    placeholder="Search people..."
-    oninput="searchUsers()"
-  >
+<input
+id="searchInput"
+class="search-box"
+placeholder="Search people..."
+oninput="searchUsers()"
+>
 
-  <div id="searchResults">
-    <div class="empty">Start typing to search.</div>
-  </div>
+<div id="searchResults">
+<div class="empty">Start typing to search.</div>
+</div>
 
 </section>
 
 
 <section id="requests" class="page">
 
-  <h1>Requests</h1>
+<h1>Requests</h1>
 
-  <p class="subtitle">
-    Manage connection requests.
-  </p>
+<p class="subtitle">
+Manage connection requests.
+</p>
 
-  <div class="empty">
-    Connection requests will be added next.
-  </div>
+<div class="empty">
+Connection requests will be added next.
+</div>
 
 </section>
 
 
 <section id="chats" class="page">
 
-  <h1>Messages</h1>
+<h1>Messages</h1>
 
-  <p class="subtitle">
-    Your conversations.
-  </p>
+<p class="subtitle">
+Your conversations.
+</p>
 
-  <div class="empty">
-    Real-time encrypted messaging will be added after
-    the account system is working.
-  </div>
+<div class="empty">
+Real-time encrypted messaging will be added after
+the account system is working.
+</div>
 
 </section>
 
 
 <section id="schedule" class="page">
 
-  <h1>My Schedule 📅</h1>
+<h1>My Schedule 📅</h1>
 
-  <p class="subtitle">
-    Build daily habits, weekly plans and one-time reminders.
-  </p>
+<p class="subtitle">
+Build daily habits, weekly plans and one-time reminders.
+</p>
 
-  <div class="card">
+<div class="card">
 
-    <div style="
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px
-    ">
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px
+">
 
-      <div>
-        <strong>Progress</strong>
+<div>
+<strong>Progress</strong>
 
-        <div
-          id="scheduleProgressText"
-          style="
-            color:#777;
-            font-size:13px;
-            margin-top:4px
-          "
-        >
-          0% completed
-        </div>
-      </div>
+<div
+id="scheduleProgressText"
+style="
+color:#777;
+font-size:13px;
+margin-top:4px
+"
+>
+0% completed
+</div>
+</div>
 
-      <button class="primary" onclick="openScheduleModal()">
-        + Add
-      </button>
+<button class="primary" onclick="openScheduleModal()">
++ Add
+</button>
 
-    </div>
+</div>
 
-    <div class="progress-bar">
-      <div
-        id="scheduleProgressFill"
-        class="progress-fill"
-      ></div>
-    </div>
+<div class="progress-bar">
+<div
+id="scheduleProgressFill"
+class="progress-fill"
+></div>
+</div>
 
-  </div>
+</div>
 
-  <div id="scheduleList">
-    <div class="empty">Loading your schedules...</div>
-  </div>
+<div id="scheduleList">
+<div class="empty">Loading your schedules...</div>
+</div>
 
 </section>
 
 
 <section id="profile" class="page">
 
-  <div class="card profile">
+<div class="card profile">
 
-    <div class="avatar" id="profileAvatar">Y</div>
+<div class="avatar" id="profileAvatar">Y</div>
 
-    <h2 id="profileName">Your Name</h2>
+<h2 id="profileName">Your Name</h2>
 
-    <p id="profileUsername">@username</p>
+<p id="profileUsername">@username</p>
 
-    <div class="stat-row">
+<div class="stat-row">
 
-      <div class="stat">
-        <strong>0</strong>
-        <span>Connections</span>
-      </div>
+<div class="stat">
+<strong>0</strong>
+<span>Connections</span>
+</div>
 
-      <div class="stat">
-        <strong>0</strong>
-        <span>Requests</span>
-      </div>
+<div class="stat">
+<strong>0</strong>
+<span>Requests</span>
+</div>
 
-    </div>
+</div>
 
-    <button class="primary" onclick="editProfile()">
-      Edit Profile
-    </button>
+<button class="primary" onclick="editProfile()">
+Edit Profile
+</button>
 
-  </div>
+</div>
 
+<div class="card">
 
-  <div class="card">
+<h3>About</h3>
 
-    <h3>About</h3>
+<br>
 
-    <br>
+<p id="profileBio">
+Your bio will appear here.
+</p>
 
-    <p id="profileBio">
-      Your bio will appear here.
-    </p>
-
-  </div>
+</div>
 
 </section>
 
 
 <section id="settings" class="page">
 
-  <h1>Settings</h1>
+<h1>Settings</h1>
 
-  <p class="subtitle">
-    Control your account.
-  </p>
+<p class="subtitle">
+Control your account.
+</p>
 
+<div class="card">
 
-  <div class="card">
+<div class="setting">
 
-    <div class="setting">
+<div>
+<strong>Private account</strong>
 
-      <div>
-        <strong>Private account</strong>
+<small>
+Require requests before connecting.
+</small>
+</div>
 
-        <small>
-          Require requests before connecting.
-        </small>
-      </div>
+<input type="checkbox" id="privateAccount">
 
-      <input type="checkbox" id="privateAccount">
+</div>
 
-    </div>
+<div class="setting">
 
+<div>
+<strong>Show online status</strong>
 
-    <div class="setting">
+<small>
+Allow connections to see your status.
+</small>
+</div>
 
-      <div>
-        <strong>Show online status</strong>
+<input type="checkbox" id="onlineStatus" checked>
 
-        <small>
-          Allow connections to see your status.
-        </small>
-      </div>
+</div>
 
-      <input type="checkbox" id="onlineStatus" checked>
-
-    </div>
-
-  </div>
+</div>
 
 
-  <div class="card">
+<!-- NOTIFICATIONS -->
 
-    <h3>Notifications 🔔</h3>
+<div class="card">
 
-    <p class="notification-status">
-      Enable browser notifications for ConnectSphere reminders.
-    </p>
+<h3>Notifications 🔔</h3>
 
-    <br>
+<p class="notification-status">
+Turn browser notifications ON or OFF for ConnectSphere reminders.
+</p>
 
-    <button
-      id="enableNotificationsBtn"
-      class="primary"
-      onclick="enablePushNotifications()"
-    >
-      Enable Notifications
-    </button>
+<div class="setting">
 
-    <div
-      id="notificationStatus"
-      class="notification-status"
-    >
-      Notifications are not enabled.
-    </div>
+<div>
+<strong>Push Notifications</strong>
 
-  </div>
+<small id="notificationSwitchText">
+Notifications are OFF.
+</small>
+</div>
 
+<label class="switch">
 
-  <div class="card">
+<input
+type="checkbox"
+id="notificationToggle"
+onchange="togglePushNotifications()"
+>
 
-    <h3>Account</h3>
+<span class="slider"></span>
 
-    <br>
+</label>
 
-    <button class="secondary" onclick="editProfile()">
-      Edit profile
-    </button>
+</div>
 
-    <br><br>
+<div
+id="notificationStatus"
+class="notification-status"
+>
+Notifications are not enabled.
+</div>
 
-    <button class="danger" onclick="logout()">
-      Log out
-    </button>
-
-  </div>
+</div>
 
 
-  <div class="card">
+<div class="card">
 
-    <h3>Security 🔐</h3>
+<h3>Account</h3>
 
-    <br>
+<br>
 
-    <p style="color:#777;line-height:1.6">
-      Your account uses Supabase Authentication
-      and database Row Level Security.
-      Schedule data is protected by user-level RLS policies.
-    </p>
+<button class="secondary" onclick="editProfile()">
+Edit profile
+</button>
 
-  </div>
+<br><br>
+
+<button class="danger" onclick="logout()">
+Log out
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>Security 🔐</h3>
+
+<br>
+
+<p style="color:#777;line-height:1.6">
+Your account uses Supabase Authentication
+and database Row Level Security.
+Schedule data is protected by user-level RLS policies.
+</p>
+
+</div>
 
 </section>
 
@@ -835,35 +891,35 @@ h1{
 
 <nav class="bottom-nav">
 
-  <button class="nav-btn active" onclick="showPage('home',this)">
-    <span class="nav-icon">🏠</span>
-    Home
-  </button>
+<button class="nav-btn active" onclick="showPage('home',this)">
+<span class="nav-icon">🏠</span>
+Home
+</button>
 
-  <button class="nav-btn" onclick="showPage('search',this)">
-    <span class="nav-icon">🔎</span>
-    Search
-  </button>
+<button class="nav-btn" onclick="showPage('search',this)">
+<span class="nav-icon">🔎</span>
+Search
+</button>
 
-  <button class="nav-btn" onclick="showPage('requests',this)">
-    <span class="nav-icon">👥</span>
-    Requests
-  </button>
+<button class="nav-btn" onclick="showPage('requests',this)">
+<span class="nav-icon">👥</span>
+Requests
+</button>
 
-  <button class="nav-btn" onclick="showPage('chats',this)">
-    <span class="nav-icon">💬</span>
-    Chats
-  </button>
+<button class="nav-btn" onclick="showPage('chats',this)">
+<span class="nav-icon">💬</span>
+Chats
+</button>
 
-  <button class="nav-btn" onclick="showPage('schedule',this)">
-    <span class="nav-icon">📅</span>
-    Schedule
-  </button>
+<button class="nav-btn" onclick="showPage('schedule',this)">
+<span class="nav-icon">📅</span>
+Schedule
+</button>
 
-  <button class="nav-btn" onclick="showPage('profile',this)">
-    <span class="nav-icon">👤</span>
-    Profile
-  </button>
+<button class="nav-btn" onclick="showPage('profile',this)">
+<span class="nav-icon">👤</span>
+Profile
+</button>
 
 </nav>
 
@@ -872,111 +928,109 @@ h1{
 
 <div class="modal" id="profileModal">
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <button class="close" onclick="closeModal('profileModal')">
-      ×
-    </button>
+<button class="close" onclick="closeModal('profileModal')">
+×
+</button>
 
-    <h2>Edit Profile</h2>
+<h2>Edit Profile</h2>
 
-    <input id="editName" class="search-box" placeholder="Your name">
+<input id="editName" class="search-box" placeholder="Your name">
 
-    <input
-      id="editUsername"
-      class="search-box"
-      placeholder="Username"
-    >
+<input
+id="editUsername"
+class="search-box"
+placeholder="Username"
+>
 
-    <input id="editBio" class="search-box" placeholder="Bio">
+<input id="editBio" class="search-box" placeholder="Bio">
 
-    <button class="primary" onclick="saveProfile()">
-      Save Profile
-    </button>
+<button class="primary" onclick="saveProfile()">
+Save Profile
+</button>
 
-  </div>
-
+</div>
 </div>
 
 
 <div class="modal" id="scheduleModal">
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <button class="close" onclick="closeModal('scheduleModal')">
-      ×
-    </button>
+<button class="close" onclick="closeModal('scheduleModal')">
+×
+</button>
 
-    <h2>Add Schedule</h2>
+<h2>Add Schedule</h2>
 
-    <label class="form-label">Title</label>
+<label class="form-label">Title</label>
 
-    <input
-      id="scheduleTitle"
-      placeholder="Example: Study for 30 minutes"
-    >
+<input
+id="scheduleTitle"
+placeholder="Example: Study for 30 minutes"
+>
 
-    <label class="form-label">Description</label>
+<label class="form-label">Description</label>
 
-    <textarea
-      id="scheduleDescription"
-      rows="3"
-      placeholder="Optional details"
-    ></textarea>
+<textarea
+id="scheduleDescription"
+rows="3"
+placeholder="Optional details"
+></textarea>
 
-    <label class="form-label">Type</label>
+<label class="form-label">Type</label>
 
-    <select id="scheduleType" onchange="updateScheduleFields()">
+<select id="scheduleType" onchange="updateScheduleFields()">
 
-      <option value="daily">Daily</option>
-      <option value="weekly">Weekly</option>
-      <option value="once">One-time</option>
+<option value="daily">Daily</option>
+<option value="weekly">Weekly</option>
+<option value="once">One-time</option>
 
-    </select>
+</select>
 
-    <label class="form-label">Reminder time</label>
+<label class="form-label">Reminder time</label>
 
-    <input id="scheduleTime" type="time">
-
-
-    <div id="weeklyField" class="hidden">
-
-      <label class="form-label">Day of week</label>
-
-      <select id="scheduleDay">
-
-        <option value="0">Sunday</option>
-        <option value="1">Monday</option>
-        <option value="2">Tuesday</option>
-        <option value="3">Wednesday</option>
-        <option value="4">Thursday</option>
-        <option value="5">Friday</option>
-        <option value="6">Saturday</option>
-
-      </select>
-
-    </div>
+<input id="scheduleTime" type="time">
 
 
-    <div id="onceField" class="hidden">
+<div id="weeklyField" class="hidden">
 
-      <label class="form-label">Date</label>
+<label class="form-label">Day of week</label>
 
-      <input id="scheduleDate" type="date">
+<select id="scheduleDay">
 
-    </div>
+<option value="0">Sunday</option>
+<option value="1">Monday</option>
+<option value="2">Tuesday</option>
+<option value="3">Wednesday</option>
+<option value="4">Thursday</option>
+<option value="5">Friday</option>
+<option value="6">Saturday</option>
+
+</select>
+
+</div>
 
 
-    <button
-      class="primary"
-      style="width:100%;margin-top:8px"
-      onclick="saveSchedule()"
-    >
-      Save Schedule
-    </button>
+<div id="onceField" class="hidden">
 
-  </div>
+<label class="form-label">Date</label>
 
+<input id="scheduleDate" type="date">
+
+</div>
+
+
+<button
+class="primary"
+style="width:100%;margin-top:8px"
+onclick="saveSchedule()"
+>
+Save Schedule
+</button>
+
+</div>
 </div>
 
 
@@ -984,42 +1038,24 @@ h1{
 
 <script>
 
-/* =========================================================
-   SUPABASE
-========================================================= */
-
 const SUPABASE_URL =
-  "https://hwjojlqhzeqtfcxmfrjk.supabase.co";
+"https://hwjojlqhzeqtfcxmfrjk.supabase.co";
 
 const SUPABASE_PUBLISHABLE_KEY =
-  "sb_publishable_-GofAlZERkBVXbEOQpF3Rg_w0mGMaA4";
+"sb_publishable_-GofAlZERkBVXbEOQpF3Rg_w0mGMaA4";
 
 const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-  );
-
-
-/* =========================================================
-   PUSH NOTIFICATIONS
-========================================================= */
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_PUBLISHABLE_KEY
+);
 
 const PUSH_FUNCTION_URL =
-  SUPABASE_URL +
-  "/functions/v1/hyper-processor";
-
-
-/*
-  VAPID PUBLIC KEY
-
-  This is safe to place in frontend code.
-  The PRIVATE key must remain in Supabase Secrets.
-*/
+SUPABASE_URL +
+"/functions/v1/hyper-processor";
 
 const VAPID_PUBLIC_KEY =
-  "BPXQwAeUakIVhv46REqOG4rbgPeOG2vA3XD4dcU62Njv_QBuiumeMdMKaP-slpYsWEKt7k8oWRDNNt4qpJX670A";
-
+"BPXQwAeUakIVhv46REqOG4rbgPeOG2vA3XD4dcU62Njv_QBuiumeMdMKaP-slpYsWEKt7k8oWRDNNt4qpJX670A";
 
 let currentUser = null;
 let currentProfile = null;
@@ -1027,1604 +1063,1740 @@ let loginMode = false;
 
 
 /* =========================================================
-   AUTH
+AUTH
 ========================================================= */
 
 function togglePassword(){
 
-  const password =
-    document.getElementById("authPassword");
+const password =
+document.getElementById("authPassword");
 
-  const button =
-    document.getElementById("passwordToggle");
+const button =
+document.getElementById("passwordToggle");
 
-  if(password.type === "password"){
+if(password.type === "password"){
 
-    password.type = "text";
-    button.textContent = "🙈";
+password.type = "text";
+button.textContent = "🙈";
 
-  }else{
+}else{
 
-    password.type = "password";
-    button.textContent = "👁️";
+password.type = "password";
+button.textContent = "👁️";
 
-  }
+}
 
 }
 
 
 function toggleAuthMode(){
 
-  loginMode = !loginMode;
+loginMode = !loginMode;
 
-  document
-    .getElementById("signupFields")
-    .classList
-    .toggle("hidden",loginMode);
+document
+.getElementById("signupFields")
+.classList
+.toggle("hidden",loginMode);
 
-  document
-    .getElementById("authButton")
-    .textContent =
-      loginMode ? "Log In" : "Sign Up";
+document
+.getElementById("authButton")
+.textContent =
+loginMode ? "Log In" : "Sign Up";
 
-  document
-    .getElementById("authSubtitle")
-    .textContent =
-      loginMode
-        ? "Welcome back to ConnectSphere."
-        : "Create your account and connect.";
+document
+.getElementById("authSubtitle")
+.textContent =
+loginMode
+? "Welcome back to ConnectSphere."
+: "Create your account and connect.";
 
-  document
-    .getElementById("switchText")
-    .textContent =
-      loginMode
-        ? "Don't have an account?"
-        : "Already have an account?";
+document
+.getElementById("switchText")
+.textContent =
+loginMode
+? "Don't have an account?"
+: "Already have an account?";
 
-  document
-    .getElementById("switchButton")
-    .textContent =
-      loginMode ? "Sign Up" : "Log In";
+document
+.getElementById("switchButton")
+.textContent =
+loginMode ? "Sign Up" : "Log In";
 
-  clearMessages();
+clearMessages();
 
 }
 
 
 async function handleAuth(){
 
-  clearMessages();
+clearMessages();
 
-  const email =
-    document.getElementById("authEmail").value.trim();
+const email =
+document.getElementById("authEmail").value.trim();
 
-  const password =
-    document.getElementById("authPassword").value;
+const password =
+document.getElementById("authPassword").value;
 
-  if(!email || !password){
+if(!email || !password){
 
-    showError("Please enter your email and password.");
+showError("Please enter your email and password.");
+return;
 
-    return;
+}
 
-  }
+try{
 
+if(loginMode){
 
-  try{
+const {data,error} =
+await supabaseClient.auth.signInWithPassword({
+email,
+password
+});
 
-    if(loginMode){
+if(error) throw error;
 
-      const {data,error} =
-        await supabaseClient.auth.signInWithPassword({
-          email,
-          password
-        });
+currentUser = data.user;
 
-      if(error) throw error;
+if(!currentUser){
 
-      currentUser = data.user;
+showError("Login succeeded, but no user was returned.");
+return;
 
-      if(!currentUser){
+}
 
-        showError(
-          "Login succeeded, but no user was returned."
-        );
+await loadProfile();
 
-        return;
+}else{
 
-      }
+const name =
+document.getElementById("signupName").value.trim();
 
-      await loadProfile();
+const username =
+document
+.getElementById("signupUsername")
+.value
+.trim()
+.toLowerCase();
 
-    }else{
+if(!name || !username){
 
-      const name =
-        document.getElementById("signupName").value.trim();
+showError("Please enter your name and username.");
+return;
 
-      const username =
-        document
-          .getElementById("signupUsername")
-          .value
-          .trim()
-          .toLowerCase();
+}
 
-      if(!name || !username){
+if(!/^[a-z0-9_]{3,30}$/.test(username)){
 
-        showError(
-          "Please enter your name and username."
-        );
+showError(
+"Username must be 3-30 characters using letters, numbers or underscore."
+);
 
-        return;
+return;
 
-      }
+}
 
-      if(!/^[a-z0-9_]{3,30}$/.test(username)){
+const {data,error} =
+await supabaseClient.auth.signUp({
 
-        showError(
-          "Username must be 3-30 characters using letters, numbers or underscore."
-        );
+email,
+password,
 
-        return;
+options:{
+emailRedirectTo:
+"https://messagerpersonal.github.io/connectsphere.com/",
 
-      }
+data:{
+display_name:name,
+username
+}
+}
 
-      const {data,error} =
-        await supabaseClient.auth.signUp({
+});
 
-          email,
+if(error) throw error;
 
-          password,
+if(!data.user){
 
-          options:{
-            emailRedirectTo:
-              "https://messagerpersonal.github.io/connectsphere.com/",
+showError(
+"Signup did not return a user. Please try again."
+);
 
-            data:{
-              display_name:name,
-              username
-            }
-          }
+return;
 
-        });
+}
 
-      if(error) throw error;
+showSuccess(
+"Account created! Check your email, confirm your account, then log in."
+);
 
-      if(!data.user){
+loginMode = true;
 
-        showError(
-          "Signup did not return a user. Please try again."
-        );
+document
+.getElementById("signupFields")
+.classList
+.add("hidden");
 
-        return;
+document
+.getElementById("authButton")
+.textContent = "Log In";
 
-      }
+document
+.getElementById("authSubtitle")
+.textContent =
+"Check your email, then log in.";
 
-      showSuccess(
-        "Account created! Check your email, confirm your account, then log in."
-      );
+}
 
-      loginMode = true;
+}catch(error){
 
-      document
-        .getElementById("signupFields")
-        .classList
-        .add("hidden");
+console.error("Authentication error:",error);
 
-      document
-        .getElementById("authButton")
-        .textContent = "Log In";
+showError(
+error.message || "Authentication failed."
+);
 
-      document
-        .getElementById("authSubtitle")
-        .textContent =
-          "Check your email, then log in.";
-
-      document
-        .getElementById("switchText")
-        .textContent =
-          "Don't have an account?";
-
-      document
-        .getElementById("switchButton")
-        .textContent =
-          "Sign Up";
-
-    }
-
-  }catch(error){
-
-    console.error("Authentication error:",error);
-
-    showError(
-      error.message || "Authentication failed."
-    );
-
-  }
+}
 
 }
 
 
 /* =========================================================
-   PROFILE
+PROFILE
 ========================================================= */
 
 async function loadProfile(){
 
-  if(!currentUser) return;
+if(!currentUser) return;
 
-  const {data,error} =
-    await supabaseClient
-      .from("profiles")
-      .select("*")
-      .eq("id",currentUser.id)
-      .maybeSingle();
+const {data,error} =
+await supabaseClient
+.from("profiles")
+.select("*")
+.eq("id",currentUser.id)
+.maybeSingle();
 
-  if(error){
+if(error){
 
-    console.error(error);
+console.error(error);
 
-    showError(
-      "Could not load your profile: " +
-      error.message
-    );
+showError(
+"Could not load your profile: " +
+error.message
+);
 
-    return;
+return;
 
-  }
+}
 
+if(!data){
 
-  if(!data){
+const metadata =
+currentUser.user_metadata || {};
 
-    const metadata =
-      currentUser.user_metadata || {};
+const displayName =
+metadata.display_name ||
+currentUser.email?.split("@")[0] ||
+"User";
 
-    const displayName =
-      metadata.display_name ||
-      currentUser.email?.split("@")[0] ||
-      "User";
+const username =
+metadata.username ||
+(
+"user_" +
+currentUser.id
+.replace(/-/g,"")
+.slice(0,8)
+);
 
-    const username =
-      metadata.username ||
-      (
-        "user_" +
-        currentUser.id
-          .replace(/-/g,"")
-          .slice(0,8)
-      );
+const {data:newProfile,error:createError} =
+await supabaseClient
+.from("profiles")
+.insert({
+id:currentUser.id,
+username,
+display_name:displayName,
+bio:"",
+avatar_url:null
+})
+.select()
+.single();
 
-    const {data:newProfile,error:createError} =
-      await supabaseClient
-        .from("profiles")
-        .insert({
-          id:currentUser.id,
-          username,
-          display_name:displayName,
-          bio:"",
-          avatar_url:null
-        })
-        .select()
-        .single();
+if(createError){
 
-    if(createError){
+console.error(createError);
 
-      console.error(createError);
+showError(
+"Your account is logged in, but profile creation failed: " +
+createError.message
+);
 
-      showError(
-        "Your account is logged in, but profile creation failed: " +
-        createError.message
-      );
+return;
 
-      return;
+}
 
-    }
+currentProfile = newProfile;
 
-    currentProfile = newProfile;
+}else{
 
-  }else{
+currentProfile = data;
 
-    currentProfile = data;
+}
 
-  }
+showApp();
 
-  showApp();
+updateProfileUI();
 
-  updateProfileUI();
+await loadPeople();
 
-  await loadPeople();
+await loadSchedules();
 
-  await loadSchedules();
-
-  await checkNotificationStatus();
+await checkNotificationStatus();
 
 }
 
 
 function showApp(){
 
-  document
-    .getElementById("authScreen")
-    .classList
-    .add("hidden");
+document
+.getElementById("authScreen")
+.classList
+.add("hidden");
 
-  document
-    .getElementById("app")
-    .classList
-    .remove("hidden");
+document
+.getElementById("app")
+.classList
+.remove("hidden");
 
 }
 
 
 function updateProfileUI(){
 
-  if(!currentProfile) return;
+if(!currentProfile) return;
 
-  const name =
-    currentProfile.display_name || "Your Name";
+const name =
+currentProfile.display_name || "Your Name";
 
-  const username =
-    currentProfile.username || "username";
+const username =
+currentProfile.username || "username";
 
-  const bio =
-    currentProfile.bio || "Your bio will appear here.";
+const bio =
+currentProfile.bio || "Your bio will appear here.";
 
-  const letter =
-    name.charAt(0).toUpperCase() || "Y";
+const letter =
+name.charAt(0).toUpperCase() || "Y";
 
-  document.getElementById("homeName").textContent = name;
+document.getElementById("homeName").textContent = name;
 
-  document.getElementById("homeUsername").textContent =
-    "@" + username;
+document.getElementById("homeUsername").textContent =
+"@" + username;
 
-  document.getElementById("profileName").textContent =
-    name;
+document.getElementById("profileName").textContent =
+name;
 
-  document.getElementById("profileUsername").textContent =
-    "@" + username;
+document.getElementById("profileUsername").textContent =
+"@" + username;
 
-  document.getElementById("profileBio").textContent =
-    bio;
+document.getElementById("profileBio").textContent =
+bio;
 
-  document.getElementById("homeAvatar").textContent =
-    letter;
+document.getElementById("homeAvatar").textContent =
+letter;
 
-  document.getElementById("profileAvatar").textContent =
-    letter;
+document.getElementById("profileAvatar").textContent =
+letter;
 
 }
 
 
 /* =========================================================
-   PEOPLE
+PEOPLE
 ========================================================= */
 
 async function loadPeople(){
 
-  const {data,error} =
-    await supabaseClient
-      .from("profiles")
-      .select(
-        "id,username,display_name,bio,avatar_url"
-      )
-      .neq("id",currentUser.id)
-      .limit(20);
+const {data,error} =
+await supabaseClient
+.from("profiles")
+.select(
+"id,username,display_name,bio,avatar_url"
+)
+.neq("id",currentUser.id)
+.limit(20);
 
-  if(error){
+if(error){
 
-    console.error(error);
+console.error(error);
 
-    document.getElementById("suggestions").innerHTML =
-      '<div class="empty">Unable to load profiles.</div>';
+document.getElementById("suggestions").innerHTML =
+'<div class="empty">Unable to load profiles.</div>';
 
-    return;
+return;
 
-  }
+}
 
-  renderPeople(data || []);
+renderPeople(data || []);
 
 }
 
 
 function renderPeople(users){
 
-  const container =
-    document.getElementById("suggestions");
+const container =
+document.getElementById("suggestions");
 
-  if(!users.length){
+if(!users.length){
 
-    container.innerHTML =
-      '<div class="empty">No other users yet.</div>';
+container.innerHTML =
+'<div class="empty">No other users yet.</div>';
 
-    return;
+return;
 
-  }
+}
 
-  container.innerHTML =
-    users.map(profileCard).join("");
+container.innerHTML =
+users.map(profileCard).join("");
 
 }
 
 
 function profileCard(user){
 
-  const name =
-    user.display_name || "User";
+const name =
+user.display_name || "User";
 
-  const letter =
-    name.charAt(0).toUpperCase();
+const letter =
+name.charAt(0).toUpperCase();
 
-  return `
-    <div class="card">
+return `
+<div class="card">
 
-      <div class="user-row">
+<div class="user-row">
 
-        <div class="avatar">
-          ${escapeHTML(letter)}
-        </div>
+<div class="avatar">
+${escapeHTML(letter)}
+</div>
 
-        <div class="user-info">
+<div class="user-info">
 
-          <strong>
-            ${escapeHTML(name)}
-          </strong>
+<strong>
+${escapeHTML(name)}
+</strong>
 
-          <span>
-            @${escapeHTML(user.username || "")}
-          </span>
+<span>
+@${escapeHTML(user.username || "")}
+</span>
 
-          <span>
-            ${escapeHTML(user.bio || "")}
-          </span>
+<span>
+${escapeHTML(user.bio || "")}
+</span>
 
-        </div>
+</div>
 
-        <button
-          class="secondary"
-          onclick="viewProfile('${escapeHTML(user.id)}')"
-        >
-          View
-        </button>
+<button
+class="secondary"
+onclick="viewProfile('${escapeHTML(user.id)}')"
+>
+View
+</button>
 
-      </div>
+</div>
 
-    </div>
-  `;
+</div>
+`;
 
 }
 
 
 async function searchUsers(){
 
-  const query =
-    document
-      .getElementById("searchInput")
-      .value
-      .trim()
-      .toLowerCase();
+const query =
+document
+.getElementById("searchInput")
+.value
+.trim()
+.toLowerCase();
 
-  const container =
-    document.getElementById("searchResults");
+const container =
+document.getElementById("searchResults");
 
-  if(!query){
+if(!query){
 
-    container.innerHTML =
-      '<div class="empty">Start typing to search.</div>';
+container.innerHTML =
+'<div class="empty">Start typing to search.</div>';
 
-    return;
+return;
 
-  }
+}
 
-  if(!currentUser){
+if(!currentUser){
 
-    container.innerHTML =
-      '<div class="empty">Please log in again.</div>';
+container.innerHTML =
+'<div class="empty">Please log in again.</div>';
 
-    return;
+return;
 
-  }
+}
 
-  const safeQuery =
-    query
-      .replace(/[%_]/g,"\\$&")
-      .replace(/,/g,"");
+const {data,error} =
+await supabaseClient
+.from("profiles")
+.select(
+"id,username,display_name,bio,avatar_url"
+)
+.neq("id",currentUser.id)
+.or(
+`username.ilike.%${query}%,display_name.ilike.%${query}%`
+)
+.limit(20);
 
-  const {data,error} =
-    await supabaseClient
-      .from("profiles")
-      .select(
-        "id,username,display_name,bio,avatar_url"
-      )
-      .neq("id",currentUser.id)
-      .or(
-        `username.ilike.%${safeQuery}%,display_name.ilike.%${safeQuery}%`
-      )
-      .limit(20);
+if(error){
 
-  if(error){
+console.error(error);
 
-    console.error(error);
+container.innerHTML =
+'<div class="empty">Search failed.</div>';
 
-    container.innerHTML =
-      '<div class="empty">Search failed.</div>';
+return;
 
-    return;
+}
 
-  }
+if(!data || !data.length){
 
-  if(!data || !data.length){
+container.innerHTML =
+'<div class="empty">No users found.</div>';
 
-    container.innerHTML =
-      '<div class="empty">No users found.</div>';
+return;
 
-    return;
+}
 
-  }
-
-  container.innerHTML =
-    data.map(profileCard).join("");
+container.innerHTML =
+data.map(profileCard).join("");
 
 }
 
 
 async function viewProfile(id){
 
-  const {data,error} =
-    await supabaseClient
-      .from("profiles")
-      .select("*")
-      .eq("id",id)
-      .single();
+const {data,error} =
+await supabaseClient
+.from("profiles")
+.select("*")
+.eq("id",id)
+.single();
 
-  if(error){
+if(error){
 
-    alert("Unable to load profile.");
+alert("Unable to load profile.");
+return;
 
-    return;
+}
 
-  }
-
-  alert(
-    (data.display_name || "User") +
-    "\n@" +
-    (data.username || "") +
-    "\n\n" +
-    (data.bio || "")
-  );
+alert(
+(data.display_name || "User") +
+"\n@" +
+(data.username || "") +
+"\n\n" +
+(data.bio || "")
+);
 
 }
 
 
 function editProfile(){
 
-  if(!currentProfile) return;
+if(!currentProfile) return;
 
-  document.getElementById("editName").value =
-    currentProfile.display_name || "";
+document.getElementById("editName").value =
+currentProfile.display_name || "";
 
-  document.getElementById("editUsername").value =
-    currentProfile.username || "";
+document.getElementById("editUsername").value =
+currentProfile.username || "";
 
-  document.getElementById("editBio").value =
-    currentProfile.bio || "";
+document.getElementById("editBio").value =
+currentProfile.bio || "";
 
-  document
-    .getElementById("profileModal")
-    .classList
-    .add("show");
+document
+.getElementById("profileModal")
+.classList
+.add("show");
 
 }
 
 
 async function saveProfile(){
 
-  const name =
-    document.getElementById("editName").value.trim();
+const name =
+document.getElementById("editName").value.trim();
 
-  const username =
-    document
-      .getElementById("editUsername")
-      .value
-      .trim()
-      .toLowerCase();
+const username =
+document
+.getElementById("editUsername")
+.value
+.trim()
+.toLowerCase();
 
-  const bio =
-    document.getElementById("editBio").value.trim();
+const bio =
+document.getElementById("editBio").value.trim();
 
-  if(!name || !username){
+if(!name || !username){
 
-    alert("Name and username are required.");
+alert("Name and username are required.");
+return;
 
-    return;
+}
 
-  }
+if(!/^[a-z0-9_]{3,30}$/.test(username)){
 
-  if(!/^[a-z0-9_]{3,30}$/.test(username)){
+alert(
+"Username must be 3-30 characters using letters, numbers or underscore."
+);
 
-    alert(
-      "Username must be 3-30 characters using letters, numbers or underscore."
-    );
+return;
 
-    return;
+}
 
-  }
+const {data,error} =
+await supabaseClient
+.from("profiles")
+.update({
+display_name:name,
+username,
+bio
+})
+.eq("id",currentUser.id)
+.select()
+.single();
 
-  const {data,error} =
-    await supabaseClient
-      .from("profiles")
-      .update({
-        display_name:name,
-        username,
-        bio
-      })
-      .eq("id",currentUser.id)
-      .select()
-      .single();
+if(error){
 
-  if(error){
+alert(
+error.code === "23505"
+? "That username is already taken."
+: error.message
+);
 
-    alert(
-      error.code === "23505"
-        ? "That username is already taken."
-        : error.message
-    );
+return;
 
-    return;
+}
 
-  }
+currentProfile = data;
 
-  currentProfile = data;
+updateProfileUI();
 
-  updateProfileUI();
+closeModal("profileModal");
 
-  closeModal("profileModal");
-
-  alert("Profile updated successfully.");
+alert("Profile updated successfully.");
 
 }
 
 
 /* =========================================================
-   SCHEDULES
+SCHEDULES
 ========================================================= */
 
 async function loadSchedules(){
 
-  if(!currentUser) return;
+if(!currentUser) return;
 
-  const {data,error} =
-    await supabaseClient
-      .from("schedules")
-      .select("*")
-      .eq("user_id",currentUser.id)
-      .order("created_at",{ascending:false});
+const {data,error} =
+await supabaseClient
+.from("schedules")
+.select("*")
+.eq("user_id",currentUser.id)
+.order("created_at",{ascending:false});
 
-  if(error){
+if(error){
 
-    console.error(error);
+console.error(error);
 
-    document.getElementById("scheduleList").innerHTML =
-      '<div class="empty">Unable to load schedules: ' +
-      escapeHTML(error.message) +
-      '</div>';
+document.getElementById("scheduleList").innerHTML =
+'<div class="empty">Unable to load schedules: ' +
+escapeHTML(error.message) +
+'</div>';
 
-    return;
+return;
 
-  }
+}
 
-  renderSchedules(data || []);
+renderSchedules(data || []);
 
 }
 
 
 function formatSchedule(s){
 
-  if(s.schedule_type === "daily"){
+if(s.schedule_type === "daily"){
 
-    return (
-      "Every day" +
-      (
-        s.reminder_time
-          ? " at " + formatTime(s.reminder_time)
-          : ""
-      )
-    );
+return (
+"Every day" +
+(
+s.reminder_time
+? " at " + formatTime(s.reminder_time)
+: ""
+)
+);
 
-  }
+}
 
-  if(s.schedule_type === "weekly"){
+if(s.schedule_type === "weekly"){
 
-    const days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ];
+const days = [
+"Sunday",
+"Monday",
+"Tuesday",
+"Wednesday",
+"Thursday",
+"Friday",
+"Saturday"
+];
 
-    return (
-      "Every " +
-      days[Number(s.day_of_week)] +
-      (
-        s.reminder_time
-          ? " at " + formatTime(s.reminder_time)
-          : ""
-      )
-    );
+return (
+"Every " +
+days[Number(s.day_of_week)] +
+(
+s.reminder_time
+? " at " + formatTime(s.reminder_time)
+: ""
+)
+);
 
-  }
+}
 
-  return (
-    "One-time" +
-    (
-      s.reminder_date
-        ? " on " + s.reminder_date
-        : ""
-    ) +
-    (
-      s.reminder_time
-        ? " at " + formatTime(s.reminder_time)
-        : ""
-    )
-  );
+return (
+"One-time" +
+(
+s.reminder_date
+? " on " + s.reminder_date
+: ""
+) +
+(
+s.reminder_time
+? " at " + formatTime(s.reminder_time)
+: ""
+)
+);
 
 }
 
 
 function formatTime(t){
 
-  if(!t) return "";
+if(!t) return "";
 
-  const [h,m] =
-    t.split(":").map(Number);
+const [h,m] =
+t.split(":").map(Number);
 
-  const d = new Date();
+const d = new Date();
 
-  d.setHours(h,m,0,0);
+d.setHours(h,m,0,0);
 
-  return d.toLocaleTimeString(
-    [],
-    {
-      hour:"numeric",
-      minute:"2-digit"
-    }
-  );
+return d.toLocaleTimeString(
+[],
+{
+hour:"numeric",
+minute:"2-digit"
+}
+);
 
 }
 
 
 function renderSchedules(list){
 
-  const container =
-    document.getElementById("scheduleList");
+const container =
+document.getElementById("scheduleList");
 
-  if(!list.length){
+if(!list.length){
 
-    container.innerHTML =
-      '<div class="empty">No schedules yet. Tap + Add to create your first one.</div>';
+container.innerHTML =
+'<div class="empty">No schedules yet. Tap + Add to create your first one.</div>';
 
-    updateScheduleProgress([]);
+updateScheduleProgress([]);
 
-    return;
+return;
 
-  }
+}
 
-  container.innerHTML =
-    list.map(s => `
+container.innerHTML =
+list.map(s => `
 
-      <div class="schedule-item ${
-        s.completed ? "completed" : ""
-      }">
+<div class="schedule-item ${
+s.completed ? "completed" : ""
+}">
 
-        <div class="schedule-top">
+<div class="schedule-top">
 
-          <div>
+<div>
 
-            <div class="schedule-title">
+<div class="schedule-title">
 
-              ${escapeHTML(s.title)}
+${escapeHTML(s.title)}
 
-              <span class="badge">
-                ${escapeHTML(s.schedule_type)}
-              </span>
+<span class="badge">
+${escapeHTML(s.schedule_type)}
+</span>
 
-            </div>
+</div>
 
-            <div class="schedule-meta">
+<div class="schedule-meta">
 
-              ${escapeHTML(s.description || "")}
+${escapeHTML(s.description || "")}
 
-              ${s.description ? "<br>" : ""}
+${s.description ? "<br>" : ""}
 
-              ${escapeHTML(formatSchedule(s))}
+${escapeHTML(formatSchedule(s))}
 
-            </div>
+</div>
 
-          </div>
+</div>
 
-          <div>
-            ${s.completed ? "✅" : "⏰"}
-          </div>
+<div>
+${s.completed ? "✅" : "⏰"}
+</div>
 
-        </div>
+</div>
 
-        <div class="schedule-actions">
+<div class="schedule-actions">
 
-          ${
-            s.completed
+${
+s.completed
 
-            ?
+?
 
-            `<button
-              class="secondary"
-              onclick="setScheduleCompleted('${s.id}',false)"
-            >
-              Mark active
-            </button>`
+`<button
+class="secondary"
+onclick="setScheduleCompleted('${s.id}',false)"
+>
+Mark active
+</button>`
 
-            :
+:
 
-            `<button
-              class="primary"
-              onclick="setScheduleCompleted('${s.id}',true)"
-            >
-              Complete
-            </button>`
-          }
+`<button
+class="primary"
+onclick="setScheduleCompleted('${s.id}',true)"
+>
+Complete
+</button>`
+}
 
-          <button
-            class="danger"
-            onclick="deleteSchedule('${s.id}')"
-          >
-            Delete
-          </button>
+<button
+class="danger"
+onclick="deleteSchedule('${s.id}')"
+>
+Delete
+</button>
 
-        </div>
+</div>
 
-      </div>
+</div>
 
-    `).join("");
+`).join("");
 
-  updateScheduleProgress(list);
+updateScheduleProgress(list);
 
 }
 
 
 function updateScheduleProgress(list){
 
-  const done =
-    list.filter(x => x.completed).length;
+const done =
+list.filter(x => x.completed).length;
 
-  const total = list.length;
+const total = list.length;
 
-  const pct =
-    total
-      ? Math.round(done / total * 100)
-      : 0;
+const pct =
+total
+? Math.round(done / total * 100)
+: 0;
 
-  document.getElementById("scheduleProgressText")
-    .textContent =
-      `${pct}% completed (${done}/${total})`;
+document.getElementById("scheduleProgressText")
+.textContent =
+`${pct}% completed (${done}/${total})`;
 
-  document.getElementById("scheduleProgressFill")
-    .style.width =
-      pct + "%";
+document.getElementById("scheduleProgressFill")
+.style.width =
+pct + "%";
 
 }
 
 
 function openScheduleModal(){
 
-  document.getElementById("scheduleTitle").value = "";
+document.getElementById("scheduleTitle").value = "";
 
-  document.getElementById("scheduleDescription").value = "";
+document.getElementById("scheduleDescription").value = "";
 
-  document.getElementById("scheduleType").value = "daily";
+document.getElementById("scheduleType").value = "daily";
 
-  document.getElementById("scheduleTime").value = "";
+document.getElementById("scheduleTime").value = "";
 
-  document.getElementById("scheduleDate").value = "";
+document.getElementById("scheduleDate").value = "";
 
-  document.getElementById("scheduleDay").value =
-    String(new Date().getDay());
+document.getElementById("scheduleDay").value =
+String(new Date().getDay());
 
-  updateScheduleFields();
+updateScheduleFields();
 
-  document
-    .getElementById("scheduleModal")
-    .classList
-    .add("show");
+document
+.getElementById("scheduleModal")
+.classList
+.add("show");
 
 }
 
 
 function updateScheduleFields(){
 
-  const type =
-    document.getElementById("scheduleType").value;
+const type =
+document.getElementById("scheduleType").value;
 
-  document
-    .getElementById("weeklyField")
-    .classList
-    .toggle("hidden",type !== "weekly");
+document
+.getElementById("weeklyField")
+.classList
+.toggle("hidden",type !== "weekly");
 
-  document
-    .getElementById("onceField")
-    .classList
-    .toggle("hidden",type !== "once");
+document
+.getElementById("onceField")
+.classList
+.toggle("hidden",type !== "once");
 
 }
 
 
 async function saveSchedule(){
 
-  if(!currentUser){
+if(!currentUser){
 
-    alert("Please log in again.");
-
-    return;
-
-  }
-
-  const title =
-    document.getElementById("scheduleTitle")
-      .value.trim();
-
-  const description =
-    document.getElementById("scheduleDescription")
-      .value.trim();
-
-  const type =
-    document.getElementById("scheduleType").value;
-
-  const time =
-    document.getElementById("scheduleTime").value || null;
-
-  if(!title){
-
-    alert("Please enter a schedule title.");
-
-    return;
-
-  }
-
-  let payload = {
-
-    user_id:currentUser.id,
-    title,
-    description,
-    schedule_type:type,
-    reminder_time:time,
-    reminder_date:null,
-    day_of_week:null,
-    completed:false
-
-  };
-
-  if(type === "weekly"){
-
-    payload.day_of_week =
-      Number(
-        document.getElementById("scheduleDay").value
-      );
-
-  }
-
-  if(type === "once"){
-
-    const date =
-      document.getElementById("scheduleDate").value;
-
-    if(!date){
-
-      alert("Please choose a date.");
-
-      return;
-
-    }
-
-    payload.reminder_date = date;
-
-  }
-
-  const {error} =
-    await supabaseClient
-      .from("schedules")
-      .insert(payload);
-
-  if(error){
-
-    console.error(error);
-
-    alert(
-      "Could not save schedule: " +
-      error.message
-    );
-
-    return;
-
-  }
-
-  closeModal("scheduleModal");
-
-  await loadSchedules();
+alert("Please log in again.");
+return;
 
 }
 
+const title =
+document.getElementById("scheduleTitle")
+.value.trim();
 
-async function setScheduleCompleted(id,value){
+const description =
+document.getElementById("scheduleDescription")
+.value.trim();
 
-  if(!currentUser) return;
+const type =
+document.getElementById("scheduleType").value;
 
-  const {error} =
-    await supabaseClient
-      .from("schedules")
-      .update({
-        completed:value
-      })
-      .eq("id",id)
-      .eq("user_id",currentUser.id);
+const time =
+document.getElementById("scheduleTime").value || null;
 
-  if(error){
+if(!title){
 
-    alert(
-      "Could not update schedule: " +
-      error.message
-    );
-
-    return;
-
-  }
-
-  await loadSchedules();
+alert("Please enter a schedule title.");
+return;
 
 }
 
+let payload = {
 
-async function deleteSchedule(id){
+user_id:currentUser.id,
+title,
+description,
+schedule_type:type,
+reminder_time:time,
+reminder_date:null,
+day_of_week:null,
+completed:false
 
-  if(!currentUser) return;
+};
 
-  if(!confirm("Delete this schedule?")) return;
+if(type === "weekly"){
 
-  const {error} =
-    await supabaseClient
-      .from("schedules")
-      .delete()
-      .eq("id",id)
-      .eq("user_id",currentUser.id);
+payload.day_of_week =
+Number(
+document.getElementById("scheduleDay").value
+);
 
-  if(error){
+}
 
-    alert(
-      "Could not delete schedule: " +
-      error.message
-    );
+if(type === "once"){
 
-    return;
+const date =
+document.getElementById("scheduleDate").value;
 
-  }
+if(!date){
 
-  await loadSchedules();
+alert("Please choose a date.");
+return;
+
+}
+
+payload.reminder_date = date;
+
+}
+
+const {error} =
+await supabaseClient
+.from("schedules")
+.insert(payload);
+
+if(error){
+
+console.error(error);
+
+alert(
+"Could not save schedule: " +
+error.message
+);
+
+return;
+
+}
+
+closeModal("scheduleModal");
+
+await loadSchedules();
 
 }
 
 
 /* =========================================================
-   VAPID / PUSH
+PUSH NOTIFICATIONS
 ========================================================= */
 
 function urlBase64ToUint8Array(base64String){
 
-  const padding =
-    "=".repeat(
-      (4 - base64String.length % 4) % 4
-    );
+const padding =
+"=".repeat(
+(4 - base64String.length % 4) % 4
+);
 
-  const base64 =
-    (base64String + padding)
-      .replace(/-/g,"+")
-      .replace(/_/g,"/");
+const base64 =
+(base64String + padding)
+.replace(/-/g,"+")
+.replace(/_/g,"/");
 
-  const rawData = atob(base64);
+const rawData = atob(base64);
 
-  return Uint8Array.from(
-    [...rawData].map(
-      char => char.charCodeAt(0)
-    )
-  );
+return Uint8Array.from(
+[...rawData].map(
+char => char.charCodeAt(0)
+)
+);
+
+}
+
+
+async function getVapidPublicKey(){
+
+try{
+
+const response =
+await fetch(
+PUSH_FUNCTION_URL,
+{
+method:"GET",
+headers:{
+apikey:SUPABASE_PUBLISHABLE_KEY
+}
+}
+);
+
+if(response.ok){
+
+const data =
+await response.json();
+
+if(data && data.publicKey){
+
+return data.publicKey;
+
+}
+
+}
+
+}catch(error){
+
+console.warn(
+"Could not get VAPID key from function."
+);
+
+}
+
+return VAPID_PUBLIC_KEY;
+
+}
+
+
+async function getServiceWorkerRegistration(){
+
+return await navigator.serviceWorker.register(
+"./sw.js",
+{
+scope:"./"
+}
+);
+
+}
+
+
+async function savePushSubscription(subscription){
+
+if(!currentUser){
+
+throw new Error("You must be logged in.");
+
+}
+
+const json =
+subscription.toJSON();
+
+if(
+!json.endpoint ||
+!json.keys ||
+!json.keys.p256dh ||
+!json.keys.auth
+){
+
+throw new Error(
+"Invalid push subscription."
+);
 
 }
 
 
 /*
-  First try the public VAPID key already included above.
-
-  If the Edge Function returns a different valid public key,
-  that key can also be used.
+  Delete an old subscription with the same endpoint.
 */
 
-async function getVapidPublicKey(){
+await supabaseClient
+.from("push_subscriptions")
+.delete()
+.eq("user_id",currentUser.id)
+.eq("endpoint",json.endpoint);
 
-  try{
 
-    const response =
-      await fetch(
-        PUSH_FUNCTION_URL,
-        {
-          method:"GET",
-          headers:{
-            apikey:SUPABASE_PUBLISHABLE_KEY
-          }
-        }
-      );
+/*
+  Insert the new subscription.
+*/
 
-    if(response.ok){
+const {error} =
+await supabaseClient
+.from("push_subscriptions")
+.insert({
 
-      const data =
-        await response.json();
+user_id:currentUser.id,
 
-      if(data && data.publicKey){
+endpoint:json.endpoint,
 
-        return data.publicKey;
+p256dh:json.keys.p256dh,
 
-      }
+auth:json.keys.auth
 
-    }
+});
 
-  }catch(error){
+if(error){
 
-    console.warn(
-      "Could not read VAPID key from function. Using configured public key."
-    );
+console.error(
+"Subscription database error:",
+error
+);
 
-  }
+throw new Error(
+"Push subscription could not be saved: " +
+error.message
+);
 
-  return VAPID_PUBLIC_KEY;
+}
+
+localStorage.setItem(
+"connectsphere_push_subscription",
+JSON.stringify(json)
+);
+
+}
+
+
+async function removePushSubscriptionFromDatabase(endpoint){
+
+if(!currentUser || !endpoint) return;
+
+const {error} =
+await supabaseClient
+.from("push_subscriptions")
+.delete()
+.eq("user_id",currentUser.id)
+.eq("endpoint",endpoint);
+
+if(error){
+
+console.error(
+"Could not remove push subscription:",
+error
+);
+
+}
 
 }
 
 
 async function enablePushNotifications(){
 
-  const status =
-    document.getElementById(
-      "notificationStatus"
-    );
+if(!currentUser){
 
-  const button =
-    document.getElementById(
-      "enableNotificationsBtn"
-    );
+throw new Error(
+"Please log in first."
+);
 
-  try{
+}
 
-    if(!("Notification" in window)){
+if(!("Notification" in window)){
 
-      throw new Error(
-        "This browser does not support notifications."
-      );
+throw new Error(
+"This browser does not support notifications."
+);
 
-    }
+}
 
-    if(!("serviceWorker" in navigator)){
+if(!("serviceWorker" in navigator)){
 
-      throw new Error(
-        "This browser does not support service workers."
-      );
+throw new Error(
+"Service workers are not supported."
+);
 
-    }
+}
 
-    if(!("PushManager" in window)){
+if(!("PushManager" in window)){
 
-      throw new Error(
-        "Push notifications are not supported on this browser."
-      );
+throw new Error(
+"Push notifications are not supported."
+);
 
-    }
+}
 
-    button.disabled = true;
+const status =
+document.getElementById(
+"notificationStatus"
+);
 
-    status.textContent =
-      "Requesting notification permission...";
+status.textContent =
+"Requesting notification permission...";
 
-    const permission =
-      await Notification.requestPermission();
+const permission =
+await Notification.requestPermission();
 
-    if(permission !== "granted"){
+if(permission !== "granted"){
 
-      throw new Error(
-        "Notification permission was not granted."
-      );
+throw new Error(
+"Notification permission was not granted."
+);
 
-    }
+}
 
-    status.textContent =
-      "Registering notification service...";
+status.textContent =
+"Registering notification service...";
 
-    const registration =
-      await navigator.serviceWorker.register(
-        "./sw.js",
-        {scope:"./"}
-      );
+const registration =
+await getServiceWorkerRegistration();
 
-    await navigator.serviceWorker.ready;
+await navigator.serviceWorker.ready;
 
-    status.textContent =
-      "Preparing secure push connection...";
+const publicKey =
+await getVapidPublicKey();
 
-    const publicKey =
-      await getVapidPublicKey();
+if(!publicKey){
 
-    if(!publicKey){
+throw new Error(
+"VAPID public key is missing."
+);
 
-      throw new Error(
-        "VAPID public key is missing."
-      );
+}
 
-    }
+let subscription =
+await registration
+.pushManager
+.getSubscription();
 
-    let subscription =
-      await registration
-        .pushManager
-        .getSubscription();
+if(!subscription){
 
-    if(!subscription){
+status.textContent =
+"Creating secure push subscription...";
 
-      subscription =
-        await registration
-          .pushManager
-          .subscribe({
+subscription =
+await registration
+.pushManager
+.subscribe({
 
-            userVisibleOnly:true,
+userVisibleOnly:true,
 
-            applicationServerKey:
-              urlBase64ToUint8Array(
-                publicKey
-              )
+applicationServerKey:
+urlBase64ToUint8Array(
+publicKey
+)
 
-          });
+});
 
-    }
+}
 
-    localStorage.setItem(
-      "connectsphere_push_subscription",
-      JSON.stringify(subscription)
-    );
+status.textContent =
+"Saving notification subscription...";
 
-    status.textContent =
-      "Sending test notification...";
+await savePushSubscription(subscription);
 
-    await sendPushNotification(
-      subscription,
-      "ConnectSphere 🔔",
-      "Notifications are working successfully!"
-    );
+status.textContent =
+"Notifications are ON ✅";
 
-    status.textContent =
-      "Notifications enabled successfully ✅";
+document
+.getElementById("notificationSwitchText")
+.textContent =
+"Notifications are ON.";
 
-    button.textContent =
-      "Notifications Enabled";
-
-  }catch(error){
-
-    console.error(
-      "Push setup error:",
-      error
-    );
-
-    status.textContent =
-      error.message ||
-      "Unable to enable notifications.";
-
-    button.disabled = false;
-
-  }
+return subscription;
 
 }
 
 
-async function sendPushNotification(
-  subscription,
-  title,
-  message
-){
+async function disablePushNotifications(){
 
-  const response =
-    await fetch(
-      PUSH_FUNCTION_URL,
-      {
-        method:"POST",
+const status =
+document.getElementById(
+"notificationStatus"
+);
 
-        headers:{
-          "Content-Type":"application/json",
-          apikey:SUPABASE_PUBLISHABLE_KEY
-        },
+try{
 
-        body:JSON.stringify({
+const registration =
+await getServiceWorkerRegistration();
 
-          subscription,
-          title,
-          message
+const subscription =
+await registration
+.pushManager
+.getSubscription();
 
-        })
+if(subscription){
 
-      }
-    );
+const endpoint =
+subscription.endpoint;
 
-  const data =
-    await response.json();
+await subscription.unsubscribe();
 
-  if(
-    !response.ok ||
-    !data.success
-  ){
+await removePushSubscriptionFromDatabase(
+endpoint
+);
 
-    throw new Error(
-      data.message ||
-      "Unable to send notification."
-    );
+}
 
-  }
+localStorage.removeItem(
+"connectsphere_push_subscription"
+);
 
-  return data;
+status.textContent =
+"Notifications are OFF.";
+
+document
+.getElementById("notificationSwitchText")
+.textContent =
+"Notifications are OFF.";
+
+}catch(error){
+
+console.error(
+"Disable notification error:",
+error
+);
+
+throw error;
+
+}
+
+}
+
+
+async function togglePushNotifications(){
+
+const toggle =
+document.getElementById(
+"notificationToggle"
+);
+
+const status =
+document.getElementById(
+"notificationStatus"
+);
+
+toggle.disabled = true;
+
+try{
+
+if(toggle.checked){
+
+await enablePushNotifications();
+
+}else{
+
+await disablePushNotifications();
+
+}
+
+}catch(error){
+
+console.error(
+"Notification toggle error:",
+error
+);
+
+toggle.checked = !toggle.checked;
+
+status.textContent =
+error.message ||
+"Unable to change notification setting.";
+
+}finally{
+
+toggle.disabled = false;
+
+}
 
 }
 
 
 async function checkNotificationStatus(){
 
-  const status =
-    document.getElementById(
-      "notificationStatus"
-    );
+const toggle =
+document.getElementById(
+"notificationToggle"
+);
 
-  const button =
-    document.getElementById(
-      "enableNotificationsBtn"
-    );
+const status =
+document.getElementById(
+"notificationStatus"
+);
 
-  if(!status || !button) return;
+const text =
+document.getElementById(
+"notificationSwitchText"
+);
 
-  if(!("Notification" in window)){
+if(!toggle || !status) return;
 
-    status.textContent =
-      "Notifications are not supported by this browser.";
+if(!("Notification" in window)){
 
-    return;
+status.textContent =
+"Notifications are not supported by this browser.";
 
-  }
+return;
 
-  if(
-    Notification.permission ===
-    "granted"
-  ){
+}
 
-    status.textContent =
-      "Notifications are already allowed ✅";
+if(Notification.permission === "denied"){
 
-    button.textContent =
-      "Notifications Enabled";
+toggle.checked = false;
 
-  }
+status.textContent =
+"Notifications are blocked by your browser. Enable them in browser settings.";
 
-  if(
-    Notification.permission ===
-    "denied"
-  ){
+text.textContent =
+"Notifications are OFF.";
 
-    status.textContent =
-      "Notifications are blocked. Enable them in your browser settings.";
+return;
 
-  }
+}
+
+try{
+
+if(!("serviceWorker" in navigator)){
+
+return;
+
+}
+
+const registration =
+await navigator.serviceWorker.register(
+"./sw.js",
+{scope:"./"}
+);
+
+const subscription =
+await registration
+.pushManager
+.getSubscription();
+
+if(subscription){
+
+toggle.checked = true;
+
+status.textContent =
+"Notifications are ON ✅";
+
+text.textContent =
+"Notifications are ON.";
+
+}else{
+
+toggle.checked = false;
+
+status.textContent =
+"Notifications are OFF.";
+
+text.textContent =
+"Notifications are OFF.";
+
+}
+
+}catch(error){
+
+console.warn(
+"Notification status check failed:",
+error
+);
+
+toggle.checked = false;
+
+}
 
 }
 
 
 /* =========================================================
-   NAVIGATION
+NAVIGATION
 ========================================================= */
 
 function showPage(page,button){
 
-  document
-    .querySelectorAll(".page")
-    .forEach(
-      p => p.classList.remove("active")
-    );
+document
+.querySelectorAll(".page")
+.forEach(
+p => p.classList.remove("active")
+);
 
-  const target =
-    document.getElementById(page);
+const target =
+document.getElementById(page);
 
-  if(target){
+if(target){
 
-    target.classList.add("active");
+target.classList.add("active");
 
-  }
+}
 
-  document
-    .querySelectorAll(".nav-btn")
-    .forEach(
-      b => b.classList.remove("active")
-    );
+document
+.querySelectorAll(".nav-btn")
+.forEach(
+b => b.classList.remove("active")
+);
 
-  if(button){
+if(button){
 
-    button.classList.add("active");
+button.classList.add("active");
 
-  }else{
-
-    const matching =
-      Array.from(
-        document.querySelectorAll(".nav-btn")
-      ).find(
-        b =>
-          b.getAttribute("onclick") &&
-          b.getAttribute("onclick").includes(
-            "'" + page + "'"
-          )
-      );
-
-    if(matching){
-
-      matching.classList.add("active");
-
-    }
-
-  }
+}
 
 }
 
 
 /* =========================================================
-   GENERAL
+GENERAL
 ========================================================= */
+
+async function setScheduleCompleted(id,value){
+
+if(!currentUser) return;
+
+const {error} =
+await supabaseClient
+.from("schedules")
+.update({
+completed:value
+})
+.eq("id",id)
+.eq("user_id",currentUser.id);
+
+if(error){
+
+alert(
+"Could not update schedule: " +
+error.message
+);
+
+return;
+
+}
+
+await loadSchedules();
+
+}
+
+
+async function deleteSchedule(id){
+
+if(!currentUser) return;
+
+if(!confirm("Delete this schedule?")) return;
+
+const {error} =
+await supabaseClient
+.from("schedules")
+.delete()
+.eq("id",id)
+.eq("user_id",currentUser.id);
+
+if(error){
+
+alert(
+"Could not delete schedule: " +
+error.message
+);
+
+return;
+
+}
+
+await loadSchedules();
+
+}
+
 
 async function logout(){
 
-  await supabaseClient
-    .auth
-    .signOut();
+await supabaseClient
+.auth
+.signOut();
 
-  currentUser = null;
-  currentProfile = null;
+currentUser = null;
+currentProfile = null;
 
-  document
-    .getElementById("app")
-    .classList
-    .add("hidden");
+document
+.getElementById("app")
+.classList
+.add("hidden");
 
-  document
-    .getElementById("authScreen")
-    .classList
-    .remove("hidden");
+document
+.getElementById("authScreen")
+.classList
+.remove("hidden");
 
 }
 
 
 function closeModal(id){
 
-  document
-    .getElementById(id)
-    .classList
-    .remove("show");
+document
+.getElementById(id)
+.classList
+.remove("show");
 
 }
 
 
 function showError(message){
 
-  const box =
-    document.getElementById("authError");
+const box =
+document.getElementById("authError");
 
-  box.textContent = message;
+box.textContent = message;
 
-  box.style.display = "block";
+box.style.display = "block";
 
-  document
-    .getElementById("authSuccess")
-    .style
-    .display = "none";
+document
+.getElementById("authSuccess")
+.style
+.display = "none";
 
 }
 
 
 function showSuccess(message){
 
-  const box =
-    document.getElementById("authSuccess");
+const box =
+document.getElementById("authSuccess");
 
-  box.textContent = message;
+box.textContent = message;
 
-  box.style.display = "block";
+box.style.display = "block";
 
-  document
-    .getElementById("authError")
-    .style
-    .display = "none";
+document
+.getElementById("authError")
+.style
+.display = "none";
 
 }
 
 
 function clearMessages(){
 
-  document
-    .getElementById("authError")
-    .style
-    .display = "none";
+document
+.getElementById("authError")
+.style
+.display = "none";
 
-  document
-    .getElementById("authSuccess")
-    .style
-    .display = "none";
+document
+.getElementById("authSuccess")
+.style
+.display = "none";
 
 }
 
 
 function escapeHTML(value){
 
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
 
 /* =========================================================
-   START APP
+START APP
 ========================================================= */
 
 async function startApp(){
 
-  const {data} =
-    await supabaseClient
-      .auth
-      .getSession();
+const {data} =
+await supabaseClient
+.auth
+.getSession();
 
-  if(data.session){
+if(data.session){
 
-    currentUser =
-      data.session.user;
+currentUser =
+data.session.user;
 
-    await loadProfile();
+await loadProfile();
 
-  }else{
+}else{
 
-    document
-      .getElementById("authScreen")
-      .classList
-      .remove("hidden");
+document
+.getElementById("authScreen")
+.classList
+.remove("hidden");
 
-  }
+}
 
 }
 
 
 supabaseClient
-  .auth
-  .onAuthStateChange(
-    async(event,session) => {
+.auth
+.onAuthStateChange(
+async(event,session) => {
 
-      if(event === "SIGNED_OUT"){
+if(event === "SIGNED_OUT"){
 
-        document
-          .getElementById("app")
-          .classList
-          .add("hidden");
+document
+.getElementById("app")
+.classList
+.add("hidden");
 
-        document
-          .getElementById("authScreen")
-          .classList
-          .remove("hidden");
+document
+.getElementById("authScreen")
+.classList
+.remove("hidden");
 
-      }
+}
 
-    }
-  );
+}
+);
 
 
 startApp();
