@@ -8,7 +8,11 @@
 <title>ConnectSphere</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0
+}
 
 body{
   font-family:Arial,Helvetica,sans-serif;
@@ -16,8 +20,14 @@ body{
   color:#171724
 }
 
-button,input,select,textarea{font:inherit}
-button{cursor:pointer;border:0}
+button,input,select,textarea{
+  font:inherit
+}
+
+button{
+  cursor:pointer;
+  border:0
+}
 
 .app{
   max-width:1100px;
@@ -58,8 +68,13 @@ main{
   padding-bottom:90px
 }
 
-.page{display:none}
-.page.active{display:block}
+.page{
+  display:none
+}
+
+.page.active{
+  display:block
+}
 
 h1{
   font-size:26px;
@@ -155,9 +170,13 @@ h1{
   font-size:30px
 }
 
-.user-info{flex:1}
+.user-info{
+  flex:1
+}
 
-.user-info strong{display:block}
+.user-info strong{
+  display:block
+}
 
 .user-info span{
   color:#777;
@@ -166,9 +185,13 @@ h1{
   margin-top:3px
 }
 
-.profile{text-align:center}
+.profile{
+  text-align:center
+}
 
-.profile h2{margin-bottom:5px}
+.profile h2{
+  margin-bottom:5px
+}
 
 .profile p{
   color:#777;
@@ -200,7 +223,9 @@ h1{
   border-bottom:1px solid #eee
 }
 
-.setting:last-child{border-bottom:0}
+.setting:last-child{
+  border-bottom:0
+}
 
 .setting small{
   display:block;
@@ -244,7 +269,9 @@ h1{
   font-weight:bold
 }
 
-.nav-icon{font-size:21px}
+.nav-icon{
+  font-size:21px
+}
 
 .modal{
   display:none;
@@ -257,7 +284,9 @@ h1{
   padding:20px
 }
 
-.modal.show{display:flex}
+.modal.show{
+  display:flex
+}
 
 .modal-box{
   width:min(500px,100%);
@@ -268,7 +297,9 @@ h1{
   overflow:auto
 }
 
-.modal-box h2{margin-bottom:15px}
+.modal-box h2{
+  margin-bottom:15px
+}
 
 .close{
   float:right;
@@ -315,9 +346,13 @@ h1{
   margin-bottom:10px
 }
 
-.password-wrap{position:relative}
+.password-wrap{
+  position:relative
+}
 
-.password-wrap input{padding-right:50px}
+.password-wrap input{
+  padding-right:50px
+}
 
 .password-toggle{
   position:absolute;
@@ -346,7 +381,8 @@ h1{
   background:none;
   color:#5b4bdb;
   margin:0;
-  padding:0
+  padding:0;
+  cursor:pointer
 }
 
 .error{
@@ -367,7 +403,9 @@ h1{
   display:none
 }
 
-.hidden{display:none!important}
+.hidden{
+  display:none!important
+}
 
 .schedule-item{
   border:1px solid #eee;
@@ -382,7 +420,9 @@ h1{
   align-items:flex-start
 }
 
-.schedule-top>div:first-child{flex:1}
+.schedule-top>div:first-child{
+  flex:1
+}
 
 .schedule-title{
   font-weight:700;
@@ -409,9 +449,13 @@ h1{
   font-size:13px
 }
 
-.completed{opacity:.65}
+.completed{
+  opacity:.65
+}
 
-.completed .schedule-title{text-decoration:line-through}
+.completed .schedule-title{
+  text-decoration:line-through
+}
 
 .badge{
   display:inline-block;
@@ -460,8 +504,6 @@ h1{
   margin-top:10px
 }
 
-/* Notification switch */
-
 .switch{
   position:relative;
   display:inline-block;
@@ -498,15 +540,13 @@ h1{
   box-shadow:0 1px 4px rgba(0,0,0,.2)
 }
 
-.switch input:checked + .slider{
+.switch input:checked+.slider{
   background:#5b4bdb
 }
 
-.switch input:checked + .slider:before{
+.switch input:checked+.slider:before{
   transform:translateX(22px)
 }
-
-/* Connection request styles */
 
 .request-actions{
   display:flex;
@@ -550,14 +590,30 @@ h1{
     padding-bottom:90px
   }
 
-  header{padding:0 14px}
+  header{
+    padding:0 14px
+  }
 
-  h1{font-size:23px}
+  h1{
+    font-size:23px
+  }
 
-  .bottom-nav{overflow-x:auto}
+  .bottom-nav{
+    overflow-x:auto
+  }
 
-  .nav-btn{min-width:65px}
+  .nav-btn{
+    min-width:65px
+  }
 
+  .auth-screen{
+    align-items:flex-start;
+    padding-top:35px
+  }
+
+  .auth-box{
+    padding:22px 18px
+  }
 }
 </style>
 </head>
@@ -570,80 +626,86 @@ AUTH SCREEN
 
 <div id="authScreen" class="auth-screen">
 
-<div class="auth-box">
+  <div class="auth-box">
 
-<h1>ConnectSphere</h1>
+    <h1>ConnectSphere</h1>
 
-<p id="authSubtitle">
-Create your account and connect.
-</p>
+    <p id="authSubtitle">
+      Create your account and connect.
+    </p>
 
-<div id="authError" class="error"></div>
-<div id="authSuccess" class="success"></div>
+    <div id="authError" class="error"></div>
+    <div id="authSuccess" class="success"></div>
 
-<div id="signupFields">
+    <div id="signupFields">
 
-<input
-id="signupName"
-placeholder="Full name"
->
+      <input
+        id="signupName"
+        type="text"
+        placeholder="Full name"
+        autocomplete="name"
+      >
 
-<input
-id="signupUsername"
-placeholder="Username"
->
+      <input
+        id="signupUsername"
+        type="text"
+        placeholder="Username"
+        autocomplete="username"
+      >
 
-</div>
+    </div>
 
-<input
-id="authEmail"
-type="email"
-placeholder="Email"
->
+    <input
+      id="authEmail"
+      type="email"
+      placeholder="Email"
+      autocomplete="email"
+    >
 
-<div class="password-wrap">
+    <div class="password-wrap">
 
-<input
-id="authPassword"
-type="password"
-placeholder="Password"
->
+      <input
+        id="authPassword"
+        type="password"
+        placeholder="Password"
+        autocomplete="current-password"
+      >
 
-<button
-type="button"
-class="password-toggle"
-id="passwordToggle"
-onclick="togglePassword()"
->
-👁️
-</button>
+      <button
+        type="button"
+        class="password-toggle"
+        id="passwordToggle"
+      >
+        👁️
+      </button>
 
-</div>
+    </div>
 
-<button
-id="authButton"
-class="primary"
-onclick="handleAuth()"
->
-Sign Up
-</button>
+    <button
+      type="button"
+      id="authButton"
+      class="primary"
+    >
+      Sign Up
+    </button>
 
-<div class="auth-switch">
+    <div class="auth-switch">
 
-<span id="switchText">
-Already have an account?
-</span>
+      <span id="switchText">
+        Already have an account?
+      </span>
 
-<button
-onclick="toggleAuthMode()"
-id="switchButton"
->
-Log in
-</button>
+      <button
+        type="button"
+        id="switchButton"
+      >
+        Log In
+      </button>
 
-</div>
+    </div>
 
-</div>
+  </div>
+
 </div>
 
 
@@ -655,811 +717,721 @@ MAIN APP
 
 <header>
 
-<div class="logo">
-ConnectSphere
-</div>
+  <div class="logo">
+    ConnectSphere
+  </div>
 
-<div>
-
-<button
-class="icon-btn"
-onclick="showPage('settings')"
->
-⚙️
-</button>
-
-</div>
+  <button
+    type="button"
+    class="icon-btn"
+    id="settingsTopButton"
+  >
+    ⚙️
+  </button>
 
 </header>
 
 
 <main>
 
-<!-- =========================================================
-HOME
-========================================================= -->
+<!-- HOME -->
 
 <section id="home" class="page active">
 
-<h1>Welcome 👋</h1>
+  <h1>Welcome 👋</h1>
 
-<p class="subtitle">
-Connect with people and start conversations.
-</p>
+  <p class="subtitle">
+    Connect with people and start conversations.
+  </p>
 
-<div class="card">
+  <div class="card">
 
-<div class="user-row">
+    <div class="user-row">
 
-<div
-class="avatar"
-id="homeAvatar"
->
-Y
-</div>
+      <div class="avatar" id="homeAvatar">
+        Y
+      </div>
 
-<div class="user-info">
+      <div class="user-info">
 
-<strong id="homeName">
-Your Name
-</strong>
+        <strong id="homeName">
+          Your Name
+        </strong>
 
-<span id="homeUsername">
-@username
-</span>
+        <span id="homeUsername">
+          @username
+        </span>
 
-</div>
+      </div>
 
-</div>
+    </div>
 
-</div>
+  </div>
 
 
-<div class="card">
+  <div class="card">
 
-<h3>People on ConnectSphere</h3>
+    <h3>People on ConnectSphere</h3>
 
-<br>
+    <br>
 
-<div id="suggestions">
+    <div id="suggestions">
 
-<div class="empty">
-Loading profiles...
-</div>
+      <div class="empty">
+        Loading profiles...
+      </div>
 
-</div>
+    </div>
 
-</div>
+  </div>
 
 </section>
 
 
-<!-- =========================================================
-SEARCH
-========================================================= -->
+<!-- SEARCH -->
 
 <section id="search" class="page">
 
-<h1>Search</h1>
+  <h1>Search</h1>
 
-<p class="subtitle">
-Find registered ConnectSphere users.
-</p>
+  <p class="subtitle">
+    Find registered ConnectSphere users.
+  </p>
 
-<input
-id="searchInput"
-class="search-box"
-placeholder="Search people..."
-oninput="searchUsers()"
->
+  <input
+    id="searchInput"
+    class="search-box"
+    placeholder="Search people..."
+  >
 
-<div id="searchResults">
+  <div id="searchResults">
 
-<div class="empty">
-Start typing to search.
-</div>
+    <div class="empty">
+      Start typing to search.
+    </div>
 
-</div>
+  </div>
 
 </section>
 
 
-<!-- =========================================================
-REQUESTS
-========================================================= -->
+<!-- REQUESTS -->
 
 <section id="requests" class="page">
 
-<h1>Requests</h1>
+  <h1>Requests</h1>
 
-<p class="subtitle">
-Manage your connection requests.
-</p>
+  <p class="subtitle">
+    Manage your connection requests.
+  </p>
 
+  <div class="request-section-title">
+    Incoming Requests
+  </div>
 
-<div class="request-section-title">
-Incoming Requests
-</div>
+  <div id="incomingRequests">
 
-<div id="incomingRequests">
+    <div class="empty">
+      Loading requests...
+    </div>
 
-<div class="empty">
-Loading requests...
-</div>
+  </div>
 
-</div>
+  <div class="request-section-title">
+    Sent Requests
+  </div>
 
+  <div id="sentRequests">
 
-<div class="request-section-title">
-Sent Requests
-</div>
+    <div class="empty">
+      Loading requests...
+    </div>
 
-<div id="sentRequests">
+  </div>
 
-<div class="empty">
-Loading requests...
-</div>
+  <div class="request-section-title">
+    Your Connections
+  </div>
 
-</div>
+  <div id="connectionsList">
 
+    <div class="empty">
+      Loading connections...
+    </div>
 
-<div class="request-section-title">
-Your Connections
-</div>
-
-<div id="connectionsList">
-
-<div class="empty">
-Loading connections...
-</div>
-
-</div>
+  </div>
 
 </section>
 
 
-<!-- =========================================================
-CHATS
-========================================================= -->
+<!-- CHATS -->
 
 <section id="chats" class="page">
 
-<h1>Messages</h1>
+  <h1>Messages</h1>
 
-<p class="subtitle">
-Your conversations.
-</p>
+  <p class="subtitle">
+    Your conversations.
+  </p>
 
-<div class="empty">
-Real-time encrypted messaging will be added after
-the connection system is working.
-</div>
+  <div class="empty">
+    Real-time encrypted messaging will be added after
+    the connection system is working.
+  </div>
 
 </section>
 
 
-<!-- =========================================================
-SCHEDULE
-========================================================= -->
+<!-- SCHEDULE -->
 
 <section id="schedule" class="page">
 
-<h1>
-My Schedule 📅
-</h1>
+  <h1>
+    My Schedule 📅
+  </h1>
 
-<p class="subtitle">
-Build daily habits, weekly plans and one-time reminders.
-</p>
+  <p class="subtitle">
+    Build daily habits, weekly plans and one-time reminders.
+  </p>
+
+  <div class="card">
+
+    <div style="
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px
+    ">
+
+      <div>
+
+        <strong>
+          Progress
+        </strong>
+
+        <div
+          id="scheduleProgressText"
+          style="
+            color:#777;
+            font-size:13px;
+            margin-top:4px
+          "
+        >
+          0% completed
+        </div>
+
+      </div>
+
+      <button
+        type="button"
+        class="primary"
+        id="addScheduleButton"
+      >
+        + Add
+      </button>
+
+    </div>
+
+    <div class="progress-bar">
+
+      <div
+        id="scheduleProgressFill"
+        class="progress-fill"
+      ></div>
+
+    </div>
+
+  </div>
 
 
-<div class="card">
+  <div id="scheduleList">
 
-<div style="
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px
-">
+    <div class="empty">
+      Loading your schedules...
+    </div>
 
-<div>
-
-<strong>
-Progress
-</strong>
-
-<div
-id="scheduleProgressText"
-style="
-color:#777;
-font-size:13px;
-margin-top:4px
-"
->
-0% completed
-</div>
-
-</div>
-
-<button
-class="primary"
-onclick="openScheduleModal()"
->
-+ Add
-</button>
-
-</div>
-
-<div class="progress-bar">
-
-<div
-id="scheduleProgressFill"
-class="progress-fill"
-></div>
-
-</div>
-
-</div>
-
-
-<div id="scheduleList">
-
-<div class="empty">
-Loading your schedules...
-</div>
-
-</div>
+  </div>
 
 </section>
 
 
-<!-- =========================================================
-PROFILE
-========================================================= -->
+<!-- PROFILE -->
 
 <section id="profile" class="page">
 
-<div class="card profile">
+  <div class="card profile">
 
-<div
-class="avatar"
-id="profileAvatar"
->
-Y
-</div>
+    <div
+      class="avatar"
+      id="profileAvatar"
+    >
+      Y
+    </div>
 
-<h2 id="profileName">
-Your Name
-</h2>
+    <h2 id="profileName">
+      Your Name
+    </h2>
 
-<p id="profileUsername">
-@username
-</p>
+    <p id="profileUsername">
+      @username
+    </p>
 
+    <div class="stat-row">
 
-<div class="stat-row">
+      <div class="stat">
 
-<div class="stat">
+        <strong id="connectionCount">
+          0
+        </strong>
 
-<strong id="connectionCount">
-0
-</strong>
+        <span>
+          Connections
+        </span>
 
-<span>
-Connections
-</span>
+      </div>
 
-</div>
+      <div class="stat">
 
+        <strong id="requestCount">
+          0
+        </strong>
 
-<div class="stat">
+        <span>
+          Requests
+        </span>
 
-<strong id="requestCount">
-0
-</strong>
+      </div>
 
-<span>
-Requests
-</span>
+    </div>
 
-</div>
+    <button
+      type="button"
+      class="primary"
+      id="editProfileButton"
+    >
+      Edit Profile
+    </button>
 
-</div>
-
-
-<button
-class="primary"
-onclick="editProfile()"
->
-Edit Profile
-</button>
-
-</div>
+  </div>
 
 
-<div class="card">
+  <div class="card">
 
-<h3>
-About
-</h3>
+    <h3>
+      About
+    </h3>
 
-<br>
+    <br>
 
-<p id="profileBio">
-Your bio will appear here.
-</p>
+    <p id="profileBio">
+      Your bio will appear here.
+    </p>
 
-</div>
+  </div>
 
 </section>
 
 
-<!-- =========================================================
-SETTINGS
-========================================================= -->
+<!-- SETTINGS -->
 
 <section id="settings" class="page">
 
-<h1>
-Settings
-</h1>
+  <h1>
+    Settings
+  </h1>
 
-<p class="subtitle">
-Control your account.
-</p>
+  <p class="subtitle">
+    Control your account.
+  </p>
 
+  <div class="card">
 
-<div class="card">
+    <div class="setting">
 
-<div class="setting">
+      <div>
 
-<div>
+        <strong>
+          Private account
+        </strong>
 
-<strong>
-Private account
-</strong>
+        <small>
+          Require requests before connecting.
+        </small>
 
-<small>
-Require requests before connecting.
-</small>
+      </div>
 
-</div>
+      <input
+        type="checkbox"
+        id="privateAccount"
+      >
 
-<input
-type="checkbox"
-id="privateAccount"
->
-
-</div>
-
-
-<div class="setting">
-
-<div>
-
-<strong>
-Show online status
-</strong>
-
-<small>
-Allow connections to see your status.
-</small>
-
-</div>
-
-<input
-type="checkbox"
-id="onlineStatus"
-checked
->
-
-</div>
-
-</div>
+    </div>
 
 
-<!-- NOTIFICATIONS -->
+    <div class="setting">
 
-<div class="card">
+      <div>
 
-<h3>
-Notifications 🔔
-</h3>
+        <strong>
+          Show online status
+        </strong>
 
-<p class="notification-status">
-Turn browser notifications ON or OFF for ConnectSphere reminders.
-</p>
+        <small>
+          Allow connections to see your status.
+        </small>
 
+      </div>
 
-<div class="setting">
+      <input
+        type="checkbox"
+        id="onlineStatus"
+        checked
+      >
 
-<div>
+    </div>
 
-<strong>
-Push Notifications
-</strong>
-
-<small id="notificationSwitchText">
-Notifications are OFF.
-</small>
-
-</div>
+  </div>
 
 
-<label class="switch">
+  <div class="card">
 
-<input
-type="checkbox"
-id="notificationToggle"
-onchange="togglePushNotifications()"
->
+    <h3>
+      Notifications 🔔
+    </h3>
 
-<span class="slider"></span>
+    <p class="notification-status">
+      Turn browser notifications ON or OFF for ConnectSphere reminders.
+    </p>
 
-</label>
+    <div class="setting">
 
-</div>
+      <div>
 
+        <strong>
+          Push Notifications
+        </strong>
 
-<div
-id="notificationStatus"
-class="notification-status"
->
-Notifications are not enabled.
-</div>
+        <small id="notificationSwitchText">
+          Notifications are OFF.
+        </small>
 
-</div>
+      </div>
 
+      <label class="switch">
 
-<div class="card">
+        <input
+          type="checkbox"
+          id="notificationToggle"
+        >
 
-<h3>
-Account
-</h3>
+        <span class="slider"></span>
 
-<br>
+      </label>
 
-<button
-class="secondary"
-onclick="editProfile()"
->
-Edit profile
-</button>
+    </div>
 
-<br><br>
+    <div
+      id="notificationStatus"
+      class="notification-status"
+    >
+      Notifications are not enabled.
+    </div>
 
-<button
-class="danger"
-onclick="logout()"
->
-Log out
-</button>
-
-</div>
+  </div>
 
 
-<div class="card">
+  <div class="card">
 
-<h3>
-Security 🔐
-</h3>
+    <h3>
+      Account
+    </h3>
 
-<br>
+    <br>
 
-<p style="color:#777;line-height:1.6">
+    <button
+      type="button"
+      class="secondary"
+      id="editProfileSettingsButton"
+    >
+      Edit profile
+    </button>
 
-Your account uses Supabase Authentication
-and database Row Level Security.
+    <br><br>
 
-Schedule data and connection requests
-are protected by user-level RLS policies.
+    <button
+      type="button"
+      class="danger"
+      id="logoutButton"
+    >
+      Log out
+    </button>
 
-</p>
+  </div>
 
-</div>
+
+  <div class="card">
+
+    <h3>
+      Security 🔐
+    </h3>
+
+    <br>
+
+    <p style="color:#777;line-height:1.6">
+
+      Your account uses Supabase Authentication
+      and database Row Level Security.
+
+      Schedule data and connection requests
+      are protected by user-level RLS policies.
+
+    </p>
+
+  </div>
 
 </section>
 
 </main>
 
 
-<!-- =========================================================
-BOTTOM NAVIGATION
-========================================================= -->
+<!-- BOTTOM NAV -->
 
 <nav class="bottom-nav">
 
-<button
-class="nav-btn active"
-onclick="showPage('home',this)"
->
+  <button
+    type="button"
+    class="nav-btn active"
+    data-page="home"
+  >
+    <span class="nav-icon">🏠</span>
+    Home
+  </button>
 
-<span class="nav-icon">
-🏠
-</span>
+  <button
+    type="button"
+    class="nav-btn"
+    data-page="search"
+  >
+    <span class="nav-icon">🔎</span>
+    Search
+  </button>
 
-Home
+  <button
+    type="button"
+    class="nav-btn"
+    data-page="requests"
+  >
+    <span class="nav-icon">👥</span>
+    Requests
+  </button>
 
-</button>
+  <button
+    type="button"
+    class="nav-btn"
+    data-page="chats"
+  >
+    <span class="nav-icon">💬</span>
+    Chats
+  </button>
 
+  <button
+    type="button"
+    class="nav-btn"
+    data-page="schedule"
+  >
+    <span class="nav-icon">📅</span>
+    Schedule
+  </button>
 
-<button
-class="nav-btn"
-onclick="showPage('search',this)"
->
-
-<span class="nav-icon">
-🔎
-</span>
-
-Search
-
-</button>
-
-
-<button
-class="nav-btn"
-onclick="showPage('requests',this)"
->
-
-<span class="nav-icon">
-👥
-</span>
-
-Requests
-
-</button>
-
-
-<button
-class="nav-btn"
-onclick="showPage('chats',this)"
->
-
-<span class="nav-icon">
-💬
-</span>
-
-Chats
-
-</button>
-
-
-<button
-class="nav-btn"
-onclick="showPage('schedule',this)"
->
-
-<span class="nav-icon">
-📅
-</span>
-
-Schedule
-
-</button>
-
-
-<button
-class="nav-btn"
-onclick="showPage('profile',this)"
->
-
-<span class="nav-icon">
-👤
-</span>
-
-Profile
-
-</button>
+  <button
+    type="button"
+    class="nav-btn"
+    data-page="profile"
+  >
+    <span class="nav-icon">👤</span>
+    Profile
+  </button>
 
 </nav>
 
 </div>
 
 
-<!-- =========================================================
-PROFILE MODAL
-========================================================= -->
+<!-- PROFILE MODAL -->
 
 <div
-class="modal"
-id="profileModal"
+  class="modal"
+  id="profileModal"
 >
 
-<div class="modal-box">
+  <div class="modal-box">
 
-<button
-class="close"
-onclick="closeModal('profileModal')"
->
-×
-</button>
+    <button
+      type="button"
+      class="close"
+      id="closeProfileModal"
+    >
+      ×
+    </button>
 
-<h2>
-Edit Profile
-</h2>
+    <h2>
+      Edit Profile
+    </h2>
 
-<input
-id="editName"
-class="search-box"
-placeholder="Your name"
->
+    <input
+      id="editName"
+      placeholder="Your name"
+    >
 
-<input
-id="editUsername"
-class="search-box"
-placeholder="Username"
->
+    <input
+      id="editUsername"
+      placeholder="Username"
+    >
 
-<input
-id="editBio"
-class="search-box"
-placeholder="Bio"
->
+    <input
+      id="editBio"
+      placeholder="Bio"
+    >
 
-<button
-class="primary"
-onclick="saveProfile()"
->
-Save Profile
-</button>
+    <button
+      type="button"
+      class="primary"
+      id="saveProfileButton"
+    >
+      Save Profile
+    </button>
+
+  </div>
 
 </div>
-</div>
 
 
-<!-- =========================================================
-SCHEDULE MODAL
-========================================================= -->
+<!-- SCHEDULE MODAL -->
 
 <div
-class="modal"
-id="scheduleModal"
+  class="modal"
+  id="scheduleModal"
 >
 
-<div class="modal-box">
+  <div class="modal-box">
 
-<button
-class="close"
-onclick="closeModal('scheduleModal')"
->
-×
-</button>
+    <button
+      type="button"
+      class="close"
+      id="closeScheduleModal"
+    >
+      ×
+    </button>
 
-<h2>
-Add Schedule
-</h2>
+    <h2>
+      Add Schedule
+    </h2>
 
+    <label class="form-label">
+      Title
+    </label>
 
-<label class="form-label">
-Title
-</label>
+    <input
+      id="scheduleTitle"
+      placeholder="Example: Study for 30 minutes"
+    >
 
-<input
-id="scheduleTitle"
-placeholder="Example: Study for 30 minutes"
->
+    <label class="form-label">
+      Description
+    </label>
 
+    <textarea
+      id="scheduleDescription"
+      rows="3"
+      placeholder="Optional details"
+    ></textarea>
 
-<label class="form-label">
-Description
-</label>
+    <label class="form-label">
+      Type
+    </label>
 
-<textarea
-id="scheduleDescription"
-rows="3"
-placeholder="Optional details"
-></textarea>
+    <select id="scheduleType">
 
+      <option value="daily">
+        Daily
+      </option>
 
-<label class="form-label">
-Type
-</label>
+      <option value="weekly">
+        Weekly
+      </option>
 
-<select
-id="scheduleType"
-onchange="updateScheduleFields()"
->
+      <option value="once">
+        One-time
+      </option>
 
-<option value="daily">
-Daily
-</option>
+    </select>
 
-<option value="weekly">
-Weekly
-</option>
+    <label class="form-label">
+      Reminder time
+    </label>
 
-<option value="once">
-One-time
-</option>
+    <input
+      id="scheduleTime"
+      type="time"
+    >
 
-</select>
+    <div
+      id="weeklyField"
+      class="hidden"
+    >
 
+      <label class="form-label">
+        Day of week
+      </label>
 
-<label class="form-label">
-Reminder time
-</label>
+      <select id="scheduleDay">
 
-<input
-id="scheduleTime"
-type="time"
->
+        <option value="0">Sunday</option>
+        <option value="1">Monday</option>
+        <option value="2">Tuesday</option>
+        <option value="3">Wednesday</option>
+        <option value="4">Thursday</option>
+        <option value="5">Friday</option>
+        <option value="6">Saturday</option>
 
+      </select>
 
-<div
-id="weeklyField"
-class="hidden"
->
+    </div>
 
-<label class="form-label">
-Day of week
-</label>
+    <div
+      id="onceField"
+      class="hidden"
+    >
 
-<select id="scheduleDay">
+      <label class="form-label">
+        Date
+      </label>
 
-<option value="0">
-Sunday
-</option>
+      <input
+        id="scheduleDate"
+        type="date"
+      >
 
-<option value="1">
-Monday
-</option>
+    </div>
 
-<option value="2">
-Tuesday
-</option>
+    <button
+      type="button"
+      class="primary"
+      style="width:100%;margin-top:8px"
+      id="saveScheduleButton"
+    >
+      Save Schedule
+    </button>
 
-<option value="3">
-Wednesday
-</option>
-
-<option value="4">
-Thursday
-</option>
-
-<option value="5">
-Friday
-</option>
-
-<option value="6">
-Saturday
-</option>
-
-</select>
+  </div>
 
 </div>
 
 
-<div
-id="onceField"
-class="hidden"
->
-
-<label class="form-label">
-Date
-</label>
-
-<input
-id="scheduleDate"
-type="date"
->
-
-</div>
-
-
-<button
-class="primary"
-style="width:100%;margin-top:8px"
-onclick="saveSchedule()"
->
-Save Schedule
-</button>
-
-</div>
-</div>
-
+<!-- SUPABASE -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 <script>
 
@@ -1473,268 +1445,367 @@ const SUPABASE_URL =
 const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_-GofAlZERkBVXbEOQpF3Rg_w0mGMaA4";
 
-const supabaseClient =
-window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_PUBLISHABLE_KEY
-);
-
-
-const PUSH_FUNCTION_URL =
-SUPABASE_URL +
-"/functions/v1/hyper-processor";
-
-
-const VAPID_PUBLIC_KEY =
-"BPXQwAeUakIVhv46REqOG4rbgPeOG2vA3XD4dcU62Njv_QBuiumeMdMKaP-slpYsWEKt7k8oWRDNNt4qpJX670A";
-
+let supabaseClient = null;
 
 let currentUser = null;
 let currentProfile = null;
 let loginMode = false;
 
+const PUSH_FUNCTION_URL =
+SUPABASE_URL +
+"/functions/v1/hyper-processor";
+
+const VAPID_PUBLIC_KEY =
+"BPXQwAeUakIVhv46REqOG4rbgPeOG2vA3XD4dcU62Njv_QBuiumeMdMKaP-slpYsWEKt7k8oWRDNNt4qpJX670A";
+
 
 /* =========================================================
-AUTH
+INITIALIZE
+========================================================= */
+
+function initializeSupabase(){
+
+  if(
+    !window.supabase ||
+    !window.supabase.createClient
+  ){
+
+    showError(
+      "ConnectSphere could not load Supabase. Please check your internet connection and refresh the page."
+    );
+
+    return false;
+  }
+
+  supabaseClient =
+    window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+  return true;
+}
+
+
+/* =========================================================
+AUTH MODE
+========================================================= */
+
+function toggleAuthMode(){
+
+  loginMode = !loginMode;
+
+  const signupFields =
+    document.getElementById("signupFields");
+
+  const authButton =
+    document.getElementById("authButton");
+
+  const subtitle =
+    document.getElementById("authSubtitle");
+
+  const switchText =
+    document.getElementById("switchText");
+
+  const switchButton =
+    document.getElementById("switchButton");
+
+  if(loginMode){
+
+    signupFields.classList.add("hidden");
+
+    authButton.textContent =
+      "Log In";
+
+    subtitle.textContent =
+      "Welcome back to ConnectSphere.";
+
+    switchText.textContent =
+      "Don't have an account?";
+
+    switchButton.textContent =
+      "Sign Up";
+
+    document
+      .getElementById("authPassword")
+      .setAttribute(
+        "autocomplete",
+        "current-password"
+      );
+
+  }else{
+
+    signupFields.classList.remove("hidden");
+
+    authButton.textContent =
+      "Sign Up";
+
+    subtitle.textContent =
+      "Create your account and connect.";
+
+    switchText.textContent =
+      "Already have an account?";
+
+    switchButton.textContent =
+      "Log In";
+
+    document
+      .getElementById("authPassword")
+      .setAttribute(
+        "autocomplete",
+        "new-password"
+      );
+
+  }
+
+  clearMessages();
+}
+
+
+/* =========================================================
+PASSWORD
 ========================================================= */
 
 function togglePassword(){
 
-const password =
-document.getElementById("authPassword");
+  const password =
+    document.getElementById("authPassword");
 
-const button =
-document.getElementById("passwordToggle");
+  const button =
+    document.getElementById("passwordToggle");
 
-if(password.type === "password"){
+  if(
+    password.type === "password"
+  ){
 
-password.type = "text";
+    password.type = "text";
 
-button.textContent = "🙈";
+    button.textContent =
+      "🙈";
 
-}else{
+  }else{
 
-password.type = "password";
+    password.type = "password";
 
-button.textContent = "👁️";
+    button.textContent =
+      "👁️";
 
+  }
 }
 
-}
 
-
-function toggleAuthMode(){
-
-loginMode = !loginMode;
-
-document
-.getElementById("signupFields")
-.classList
-.toggle("hidden",loginMode);
-
-
-document
-.getElementById("authButton")
-.textContent =
-loginMode
-? "Log In"
-: "Sign Up";
-
-
-document
-.getElementById("authSubtitle")
-.textContent =
-loginMode
-? "Welcome back to ConnectSphere."
-: "Create your account and connect.";
-
-
-document
-.getElementById("switchText")
-.textContent =
-loginMode
-? "Don't have an account?"
-: "Already have an account?";
-
-
-document
-.getElementById("switchButton")
-.textContent =
-loginMode
-? "Sign Up"
-: "Log In";
-
-
-clearMessages();
-
-}
-
+/* =========================================================
+AUTHENTICATION
+========================================================= */
 
 async function handleAuth(){
 
-clearMessages();
+  clearMessages();
 
-const email =
-document.getElementById("authEmail")
-.value
-.trim();
+  if(!supabaseClient){
 
-const password =
-document.getElementById("authPassword")
-.value;
+    showError(
+      "Supabase is not loaded. Please refresh the page."
+    );
 
+    return;
+  }
 
-if(!email || !password){
+  const email =
+    document
+      .getElementById("authEmail")
+      .value
+      .trim();
 
-showError(
-"Please enter your email and password."
-);
+  const password =
+    document
+      .getElementById("authPassword")
+      .value;
 
-return;
+  if(!email || !password){
 
-}
+    showError(
+      "Please enter your email and password."
+    );
 
+    return;
+  }
 
-try{
+  const authButton =
+    document.getElementById("authButton");
 
-if(loginMode){
+  authButton.disabled = true;
 
-const {data,error} =
-await supabaseClient.auth.signInWithPassword({
-email,
-password
-});
+  authButton.textContent =
+    loginMode
+      ? "Logging in..."
+      : "Creating account...";
 
-if(error) throw error;
+  try{
 
-currentUser = data.user;
+    if(loginMode){
 
+      const {
+        data,
+        error
+      } =
+      await supabaseClient.auth.signInWithPassword({
 
-if(!currentUser){
+        email:email,
 
-showError(
-"Login succeeded, but no user was returned."
-);
+        password:password
 
-return;
+      });
 
-}
+      if(error){
+        throw error;
+      }
 
-await loadProfile();
+      currentUser =
+        data.user;
 
-}else{
+      if(!currentUser){
 
-const name =
-document.getElementById("signupName")
-.value
-.trim();
+        showError(
+          "Login succeeded, but no user was returned."
+        );
 
+        return;
+      }
 
-const username =
-document
-.getElementById("signupUsername")
-.value
-.trim()
-.toLowerCase();
+      await loadProfile();
 
+    }else{
 
-if(!name || !username){
+      const name =
+        document
+          .getElementById("signupName")
+          .value
+          .trim();
 
-showError(
-"Please enter your name and username."
-);
+      const username =
+        document
+          .getElementById("signupUsername")
+          .value
+          .trim()
+          .toLowerCase();
 
-return;
+      if(!name || !username){
 
-}
+        showError(
+          "Please enter your name and username."
+        );
 
+        return;
+      }
 
-if(!/^[a-z0-9_]{3,30}$/.test(username)){
+      if(
+        !/^[a-z0-9_]{3,30}$/.test(username)
+      ){
 
-showError(
-"Username must be 3-30 characters using letters, numbers or underscore."
-);
+        showError(
+          "Username must be 3-30 characters using letters, numbers or underscore."
+        );
 
-return;
+        return;
+      }
 
-}
+      const {
+        data,
+        error
+      } =
+      await supabaseClient.auth.signUp({
 
+        email:email,
 
-const {data,error} =
-await supabaseClient.auth.signUp({
+        password:password,
 
-email,
-password,
+        options:{
+          emailRedirectTo:
+          "https://messagerpersonal.github.io/connectsphere.com/",
 
-options:{
-emailRedirectTo:
-"https://messagerpersonal.github.io/connectsphere.com/",
+          data:{
+            display_name:name,
+            username:username
+          }
+        }
 
-data:{
-display_name:name,
-username
-}
+      });
 
-}
+      if(error){
+        throw error;
+      }
 
-});
+      if(!data.user){
 
+        showError(
+          "Signup did not return a user. Please try again."
+        );
 
-if(error) throw error;
+        return;
+      }
 
+      showSuccess(
+        "Account created! Check your email, confirm your account, then log in."
+      );
 
-if(!data.user){
+      loginMode = true;
 
-showError(
-"Signup did not return a user. Please try again."
-);
+      document
+        .getElementById("signupFields")
+        .classList
+        .add("hidden");
 
-return;
+      document
+        .getElementById("authButton")
+        .textContent =
+        "Log In";
 
-}
+      document
+        .getElementById("authSubtitle")
+        .textContent =
+        "Check your email, then log in.";
 
+      document
+        .getElementById("switchText")
+        .textContent =
+        "Don't have an account?";
 
-showSuccess(
-"Account created! Check your email, confirm your account, then log in."
-);
+      document
+        .getElementById("switchButton")
+        .textContent =
+        "Sign Up";
+    }
 
+  }catch(error){
 
-loginMode = true;
+    console.error(
+      "Authentication error:",
+      error
+    );
 
+    showError(
+      error.message ||
+      "Authentication failed."
+    );
 
-document
-.getElementById("signupFields")
-.classList
-.add("hidden");
+  }finally{
 
+    authButton.disabled = false;
 
-document
-.getElementById("authButton")
-.textContent =
-"Log In";
+    if(!loginMode){
 
+      authButton.textContent =
+        "Sign Up";
 
-document
-.getElementById("authSubtitle")
-.textContent =
-"Check your email, then log in.";
+    }else{
 
-}
+      authButton.textContent =
+        "Log In";
 
-}catch(error){
+    }
 
-console.error(
-"Authentication error:",
-error
-);
-
-showError(
-error.message ||
-"Authentication failed."
-);
-
-}
-
+  }
 }
 
 
@@ -1744,196 +1815,174 @@ PROFILE
 
 async function loadProfile(){
 
-if(!currentUser) return;
+  if(!currentUser) return;
 
+  const {
+    data,
+    error
+  } =
+  await supabaseClient
+    .from("profiles")
+    .select("*")
+    .eq("id",currentUser.id)
+    .maybeSingle();
 
-const {data,error} =
-await supabaseClient
-.from("profiles")
-.select("*")
-.eq("id",currentUser.id)
-.maybeSingle();
+  if(error){
 
+    console.error(error);
 
-if(error){
+    showError(
+      "Could not load your profile: " +
+      error.message
+    );
 
-console.error(error);
+    return;
+  }
 
-showError(
-"Could not load your profile: " +
-error.message
-);
+  if(!data){
 
-return;
+    const metadata =
+      currentUser.user_metadata || {};
 
-}
+    const displayName =
+      metadata.display_name ||
+      currentUser.email?.split("@")[0] ||
+      "User";
 
+    const username =
+      metadata.username ||
+      (
+        "user_" +
+        currentUser.id
+          .replace(/-/g,"")
+          .slice(0,8)
+      );
 
-if(!data){
+    const {
+      data:newProfile,
+      error:createError
+    } =
+    await supabaseClient
+      .from("profiles")
+      .insert({
 
-const metadata =
-currentUser.user_metadata || {};
+        id:currentUser.id,
 
+        username:username,
 
-const displayName =
-metadata.display_name ||
-currentUser.email?.split("@")[0] ||
-"User";
+        display_name:displayName,
 
+        bio:"",
 
-const username =
-metadata.username ||
-(
-"user_" +
-currentUser.id
-.replace(/-/g,"")
-.slice(0,8)
-);
+        avatar_url:null
 
+      })
+      .select()
+      .single();
 
-const {
-data:newProfile,
-error:createError
-} =
-await supabaseClient
-.from("profiles")
-.insert({
+    if(createError){
 
-id:currentUser.id,
+      console.error(createError);
 
-username,
+      showError(
+        "Your account is logged in, but profile creation failed: " +
+        createError.message
+      );
 
-display_name:displayName,
+      return;
+    }
 
-bio:"",
+    currentProfile =
+      newProfile;
 
-avatar_url:null
+  }else{
 
-})
-.select()
-.single();
+    currentProfile =
+      data;
+  }
 
+  showApp();
 
-if(createError){
+  updateProfileUI();
 
-console.error(createError);
+  await loadPeople();
 
-showError(
-"Your account is logged in, but profile creation failed: " +
-createError.message
-);
+  await loadConnectionRequests();
 
-return;
+  await loadSchedules();
 
-}
-
-
-currentProfile = newProfile;
-
-}else{
-
-currentProfile = data;
-
-}
-
-
-showApp();
-
-updateProfileUI();
-
-await loadPeople();
-
-await loadConnectionRequests();
-
-await loadSchedules();
-
-await checkNotificationStatus();
-
+  await checkNotificationStatus();
 }
 
 
 function showApp(){
 
-document
-.getElementById("authScreen")
-.classList
-.add("hidden");
+  document
+    .getElementById("authScreen")
+    .classList
+    .add("hidden");
 
-
-document
-.getElementById("app")
-.classList
-.remove("hidden");
-
+  document
+    .getElementById("app")
+    .classList
+    .remove("hidden");
 }
 
 
 function updateProfileUI(){
 
-if(!currentProfile) return;
+  if(!currentProfile) return;
 
+  const name =
+    currentProfile.display_name ||
+    "Your Name";
 
-const name =
-currentProfile.display_name ||
-"Your Name";
+  const username =
+    currentProfile.username ||
+    "username";
 
+  const bio =
+    currentProfile.bio ||
+    "Your bio will appear here.";
 
-const username =
-currentProfile.username ||
-"username";
+  const letter =
+    name.charAt(0).toUpperCase() ||
+    "Y";
 
+  document
+    .getElementById("homeName")
+    .textContent =
+    name;
 
-const bio =
-currentProfile.bio ||
-"Your bio will appear here.";
+  document
+    .getElementById("homeUsername")
+    .textContent =
+    "@" + username;
 
+  document
+    .getElementById("profileName")
+    .textContent =
+    name;
 
-const letter =
-name.charAt(0).toUpperCase() ||
-"Y";
+  document
+    .getElementById("profileUsername")
+    .textContent =
+    "@" + username;
 
+  document
+    .getElementById("profileBio")
+    .textContent =
+    bio;
 
-document
-.getElementById("homeName")
-.textContent =
-name;
+  document
+    .getElementById("homeAvatar")
+    .textContent =
+    letter;
 
-
-document
-.getElementById("homeUsername")
-.textContent =
-"@" + username;
-
-
-document
-.getElementById("profileName")
-.textContent =
-name;
-
-
-document
-.getElementById("profileUsername")
-.textContent =
-"@" + username;
-
-
-document
-.getElementById("profileBio")
-.textContent =
-bio;
-
-
-document
-.getElementById("homeAvatar")
-.textContent =
-letter;
-
-
-document
-.getElementById("profileAvatar")
-.textContent =
-letter;
-
+  document
+    .getElementById("profileAvatar")
+    .textContent =
+    letter;
 }
 
 
@@ -1943,213 +1992,195 @@ PEOPLE
 
 async function loadPeople(){
 
-if(!currentUser) return;
+  if(!currentUser) return;
 
+  const {
+    data,
+    error
+  } =
+  await supabaseClient
+    .from("profiles")
+    .select(
+      "id,username,display_name,bio,avatar_url"
+    )
+    .neq("id",currentUser.id)
+    .limit(20);
 
-const {data,error} =
-await supabaseClient
-.from("profiles")
-.select(
-"id,username,display_name,bio,avatar_url"
-)
-.neq("id",currentUser.id)
-.limit(20);
+  if(error){
 
+    console.error(error);
 
-if(error){
+    document
+      .getElementById("suggestions")
+      .innerHTML =
+      '<div class="empty">Unable to load profiles.</div>';
 
-console.error(error);
+    return;
+  }
 
-document
-.getElementById("suggestions")
-.innerHTML =
-'<div class="empty">Unable to load profiles.</div>';
-
-return;
-
-}
-
-
-renderPeople(data || []);
-
+  renderPeople(data || []);
 }
 
 
 function renderPeople(users){
 
-const container =
-document.getElementById("suggestions");
+  const container =
+    document.getElementById("suggestions");
 
+  if(!users.length){
 
-if(!users.length){
+    container.innerHTML =
+      '<div class="empty">No other users yet.</div>';
 
-container.innerHTML =
-'<div class="empty">No other users yet.</div>';
+    return;
+  }
 
-return;
-
-}
-
-
-container.innerHTML =
-users
-.map(profileCard)
-.join("");
-
+  container.innerHTML =
+    users
+      .map(profileCard)
+      .join("");
 }
 
 
 function profileCard(user){
 
-const name =
-user.display_name ||
-"User";
+  const name =
+    user.display_name ||
+    "User";
 
+  const letter =
+    name.charAt(0).toUpperCase();
 
-const letter =
-name.charAt(0).toUpperCase();
+  return `
 
+  <div class="card">
 
-return `
+    <div class="user-row">
 
-<div class="card">
+      <div class="avatar">
+        ${escapeHTML(letter)}
+      </div>
 
-<div class="user-row">
+      <div class="user-info">
 
-<div class="avatar">
-${escapeHTML(letter)}
-</div>
+        <strong>
+          ${escapeHTML(name)}
+        </strong>
 
+        <span>
+          @${escapeHTML(user.username || "")}
+        </span>
 
-<div class="user-info">
+        <span>
+          ${escapeHTML(user.bio || "")}
+        </span>
 
-<strong>
-${escapeHTML(name)}
-</strong>
+      </div>
 
-<span>
-@${escapeHTML(user.username || "")}
-</span>
+      <div style="
+        display:flex;
+        flex-direction:column;
+        gap:7px;
+        align-items:flex-end;
+      ">
 
-<span>
-${escapeHTML(user.bio || "")}
-</span>
+        <button
+          type="button"
+          class="secondary"
+          onclick="viewProfile('${user.id}')"
+        >
+          View
+        </button>
 
-</div>
+        <button
+          type="button"
+          class="primary"
+          onclick="sendConnectionRequest('${user.id}')"
+        >
+          Connect
+        </button>
 
+      </div>
 
-<div style="
-display:flex;
-flex-direction:column;
-gap:7px;
-align-items:flex-end;
-">
+    </div>
 
-<button
-class="secondary"
-onclick="viewProfile('${user.id}')"
->
-View
-</button>
+  </div>
 
-<button
-class="primary"
-onclick="sendConnectionRequest('${user.id}')"
->
-Connect
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
+  `;
 }
 
 
 /* =========================================================
-SEARCH USERS
+SEARCH
 ========================================================= */
 
 async function searchUsers(){
 
-const query =
-document
-.getElementById("searchInput")
-.value
-.trim()
-.toLowerCase();
+  const query =
+    document
+      .getElementById("searchInput")
+      .value
+      .trim()
+      .toLowerCase();
 
+  const container =
+    document.getElementById("searchResults");
 
-const container =
-document.getElementById("searchResults");
+  if(!query){
 
+    container.innerHTML =
+      '<div class="empty">Start typing to search.</div>';
 
-if(!query){
+    return;
+  }
 
-container.innerHTML =
-'<div class="empty">Start typing to search.</div>';
+  if(!currentUser){
 
-return;
+    container.innerHTML =
+      '<div class="empty">Please log in again.</div>';
 
-}
+    return;
+  }
 
+  const {
+    data,
+    error
+  } =
+  await supabaseClient
+    .from("profiles")
+    .select(
+      "id,username,display_name,bio,avatar_url"
+    )
+    .neq("id",currentUser.id)
+    .or(
+      `username.ilike.%${query}%,display_name.ilike.%${query}%`
+    )
+    .limit(20);
 
-if(!currentUser){
+  if(error){
 
-container.innerHTML =
-'<div class="empty">Please log in again.</div>';
+    console.error(error);
 
-return;
+    container.innerHTML =
+      '<div class="empty">Search failed: ' +
+      escapeHTML(error.message) +
+      '</div>';
 
-}
+    return;
+  }
 
+  if(!data || !data.length){
 
-const {data,error} =
-await supabaseClient
-.from("profiles")
-.select(
-"id,username,display_name,bio,avatar_url"
-)
-.neq("id",currentUser.id)
-.or(
-`username.ilike.%${query}%,display_name.ilike.%${query}%`
-)
-.limit(20);
+    container.innerHTML =
+      '<div class="empty">No users found.</div>';
 
+    return;
+  }
 
-if(error){
-
-console.error(error);
-
-container.innerHTML =
-'<div class="empty">Search failed: ' +
-escapeHTML(error.message) +
-'</div>';
-
-return;
-
-}
-
-
-if(!data || !data.length){
-
-container.innerHTML =
-'<div class="empty">No users found.</div>';
-
-return;
-
-}
-
-
-container.innerHTML =
-data
-.map(profileCard)
-.join("");
-
+  container.innerHTML =
+    data
+      .map(profileCard)
+      .join("");
 }
 
 
@@ -2159,33 +2190,32 @@ VIEW PROFILE
 
 async function viewProfile(id){
 
-const {data,error} =
-await supabaseClient
-.from("profiles")
-.select("*")
-.eq("id",id)
-.single();
+  const {
+    data,
+    error
+  } =
+  await supabaseClient
+    .from("profiles")
+    .select("*")
+    .eq("id",id)
+    .single();
 
+  if(error){
 
-if(error){
+    alert(
+      "Unable to load profile."
+    );
 
-alert(
-"Unable to load profile."
-);
+    return;
+  }
 
-return;
-
-}
-
-
-alert(
-(data.display_name || "User") +
-"\n@" +
-(data.username || "") +
-"\n\n" +
-(data.bio || "")
-);
-
+  alert(
+    (data.display_name || "User") +
+    "\n@" +
+    (data.username || "") +
+    "\n\n" +
+    (data.bio || "")
+  );
 }
 
 
@@ -2195,121 +2225,111 @@ EDIT PROFILE
 
 function editProfile(){
 
-if(!currentProfile) return;
+  if(!currentProfile) return;
 
+  document
+    .getElementById("editName")
+    .value =
+    currentProfile.display_name || "";
 
-document
-.getElementById("editName")
-.value =
-currentProfile.display_name || "";
+  document
+    .getElementById("editUsername")
+    .value =
+    currentProfile.username || "";
 
+  document
+    .getElementById("editBio")
+    .value =
+    currentProfile.bio || "";
 
-document
-.getElementById("editUsername")
-.value =
-currentProfile.username || "";
-
-
-document
-.getElementById("editBio")
-.value =
-currentProfile.bio || "";
-
-
-document
-.getElementById("profileModal")
-.classList
-.add("show");
-
+  document
+    .getElementById("profileModal")
+    .classList
+    .add("show");
 }
 
 
 async function saveProfile(){
 
-const name =
-document
-.getElementById("editName")
-.value
-.trim();
+  const name =
+    document
+      .getElementById("editName")
+      .value
+      .trim();
 
+  const username =
+    document
+      .getElementById("editUsername")
+      .value
+      .trim()
+      .toLowerCase();
 
-const username =
-document
-.getElementById("editUsername")
-.value
-.trim()
-.toLowerCase();
+  const bio =
+    document
+      .getElementById("editBio")
+      .value
+      .trim();
 
+  if(!name || !username){
 
-const bio =
-document
-.getElementById("editBio")
-.value
-.trim();
+    alert(
+      "Name and username are required."
+    );
 
+    return;
+  }
 
-if(!name || !username){
+  if(
+    !/^[a-z0-9_]{3,30}$/.test(username)
+  ){
 
-alert(
-"Name and username are required."
-);
+    alert(
+      "Username must be 3-30 characters using letters, numbers or underscore."
+    );
 
-return;
+    return;
+  }
 
-}
+  const {
+    data,
+    error
+  } =
+  await supabaseClient
+    .from("profiles")
+    .update({
 
+      display_name:name,
 
-if(!/^[a-z0-9_]{3,30}$/.test(username)){
+      username:username,
 
-alert(
-"Username must be 3-30 characters using letters, numbers or underscore."
-);
+      bio:bio
 
-return;
+    })
+    .eq("id",currentUser.id)
+    .select()
+    .single();
 
-}
+  if(error){
 
+    alert(
+      error.code === "23505"
+        ? "That username is already taken."
+        : error.message
+    );
 
-const {data,error} =
-await supabaseClient
-.from("profiles")
-.update({
+    return;
+  }
 
-display_name:name,
+  currentProfile =
+    data;
 
-username,
+  updateProfileUI();
 
-bio
+  closeModal("profileModal");
 
-})
-.eq("id",currentUser.id)
-.select()
-.single();
-
-
-if(error){
-
-alert(
-error.code === "23505"
-? "That username is already taken."
-: error.message
-);
-
-return;
-
-}
-
-
-currentProfile = data;
-
-updateProfileUI();
-
-closeModal("profileModal");
-
-alert(
-"Profile updated successfully."
-);
-
+  alert(
+    "Profile updated successfully."
+  );
 }
 
 
@@ -2317,826 +2337,776 @@ alert(
 CONNECTION REQUESTS
 ========================================================= */
 
-
-/*
-  Send a connection request.
-
-  connection_requests columns:
-
-  id
-  sender_id
-  receiver_id
-  status
-  created_at
-*/
-
 async function sendConnectionRequest(receiverId){
 
-if(!currentUser){
+  if(!currentUser){
+
+    alert(
+      "Please log in again."
+    );
+
+    return;
+  }
 
-alert(
-"Please log in again."
-);
+  if(
+    receiverId === currentUser.id
+  ){
 
-return;
+    alert(
+      "You cannot send a request to yourself."
+    );
 
-}
+    return;
+  }
 
+  try{
 
-if(receiverId === currentUser.id){
+    const {
+      data:existing,
+      error:checkError
+    } =
+    await supabaseClient
+      .from("connection_requests")
+      .select(
+        "id,sender_id,receiver_id,status,created_at"
+      )
+      .or(
+        `and(sender_id.eq.${currentUser.id},receiver_id.eq.${receiverId}),and(sender_id.eq.${receiverId},receiver_id.eq.${currentUser.id})`
+      )
+      .limit(1);
 
-alert(
-"You cannot send a request to yourself."
-);
+    if(checkError){
 
-return;
+      console.error(
+        checkError
+      );
 
-}
+      alert(
+        "Could not check the connection request: " +
+        checkError.message
+      );
 
+      return;
+    }
 
-try{
+    if(
+      existing &&
+      existing.length
+    ){
 
-/*
-  First check if there is already a request
-  in either direction.
-*/
+      const request =
+        existing[0];
 
-const {data:existing,error:checkError} =
-await supabaseClient
-.from("connection_requests")
-.select(
-"id,sender_id,receiver_id,status,created_at"
-)
-.or(
-`and(sender_id.eq.${currentUser.id},receiver_id.eq.${receiverId}),and(sender_id.eq.${receiverId},receiver_id.eq.${currentUser.id})`
-)
-.limit(1);
+      if(
+        request.status === "pending"
+      ){
 
+        if(
+          request.sender_id ===
+          currentUser.id
+        ){
 
-if(checkError){
+          alert(
+            "Connection request already sent."
+          );
 
-console.error(
-"Connection request check error:",
-checkError
-);
+        }else{
 
-alert(
-"Could not check the connection request: " +
-checkError.message
-);
+          alert(
+            "This user has already sent you a connection request. Check Requests."
+          );
+        }
 
-return;
+        return;
+      }
 
-}
+      if(
+        request.status === "accepted"
+      ){
 
+        alert(
+          "You are already connected."
+        );
 
-if(existing && existing.length){
+        return;
+      }
+    }
 
-const request = existing[0];
+    const {
+      error
+    } =
+    await supabaseClient
+      .from("connection_requests")
+      .insert({
 
+        sender_id:currentUser.id,
 
-if(request.status === "pending"){
+        receiver_id:receiverId,
 
-if(request.sender_id === currentUser.id){
+        status:"pending"
 
-alert(
-"Connection request already sent."
-);
+      });
 
-}else{
+    if(error){
 
-alert(
-"This user has already sent you a connection request. Check Requests."
-);
+      console.error(
+        error
+      );
 
-}
+      alert(
+        error.code === "23505"
+          ? "Connection request already exists."
+          : "Could not send connection request: " +
+            error.message
+      );
 
-return;
+      return;
+    }
 
-}
+    alert(
+      "Connection request sent successfully! ✅"
+    );
 
+    await loadConnectionRequests();
 
-if(request.status === "accepted"){
+  }catch(error){
 
-alert(
-"You are already connected."
-);
+    console.error(
+      error
+    );
 
-return;
-
-}
-
-
-/*
-  If an old rejected request exists,
-  try creating a fresh pending request.
-*/
-
-}
-
-
-const {error} =
-await supabaseClient
-.from("connection_requests")
-.insert({
-
-sender_id:currentUser.id,
-
-receiver_id:receiverId,
-
-status:"pending"
-
-});
-
-
-if(error){
-
-console.error(
-"Send connection request error:",
-error
-);
-
-if(error.code === "23505"){
-
-alert(
-"Connection request already exists."
-);
-
-}else{
-
-alert(
-"Could not send connection request: " +
-error.message
-);
-
-}
-
-return;
-
-}
-
-
-alert(
-"Connection request sent successfully! ✅"
-);
-
-
-/*
-  Refresh request information.
-*/
-
-await loadConnectionRequests();
-
-}
-
-
-async function loadConnectionRequests(){
-
-if(!currentUser) return;
-
-
-/*
-  Incoming requests:
-  receiver_id = current user
-*/
-
-const {
-data:incoming,
-error:incomingError
-} =
-await supabaseClient
-.from("connection_requests")
-.select(
-"id,sender_id,receiver_id,status,created_at"
-)
-.eq("receiver_id",currentUser.id)
-.order("created_at",{ascending:false});
-
-
-if(incomingError){
-
-console.error(
-"Incoming request error:",
-incomingError
-);
-
-document
-.getElementById("incomingRequests")
-.innerHTML =
-'<div class="empty">Unable to load incoming requests: ' +
-escapeHTML(incomingError.message) +
-'</div>';
-
-}else{
-
-await renderIncomingRequests(
-incoming || []
-);
-
-}
-
-
-/*
-  Sent requests:
-  sender_id = current user
-*/
-
-const {
-data:sent,
-error:sentError
-} =
-await supabaseClient
-.from("connection_requests")
-.select(
-"id,sender_id,receiver_id,status,created_at"
-)
-.eq("sender_id",currentUser.id)
-.order("created_at",{ascending:false});
-
-
-if(sentError){
-
-console.error(
-"Sent request error:",
-sentError
-);
-
-document
-.getElementById("sentRequests")
-.innerHTML =
-'<div class="empty">Unable to load sent requests: ' +
-escapeHTML(sentError.message) +
-'</div>';
-
-}else{
-
-await renderSentRequests(
-sent || []
-);
-
-}
-
-
-/*
-  Connections:
-  accepted requests in either direction.
-*/
-
-const {
-data:accepted,
-error:acceptedError
-} =
-await supabaseClient
-.from("connection_requests")
-.select(
-"id,sender_id,receiver_id,status,created_at"
-)
-.eq("status","accepted");
-
-
-if(acceptedError){
-
-console.error(
-"Connections error:",
-acceptedError
-);
-
-document
-.getElementById("connectionsList")
-.innerHTML =
-'<div class="empty">Unable to load connections.</div>';
-
-}else{
-
-const myConnections =
-(accepted || [])
-.filter(
-r =>
-r.sender_id === currentUser.id ||
-r.receiver_id === currentUser.id
-);
-
-await renderConnections(
-myConnections
-);
-
-}
-
-
-/*
-  Update profile request count.
-*/
-
-const pendingIncoming =
-(incoming || [])
-.filter(
-r => r.status === "pending"
-).length;
-
-
-const requestCount =
-document.getElementById("requestCount");
-
-
-if(requestCount){
-
-requestCount.textContent =
-pendingIncoming;
-
-}
-
+    alert(
+      "Something went wrong while sending the request."
+    );
+  }
 }
 
 
 /* =========================================================
-INCOMING REQUESTS
+LOAD CONNECTION REQUESTS
+========================================================= */
+
+async function loadConnectionRequests(){
+
+  if(!currentUser) return;
+
+  const {
+    data:incoming,
+    error:incomingError
+  } =
+  await supabaseClient
+    .from("connection_requests")
+    .select(
+      "id,sender_id,receiver_id,status,created_at"
+    )
+    .eq(
+      "receiver_id",
+      currentUser.id
+    )
+    .order(
+      "created_at",
+      {ascending:false}
+    );
+
+  if(incomingError){
+
+    console.error(
+      incomingError
+    );
+
+    document
+      .getElementById("incomingRequests")
+      .innerHTML =
+      '<div class="empty">Unable to load incoming requests: ' +
+      escapeHTML(incomingError.message) +
+      '</div>';
+
+  }else{
+
+    await renderIncomingRequests(
+      incoming || []
+    );
+  }
+
+  const {
+    data:sent,
+    error:sentError
+  } =
+  await supabaseClient
+    .from("connection_requests")
+    .select(
+      "id,sender_id,receiver_id,status,created_at"
+    )
+    .eq(
+      "sender_id",
+      currentUser.id
+    )
+    .order(
+      "created_at",
+      {ascending:false}
+    );
+
+  if(sentError){
+
+    console.error(
+      sentError
+    );
+
+    document
+      .getElementById("sentRequests")
+      .innerHTML =
+      '<div class="empty">Unable to load sent requests: ' +
+      escapeHTML(sentError.message) +
+      '</div>';
+
+  }else{
+
+    await renderSentRequests(
+      sent || []
+    );
+  }
+
+  const {
+    data:accepted,
+    error:acceptedError
+  } =
+  await supabaseClient
+    .from("connection_requests")
+    .select(
+      "id,sender_id,receiver_id,status,created_at"
+    )
+    .eq(
+      "status",
+      "accepted"
+    );
+
+  if(acceptedError){
+
+    console.error(
+      acceptedError
+    );
+
+    document
+      .getElementById("connectionsList")
+      .innerHTML =
+      '<div class="empty">Unable to load connections.</div>';
+
+  }else{
+
+    const myConnections =
+      (accepted || [])
+        .filter(
+          r =>
+            r.sender_id === currentUser.id ||
+            r.receiver_id === currentUser.id
+        );
+
+    await renderConnections(
+      myConnections
+    );
+  }
+
+  const pendingIncoming =
+    (incoming || [])
+      .filter(
+        r => r.status === "pending"
+      )
+      .length;
+
+  document
+    .getElementById("requestCount")
+    .textContent =
+    pendingIncoming;
+}
+
+
+/* =========================================================
+INCOMING
 ========================================================= */
 
 async function renderIncomingRequests(requests){
 
-const container =
-document.getElementById("incomingRequests");
+  const container =
+    document.getElementById(
+      "incomingRequests"
+    );
 
+  const pending =
+    requests.filter(
+      r => r.status === "pending"
+    );
 
-const pending =
-requests.filter(
-r => r.status === "pending"
-);
+  if(!pending.length){
 
+    container.innerHTML =
+      '<div class="empty">No pending incoming requests.</div>';
 
-if(!pending.length){
+    return;
+  }
 
-container.innerHTML =
-'<div class="empty">No pending incoming requests.</div>';
+  const ids =
+    pending.map(
+      r => r.sender_id
+    );
 
-return;
+  const {
+    data:profiles,
+    error
+  } =
+  await supabaseClient
+    .from("profiles")
+    .select(
+      "id,username,display_name,bio,avatar_url"
+    )
+    .in("id",ids);
 
-}
+  if(error){
 
+    console.error(error);
 
-const ids =
-pending.map(
-r => r.sender_id
-);
+    container.innerHTML =
+      '<div class="empty">Unable to load request profiles.</div>';
 
+    return;
+  }
 
-const {data:profiles,error} =
-await supabaseClient
-.from("profiles")
-.select(
-"id,username,display_name,bio,avatar_url"
-)
-.in("id",ids);
+  const profileMap = {};
 
+  (profiles || []).forEach(
+    p => {
+      profileMap[p.id] = p;
+    }
+  );
 
-if(error){
+  container.innerHTML =
+    pending
+      .map(
+        request => {
 
-console.error(error);
+          const user =
+            profileMap[
+              request.sender_id
+            ];
 
-container.innerHTML =
-'<div class="empty">Unable to load request profiles.</div>';
+          const name =
+            user?.display_name ||
+            "ConnectSphere User";
 
-return;
+          const username =
+            user?.username ||
+            "";
 
-}
+          const letter =
+            name
+              .charAt(0)
+              .toUpperCase();
 
+          return `
 
-const profileMap = {};
+          <div class="connection-card">
 
-(profiles || []).forEach(
-p => {
-profileMap[p.id] = p;
-}
-);
+            <div class="user-row">
 
+              <div class="avatar">
+                ${escapeHTML(letter)}
+              </div>
 
-container.innerHTML =
-pending.map(
-request => {
+              <div class="user-info">
 
-const user =
-profileMap[request.sender_id];
+                <strong>
+                  ${escapeHTML(name)}
+                </strong>
 
+                <span>
+                  @${escapeHTML(username)}
+                </span>
 
-const name =
-user?.display_name ||
-"ConnectSphere User";
+                <span>
+                  Wants to connect with you.
+                </span>
 
+              </div>
 
-const username =
-user?.username ||
-"";
+            </div>
 
+            <div class="request-actions">
 
-const letter =
-name.charAt(0).toUpperCase();
+              <button
+                type="button"
+                class="success-btn"
+                onclick="acceptConnectionRequest('${request.id}')"
+              >
+                Accept
+              </button>
 
+              <button
+                type="button"
+                class="danger"
+                onclick="rejectConnectionRequest('${request.id}')"
+              >
+                Reject
+              </button>
 
-return `
+            </div>
 
-<div class="connection-card">
+          </div>
 
-<div class="user-row">
-
-<div class="avatar">
-${escapeHTML(letter)}
-</div>
-
-<div class="user-info">
-
-<strong>
-${escapeHTML(name)}
-</strong>
-
-<span>
-@${escapeHTML(username)}
-</span>
-
-<span>
-Wants to connect with you.
-</span>
-
-</div>
-
-</div>
-
-
-<div class="request-actions">
-
-<button
-class="success-btn"
-onclick="acceptConnectionRequest('${request.id}')"
->
-Accept
-</button>
-
-<button
-class="danger"
-onclick="rejectConnectionRequest('${request.id}')"
->
-Reject
-</button>
-
-</div>
-
-</div>
-
-`;
-
-}
-).join("");
-
+          `;
+        }
+      )
+      .join("");
 }
 
 
 /* =========================================================
-SENT REQUESTS
+SENT
 ========================================================= */
 
 async function renderSentRequests(requests){
 
-const container =
-document.getElementById("sentRequests");
+  const container =
+    document.getElementById(
+      "sentRequests"
+    );
 
+  if(!requests.length){
 
-if(!requests.length){
+    container.innerHTML =
+      '<div class="empty">You have not sent any requests.</div>';
 
-container.innerHTML =
-'<div class="empty">You have not sent any requests.</div>';
+    return;
+  }
 
-return;
+  const ids =
+    requests.map(
+      r => r.receiver_id
+    );
 
-}
+  const {
+    data:profiles,
+    error
+  } =
+  await supabaseClient
+    .from("profiles")
+    .select(
+      "id,username,display_name,bio,avatar_url"
+    )
+    .in("id",ids);
 
+  if(error){
 
-const ids =
-requests.map(
-r => r.receiver_id
-);
+    console.error(error);
 
+    container.innerHTML =
+      '<div class="empty">Unable to load sent request profiles.</div>';
 
-const {data:profiles,error} =
-await supabaseClient
-.from("profiles")
-.select(
-"id,username,display_name,bio,avatar_url"
-)
-.in("id",ids);
+    return;
+  }
 
+  const profileMap = {};
 
-if(error){
+  (profiles || []).forEach(
+    p => {
+      profileMap[p.id] = p;
+    }
+  );
 
-console.error(error);
+  container.innerHTML =
+    requests
+      .map(
+        request => {
 
-container.innerHTML =
-'<div class="empty">Unable to load sent request profiles.</div>';
+          const user =
+            profileMap[
+              request.receiver_id
+            ];
 
-return;
+          const name =
+            user?.display_name ||
+            "ConnectSphere User";
 
-}
+          const username =
+            user?.username ||
+            "";
 
+          const letter =
+            name
+              .charAt(0)
+              .toUpperCase();
 
-const profileMap = {};
+          let statusText =
+            "Pending";
 
-(profiles || []).forEach(
-p => {
-profileMap[p.id] = p;
-}
-);
+          if(
+            request.status === "accepted"
+          ){
 
+            statusText =
+              "Accepted";
 
-container.innerHTML =
-requests.map(
-request => {
+          }else if(
+            request.status === "rejected"
+          ){
 
-const user =
-profileMap[request.receiver_id];
+            statusText =
+              "Rejected";
+          }
 
+          return `
 
-const name =
-user?.display_name ||
-"ConnectSphere User";
+          <div class="connection-card">
 
+            <div class="user-row">
 
-const username =
-user?.username ||
-"";
+              <div class="avatar">
+                ${escapeHTML(letter)}
+              </div>
 
+              <div class="user-info">
 
-const letter =
-name.charAt(0).toUpperCase();
+                <strong>
+                  ${escapeHTML(name)}
+                </strong>
 
+                <span>
+                  @${escapeHTML(username)}
+                </span>
 
-let statusText =
-"Pending";
+                <span class="request-status">
+                  ${escapeHTML(statusText)}
+                </span>
 
+              </div>
 
-if(request.status === "accepted"){
+            </div>
 
-statusText =
-"Accepted";
+            ${
+              request.status === "pending"
 
-}else if(request.status === "rejected"){
+              ?
 
-statusText =
-"Rejected";
+              `
+              <div class="request-actions">
 
-}
+                <button
+                  type="button"
+                  class="danger"
+                  onclick="cancelConnectionRequest('${request.id}')"
+                >
+                  Cancel Request
+                </button>
 
+              </div>
+              `
 
-return `
+              :
 
-<div class="connection-card">
+              ""
+            }
 
-<div class="user-row">
+          </div>
 
-<div class="avatar">
-${escapeHTML(letter)}
-</div>
-
-<div class="user-info">
-
-<strong>
-${escapeHTML(name)}
-</strong>
-
-<span>
-@${escapeHTML(username)}
-</span>
-
-<span class="request-status">
-${escapeHTML(statusText)}
-</span>
-
-</div>
-
-</div>
-
-
-${
-request.status === "pending"
-
-?
-
-`
-
-<div class="request-actions">
-
-<button
-class="danger"
-onclick="cancelConnectionRequest('${request.id}')"
->
-Cancel Request
-</button>
-
-</div>
-
-`
-
-:
-
-""
-
-}
-
-</div>
-
-`;
-
-}
-).join("");
-
+          `;
+        }
+      )
+      .join("");
 }
 
 
 /* =========================================================
-ACCEPT REQUEST
+ACCEPT
 ========================================================= */
 
 async function acceptConnectionRequest(requestId){
 
-if(!currentUser) return;
+  if(!currentUser) return;
 
+  const {
+    data:request,
+    error:findError
+  } =
+  await supabaseClient
+    .from("connection_requests")
+    .select(
+      "id,sender_id,receiver_id,status"
+    )
+    .eq("id",requestId)
+    .eq(
+      "receiver_id",
+      currentUser.id
+    )
+    .single();
 
-const {data:request,error:findError} =
-await supabaseClient
-.from("connection_requests")
-.select(
-"id,sender_id,receiver_id,status"
-)
-.eq("id",requestId)
-.eq("receiver_id",currentUser.id)
-.single();
+  if(findError){
 
+    console.error(
+      findError
+    );
 
-if(findError){
+    alert(
+      "Could not find this request: " +
+      findError.message
+    );
 
-console.error(
-"Find request error:",
-findError
-);
+    return;
+  }
 
-alert(
-"Could not find this request: " +
-findError.message
-);
+  if(
+    request.status !== "pending"
+  ){
 
-return;
+    alert(
+      "This request is no longer pending."
+    );
 
-}
+    await loadConnectionRequests();
 
+    return;
+  }
 
-if(request.status !== "pending"){
+  const {
+    error
+  } =
+  await supabaseClient
+    .from("connection_requests")
+    .update({
+      status:"accepted"
+    })
+    .eq("id",requestId)
+    .eq(
+      "receiver_id",
+      currentUser.id
+    )
+    .eq(
+      "status",
+      "pending"
+    );
 
-alert(
-"This request is no longer pending."
-);
+  if(error){
 
-await loadConnectionRequests();
+    console.error(
+      error
+    );
 
-return;
+    alert(
+      "Could not accept request: " +
+      error.message
+    );
 
-}
+    return;
+  }
 
+  alert(
+    "Connection accepted! 🎉"
+  );
 
-const {error} =
-await supabaseClient
-.from("connection_requests")
-.update({
-status:"accepted"
-})
-.eq("id",requestId)
-.eq("receiver_id",currentUser.id)
-.eq("status","pending");
-
-
-if(error){
-
-console.error(
-"Accept request error:",
-error
-);
-
-alert(
-"Could not accept request: " +
-error.message
-);
-
-return;
-
-}
-
-
-alert(
-"Connection accepted! 🎉"
-);
-
-
-await loadConnectionRequests();
-
+  await loadConnectionRequests();
 }
 
 
 /* =========================================================
-REJECT REQUEST
+REJECT
 ========================================================= */
 
 async function rejectConnectionRequest(requestId){
 
-if(!currentUser) return;
+  if(!currentUser) return;
 
+  if(
+    !confirm(
+      "Reject this connection request?"
+    )
+  ){
 
-if(
-!confirm(
-"Reject this connection request?"
-)
-){
+    return;
+  }
 
-return;
+  const {
+    error
+  } =
+  await supabaseClient
+    .from("connection_requests")
+    .update({
+      status:"rejected"
+    })
+    .eq(
+      "id",
+      requestId
+    )
+    .eq(
+      "receiver_id",
+      currentUser.id
+    )
+    .eq(
+      "status",
+      "pending"
+    );
 
-}
+  if(error){
 
+    console.error(
+      error
+    );
 
-const {error} =
-await supabaseClient
-.from("connection_requests")
-.update({
-status:"rejected"
-})
-.eq("id",requestId)
-.eq("receiver_id",currentUser.id)
-.eq("status","pending");
+    alert(
+      "Could not reject request: " +
+      error.message
+    );
 
+    return;
+  }
 
-if(error){
-
-console.error(
-"Reject request error:",
-error
-);
-
-alert(
-"Could not reject request: " +
-error.message
-);
-
-return;
-
-}
-
-
-await loadConnectionRequests();
-
+  await loadConnectionRequests();
 }
 
 
 /* =========================================================
-CANCEL SENT REQUEST
+CANCEL
 ========================================================= */
 
 async function cancelConnectionRequest(requestId){
 
-if(!currentUser) return;
+  if(!currentUser) return;
 
+  if(
+    !confirm(
+      "Cancel this connection request?"
+    )
+  ){
 
-if(
-!confirm(
-"Cancel this connection request?"
-)
-){
+    return;
+  }
 
-return;
+  const {
+    error
+  } =
+  await supabaseClient
+    .from("connection_requests")
+    .delete()
+    .eq(
+      "id",
+      requestId
+    )
+    .eq(
+      "sender_id",
+      currentUser.id
+    );
 
-}
+  if(error){
 
+    console.error(
+      error
+    );
 
-const {error} =
-await supabaseClient
-.from("connection_requests")
-.delete()
-.eq("id",requestId)
-.eq("sender_id",currentUser.id);
+    alert(
+      "Could not cancel request: " +
+      error.message
+    );
 
+    return;
+  }
 
-if(error){
-
-console.error(
-"Cancel request error:",
-error
-);
-
-alert(
-"Could not cancel request: " +
-error.message
-);
-
-return;
-
-}
-
-
-await loadConnectionRequests();
-
+  await loadConnectionRequests();
 }
 
 
@@ -3146,142 +3116,133 @@ CONNECTIONS
 
 async function renderConnections(requests){
 
-const container =
-document.getElementById("connectionsList");
+  const container =
+    document.getElementById(
+      "connectionsList"
+    );
 
+  if(!requests.length){
 
-if(!requests.length){
+    container.innerHTML =
+      '<div class="empty">No connections yet.</div>';
 
-container.innerHTML =
-'<div class="empty">No connections yet.</div>';
+    document
+      .getElementById(
+        "connectionCount"
+      )
+      .textContent =
+      "0";
 
-const count =
-document.getElementById("connectionCount");
+    return;
+  }
 
-if(count){
-count.textContent = "0";
-}
+  const ids =
+    requests.map(
+      r =>
+        r.sender_id === currentUser.id
+          ? r.receiver_id
+          : r.sender_id
+    );
 
-return;
+  const uniqueIds =
+    [...new Set(ids)];
 
-}
+  const {
+    data:profiles,
+    error
+  } =
+  await supabaseClient
+    .from("profiles")
+    .select(
+      "id,username,display_name,bio,avatar_url"
+    )
+    .in(
+      "id",
+      uniqueIds
+    );
 
+  if(error){
 
-const ids =
-requests.map(
-r =>
-r.sender_id === currentUser.id
-? r.receiver_id
-: r.sender_id
-);
+    console.error(
+      error
+    );
 
+    container.innerHTML =
+      '<div class="empty">Unable to load connections.</div>';
 
-const uniqueIds =
-[...new Set(ids)];
+    return;
+  }
 
+  const profileMap = {};
 
-const {data:profiles,error} =
-await supabaseClient
-.from("profiles")
-.select(
-"id,username,display_name,bio,avatar_url"
-)
-.in("id",uniqueIds);
+  (profiles || []).forEach(
+    p => {
+      profileMap[p.id] = p;
+    }
+  );
 
+  container.innerHTML =
+    uniqueIds
+      .map(
+        id => {
 
-if(error){
+          const user =
+            profileMap[id];
 
-console.error(
-"Connection profile error:",
-error
-);
+          const name =
+            user?.display_name ||
+            "ConnectSphere User";
 
-container.innerHTML =
-'<div class="empty">Unable to load connections.</div>';
+          const username =
+            user?.username ||
+            "";
 
-return;
+          const letter =
+            name
+              .charAt(0)
+              .toUpperCase();
 
-}
+          return `
 
+          <div class="connection-card">
 
-const profileMap = {};
+            <div class="user-row">
 
-(profiles || []).forEach(
-p => {
-profileMap[p.id] = p;
-}
-);
+              <div class="avatar">
+                ${escapeHTML(letter)}
+              </div>
 
+              <div class="user-info">
 
-container.innerHTML =
-uniqueIds.map(
-id => {
+                <strong>
+                  ${escapeHTML(name)}
+                </strong>
 
-const user =
-profileMap[id];
+                <span>
+                  @${escapeHTML(username)}
+                </span>
 
+                <span>
+                  Connected ✅
+                </span>
 
-const name =
-user?.display_name ||
-"ConnectSphere User";
+              </div>
 
+            </div>
 
-const username =
-user?.username ||
-"";
+          </div>
 
+          `;
+        }
+      )
+      .join("");
 
-const letter =
-name.charAt(0).toUpperCase();
-
-
-return `
-
-<div class="connection-card">
-
-<div class="user-row">
-
-<div class="avatar">
-${escapeHTML(letter)}
-</div>
-
-<div class="user-info">
-
-<strong>
-${escapeHTML(name)}
-</strong>
-
-<span>
-@${escapeHTML(username)}
-</span>
-
-<span>
-Connected ✅
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-}
-).join("");
-
-
-const count =
-document.getElementById("connectionCount");
-
-
-if(count){
-
-count.textContent =
-uniqueIds.length;
-
-}
-
+  document
+    .getElementById(
+      "connectionCount"
+    )
+    .textContent =
+    uniqueIds.length;
 }
 
 
@@ -3291,468 +3252,518 @@ SCHEDULES
 
 async function loadSchedules(){
 
-if(!currentUser) return;
+  if(!currentUser) return;
 
+  const {
+    data,
+    error
+  } =
+  await supabaseClient
+    .from("schedules")
+    .select("*")
+    .eq(
+      "user_id",
+      currentUser.id
+    )
+    .order(
+      "created_at",
+      {ascending:false}
+    );
 
-const {data,error} =
-await supabaseClient
-.from("schedules")
-.select("*")
-.eq("user_id",currentUser.id)
-.order("created_at",{ascending:false});
+  if(error){
 
+    console.error(
+      error
+    );
 
-if(error){
+    document
+      .getElementById(
+        "scheduleList"
+      )
+      .innerHTML =
+      '<div class="empty">Unable to load schedules: ' +
+      escapeHTML(error.message) +
+      '</div>';
 
-console.error(error);
+    return;
+  }
 
-document
-.getElementById("scheduleList")
-.innerHTML =
-'<div class="empty">Unable to load schedules: ' +
-escapeHTML(error.message) +
-'</div>';
-
-return;
-
-}
-
-
-renderSchedules(data || []);
-
+  renderSchedules(
+    data || []
+  );
 }
 
 
 function formatSchedule(s){
 
-if(s.schedule_type === "daily"){
+  if(
+    s.schedule_type === "daily"
+  ){
 
-return (
-"Every day" +
-(
-s.reminder_time
-? " at " + formatTime(s.reminder_time)
-: ""
-)
-);
+    return (
+      "Every day" +
+      (
+        s.reminder_time
+          ? " at " +
+            formatTime(
+              s.reminder_time
+            )
+          : ""
+      )
+    );
+  }
 
-}
+  if(
+    s.schedule_type === "weekly"
+  ){
 
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ];
 
-if(s.schedule_type === "weekly"){
+    return (
+      "Every " +
+      days[
+        Number(
+          s.day_of_week
+        )
+      ] +
+      (
+        s.reminder_time
+          ? " at " +
+            formatTime(
+              s.reminder_time
+            )
+          : ""
+      )
+    );
+  }
 
-const days = [
-"Sunday",
-"Monday",
-"Tuesday",
-"Wednesday",
-"Thursday",
-"Friday",
-"Saturday"
-];
-
-
-return (
-"Every " +
-days[Number(s.day_of_week)] +
-(
-s.reminder_time
-? " at " + formatTime(s.reminder_time)
-: ""
-)
-);
-
-}
-
-
-return (
-"One-time" +
-(
-s.reminder_date
-? " on " + s.reminder_date
-: ""
-) +
-(
-s.reminder_time
-? " at " + formatTime(s.reminder_time)
-: ""
-)
-);
-
+  return (
+    "One-time" +
+    (
+      s.reminder_date
+        ? " on " +
+          s.reminder_date
+        : ""
+    ) +
+    (
+      s.reminder_time
+        ? " at " +
+          formatTime(
+            s.reminder_time
+          )
+        : ""
+    )
+  );
 }
 
 
 function formatTime(t){
 
-if(!t) return "";
+  if(!t) return "";
 
+  const [h,m] =
+    t
+      .split(":")
+      .map(Number);
 
-const [h,m] =
-t.split(":").map(Number);
+  const d =
+    new Date();
 
+  d.setHours(
+    h,
+    m,
+    0,
+    0
+  );
 
-const d =
-new Date();
-
-
-d.setHours(h,m,0,0);
-
-
-return d.toLocaleTimeString(
-[],
-{
-hour:"numeric",
-minute:"2-digit"
-}
-);
-
+  return d.toLocaleTimeString(
+    [],
+    {
+      hour:"numeric",
+      minute:"2-digit"
+    }
+  );
 }
 
 
 function renderSchedules(list){
 
-const container =
-document.getElementById("scheduleList");
+  const container =
+    document.getElementById(
+      "scheduleList"
+    );
 
+  if(!list.length){
 
-if(!list.length){
+    container.innerHTML =
+      '<div class="empty">No schedules yet. Tap + Add to create your first one.</div>';
 
-container.innerHTML =
-'<div class="empty">No schedules yet. Tap + Add to create your first one.</div>';
+    updateScheduleProgress([]);
 
-updateScheduleProgress([]);
+    return;
+  }
 
-return;
+  container.innerHTML =
+    list
+      .map(
+        s => `
 
-}
+        <div class="schedule-item ${
+          s.completed
+            ? "completed"
+            : ""
+        }">
 
+          <div class="schedule-top">
 
-container.innerHTML =
-list.map(
-s => `
+            <div>
 
-<div class="schedule-item ${
-s.completed ? "completed" : ""
-}">
+              <div class="schedule-title">
 
-<div class="schedule-top">
+                ${escapeHTML(s.title)}
 
-<div>
+                <span class="badge">
+                  ${escapeHTML(s.schedule_type)}
+                </span>
 
-<div class="schedule-title">
+              </div>
 
-${escapeHTML(s.title)}
+              <div class="schedule-meta">
 
-<span class="badge">
-${escapeHTML(s.schedule_type)}
-</span>
+                ${escapeHTML(
+                  s.description || ""
+                )}
 
-</div>
+                ${
+                  s.description
+                    ? "<br>"
+                    : ""
+                }
 
-<div class="schedule-meta">
+                ${escapeHTML(
+                  formatSchedule(s)
+                )}
 
-${escapeHTML(s.description || "")}
+              </div>
 
-${s.description ? "<br>" : ""}
+            </div>
 
-${escapeHTML(formatSchedule(s))}
+            <div>
+              ${
+                s.completed
+                  ? "✅"
+                  : "⏰"
+              }
+            </div>
 
-</div>
+          </div>
 
-</div>
+          <div class="schedule-actions">
 
-<div>
-${s.completed ? "✅" : "⏰"}
-</div>
+            ${
+              s.completed
 
-</div>
+                ?
 
+                `<button
+                  type="button"
+                  class="secondary"
+                  onclick="setScheduleCompleted('${s.id}',false)"
+                >
+                  Mark active
+                </button>`
 
-<div class="schedule-actions">
+                :
 
-${
-s.completed
+                `<button
+                  type="button"
+                  class="primary"
+                  onclick="setScheduleCompleted('${s.id}',true)"
+                >
+                  Complete
+                </button>`
+            }
 
-?
+            <button
+              type="button"
+              class="danger"
+              onclick="deleteSchedule('${s.id}')"
+            >
+              Delete
+            </button>
 
-`<button
-class="secondary"
-onclick="setScheduleCompleted('${s.id}',false)"
->
-Mark active
-</button>`
+          </div>
 
-:
+        </div>
 
-`<button
-class="primary"
-onclick="setScheduleCompleted('${s.id}',true)"
->
-Complete
-</button>`
-}
+        `
+      )
+      .join("");
 
-
-<button
-class="danger"
-onclick="deleteSchedule('${s.id}')"
->
-Delete
-</button>
-
-</div>
-
-</div>
-
-`
-).join("");
-
-
-updateScheduleProgress(list);
-
+  updateScheduleProgress(
+    list
+  );
 }
 
 
 function updateScheduleProgress(list){
 
-const done =
-list.filter(
-x => x.completed
-).length;
+  const done =
+    list.filter(
+      x => x.completed
+    ).length;
 
+  const total =
+    list.length;
 
-const total =
-list.length;
+  const pct =
+    total
+      ? Math.round(
+          done / total * 100
+        )
+      : 0;
 
+  document
+    .getElementById(
+      "scheduleProgressText"
+    )
+    .textContent =
+    `${pct}% completed (${done}/${total})`;
 
-const pct =
-total
-? Math.round(done / total * 100)
-: 0;
-
-
-document
-.getElementById("scheduleProgressText")
-.textContent =
-`${pct}% completed (${done}/${total})`;
-
-
-document
-.getElementById("scheduleProgressFill")
-.style
-.width =
-pct + "%";
-
+  document
+    .getElementById(
+      "scheduleProgressFill"
+    )
+    .style
+    .width =
+    pct + "%";
 }
 
 
 function openScheduleModal(){
 
-document
-.getElementById("scheduleTitle")
-.value = "";
+  document
+    .getElementById(
+      "scheduleTitle"
+    )
+    .value = "";
 
+  document
+    .getElementById(
+      "scheduleDescription"
+    )
+    .value = "";
 
-document
-.getElementById("scheduleDescription")
-.value = "";
+  document
+    .getElementById(
+      "scheduleType"
+    )
+    .value = "daily";
 
+  document
+    .getElementById(
+      "scheduleTime"
+    )
+    .value = "";
 
-document
-.getElementById("scheduleType")
-.value = "daily";
+  document
+    .getElementById(
+      "scheduleDate"
+    )
+    .value = "";
 
+  document
+    .getElementById(
+      "scheduleDay"
+    )
+    .value =
+    String(
+      new Date().getDay()
+    );
 
-document
-.getElementById("scheduleTime")
-.value = "";
+  updateScheduleFields();
 
-
-document
-.getElementById("scheduleDate")
-.value = "";
-
-
-document
-.getElementById("scheduleDay")
-.value =
-String(
-new Date().getDay()
-);
-
-
-updateScheduleFields();
-
-
-document
-.getElementById("scheduleModal")
-.classList
-.add("show");
-
+  document
+    .getElementById(
+      "scheduleModal"
+    )
+    .classList
+    .add("show");
 }
 
 
 function updateScheduleFields(){
 
-const type =
-document
-.getElementById("scheduleType")
-.value;
+  const type =
+    document
+      .getElementById(
+        "scheduleType"
+      )
+      .value;
 
+  document
+    .getElementById(
+      "weeklyField"
+    )
+    .classList
+    .toggle(
+      "hidden",
+      type !== "weekly"
+    );
 
-document
-.getElementById("weeklyField")
-.classList
-.toggle(
-"hidden",
-type !== "weekly"
-);
-
-
-document
-.getElementById("onceField")
-.classList
-.toggle(
-"hidden",
-type !== "once"
-);
-
+  document
+    .getElementById(
+      "onceField"
+    )
+    .classList
+    .toggle(
+      "hidden",
+      type !== "once"
+    );
 }
 
 
 async function saveSchedule(){
 
-if(!currentUser){
+  if(!currentUser){
 
-alert(
-"Please log in again."
-);
+    alert(
+      "Please log in again."
+    );
 
-return;
+    return;
+  }
 
-}
+  const title =
+    document
+      .getElementById(
+        "scheduleTitle"
+      )
+      .value
+      .trim();
 
+  const description =
+    document
+      .getElementById(
+        "scheduleDescription"
+      )
+      .value
+      .trim();
 
-const title =
-document
-.getElementById("scheduleTitle")
-.value
-.trim();
+  const type =
+    document
+      .getElementById(
+        "scheduleType"
+      )
+      .value;
 
+  const time =
+    document
+      .getElementById(
+        "scheduleTime"
+      )
+      .value ||
+    null;
 
-const description =
-document
-.getElementById("scheduleDescription")
-.value
-.trim();
+  if(!title){
 
+    alert(
+      "Please enter a schedule title."
+    );
 
-const type =
-document
-.getElementById("scheduleType")
-.value;
+    return;
+  }
 
+  let payload = {
 
-const time =
-document
-.getElementById("scheduleTime")
-.value ||
-null;
+    user_id:
+      currentUser.id,
 
+    title:title,
 
-if(!title){
+    description:description,
 
-alert(
-"Please enter a schedule title."
-);
+    schedule_type:type,
 
-return;
+    reminder_time:time,
 
-}
+    reminder_date:null,
 
+    day_of_week:null,
 
-let payload = {
+    completed:false
+  };
 
-user_id:currentUser.id,
+  if(
+    type === "weekly"
+  ){
 
-title,
+    payload.day_of_week =
+      Number(
+        document
+          .getElementById(
+            "scheduleDay"
+          )
+          .value
+      );
+  }
 
-description,
+  if(
+    type === "once"
+  ){
 
-schedule_type:type,
+    const date =
+      document
+        .getElementById(
+          "scheduleDate"
+        )
+        .value;
 
-reminder_time:time,
+    if(!date){
 
-reminder_date:null,
+      alert(
+        "Please choose a date."
+      );
 
-day_of_week:null,
+      return;
+    }
 
-completed:false
+    payload.reminder_date =
+      date;
+  }
 
-};
+  const {
+    error
+  } =
+  await supabaseClient
+    .from("schedules")
+    .insert(payload);
 
+  if(error){
 
-if(type === "weekly"){
+    console.error(error);
 
-payload.day_of_week =
-Number(
-document
-.getElementById("scheduleDay")
-.value
-);
+    alert(
+      "Could not save schedule: " +
+      error.message
+    );
 
-}
+    return;
+  }
 
+  closeModal(
+    "scheduleModal"
+  );
 
-if(type === "once"){
-
-const date =
-document
-.getElementById("scheduleDate")
-.value;
-
-
-if(!date){
-
-alert(
-"Please choose a date."
-);
-
-return;
-
-}
-
-
-payload.reminder_date =
-date;
-
-}
-
-
-const {error} =
-await supabaseClient
-.from("schedules")
-.insert(payload);
-
-
-if(error){
-
-console.error(error);
-
-alert(
-"Could not save schedule: " +
-error.message
-);
-
-return;
-
-}
-
-
-closeModal("scheduleModal");
-
-await loadSchedules();
-
+  await loadSchedules();
 }
 
 
@@ -3762,567 +3773,514 @@ PUSH NOTIFICATIONS
 
 function urlBase64ToUint8Array(base64String){
 
-const padding =
-"=".repeat(
-(4 - base64String.length % 4) % 4
-);
+  const padding =
+    "=".repeat(
+      (
+        4 -
+        base64String.length % 4
+      ) % 4
+    );
 
+  const base64 =
+    (
+      base64String +
+      padding
+    )
+      .replace(/-/g,"+")
+      .replace(/_/g,"/");
 
-const base64 =
-(
-base64String + padding
-)
-.replace(/-/g,"+")
-.replace(/_/g,"/");
+  const rawData =
+    atob(base64);
 
-
-const rawData =
-atob(base64);
-
-
-return Uint8Array.from(
-[...rawData].map(
-char => char.charCodeAt(0)
-)
-);
-
+  return Uint8Array.from(
+    [...rawData]
+      .map(
+        char =>
+          char.charCodeAt(0)
+      )
+  );
 }
 
 
 async function getVapidPublicKey(){
 
-try{
+  try{
 
-const response =
-await fetch(
-PUSH_FUNCTION_URL,
-{
-method:"GET",
-headers:{
-apikey:SUPABASE_PUBLISHABLE_KEY
-}
-}
-);
+    const response =
+      await fetch(
+        PUSH_FUNCTION_URL,
+        {
+          method:"GET",
+          headers:{
+            apikey:
+              SUPABASE_PUBLISHABLE_KEY
+          }
+        }
+      );
 
+    if(response.ok){
 
-if(response.ok){
+      const data =
+        await response.json();
 
-const data =
-await response.json();
+      if(
+        data &&
+        data.publicKey
+      ){
 
+        return data.publicKey;
+      }
+    }
 
-if(
-data &&
-data.publicKey
-){
+  }catch(error){
 
-return data.publicKey;
+    console.warn(
+      "Could not get VAPID key from function."
+    );
+  }
 
-}
-
-}
-
-}catch(error){
-
-console.warn(
-"Could not get VAPID key from function."
-);
-
-}
-
-
-return VAPID_PUBLIC_KEY;
-
+  return VAPID_PUBLIC_KEY;
 }
 
 
 async function getServiceWorkerRegistration(){
 
-return await navigator.serviceWorker.register(
-"./sw.js",
-{
-scope:"./"
-}
-);
-
-}
-
-
-async function savePushSubscription(subscription){
-
-if(!currentUser){
-
-throw new Error(
-"You must be logged in."
-);
-
+  return await navigator
+    .serviceWorker
+    .register(
+      "./sw.js",
+      {
+        scope:"./"
+      }
+    );
 }
 
 
-const json =
-subscription.toJSON();
-
-
-if(
-!json.endpoint ||
-!json.keys ||
-!json.keys.p256dh ||
-!json.keys.auth
+async function savePushSubscription(
+  subscription
 ){
 
-throw new Error(
-"Invalid push subscription."
-);
+  if(!currentUser){
 
+    throw new Error(
+      "You must be logged in."
+    );
+  }
+
+  const json =
+    subscription.toJSON();
+
+  if(
+    !json.endpoint ||
+    !json.keys ||
+    !json.keys.p256dh ||
+    !json.keys.auth
+  ){
+
+    throw new Error(
+      "Invalid push subscription."
+    );
+  }
+
+  await supabaseClient
+    .from("push_subscriptions")
+    .delete()
+    .eq(
+      "user_id",
+      currentUser.id
+    )
+    .eq(
+      "endpoint",
+      json.endpoint
+    );
+
+  const {
+    error
+  } =
+  await supabaseClient
+    .from("push_subscriptions")
+    .insert({
+
+      user_id:
+        currentUser.id,
+
+      endpoint:
+        json.endpoint,
+
+      p256dh:
+        json.keys.p256dh,
+
+      auth:
+        json.keys.auth
+
+    });
+
+  if(error){
+
+    console.error(
+      "Subscription database error:",
+      error
+    );
+
+    throw new Error(
+      "Push subscription could not be saved: " +
+      error.message
+    );
+  }
+
+  localStorage.setItem(
+    "connectsphere_push_subscription",
+    JSON.stringify(json)
+  );
 }
 
 
-await supabaseClient
-.from("push_subscriptions")
-.delete()
-.eq("user_id",currentUser.id)
-.eq("endpoint",json.endpoint);
+async function removePushSubscriptionFromDatabase(
+  endpoint
+){
 
+  if(
+    !currentUser ||
+    !endpoint
+  ) return;
 
-const {error} =
-await supabaseClient
-.from("push_subscriptions")
-.insert({
+  const {
+    error
+  } =
+  await supabaseClient
+    .from("push_subscriptions")
+    .delete()
+    .eq(
+      "user_id",
+      currentUser.id
+    )
+    .eq(
+      "endpoint",
+      endpoint
+    );
 
-user_id:currentUser.id,
+  if(error){
 
-endpoint:json.endpoint,
-
-p256dh:json.keys.p256dh,
-
-auth:json.keys.auth
-
-});
-
-
-if(error){
-
-console.error(
-"Subscription database error:",
-error
-);
-
-throw new Error(
-"Push subscription could not be saved: " +
-error.message
-);
-
-}
-
-
-localStorage.setItem(
-"connectsphere_push_subscription",
-JSON.stringify(json)
-);
-
-}
-
-
-async function removePushSubscriptionFromDatabase(endpoint){
-
-if(
-!currentUser ||
-!endpoint
-) return;
-
-
-const {error} =
-await supabaseClient
-.from("push_subscriptions")
-.delete()
-.eq("user_id",currentUser.id)
-.eq("endpoint",endpoint);
-
-
-if(error){
-
-console.error(
-"Could not remove push subscription:",
-error
-);
-
-}
-
+    console.error(
+      "Could not remove push subscription:",
+      error
+    );
+  }
 }
 
 
 async function enablePushNotifications(){
 
-if(!currentUser){
+  if(!currentUser){
 
-throw new Error(
-"Please log in first."
-);
+    throw new Error(
+      "Please log in first."
+    );
+  }
 
-}
+  if(
+    !("Notification" in window)
+  ){
 
+    throw new Error(
+      "This browser does not support notifications."
+    );
+  }
 
-if(!("Notification" in window)){
+  if(
+    !("serviceWorker" in navigator)
+  ){
 
-throw new Error(
-"This browser does not support notifications."
-);
+    throw new Error(
+      "Service workers are not supported."
+    );
+  }
 
-}
+  if(
+    !("PushManager" in window)
+  ){
 
+    throw new Error(
+      "Push notifications are not supported."
+    );
+  }
 
-if(!("serviceWorker" in navigator)){
+  const status =
+    document.getElementById(
+      "notificationStatus"
+    );
 
-throw new Error(
-"Service workers are not supported."
-);
+  status.textContent =
+    "Requesting notification permission...";
 
-}
+  const permission =
+    await Notification.requestPermission();
 
+  if(
+    permission !== "granted"
+  ){
 
-if(!("PushManager" in window)){
+    throw new Error(
+      "Notification permission was not granted."
+    );
+  }
 
-throw new Error(
-"Push notifications are not supported."
-);
+  status.textContent =
+    "Registering notification service...";
 
-}
+  const registration =
+    await getServiceWorkerRegistration();
 
+  await navigator
+    .serviceWorker
+    .ready;
 
-const status =
-document.getElementById(
-"notificationStatus"
-);
+  const publicKey =
+    await getVapidPublicKey();
 
+  if(!publicKey){
 
-status.textContent =
-"Requesting notification permission...";
+    throw new Error(
+      "VAPID public key is missing."
+    );
+  }
 
+  let subscription =
+    await registration
+      .pushManager
+      .getSubscription();
 
-const permission =
-await Notification.requestPermission();
+  if(!subscription){
 
+    status.textContent =
+      "Creating secure push subscription...";
 
-if(permission !== "granted"){
+    subscription =
+      await registration
+        .pushManager
+        .subscribe({
 
-throw new Error(
-"Notification permission was not granted."
-);
+          userVisibleOnly:true,
 
-}
+          applicationServerKey:
+            urlBase64ToUint8Array(
+              publicKey
+            )
 
+        });
+  }
 
-status.textContent =
-"Registering notification service...";
+  status.textContent =
+    "Saving notification subscription...";
 
+  await savePushSubscription(
+    subscription
+  );
 
-const registration =
-await getServiceWorkerRegistration();
+  status.textContent =
+    "Notifications are ON ✅";
 
+  document
+    .getElementById(
+      "notificationSwitchText"
+    )
+    .textContent =
+    "Notifications are ON.";
 
-await navigator.serviceWorker.ready;
-
-
-const publicKey =
-await getVapidPublicKey();
-
-
-if(!publicKey){
-
-throw new Error(
-"VAPID public key is missing."
-);
-
-}
-
-
-let subscription =
-await registration
-.pushManager
-.getSubscription();
-
-
-if(!subscription){
-
-status.textContent =
-"Creating secure push subscription...";
-
-
-subscription =
-await registration
-.pushManager
-.subscribe({
-
-userVisibleOnly:true,
-
-applicationServerKey:
-urlBase64ToUint8Array(
-publicKey
-)
-
-});
-
-}
-
-
-status.textContent =
-"Saving notification subscription...";
-
-
-await savePushSubscription(subscription);
-
-
-status.textContent =
-"Notifications are ON ✅";
-
-
-document
-.getElementById(
-"notificationSwitchText"
-)
-.textContent =
-"Notifications are ON.";
-
-
-return subscription;
-
+  return subscription;
 }
 
 
 async function disablePushNotifications(){
 
-const status =
-document.getElementById(
-"notificationStatus"
-);
+  const status =
+    document.getElementById(
+      "notificationStatus"
+    );
 
+  const registration =
+    await getServiceWorkerRegistration();
 
-try{
+  const subscription =
+    await registration
+      .pushManager
+      .getSubscription();
 
-const registration =
-await getServiceWorkerRegistration();
+  if(subscription){
 
+    const endpoint =
+      subscription.endpoint;
 
-const subscription =
-await registration
-.pushManager
-.getSubscription();
+    await subscription.unsubscribe();
 
+    await removePushSubscriptionFromDatabase(
+      endpoint
+    );
+  }
 
-if(subscription){
+  localStorage.removeItem(
+    "connectsphere_push_subscription"
+  );
 
-const endpoint =
-subscription.endpoint;
+  status.textContent =
+    "Notifications are OFF.";
 
-
-await subscription.unsubscribe();
-
-
-await removePushSubscriptionFromDatabase(
-endpoint
-);
-
-}
-
-
-localStorage.removeItem(
-"connectsphere_push_subscription"
-);
-
-
-status.textContent =
-"Notifications are OFF.";
-
-
-document
-.getElementById(
-"notificationSwitchText"
-)
-.textContent =
-"Notifications are OFF.";
-
-}catch(error){
-
-console.error(
-"Disable notification error:",
-error
-);
-
-throw error;
-
-}
-
+  document
+    .getElementById(
+      "notificationSwitchText"
+    )
+    .textContent =
+    "Notifications are OFF.";
 }
 
 
 async function togglePushNotifications(){
 
-const toggle =
-document.getElementById(
-"notificationToggle"
-);
+  const toggle =
+    document.getElementById(
+      "notificationToggle"
+    );
 
+  const status =
+    document.getElementById(
+      "notificationStatus"
+    );
 
-const status =
-document.getElementById(
-"notificationStatus"
-);
+  toggle.disabled = true;
 
+  try{
 
-toggle.disabled = true;
+    if(toggle.checked){
 
+      await enablePushNotifications();
 
-try{
+    }else{
 
-if(toggle.checked){
+      await disablePushNotifications();
 
-await enablePushNotifications();
+    }
 
-}else{
+  }catch(error){
 
-await disablePushNotifications();
+    console.error(
+      "Notification toggle error:",
+      error
+    );
 
-}
+    toggle.checked =
+      !toggle.checked;
 
-}catch(error){
+    status.textContent =
+      error.message ||
+      "Unable to change notification setting.";
 
-console.error(
-"Notification toggle error:",
-error
-);
+  }finally{
 
-
-toggle.checked =
-!toggle.checked;
-
-
-status.textContent =
-error.message ||
-"Unable to change notification setting.";
-
-}finally{
-
-toggle.disabled = false;
-
-}
-
+    toggle.disabled = false;
+  }
 }
 
 
 async function checkNotificationStatus(){
 
-const toggle =
-document.getElementById(
-"notificationToggle"
-);
+  const toggle =
+    document.getElementById(
+      "notificationToggle"
+    );
 
+  const status =
+    document.getElementById(
+      "notificationStatus"
+    );
 
-const status =
-document.getElementById(
-"notificationStatus"
-);
+  const text =
+    document.getElementById(
+      "notificationSwitchText"
+    );
 
+  if(!toggle || !status)
+    return;
 
-const text =
-document.getElementById(
-"notificationSwitchText"
-);
+  if(
+    !("Notification" in window)
+  ){
 
+    status.textContent =
+      "Notifications are not supported by this browser.";
 
-if(!toggle || !status) return;
+    return;
+  }
 
+  if(
+    Notification.permission ===
+    "denied"
+  ){
 
-if(!("Notification" in window)){
+    toggle.checked = false;
 
-status.textContent =
-"Notifications are not supported by this browser.";
+    status.textContent =
+      "Notifications are blocked by your browser. Enable them in browser settings.";
 
-return;
+    text.textContent =
+      "Notifications are OFF.";
 
-}
+    return;
+  }
 
+  try{
 
-if(
-Notification.permission === "denied"
-){
+    if(
+      !("serviceWorker" in navigator)
+    ){
 
-toggle.checked = false;
+      return;
+    }
 
+    const registration =
+      await navigator
+        .serviceWorker
+        .register(
+          "./sw.js",
+          {
+            scope:"./"
+          }
+        );
 
-status.textContent =
-"Notifications are blocked by your browser. Enable them in browser settings.";
+    const subscription =
+      await registration
+        .pushManager
+        .getSubscription();
 
+    if(subscription){
 
-text.textContent =
-"Notifications are OFF.";
+      toggle.checked = true;
 
-return;
+      status.textContent =
+        "Notifications are ON ✅";
 
-}
+      text.textContent =
+        "Notifications are ON.";
 
+    }else{
 
-try{
+      toggle.checked = false;
 
-if(!("serviceWorker" in navigator)){
+      status.textContent =
+        "Notifications are OFF.";
 
-return;
+      text.textContent =
+        "Notifications are OFF.";
+    }
 
-}
+  }catch(error){
 
+    console.warn(
+      "Notification status check failed:",
+      error
+    );
 
-const registration =
-await navigator.serviceWorker.register(
-"./sw.js",
-{
-scope:"./"
-}
-);
-
-
-const subscription =
-await registration
-.pushManager
-.getSubscription();
-
-
-if(subscription){
-
-toggle.checked = true;
-
-
-status.textContent =
-"Notifications are ON ✅";
-
-
-text.textContent =
-"Notifications are ON.";
-
-}else{
-
-toggle.checked = false;
-
-
-status.textContent =
-"Notifications are OFF.";
-
-
-text.textContent =
-"Notifications are OFF.";
-
-}
-
-}catch(error){
-
-console.warn(
-"Notification status check failed:",
-error
-);
-
-
-toggle.checked = false;
-
-}
-
+    toggle.checked = false;
+  }
 }
 
 
@@ -4330,53 +4288,54 @@ toggle.checked = false;
 NAVIGATION
 ========================================================= */
 
-function showPage(page,button){
+function showPage(
+  page,
+  button
+){
 
-document
-.querySelectorAll(".page")
-.forEach(
-p =>
-p.classList.remove("active")
-);
+  document
+    .querySelectorAll(".page")
+    .forEach(
+      p =>
+        p.classList.remove(
+          "active"
+        )
+    );
 
+  const target =
+    document.getElementById(
+      page
+    );
 
-const target =
-document.getElementById(page);
+  if(target){
 
+    target.classList.add(
+      "active"
+    );
+  }
 
-if(target){
+  document
+    .querySelectorAll(".nav-btn")
+    .forEach(
+      b =>
+        b.classList.remove(
+          "active"
+        )
+    );
 
-target.classList.add("active");
+  if(button){
 
-}
+    button.classList.add(
+      "active"
+    );
+  }
 
+  if(
+    page === "requests"
+  ){
 
-document
-.querySelectorAll(".nav-btn")
-.forEach(
-b =>
-b.classList.remove("active")
-);
-
-
-if(button){
-
-button.classList.add("active");
-
-}
-
-
-/*
-  Refresh requests whenever
-  the Requests page is opened.
-*/
-
-if(page === "requests"){
-
-loadConnectionRequests();
-
-}
-
+    loadConnectionRequests();
+  }
 }
 
 
@@ -4384,76 +4343,83 @@ loadConnectionRequests();
 SCHEDULE ACTIONS
 ========================================================= */
 
-async function setScheduleCompleted(id,value){
+async function setScheduleCompleted(
+  id,
+  value
+){
 
-if(!currentUser) return;
+  if(!currentUser) return;
 
+  const {
+    error
+  } =
+  await supabaseClient
+    .from("schedules")
+    .update({
+      completed:value
+    })
+    .eq(
+      "id",
+      id
+    )
+    .eq(
+      "user_id",
+      currentUser.id
+    );
 
-const {error} =
-await supabaseClient
-.from("schedules")
-.update({
-completed:value
-})
-.eq("id",id)
-.eq("user_id",currentUser.id);
+  if(error){
 
+    alert(
+      "Could not update schedule: " +
+      error.message
+    );
 
-if(error){
+    return;
+  }
 
-alert(
-"Could not update schedule: " +
-error.message
-);
-
-return;
-
-}
-
-
-await loadSchedules();
-
+  await loadSchedules();
 }
 
 
 async function deleteSchedule(id){
 
-if(!currentUser) return;
+  if(!currentUser) return;
 
+  if(
+    !confirm(
+      "Delete this schedule?"
+    )
+  ){
 
-if(
-!confirm(
-"Delete this schedule?"
-)
-){
+    return;
+  }
 
-return;
+  const {
+    error
+  } =
+  await supabaseClient
+    .from("schedules")
+    .delete()
+    .eq(
+      "id",
+      id
+    )
+    .eq(
+      "user_id",
+      currentUser.id
+    );
 
-}
+  if(error){
 
+    alert(
+      "Could not delete schedule: " +
+      error.message
+    );
 
-const {error} =
-await supabaseClient
-.from("schedules")
-.delete()
-.eq("id",id)
-.eq("user_id",currentUser.id);
+    return;
+  }
 
-
-if(error){
-
-alert(
-"Could not delete schedule: " +
-error.message
-);
-
-return;
-
-}
-
-
-await loadSchedules();
-
+  await loadSchedules();
 }
 
 
@@ -4463,27 +4429,44 @@ LOGOUT
 
 async function logout(){
 
-await supabaseClient
-.auth
-.signOut();
+  if(!supabaseClient)
+    return;
 
+  await supabaseClient
+    .auth
+    .signOut();
 
-currentUser = null;
+  currentUser = null;
 
-currentProfile = null;
+  currentProfile = null;
 
+  document
+    .getElementById("app")
+    .classList
+    .add("hidden");
 
-document
-.getElementById("app")
-.classList
-.add("hidden");
+  document
+    .getElementById("authScreen")
+    .classList
+    .remove("hidden");
 
+  loginMode = true;
 
-document
-.getElementById("authScreen")
-.classList
-.remove("hidden");
+  toggleAuthMode();
 
+  loginMode = false;
+
+  toggleAuthMode();
+
+  document
+    .getElementById("authEmail")
+    .value = "";
+
+  document
+    .getElementById("authPassword")
+    .value = "";
+
+  clearMessages();
 }
 
 
@@ -4493,11 +4476,15 @@ MODALS
 
 function closeModal(id){
 
-document
-.getElementById(id)
-.classList
-.remove("show");
+  const modal =
+    document.getElementById(id);
 
+  if(modal){
+
+    modal
+      .classList
+      .remove("show");
+  }
 }
 
 
@@ -4507,93 +4494,328 @@ MESSAGES
 
 function showError(message){
 
-const box =
-document.getElementById(
-"authError"
-);
+  const box =
+    document.getElementById(
+      "authError"
+    );
 
+  box.textContent =
+    message;
 
-box.textContent =
-message;
+  box.style.display =
+    "block";
 
-
-box.style.display =
-"block";
-
-
-document
-.getElementById(
-"authSuccess"
-)
-.style
-.display =
-"none";
-
+  document
+    .getElementById(
+      "authSuccess"
+    )
+    .style
+    .display =
+    "none";
 }
 
 
 function showSuccess(message){
 
-const box =
-document.getElementById(
-"authSuccess"
-);
+  const box =
+    document.getElementById(
+      "authSuccess"
+    );
 
+  box.textContent =
+    message;
 
-box.textContent =
-message;
+  box.style.display =
+    "block";
 
-
-box.style.display =
-"block";
-
-
-document
-.getElementById(
-"authError"
-)
-.style
-.display =
-"none";
-
+  document
+    .getElementById(
+      "authError"
+    )
+    .style
+    .display =
+    "none";
 }
 
 
 function clearMessages(){
 
-document
-.getElementById(
-"authError"
-)
-.style
-.display =
-"none";
+  document
+    .getElementById(
+      "authError"
+    )
+    .style
+    .display =
+    "none";
 
-
-document
-.getElementById(
-"authSuccess"
-)
-.style
-.display =
-"none";
-
+  document
+    .getElementById(
+      "authSuccess"
+    )
+    .style
+    .display =
+    "none";
 }
 
 
 /* =========================================================
-SECURITY / HTML ESCAPING
+ESCAPE HTML
 ========================================================= */
 
 function escapeHTML(value){
 
-return String(value)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
+  return String(value)
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+}
 
+
+/* =========================================================
+BUTTON EVENT LISTENERS
+========================================================= */
+
+function setupButtons(){
+
+  /* AUTH */
+
+  document
+    .getElementById(
+      "switchButton"
+    )
+    .addEventListener(
+      "click",
+      function(event){
+
+        event.preventDefault();
+
+        toggleAuthMode();
+
+      }
+    );
+
+
+  document
+    .getElementById(
+      "authButton"
+    )
+    .addEventListener(
+      "click",
+      function(event){
+
+        event.preventDefault();
+
+        handleAuth();
+
+      }
+    );
+
+
+  document
+    .getElementById(
+      "passwordToggle"
+    )
+    .addEventListener(
+      "click",
+      function(event){
+
+        event.preventDefault();
+
+        togglePassword();
+
+      }
+    );
+
+
+  /* SEARCH */
+
+  document
+    .getElementById(
+      "searchInput"
+    )
+    .addEventListener(
+      "input",
+      searchUsers
+    );
+
+
+  /* SETTINGS */
+
+  document
+    .getElementById(
+      "settingsTopButton"
+    )
+    .addEventListener(
+      "click",
+      function(){
+
+        showPage(
+          "settings",
+          null
+        );
+
+      }
+    );
+
+
+  document
+    .getElementById(
+      "editProfileButton"
+    )
+    .addEventListener(
+      "click",
+      editProfile
+    );
+
+
+  document
+    .getElementById(
+      "editProfileSettingsButton"
+    )
+    .addEventListener(
+      "click",
+      editProfile
+    );
+
+
+  document
+    .getElementById(
+      "saveProfileButton"
+    )
+    .addEventListener(
+      "click",
+      saveProfile
+    );
+
+
+  document
+    .getElementById(
+      "closeProfileModal"
+    )
+    .addEventListener(
+      "click",
+      function(){
+
+        closeModal(
+          "profileModal"
+        );
+
+      }
+    );
+
+
+  /* SCHEDULE */
+
+  document
+    .getElementById(
+      "addScheduleButton"
+    )
+    .addEventListener(
+      "click",
+      openScheduleModal
+    );
+
+
+  document
+    .getElementById(
+      "closeScheduleModal"
+    )
+    .addEventListener(
+      "click",
+      function(){
+
+        closeModal(
+          "scheduleModal"
+        );
+
+      }
+    );
+
+
+  document
+    .getElementById(
+      "saveScheduleButton"
+    )
+    .addEventListener(
+      "click",
+      saveSchedule
+    );
+
+
+  document
+    .getElementById(
+      "scheduleType"
+    )
+    .addEventListener(
+      "change",
+      updateScheduleFields
+    );
+
+
+  /* NOTIFICATIONS */
+
+  document
+    .getElementById(
+      "notificationToggle"
+    )
+    .addEventListener(
+      "change",
+      togglePushNotifications
+    );
+
+
+  /* LOGOUT */
+
+  document
+    .getElementById(
+      "logoutButton"
+    )
+    .addEventListener(
+      "click",
+      logout
+    );
+
+
+  /* NAVIGATION */
+
+  document
+    .querySelectorAll(
+      ".nav-btn"
+    )
+    .forEach(
+      button => {
+
+        button.addEventListener(
+          "click",
+          function(){
+
+            showPage(
+              button.dataset.page,
+              button
+            );
+
+          }
+        );
+
+      }
+    );
 }
 
 
@@ -4603,57 +4825,143 @@ START APP
 
 async function startApp(){
 
-const {data} =
-await supabaseClient
-.auth
-.getSession();
+  if(
+    !initializeSupabase()
+  ){
 
+    return;
+  }
 
-if(data.session){
+  setupButtons();
 
-currentUser =
-data.session.user;
+  try{
 
+    const {
+      data,
+      error
+    } =
+    await supabaseClient
+      .auth
+      .getSession();
 
-await loadProfile();
+    if(error){
 
-}else{
+      console.error(
+        error
+      );
 
-document
-.getElementById("authScreen")
-.classList
-.remove("hidden");
+      showError(
+        "Could not check your login session: " +
+        error.message
+      );
 
+      return;
+    }
+
+    if(data.session){
+
+      currentUser =
+        data.session.user;
+
+      await loadProfile();
+
+    }else{
+
+      document
+        .getElementById(
+          "authScreen"
+        )
+        .classList
+        .remove("hidden");
+    }
+
+  }catch(error){
+
+    console.error(
+      "Startup error:",
+      error
+    );
+
+    showError(
+      "ConnectSphere could not start: " +
+      error.message
+    );
+  }
 }
 
+
+/* =========================================================
+AUTH STATE
+========================================================= */
+
+function setupAuthListener(){
+
+  if(!supabaseClient)
+    return;
+
+  supabaseClient
+    .auth
+    .onAuthStateChange(
+      async (
+        event,
+        session
+      ) => {
+
+        if(
+          event ===
+          "SIGNED_OUT"
+        ){
+
+          document
+            .getElementById(
+              "app"
+            )
+            .classList
+            .add("hidden");
+
+          document
+            .getElementById(
+              "authScreen"
+            )
+            .classList
+            .remove("hidden");
+
+          currentUser = null;
+
+          currentProfile = null;
+        }
+
+        if(
+          event ===
+          "SIGNED_IN" &&
+          session
+        ){
+
+          currentUser =
+            session.user;
+
+          await loadProfile();
+        }
+
+      }
+    );
 }
 
 
-supabaseClient
-.auth
-.onAuthStateChange(
-async(event,session) => {
+/* =========================================================
+BOOT
+========================================================= */
 
-if(event === "SIGNED_OUT"){
+document.addEventListener(
+  "DOMContentLoaded",
+  async function(){
 
-document
-.getElementById("app")
-.classList
-.add("hidden");
+    await startApp();
 
+    setupAuthListener();
 
-document
-.getElementById("authScreen")
-.classList
-.remove("hidden");
-
-}
-
-}
+  }
 );
-
-
-startApp();
 
 </script>
 
