@@ -108,6 +108,14 @@ h1{
   border-radius:10px
 }
 
+.success-btn{
+  background:#e8f7ec;
+  color:#287a35;
+  padding:11px 16px;
+  border-radius:10px;
+  font-weight:600
+}
+
 .search-box{
   width:100%;
   padding:14px 16px;
@@ -237,6 +245,20 @@ h1{
 }
 
 .nav-icon{font-size:21px}
+
+.badge-count{
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  border-radius:20px;
+  background:#e53935;
+  color:white;
+  font-size:10px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-left:3px
+}
 
 .modal{
   display:none;
@@ -452,7 +474,8 @@ h1{
   margin-top:10px
 }
 
-/* Notification ON/OFF switch */
+/* Notification switch */
+
 .switch{
   position:relative;
   display:inline-block;
@@ -497,7 +520,56 @@ h1{
   transform:translateX(22px)
 }
 
+/* Connection request styles */
+
+.request-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:12px
+}
+
+.request-actions button{
+  padding:9px 12px;
+  border-radius:9px;
+  font-size:13px
+}
+
+.status-text{
+  color:#777;
+  font-size:13px;
+  margin-top:5px
+}
+
+.connected-label{
+  color:#287a35;
+  font-weight:600;
+  font-size:13px
+}
+
+.pending-label{
+  color:#806c00;
+  font-weight:600;
+  font-size:13px
+}
+
+.request-section-title{
+  font-size:17px;
+  margin:18px 0 10px
+}
+
+.notice{
+  padding:12px;
+  border-radius:12px;
+  background:#f1f0ff;
+  color:#4b3fc0;
+  font-size:13px;
+  line-height:1.5;
+  margin-bottom:12px
+}
+
 @media(max-width:600px){
+
   main{
     padding:16px;
     padding-bottom:90px
@@ -510,13 +582,27 @@ h1{
   .bottom-nav{overflow-x:auto}
 
   .nav-btn{min-width:65px}
+
+  .user-row{
+    align-items:flex-start
+  }
+
+  .user-row > button{
+    flex-shrink:0
+  }
+
 }
 </style>
 </head>
 
 <body>
 
+<!-- =========================================================
+AUTH SCREEN
+========================================================= -->
+
 <div id="authScreen" class="auth-screen">
+
 <div class="auth-box">
 
 <h1>ConnectSphere</h1>
@@ -529,52 +615,102 @@ Create your account and connect.
 <div id="authSuccess" class="success"></div>
 
 <div id="signupFields">
-<input id="signupName" placeholder="Full name">
-<input id="signupUsername" placeholder="Username">
+
+<input
+id="signupName"
+placeholder="Full name"
+>
+
+<input
+id="signupUsername"
+placeholder="Username"
+>
+
 </div>
 
-<input id="authEmail" type="email" placeholder="Email">
+<input
+id="authEmail"
+type="email"
+placeholder="Email"
+>
 
 <div class="password-wrap">
-<input id="authPassword" type="password" placeholder="Password">
+
+<input
+id="authPassword"
+type="password"
+placeholder="Password"
+>
 
 <button
 type="button"
 class="password-toggle"
 id="passwordToggle"
 onclick="togglePassword()"
->👁️</button>
+>
+👁️
+</button>
+
 </div>
 
-<button id="authButton" class="primary" onclick="handleAuth()">
+<button
+id="authButton"
+class="primary"
+onclick="handleAuth()"
+>
 Sign Up
 </button>
 
 <div class="auth-switch">
-<span id="switchText">Already have an account?</span>
-<button onclick="toggleAuthMode()" id="switchButton">
+
+<span id="switchText">
+Already have an account?
+</span>
+
+<button
+onclick="toggleAuthMode()"
+id="switchButton"
+>
 Log in
 </button>
+
 </div>
 
 </div>
 </div>
 
+
+<!-- =========================================================
+MAIN APP
+========================================================= -->
 
 <div id="app" class="app hidden">
 
 <header>
-<div class="logo">ConnectSphere</div>
+
+<div class="logo">
+ConnectSphere
+</div>
 
 <div>
-<button class="icon-btn" onclick="showPage('settings')">
+
+<button
+class="icon-btn"
+onclick="showPage('settings')"
+>
 ⚙️
 </button>
+
 </div>
+
 </header>
 
 
 <main>
+
+<!-- =======================================================
+HOME
+======================================================= -->
 
 <section id="home" class="page active">
 
@@ -588,25 +724,44 @@ Connect with people and start conversations.
 
 <div class="user-row">
 
-<div class="avatar" id="homeAvatar">Y</div>
+<div
+class="avatar"
+id="homeAvatar"
+>
+Y
+</div>
 
 <div class="user-info">
-<strong id="homeName">Your Name</strong>
-<span id="homeUsername">@username</span>
-</div>
+
+<strong id="homeName">
+Your Name
+</strong>
+
+<span id="homeUsername">
+@username
+</span>
 
 </div>
 
 </div>
+
+</div>
+
 
 <div class="card">
 
-<h3>People on ConnectSphere</h3>
+<h3>
+People on ConnectSphere
+</h3>
 
 <br>
 
 <div id="suggestions">
-<div class="empty">Loading profiles...</div>
+
+<div class="empty">
+Loading profiles...
+</div>
+
 </div>
 
 </div>
@@ -614,9 +769,15 @@ Connect with people and start conversations.
 </section>
 
 
+<!-- =======================================================
+SEARCH
+======================================================= -->
+
 <section id="search" class="page">
 
-<h1>Search</h1>
+<h1>
+Search
+</h1>
 
 <p class="subtitle">
 Find registered ConnectSphere users.
@@ -630,46 +791,76 @@ oninput="searchUsers()"
 >
 
 <div id="searchResults">
-<div class="empty">Start typing to search.</div>
+
+<div class="empty">
+Start typing to search.
+</div>
+
 </div>
 
 </section>
 
+
+<!-- =======================================================
+REQUESTS
+======================================================= -->
 
 <section id="requests" class="page">
 
-<h1>Requests</h1>
+<h1>
+Requests
+</h1>
 
 <p class="subtitle">
-Manage connection requests.
+Manage your connection requests.
 </p>
 
+<div
+id="requestsContent"
+>
+
 <div class="empty">
-Connection requests will be added next.
+Loading requests...
+</div>
+
 </div>
 
 </section>
 
 
+<!-- =======================================================
+CHATS
+======================================================= -->
+
 <section id="chats" class="page">
 
-<h1>Messages</h1>
+<h1>
+Messages
+</h1>
 
 <p class="subtitle">
 Your conversations.
 </p>
 
 <div class="empty">
-Real-time encrypted messaging will be added after
-the account system is working.
+
+Messaging will be connected after the
+connection system is verified.
+
 </div>
 
 </section>
 
 
+<!-- =======================================================
+SCHEDULE
+======================================================= -->
+
 <section id="schedule" class="page">
 
-<h1>My Schedule 📅</h1>
+<h1>
+My Schedule 📅
+</h1>
 
 <p class="subtitle">
 Build daily habits, weekly plans and one-time reminders.
@@ -685,7 +876,10 @@ gap:10px
 ">
 
 <div>
-<strong>Progress</strong>
+
+<strong>
+Progress
+</strong>
 
 <div
 id="scheduleProgressText"
@@ -697,63 +891,107 @@ margin-top:4px
 >
 0% completed
 </div>
+
 </div>
 
-<button class="primary" onclick="openScheduleModal()">
+<button
+class="primary"
+onclick="openScheduleModal()"
+>
 + Add
 </button>
 
 </div>
 
 <div class="progress-bar">
+
 <div
 id="scheduleProgressFill"
 class="progress-fill"
 ></div>
+
 </div>
 
 </div>
+
 
 <div id="scheduleList">
-<div class="empty">Loading your schedules...</div>
+
+<div class="empty">
+Loading your schedules...
+</div>
+
 </div>
 
 </section>
 
 
+<!-- =======================================================
+PROFILE
+======================================================= -->
+
 <section id="profile" class="page">
 
 <div class="card profile">
 
-<div class="avatar" id="profileAvatar">Y</div>
+<div
+class="avatar"
+id="profileAvatar"
+>
+Y
+</div>
 
-<h2 id="profileName">Your Name</h2>
+<h2 id="profileName">
+Your Name
+</h2>
 
-<p id="profileUsername">@username</p>
+<p id="profileUsername">
+@username
+</p>
 
 <div class="stat-row">
 
 <div class="stat">
-<strong>0</strong>
-<span>Connections</span>
+
+<strong id="connectionCount">
+0
+</strong>
+
+<span>
+Connections
+</span>
+
 </div>
 
 <div class="stat">
-<strong>0</strong>
-<span>Requests</span>
-</div>
+
+<strong id="requestCount">
+0
+</strong>
+
+<span>
+Requests
+</span>
 
 </div>
 
-<button class="primary" onclick="editProfile()">
+</div>
+
+<button
+class="primary"
+onclick="editProfile()"
+>
 Edit Profile
 </button>
 
 </div>
 
+
 <div class="card">
 
-<h3>About</h3>
+<h3>
+About
+</h3>
 
 <br>
 
@@ -766,41 +1004,64 @@ Your bio will appear here.
 </section>
 
 
+<!-- =======================================================
+SETTINGS
+======================================================= -->
+
 <section id="settings" class="page">
 
-<h1>Settings</h1>
+<h1>
+Settings
+</h1>
 
 <p class="subtitle">
 Control your account.
 </p>
+
 
 <div class="card">
 
 <div class="setting">
 
 <div>
-<strong>Private account</strong>
+
+<strong>
+Private account
+</strong>
 
 <small>
 Require requests before connecting.
 </small>
-</div>
-
-<input type="checkbox" id="privateAccount">
 
 </div>
+
+<input
+type="checkbox"
+id="privateAccount"
+>
+
+</div>
+
 
 <div class="setting">
 
 <div>
-<strong>Show online status</strong>
+
+<strong>
+Show online status
+</strong>
 
 <small>
 Allow connections to see your status.
 </small>
+
 </div>
 
-<input type="checkbox" id="onlineStatus" checked>
+<input
+type="checkbox"
+id="onlineStatus"
+checked
+>
 
 </div>
 
@@ -811,7 +1072,9 @@ Allow connections to see your status.
 
 <div class="card">
 
-<h3>Notifications 🔔</h3>
+<h3>
+Notifications 🔔
+</h3>
 
 <p class="notification-status">
 Turn browser notifications ON or OFF for ConnectSphere reminders.
@@ -820,11 +1083,15 @@ Turn browser notifications ON or OFF for ConnectSphere reminders.
 <div class="setting">
 
 <div>
-<strong>Push Notifications</strong>
+
+<strong>
+Push Notifications
+</strong>
 
 <small id="notificationSwitchText">
 Notifications are OFF.
 </small>
+
 </div>
 
 <label class="switch">
@@ -853,17 +1120,25 @@ Notifications are not enabled.
 
 <div class="card">
 
-<h3>Account</h3>
+<h3>
+Account
+</h3>
 
 <br>
 
-<button class="secondary" onclick="editProfile()">
+<button
+class="secondary"
+onclick="editProfile()"
+>
 Edit profile
 </button>
 
 <br><br>
 
-<button class="danger" onclick="logout()">
+<button
+class="danger"
+onclick="logout()"
+>
 Log out
 </button>
 
@@ -872,14 +1147,23 @@ Log out
 
 <div class="card">
 
-<h3>Security 🔐</h3>
+<h3>
+Security 🔐
+</h3>
 
 <br>
 
 <p style="color:#777;line-height:1.6">
+
 Your account uses Supabase Authentication
 and database Row Level Security.
-Schedule data is protected by user-level RLS policies.
+
+Connection requests are protected by
+user-level RLS policies.
+
+Schedule data is protected by
+user-level RLS policies.
+
 </p>
 
 </div>
@@ -889,36 +1173,100 @@ Schedule data is protected by user-level RLS policies.
 </main>
 
 
+<!-- =========================================================
+BOTTOM NAVIGATION
+========================================================= -->
+
 <nav class="bottom-nav">
 
-<button class="nav-btn active" onclick="showPage('home',this)">
-<span class="nav-icon">🏠</span>
+<button
+class="nav-btn active"
+onclick="showPage('home',this)"
+>
+
+<span class="nav-icon">
+🏠
+</span>
+
 Home
+
 </button>
 
-<button class="nav-btn" onclick="showPage('search',this)">
-<span class="nav-icon">🔎</span>
+
+<button
+class="nav-btn"
+onclick="showPage('search',this)"
+>
+
+<span class="nav-icon">
+🔎
+</span>
+
 Search
+
 </button>
 
-<button class="nav-btn" onclick="showPage('requests',this)">
-<span class="nav-icon">👥</span>
+
+<button
+class="nav-btn"
+onclick="showPage('requests',this)"
+>
+
+<span class="nav-icon">
+👥
+</span>
+
 Requests
+
+<span
+id="navRequestBadge"
+class="badge-count hidden"
+>
+0
+</span>
+
 </button>
 
-<button class="nav-btn" onclick="showPage('chats',this)">
-<span class="nav-icon">💬</span>
+
+<button
+class="nav-btn"
+onclick="showPage('chats',this)"
+>
+
+<span class="nav-icon">
+💬
+</span>
+
 Chats
+
 </button>
 
-<button class="nav-btn" onclick="showPage('schedule',this)">
-<span class="nav-icon">📅</span>
+
+<button
+class="nav-btn"
+onclick="showPage('schedule',this)"
+>
+
+<span class="nav-icon">
+📅
+</span>
+
 Schedule
+
 </button>
 
-<button class="nav-btn" onclick="showPage('profile',this)">
-<span class="nav-icon">👤</span>
+
+<button
+class="nav-btn"
+onclick="showPage('profile',this)"
+>
+
+<span class="nav-icon">
+👤
+</span>
+
 Profile
+
 </button>
 
 </nav>
@@ -926,17 +1274,33 @@ Profile
 </div>
 
 
-<div class="modal" id="profileModal">
+<!-- =========================================================
+PROFILE MODAL
+========================================================= -->
+
+<div
+class="modal"
+id="profileModal"
+>
 
 <div class="modal-box">
 
-<button class="close" onclick="closeModal('profileModal')">
+<button
+class="close"
+onclick="closeModal('profileModal')"
+>
 ×
 </button>
 
-<h2>Edit Profile</h2>
+<h2>
+Edit Profile
+</h2>
 
-<input id="editName" class="search-box" placeholder="Your name">
+<input
+id="editName"
+class="search-box"
+placeholder="Your name"
+>
 
 <input
 id="editUsername"
@@ -944,34 +1308,58 @@ class="search-box"
 placeholder="Username"
 >
 
-<input id="editBio" class="search-box" placeholder="Bio">
+<input
+id="editBio"
+class="search-box"
+placeholder="Bio"
+>
 
-<button class="primary" onclick="saveProfile()">
+<button
+class="primary"
+onclick="saveProfile()"
+>
 Save Profile
 </button>
 
 </div>
+
 </div>
 
 
-<div class="modal" id="scheduleModal">
+<!-- =========================================================
+SCHEDULE MODAL
+========================================================= -->
+
+<div
+class="modal"
+id="scheduleModal"
+>
 
 <div class="modal-box">
 
-<button class="close" onclick="closeModal('scheduleModal')">
+<button
+class="close"
+onclick="closeModal('scheduleModal')"
+>
 ×
 </button>
 
-<h2>Add Schedule</h2>
+<h2>
+Add Schedule
+</h2>
 
-<label class="form-label">Title</label>
+<label class="form-label">
+Title
+</label>
 
 <input
 id="scheduleTitle"
 placeholder="Example: Study for 30 minutes"
 >
 
-<label class="form-label">Description</label>
+<label class="form-label">
+Description
+</label>
 
 <textarea
 id="scheduleDescription"
@@ -979,45 +1367,96 @@ rows="3"
 placeholder="Optional details"
 ></textarea>
 
-<label class="form-label">Type</label>
+<label class="form-label">
+Type
+</label>
 
-<select id="scheduleType" onchange="updateScheduleFields()">
+<select
+id="scheduleType"
+onchange="updateScheduleFields()"
+>
 
-<option value="daily">Daily</option>
-<option value="weekly">Weekly</option>
-<option value="once">One-time</option>
+<option value="daily">
+Daily
+</option>
+
+<option value="weekly">
+Weekly
+</option>
+
+<option value="once">
+One-time
+</option>
 
 </select>
 
-<label class="form-label">Reminder time</label>
+<label class="form-label">
+Reminder time
+</label>
 
-<input id="scheduleTime" type="time">
+<input
+id="scheduleTime"
+type="time"
+>
 
 
-<div id="weeklyField" class="hidden">
+<div
+id="weeklyField"
+class="hidden"
+>
 
-<label class="form-label">Day of week</label>
+<label class="form-label">
+Day of week
+</label>
 
 <select id="scheduleDay">
 
-<option value="0">Sunday</option>
-<option value="1">Monday</option>
-<option value="2">Tuesday</option>
-<option value="3">Wednesday</option>
-<option value="4">Thursday</option>
-<option value="5">Friday</option>
-<option value="6">Saturday</option>
+<option value="0">
+Sunday
+</option>
+
+<option value="1">
+Monday
+</option>
+
+<option value="2">
+Tuesday
+</option>
+
+<option value="3">
+Wednesday
+</option>
+
+<option value="4">
+Thursday
+</option>
+
+<option value="5">
+Friday
+</option>
+
+<option value="6">
+Saturday
+</option>
 
 </select>
 
 </div>
 
 
-<div id="onceField" class="hidden">
+<div
+id="onceField"
+class="hidden"
+>
 
-<label class="form-label">Date</label>
+<label class="form-label">
+Date
+</label>
 
-<input id="scheduleDate" type="date">
+<input
+id="scheduleDate"
+type="date"
+>
 
 </div>
 
@@ -1031,8 +1470,13 @@ Save Schedule
 </button>
 
 </div>
+
 </div>
 
+
+<!-- =========================================================
+SUPABASE
+========================================================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -1050,12 +1494,15 @@ SUPABASE_URL,
 SUPABASE_PUBLISHABLE_KEY
 );
 
+
 const PUSH_FUNCTION_URL =
 SUPABASE_URL +
 "/functions/v1/hyper-processor";
 
+
 const VAPID_PUBLIC_KEY =
 "BPXQwAeUakIVhv46REqOG4rbgPeOG2vA3XD4dcU62Njv_QBuiumeMdMKaP-slpYsWEKt7k8oWRDNNt4qpJX670A";
+
 
 let currentUser = null;
 let currentProfile = null;
@@ -1139,10 +1586,14 @@ document.getElementById("authPassword").value;
 
 if(!email || !password){
 
-showError("Please enter your email and password.");
+showError(
+"Please enter your email and password."
+);
+
 return;
 
 }
+
 
 try{
 
@@ -1150,8 +1601,10 @@ if(loginMode){
 
 const {data,error} =
 await supabaseClient.auth.signInWithPassword({
+
 email,
 password
+
 });
 
 if(error) throw error;
@@ -1160,7 +1613,10 @@ currentUser = data.user;
 
 if(!currentUser){
 
-showError("Login succeeded, but no user was returned.");
+showError(
+"Login succeeded, but no user was returned."
+);
+
 return;
 
 }
@@ -1170,7 +1626,9 @@ await loadProfile();
 }else{
 
 const name =
-document.getElementById("signupName").value.trim();
+document.getElementById("signupName")
+.value
+.trim();
 
 const username =
 document
@@ -1179,12 +1637,17 @@ document
 .trim()
 .toLowerCase();
 
+
 if(!name || !username){
 
-showError("Please enter your name and username.");
+showError(
+"Please enter your name and username."
+);
+
 return;
 
 }
+
 
 if(!/^[a-z0-9_]{3,30}$/.test(username)){
 
@@ -1196,6 +1659,7 @@ return;
 
 }
 
+
 const {data,error} =
 await supabaseClient.auth.signUp({
 
@@ -1203,6 +1667,7 @@ email,
 password,
 
 options:{
+
 emailRedirectTo:
 "https://messagerpersonal.github.io/connectsphere.com/",
 
@@ -1210,11 +1675,14 @@ data:{
 display_name:name,
 username
 }
+
 }
 
 });
 
+
 if(error) throw error;
+
 
 if(!data.user){
 
@@ -1226,9 +1694,11 @@ return;
 
 }
 
+
 showSuccess(
 "Account created! Check your email, confirm your account, then log in."
 );
+
 
 loginMode = true;
 
@@ -1239,7 +1709,8 @@ document
 
 document
 .getElementById("authButton")
-.textContent = "Log In";
+.textContent =
+"Log In";
 
 document
 .getElementById("authSubtitle")
@@ -1250,10 +1721,14 @@ document
 
 }catch(error){
 
-console.error("Authentication error:",error);
+console.error(
+"Authentication error:",
+error
+);
 
 showError(
-error.message || "Authentication failed."
+error.message ||
+"Authentication failed."
 );
 
 }
@@ -1269,12 +1744,14 @@ async function loadProfile(){
 
 if(!currentUser) return;
 
+
 const {data,error} =
 await supabaseClient
 .from("profiles")
 .select("*")
 .eq("id",currentUser.id)
 .maybeSingle();
+
 
 if(error){
 
@@ -1289,6 +1766,7 @@ return;
 
 }
 
+
 if(!data){
 
 const metadata =
@@ -1299,6 +1777,7 @@ metadata.display_name ||
 currentUser.email?.split("@")[0] ||
 "User";
 
+
 const username =
 metadata.username ||
 (
@@ -1308,18 +1787,22 @@ currentUser.id
 .slice(0,8)
 );
 
+
 const {data:newProfile,error:createError} =
 await supabaseClient
 .from("profiles")
 .insert({
+
 id:currentUser.id,
 username,
 display_name:displayName,
 bio:"",
 avatar_url:null
+
 })
 .select()
 .single();
+
 
 if(createError){
 
@@ -1342,6 +1825,7 @@ currentProfile = data;
 
 }
 
+
 showApp();
 
 updateProfileUI();
@@ -1349,6 +1833,8 @@ updateProfileUI();
 await loadPeople();
 
 await loadSchedules();
+
+await loadConnectionData();
 
 await checkNotificationStatus();
 
@@ -1374,36 +1860,56 @@ function updateProfileUI(){
 
 if(!currentProfile) return;
 
+
 const name =
-currentProfile.display_name || "Your Name";
+currentProfile.display_name ||
+"Your Name";
 
 const username =
-currentProfile.username || "username";
+currentProfile.username ||
+"username";
 
 const bio =
-currentProfile.bio || "Your bio will appear here.";
+currentProfile.bio ||
+"Your bio will appear here.";
 
 const letter =
-name.charAt(0).toUpperCase() || "Y";
+name.charAt(0).toUpperCase() ||
+"Y";
 
-document.getElementById("homeName").textContent = name;
 
-document.getElementById("homeUsername").textContent =
-"@" + username;
-
-document.getElementById("profileName").textContent =
+document.getElementById("homeName")
+.textContent =
 name;
 
-document.getElementById("profileUsername").textContent =
+
+document.getElementById("homeUsername")
+.textContent =
 "@" + username;
 
-document.getElementById("profileBio").textContent =
+
+document.getElementById("profileName")
+.textContent =
+name;
+
+
+document.getElementById("profileUsername")
+.textContent =
+"@" + username;
+
+
+document.getElementById("profileBio")
+.textContent =
 bio;
 
-document.getElementById("homeAvatar").textContent =
+
+document.getElementById("homeAvatar")
+.textContent =
 letter;
 
-document.getElementById("profileAvatar").textContent =
+
+document.getElementById("profileAvatar")
+.textContent =
 letter;
 
 }
@@ -1415,6 +1921,9 @@ PEOPLE
 
 async function loadPeople(){
 
+if(!currentUser) return;
+
+
 const {data,error} =
 await supabaseClient
 .from("profiles")
@@ -1423,6 +1932,7 @@ await supabaseClient
 )
 .neq("id",currentUser.id)
 .limit(20);
+
 
 if(error){
 
@@ -1435,15 +1945,17 @@ return;
 
 }
 
-renderPeople(data || []);
+
+await renderPeople(data || []);
 
 }
 
 
-function renderPeople(users){
+async function renderPeople(users){
 
 const container =
 document.getElementById("suggestions");
+
 
 if(!users.length){
 
@@ -1454,21 +1966,89 @@ return;
 
 }
 
+
+const ids =
+users.map(user => user.id);
+
+const requestMap =
+await getRequestStates(ids);
+
+
 container.innerHTML =
-users.map(profileCard).join("");
+users
+.map(user => profileCard(user,requestMap))
+.join("");
 
 }
 
 
-function profileCard(user){
+function profileCard(user,requestMap = {}){
 
 const name =
-user.display_name || "User";
+user.display_name ||
+"User";
 
 const letter =
 name.charAt(0).toUpperCase();
 
+
+const state =
+requestMap[user.id] ||
+{
+type:"none",
+requestId:null
+};
+
+
+let actionHTML = "";
+
+
+if(state.type === "connected"){
+
+actionHTML = `
+<div class="connected-label">
+✓ Connected
+</div>
+`;
+
+}else if(state.type === "sent"){
+
+actionHTML = `
+<button
+class="secondary"
+onclick="cancelConnectionRequest('${user.id}')"
+>
+Pending
+</button>
+`;
+
+}else if(state.type === "received"){
+
+actionHTML = `
+<button
+class="primary"
+onclick="openRequestsPage()"
+>
+Respond
+</button>
+`;
+
+}else{
+
+actionHTML = `
+<button
+class="primary"
+onclick="sendConnectionRequest('${user.id}')"
+>
+Connect
+</button>
+`;
+
+}
+
+
 return `
+
 <div class="card">
 
 <div class="user-row">
@@ -1476,6 +2056,7 @@ return `
 <div class="avatar">
 ${escapeHTML(letter)}
 </div>
+
 
 <div class="user-info">
 
@@ -1493,20 +2074,37 @@ ${escapeHTML(user.bio || "")}
 
 </div>
 
+
+<div style="
+display:flex;
+flex-direction:column;
+gap:7px;
+align-items:flex-end
+">
+
 <button
 class="secondary"
-onclick="viewProfile('${escapeHTML(user.id)}')"
+onclick="viewProfile('${user.id}')"
 >
 View
 </button>
 
+${actionHTML}
+
 </div>
 
 </div>
+
+</div>
+
 `;
 
 }
 
+
+/* =========================================================
+SEARCH
+========================================================= */
 
 async function searchUsers(){
 
@@ -1517,8 +2115,10 @@ document
 .trim()
 .toLowerCase();
 
+
 const container =
 document.getElementById("searchResults");
+
 
 if(!query){
 
@@ -1529,6 +2129,7 @@ return;
 
 }
 
+
 if(!currentUser){
 
 container.innerHTML =
@@ -1537,6 +2138,7 @@ container.innerHTML =
 return;
 
 }
+
 
 const {data,error} =
 await supabaseClient
@@ -1550,16 +2152,20 @@ await supabaseClient
 )
 .limit(20);
 
+
 if(error){
 
 console.error(error);
 
 container.innerHTML =
-'<div class="empty">Search failed.</div>';
+'<div class="empty">Search failed: ' +
+escapeHTML(error.message) +
+'</div>';
 
 return;
 
 }
+
 
 if(!data || !data.length){
 
@@ -1570,11 +2176,1025 @@ return;
 
 }
 
+
+const ids =
+data.map(user => user.id);
+
+const requestMap =
+await getRequestStates(ids);
+
+
 container.innerHTML =
-data.map(profileCard).join("");
+data
+.map(user => profileCard(user,requestMap))
+.join("");
 
 }
 
+
+/* =========================================================
+CONNECTION REQUESTS
+========================================================= */
+
+
+/*
+  Get all relevant requests for the current user.
+
+  This matches your verified RLS SELECT policy:
+
+  auth.uid() = sender_id
+  OR
+  auth.uid() = receiver_id
+*/
+
+async function loadConnectionData(){
+
+if(!currentUser) return;
+
+
+await loadRequests();
+
+await updatePeopleConnectionStates();
+
+await updateConnectionStats();
+
+}
+
+
+/*
+  Get request state for a list of other user IDs.
+
+  Possible states:
+
+  connected
+  sent
+  received
+  none
+*/
+
+async function getRequestStates(userIds){
+
+const result = {};
+
+
+if(!currentUser || !userIds.length){
+
+return result;
+
+}
+
+
+const uniqueIds =
+[...new Set(userIds)]
+.filter(id => id !== currentUser.id);
+
+
+if(!uniqueIds.length){
+
+return result;
+
+}
+
+
+const {data,error} =
+await supabaseClient
+.from("connection_requests")
+.select(
+"id,sender_id,receiver_id,status"
+)
+.or(
+`sender_id.in.(${uniqueIds.join(",")}),receiver_id.in.(${uniqueIds.join(",")})`
+);
+
+
+if(error){
+
+console.error(
+"Could not load connection states:",
+error
+);
+
+return result;
+
+}
+
+
+(data || []).forEach(request => {
+
+const otherId =
+request.sender_id === currentUser.id
+? request.receiver_id
+: request.sender_id;
+
+
+if(!otherId) return;
+
+
+if(request.status === "accepted"){
+
+result[otherId] = {
+
+type:"connected",
+requestId:request.id
+
+};
+
+return;
+
+}
+
+
+if(
+request.status === "pending" &&
+request.sender_id === currentUser.id
+){
+
+result[otherId] = {
+
+type:"sent",
+requestId:request.id
+
+};
+
+return;
+
+}
+
+
+if(
+request.status === "pending" &&
+request.receiver_id === currentUser.id
+){
+
+result[otherId] = {
+
+type:"received",
+requestId:request.id
+
+};
+
+return;
+
+}
+
+});
+
+
+return result;
+
+}
+
+
+/*
+  Send a new connection request.
+
+  Your verified INSERT policy is:
+
+  auth.uid() = sender_id
+*/
+
+async function sendConnectionRequest(receiverId){
+
+if(!currentUser){
+
+alert(
+"Please log in again."
+);
+
+return;
+
+}
+
+
+if(!receiverId){
+
+alert(
+"Invalid receiver."
+);
+
+return;
+
+}
+
+
+if(receiverId === currentUser.id){
+
+alert(
+"You cannot send a request to yourself."
+);
+
+return;
+
+}
+
+
+try{
+
+const existing =
+await supabaseClient
+.from("connection_requests")
+.select(
+"id,sender_id,receiver_id,status"
+)
+.or(
+`and(sender_id.eq.${currentUser.id},receiver_id.eq.${receiverId}),and(sender_id.eq.${receiverId},receiver_id.eq.${currentUser.id})`
+)
+.limit(1);
+
+
+if(existing.error){
+
+throw existing.error;
+
+}
+
+
+if(existing.data && existing.data.length){
+
+const request =
+existing.data[0];
+
+
+if(request.status === "accepted"){
+
+alert(
+"You are already connected."
+);
+
+return;
+
+}
+
+
+if(
+request.status === "pending" &&
+request.sender_id === currentUser.id
+){
+
+alert(
+"Connection request is already pending."
+);
+
+return;
+
+}
+
+
+if(
+request.status === "pending" &&
+request.receiver_id === currentUser.id
+){
+
+alert(
+"This user has already sent you a request. Check Requests."
+);
+
+return;
+
+}
+
+}
+
+
+/*
+  INSERT request.
+*/
+
+const {error} =
+await supabaseClient
+.from("connection_requests")
+.insert({
+
+sender_id:currentUser.id,
+receiver_id:receiverId,
+status:"pending"
+
+});
+
+
+if(error){
+
+console.error(
+"Send request error:",
+error
+);
+
+if(error.code === "23505"){
+
+alert(
+"That connection request already exists."
+);
+
+}else{
+
+alert(
+"Could not send connection request: " +
+error.message
+);
+
+}
+
+return;
+
+}
+
+
+alert(
+"Connection request sent successfully! ✅"
+);
+
+
+await refreshConnectionUI();
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Something went wrong while sending the request."
+);
+
+}
+
+}
+
+
+/*
+  Cancel a request sent by the current user.
+
+  Your verified DELETE policy allows:
+
+  sender OR receiver
+*/
+
+async function cancelConnectionRequest(otherUserId){
+
+if(!currentUser) return;
+
+
+if(
+!confirm(
+"Cancel this connection request?"
+)
+){
+
+return;
+
+}
+
+
+const {error} =
+await supabaseClient
+.from("connection_requests")
+.delete()
+.eq("sender_id",currentUser.id)
+.eq("receiver_id",otherUserId)
+.eq("status","pending");
+
+
+if(error){
+
+console.error(
+"Cancel request error:",
+error
+);
+
+alert(
+"Could not cancel request: " +
+error.message
+);
+
+return;
+
+}
+
+
+await refreshConnectionUI();
+
+}
+
+
+/*
+  Load requests received by the current user.
+
+  The SELECT policy allows the receiver to see them.
+*/
+
+async function loadRequests(){
+
+const container =
+document.getElementById("requestsContent");
+
+
+if(!container || !currentUser) return;
+
+
+container.innerHTML =
+'<div class="empty">Loading requests...</div>';
+
+
+const {data,error} =
+await supabaseClient
+.from("connection_requests")
+.select(
+"id,sender_id,receiver_id,status,created_at"
+)
+.eq("receiver_id",currentUser.id)
+.order("created_at",{ascending:false});
+
+
+if(error){
+
+console.error(
+"Load requests error:",
+error
+);
+
+container.innerHTML =
+'<div class="empty">Unable to load requests: ' +
+escapeHTML(error.message) +
+'</div>';
+
+return;
+
+}
+
+
+const pendingRequests =
+(data || [])
+.filter(
+request => request.status === "pending"
+);
+
+
+updateRequestBadge(
+pendingRequests.length
+);
+
+
+if(!pendingRequests.length){
+
+container.innerHTML = `
+
+<div class="notice">
+When someone sends you a connection request,
+it will appear here.
+</div>
+
+<div class="empty">
+No pending connection requests.
+</div>
+
+`;
+
+return;
+
+}
+
+
+/*
+  Load sender profiles.
+*/
+
+const senderIds =
+pendingRequests.map(
+request => request.sender_id
+);
+
+
+const {data:profiles,error:profileError} =
+await supabaseClient
+.from("profiles")
+.select(
+"id,username,display_name,bio,avatar_url"
+)
+.in("id",senderIds);
+
+
+if(profileError){
+
+console.error(
+"Request profile error:",
+profileError
+);
+
+container.innerHTML =
+'<div class="empty">Could not load request profiles.</div>';
+
+return;
+
+}
+
+
+const profileMap = {};
+
+(profiles || []).forEach(profile => {
+
+profileMap[profile.id] =
+profile;
+
+});
+
+
+container.innerHTML = `
+
+<div class="notice">
+
+You have
+<strong>${pendingRequests.length}</strong>
+pending connection request${pendingRequests.length === 1 ? "" : "s"}.
+
+</div>
+
+<h3 class="request-section-title">
+Incoming Requests
+</h3>
+
+${
+pendingRequests
+.map(
+request =>
+requestCard(
+request,
+profileMap[request.sender_id]
+)
+)
+.join("")
+}
+
+`;
+
+}
+
+
+/*
+  Render one incoming request.
+*/
+
+function requestCard(request,user){
+
+if(!user){
+
+return `
+<div class="card">
+<div class="empty">
+User profile could not be loaded.
+</div>
+</div>
+`;
+
+}
+
+
+const name =
+user.display_name ||
+"User";
+
+
+const letter =
+name.charAt(0).toUpperCase();
+
+
+return `
+
+<div class="card">
+
+<div class="user-row">
+
+<div class="avatar">
+${escapeHTML(letter)}
+</div>
+
+
+<div class="user-info">
+
+<strong>
+${escapeHTML(name)}
+</strong>
+
+<span>
+@${escapeHTML(user.username || "")}
+</span>
+
+<span>
+${escapeHTML(user.bio || "")}
+</span>
+
+<span class="status-text">
+Requested ${formatDate(request.created_at)}
+</span>
+
+</div>
+
+</div>
+
+
+<div class="request-actions">
+
+<button
+class="primary"
+onclick="acceptConnectionRequest('${request.id}')"
+>
+Accept
+</button>
+
+
+<button
+class="danger"
+onclick="rejectConnectionRequest('${request.id}')"
+>
+Reject
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/*
+  Accept request.
+
+  Your verified UPDATE policy is:
+
+  USING:
+  auth.uid() = receiver_id
+
+  WITH CHECK:
+  auth.uid() = receiver_id
+
+  Therefore the receiver can change pending -> accepted.
+*/
+
+async function acceptConnectionRequest(requestId){
+
+if(!currentUser) return;
+
+
+const {data,error} =
+await supabaseClient
+.from("connection_requests")
+.update({
+status:"accepted"
+})
+.eq("id",requestId)
+.eq("receiver_id",currentUser.id)
+.eq("status","pending")
+.select()
+.single();
+
+
+if(error){
+
+console.error(
+"Accept request error:",
+error
+);
+
+alert(
+"Could not accept request: " +
+error.message
+);
+
+return;
+
+}
+
+
+if(!data){
+
+alert(
+"The request could not be updated. It may have already been handled."
+);
+
+return;
+
+}
+
+
+alert(
+"Connection accepted! 🎉"
+);
+
+
+await refreshConnectionUI();
+
+}
+
+
+/*
+  Reject request.
+
+  DELETE policy allows receiver.
+*/
+
+async function rejectConnectionRequest(requestId){
+
+if(!currentUser) return;
+
+
+if(
+!confirm(
+"Reject this connection request?"
+)
+){
+
+return;
+
+}
+
+
+const {error} =
+await supabaseClient
+.from("connection_requests")
+.delete()
+.eq("id",requestId)
+.eq("receiver_id",currentUser.id);
+
+
+if(error){
+
+console.error(
+"Reject request error:",
+error
+);
+
+alert(
+"Could not reject request: " +
+error.message
+);
+
+return;
+
+}
+
+
+await refreshConnectionUI();
+
+}
+
+
+/*
+  Refresh all connection-related UI.
+*/
+
+async function refreshConnectionUI(){
+
+await loadRequests();
+
+await updatePeopleConnectionStates();
+
+await updateConnectionStats();
+
+}
+
+
+/*
+  Re-render Home and Search cards with current states.
+*/
+
+async function updatePeopleConnectionStates(){
+
+if(!currentUser) return;
+
+
+/*
+  Refresh Home suggestions.
+*/
+
+const {data:people,error} =
+await supabaseClient
+.from("profiles")
+.select(
+"id,username,display_name,bio,avatar_url"
+)
+.neq("id",currentUser.id)
+.limit(20);
+
+
+if(!error){
+
+await renderPeople(people || []);
+
+}
+
+
+/*
+  Refresh Search results if a search is active.
+*/
+
+const searchInput =
+document.getElementById("searchInput");
+
+
+if(
+searchInput &&
+searchInput.value.trim()
+){
+
+await searchUsers();
+
+}
+
+}
+
+
+/*
+  Update profile statistics.
+*/
+
+async function updateConnectionStats(){
+
+if(!currentUser) return;
+
+
+const {data,error} =
+await supabaseClient
+.from("connection_requests")
+.select(
+"id,sender_id,receiver_id,status"
+)
+.or(
+`sender_id.eq.${currentUser.id},receiver_id.eq.${currentUser.id}`
+);
+
+
+if(error){
+
+console.error(
+"Connection statistics error:",
+error
+);
+
+return;
+
+}
+
+
+const requests =
+data || [];
+
+
+const connections =
+requests.filter(
+request =>
+request.status === "accepted"
+).length;
+
+
+const pendingIncoming =
+requests.filter(
+request =>
+request.status === "pending" &&
+request.receiver_id === currentUser.id
+).length;
+
+
+const connectionCount =
+document.getElementById(
+"connectionCount"
+);
+
+
+const requestCount =
+document.getElementById(
+"requestCount"
+);
+
+
+if(connectionCount){
+
+connectionCount.textContent =
+connections;
+
+}
+
+
+if(requestCount){
+
+requestCount.textContent =
+pendingIncoming;
+
+}
+
+
+updateRequestBadge(
+pendingIncoming
+);
+
+}
+
+
+/*
+  Update the Requests badge.
+*/
+
+function updateRequestBadge(count){
+
+const badge =
+document.getElementById(
+"navRequestBadge"
+);
+
+
+if(!badge) return;
+
+
+if(count > 0){
+
+badge.textContent =
+count;
+
+badge.classList.remove(
+"hidden"
+);
+
+}else{
+
+badge.classList.add(
+"hidden"
+);
+
+}
+
+}
+
+
+/*
+  Open Requests page.
+*/
+
+async function openRequestsPage(){
+
+const buttons =
+document.querySelectorAll(
+".nav-btn"
+);
+
+
+let requestsButton = null;
+
+
+buttons.forEach(button => {
+
+if(
+button.textContent.includes("Requests")
+){
+
+requestsButton =
+button;
+
+}
+
+});
+
+
+showPage(
+"requests",
+requestsButton
+);
+
+
+await loadRequests();
+
+}
+
+
+/*
+  Format request date.
+*/
+
+function formatDate(value){
+
+if(!value) return "";
+
+
+try{
+
+return new Date(value)
+.toLocaleString(
+[],
+{
+dateStyle:"medium",
+timeStyle:"short"
+}
+);
+
+}catch(error){
+
+return "";
+
+}
+
+}
+
+
+/* =========================================================
+VIEW PROFILE
+========================================================= */
 
 async function viewProfile(id){
 
@@ -1585,36 +3205,90 @@ await supabaseClient
 .eq("id",id)
 .single();
 
+
 if(error){
 
-alert("Unable to load profile.");
+alert(
+"Unable to load profile."
+);
+
 return;
 
 }
 
+
+const stateMap =
+await getRequestStates([id]);
+
+
+const state =
+stateMap[id] ||
+{
+type:"none"
+};
+
+
+let connectionText =
+"";
+
+
+if(state.type === "connected"){
+
+connectionText =
+"\n\n✓ Connected";
+
+}else if(state.type === "sent"){
+
+connectionText =
+"\n\n⏳ Connection request pending";
+
+}else if(state.type === "received"){
+
+connectionText =
+"\n\n📩 This user sent you a request";
+
+}
+
+
 alert(
+
 (data.display_name || "User") +
+
 "\n@" +
+
 (data.username || "") +
+
 "\n\n" +
-(data.bio || "")
+
+(data.bio || "") +
+
+connectionText
+
 );
 
 }
 
 
+/* =========================================================
+EDIT PROFILE
+========================================================= */
+
 function editProfile(){
 
 if(!currentProfile) return;
 
+
 document.getElementById("editName").value =
 currentProfile.display_name || "";
+
 
 document.getElementById("editUsername").value =
 currentProfile.username || "";
 
+
 document.getElementById("editBio").value =
 currentProfile.bio || "";
+
 
 document
 .getElementById("profileModal")
@@ -1627,7 +3301,11 @@ document
 async function saveProfile(){
 
 const name =
-document.getElementById("editName").value.trim();
+document
+.getElementById("editName")
+.value
+.trim();
+
 
 const username =
 document
@@ -1636,15 +3314,24 @@ document
 .trim()
 .toLowerCase();
 
+
 const bio =
-document.getElementById("editBio").value.trim();
+document
+.getElementById("editBio")
+.value
+.trim();
+
 
 if(!name || !username){
 
-alert("Name and username are required.");
+alert(
+"Name and username are required."
+);
+
 return;
 
 }
+
 
 if(!/^[a-z0-9_]{3,30}$/.test(username)){
 
@@ -1656,29 +3343,38 @@ return;
 
 }
 
+
 const {data,error} =
 await supabaseClient
 .from("profiles")
 .update({
+
 display_name:name,
 username,
 bio
+
 })
 .eq("id",currentUser.id)
 .select()
 .single();
 
+
 if(error){
 
 alert(
+
 error.code === "23505"
+
 ? "That username is already taken."
+
 : error.message
+
 );
 
 return;
 
 }
+
 
 currentProfile = data;
 
@@ -1686,7 +3382,9 @@ updateProfileUI();
 
 closeModal("profileModal");
 
-alert("Profile updated successfully.");
+alert(
+"Profile updated successfully."
+);
 
 }
 
@@ -1699,12 +3397,14 @@ async function loadSchedules(){
 
 if(!currentUser) return;
 
+
 const {data,error} =
 await supabaseClient
 .from("schedules")
 .select("*")
 .eq("user_id",currentUser.id)
 .order("created_at",{ascending:false});
+
 
 if(error){
 
@@ -1719,6 +3419,7 @@ return;
 
 }
 
+
 renderSchedules(data || []);
 
 }
@@ -1729,19 +3430,26 @@ function formatSchedule(s){
 if(s.schedule_type === "daily"){
 
 return (
+
 "Every day" +
+
 (
+
 s.reminder_time
 ? " at " + formatTime(s.reminder_time)
 : ""
+
 )
+
 );
 
 }
 
+
 if(s.schedule_type === "weekly"){
 
 const days = [
+
 "Sunday",
 "Monday",
 "Tuesday",
@@ -1749,32 +3457,49 @@ const days = [
 "Thursday",
 "Friday",
 "Saturday"
+
 ];
 
+
 return (
+
 "Every " +
+
 days[Number(s.day_of_week)] +
+
 (
+
 s.reminder_time
 ? " at " + formatTime(s.reminder_time)
 : ""
+
 )
+
 );
 
 }
 
+
 return (
+
 "One-time" +
+
 (
+
 s.reminder_date
 ? " on " + s.reminder_date
 : ""
+
 ) +
+
 (
+
 s.reminder_time
 ? " at " + formatTime(s.reminder_time)
 : ""
+
 )
+
 );
 
 }
@@ -1784,12 +3509,22 @@ function formatTime(t){
 
 if(!t) return "";
 
+
 const [h,m] =
 t.split(":").map(Number);
 
-const d = new Date();
 
-d.setHours(h,m,0,0);
+const d =
+new Date();
+
+
+d.setHours(
+h,
+m,
+0,
+0
+);
+
 
 return d.toLocaleTimeString(
 [],
@@ -1807,6 +3542,7 @@ function renderSchedules(list){
 const container =
 document.getElementById("scheduleList");
 
+
 if(!list.length){
 
 container.innerHTML =
@@ -1818,8 +3554,10 @@ return;
 
 }
 
+
 container.innerHTML =
-list.map(s => `
+list.map(
+s => `
 
 <div class="schedule-item ${
 s.completed ? "completed" : ""
@@ -1857,6 +3595,7 @@ ${s.completed ? "✅" : "⏰"}
 
 </div>
 
+
 <div class="schedule-actions">
 
 ${
@@ -1881,6 +3620,7 @@ Complete
 </button>`
 }
 
+
 <button
 class="danger"
 onclick="deleteSchedule('${s.id}')"
@@ -1892,7 +3632,10 @@ Delete
 
 </div>
 
-`).join("");
+`
+)
+.join("");
+
 
 updateScheduleProgress(list);
 
@@ -1902,21 +3645,31 @@ updateScheduleProgress(list);
 function updateScheduleProgress(list){
 
 const done =
-list.filter(x => x.completed).length;
+list.filter(
+x => x.completed
+).length;
 
-const total = list.length;
+
+const total =
+list.length;
+
 
 const pct =
 total
 ? Math.round(done / total * 100)
 : 0;
 
-document.getElementById("scheduleProgressText")
+
+document
+.getElementById("scheduleProgressText")
 .textContent =
 `${pct}% completed (${done}/${total})`;
 
-document.getElementById("scheduleProgressFill")
-.style.width =
+
+document
+.getElementById("scheduleProgressFill")
+.style
+.width =
 pct + "%";
 
 }
@@ -1924,20 +3677,41 @@ pct + "%";
 
 function openScheduleModal(){
 
-document.getElementById("scheduleTitle").value = "";
+document
+.getElementById("scheduleTitle")
+.value = "";
 
-document.getElementById("scheduleDescription").value = "";
 
-document.getElementById("scheduleType").value = "daily";
+document
+.getElementById("scheduleDescription")
+.value = "";
 
-document.getElementById("scheduleTime").value = "";
 
-document.getElementById("scheduleDate").value = "";
+document
+.getElementById("scheduleType")
+.value = "daily";
 
-document.getElementById("scheduleDay").value =
-String(new Date().getDay());
+
+document
+.getElementById("scheduleTime")
+.value = "";
+
+
+document
+.getElementById("scheduleDate")
+.value = "";
+
+
+document
+.getElementById("scheduleDay")
+.value =
+String(
+new Date().getDay()
+);
+
 
 updateScheduleFields();
+
 
 document
 .getElementById("scheduleModal")
@@ -1950,17 +3724,27 @@ document
 function updateScheduleFields(){
 
 const type =
-document.getElementById("scheduleType").value;
+document
+.getElementById("scheduleType")
+.value;
+
 
 document
 .getElementById("weeklyField")
 .classList
-.toggle("hidden",type !== "weekly");
+.toggle(
+"hidden",
+type !== "weekly"
+);
+
 
 document
 .getElementById("onceField")
 .classList
-.toggle("hidden",type !== "once");
+.toggle(
+"hidden",
+type !== "once"
+);
 
 }
 
@@ -1969,31 +3753,52 @@ async function saveSchedule(){
 
 if(!currentUser){
 
-alert("Please log in again.");
+alert(
+"Please log in again."
+);
+
 return;
 
 }
 
+
 const title =
-document.getElementById("scheduleTitle")
-.value.trim();
+document
+.getElementById("scheduleTitle")
+.value
+.trim();
+
 
 const description =
-document.getElementById("scheduleDescription")
-.value.trim();
+document
+.getElementById("scheduleDescription")
+.value
+.trim();
+
 
 const type =
-document.getElementById("scheduleType").value;
+document
+.getElementById("scheduleType")
+.value;
+
 
 const time =
-document.getElementById("scheduleTime").value || null;
+document
+.getElementById("scheduleTime")
+.value ||
+null;
+
 
 if(!title){
 
-alert("Please enter a schedule title.");
+alert(
+"Please enter a schedule title."
+);
+
 return;
 
 }
+
 
 let payload = {
 
@@ -2008,35 +3813,49 @@ completed:false
 
 };
 
+
 if(type === "weekly"){
 
 payload.day_of_week =
 Number(
-document.getElementById("scheduleDay").value
+document
+.getElementById("scheduleDay")
+.value
 );
 
 }
 
+
 if(type === "once"){
 
 const date =
-document.getElementById("scheduleDate").value;
+document
+.getElementById("scheduleDate")
+.value;
+
 
 if(!date){
 
-alert("Please choose a date.");
+alert(
+"Please choose a date."
+);
+
 return;
 
 }
 
-payload.reminder_date = date;
+
+payload.reminder_date =
+date;
 
 }
+
 
 const {error} =
 await supabaseClient
 .from("schedules")
 .insert(payload);
+
 
 if(error){
 
@@ -2050,6 +3869,7 @@ error.message
 return;
 
 }
+
 
 closeModal("scheduleModal");
 
@@ -2069,16 +3889,24 @@ const padding =
 (4 - base64String.length % 4) % 4
 );
 
+
 const base64 =
-(base64String + padding)
+(
+base64String +
+padding
+)
 .replace(/-/g,"+")
 .replace(/_/g,"/");
 
-const rawData = atob(base64);
+
+const rawData =
+atob(base64);
+
 
 return Uint8Array.from(
 [...rawData].map(
-char => char.charCodeAt(0)
+char =>
+char.charCodeAt(0)
 )
 );
 
@@ -2095,17 +3923,23 @@ PUSH_FUNCTION_URL,
 {
 method:"GET",
 headers:{
-apikey:SUPABASE_PUBLISHABLE_KEY
+apikey:
+SUPABASE_PUBLISHABLE_KEY
 }
 }
 );
+
 
 if(response.ok){
 
 const data =
 await response.json();
 
-if(data && data.publicKey){
+
+if(
+data &&
+data.publicKey
+){
 
 return data.publicKey;
 
@@ -2120,6 +3954,7 @@ console.warn(
 );
 
 }
+
 
 return VAPID_PUBLIC_KEY;
 
@@ -2142,12 +3977,16 @@ async function savePushSubscription(subscription){
 
 if(!currentUser){
 
-throw new Error("You must be logged in.");
+throw new Error(
+"You must be logged in."
+);
 
 }
 
+
 const json =
 subscription.toJSON();
+
 
 if(
 !json.endpoint ||
@@ -2164,7 +4003,7 @@ throw new Error(
 
 
 /*
-  Delete an old subscription with the same endpoint.
+ Delete old subscription with same endpoint.
 */
 
 await supabaseClient
@@ -2175,7 +4014,7 @@ await supabaseClient
 
 
 /*
-  Insert the new subscription.
+ Insert new subscription.
 */
 
 const {error} =
@@ -2184,14 +4023,12 @@ await supabaseClient
 .insert({
 
 user_id:currentUser.id,
-
 endpoint:json.endpoint,
-
 p256dh:json.keys.p256dh,
-
 auth:json.keys.auth
 
 });
+
 
 if(error){
 
@@ -2207,6 +4044,7 @@ error.message
 
 }
 
+
 localStorage.setItem(
 "connectsphere_push_subscription",
 JSON.stringify(json)
@@ -2217,7 +4055,15 @@ JSON.stringify(json)
 
 async function removePushSubscriptionFromDatabase(endpoint){
 
-if(!currentUser || !endpoint) return;
+if(
+!currentUser ||
+!endpoint
+){
+
+return;
+
+}
+
 
 const {error} =
 await supabaseClient
@@ -2225,6 +4071,7 @@ await supabaseClient
 .delete()
 .eq("user_id",currentUser.id)
 .eq("endpoint",endpoint);
+
 
 if(error){
 
@@ -2248,6 +4095,7 @@ throw new Error(
 
 }
 
+
 if(!("Notification" in window)){
 
 throw new Error(
@@ -2255,6 +4103,7 @@ throw new Error(
 );
 
 }
+
 
 if(!("serviceWorker" in navigator)){
 
@@ -2264,6 +4113,7 @@ throw new Error(
 
 }
 
+
 if(!("PushManager" in window)){
 
 throw new Error(
@@ -2272,16 +4122,20 @@ throw new Error(
 
 }
 
+
 const status =
 document.getElementById(
 "notificationStatus"
 );
 
+
 status.textContent =
 "Requesting notification permission...";
 
+
 const permission =
 await Notification.requestPermission();
+
 
 if(permission !== "granted"){
 
@@ -2291,16 +4145,21 @@ throw new Error(
 
 }
 
+
 status.textContent =
 "Registering notification service...";
+
 
 const registration =
 await getServiceWorkerRegistration();
 
+
 await navigator.serviceWorker.ready;
+
 
 const publicKey =
 await getVapidPublicKey();
+
 
 if(!publicKey){
 
@@ -2310,15 +4169,18 @@ throw new Error(
 
 }
 
+
 let subscription =
 await registration
 .pushManager
 .getSubscription();
 
+
 if(!subscription){
 
 status.textContent =
 "Creating secure push subscription...";
+
 
 subscription =
 await registration
@@ -2336,18 +4198,25 @@ publicKey
 
 }
 
+
 status.textContent =
 "Saving notification subscription...";
 
+
 await savePushSubscription(subscription);
+
 
 status.textContent =
 "Notifications are ON ✅";
 
+
 document
-.getElementById("notificationSwitchText")
+.getElementById(
+"notificationSwitchText"
+)
 .textContent =
 "Notifications are ON.";
+
 
 return subscription;
 
@@ -2361,22 +4230,27 @@ document.getElementById(
 "notificationStatus"
 );
 
+
 try{
 
 const registration =
 await getServiceWorkerRegistration();
+
 
 const subscription =
 await registration
 .pushManager
 .getSubscription();
 
+
 if(subscription){
 
 const endpoint =
 subscription.endpoint;
 
+
 await subscription.unsubscribe();
+
 
 await removePushSubscriptionFromDatabase(
 endpoint
@@ -2384,17 +4258,23 @@ endpoint
 
 }
 
+
 localStorage.removeItem(
 "connectsphere_push_subscription"
 );
 
+
 status.textContent =
 "Notifications are OFF.";
 
+
 document
-.getElementById("notificationSwitchText")
+.getElementById(
+"notificationSwitchText"
+)
 .textContent =
 "Notifications are OFF.";
+
 
 }catch(error){
 
@@ -2417,12 +4297,15 @@ document.getElementById(
 "notificationToggle"
 );
 
+
 const status =
 document.getElementById(
 "notificationStatus"
 );
 
+
 toggle.disabled = true;
+
 
 try{
 
@@ -2443,7 +4326,10 @@ console.error(
 error
 );
 
-toggle.checked = !toggle.checked;
+
+toggle.checked =
+!toggle.checked;
+
 
 status.textContent =
 error.message ||
@@ -2465,19 +4351,32 @@ document.getElementById(
 "notificationToggle"
 );
 
+
 const status =
 document.getElementById(
 "notificationStatus"
 );
+
 
 const text =
 document.getElementById(
 "notificationSwitchText"
 );
 
-if(!toggle || !status) return;
 
-if(!("Notification" in window)){
+if(
+!toggle ||
+!status
+){
+
+return;
+
+}
+
+
+if(
+!("Notification" in window)
+){
 
 status.textContent =
 "Notifications are not supported by this browser.";
@@ -2486,45 +4385,61 @@ return;
 
 }
 
-if(Notification.permission === "denied"){
+
+if(
+Notification.permission === "denied"
+){
 
 toggle.checked = false;
+
 
 status.textContent =
 "Notifications are blocked by your browser. Enable them in browser settings.";
 
+
 text.textContent =
 "Notifications are OFF.";
 
+
 return;
 
 }
+
 
 try{
 
-if(!("serviceWorker" in navigator)){
+if(
+!("serviceWorker" in navigator)
+){
 
 return;
 
 }
+
 
 const registration =
 await navigator.serviceWorker.register(
 "./sw.js",
-{scope:"./"}
+{
+scope:"./"
+}
 );
+
 
 const subscription =
 await registration
 .pushManager
 .getSubscription();
 
+
 if(subscription){
 
 toggle.checked = true;
 
+
 status.textContent =
 "Notifications are ON ✅";
+
 
 text.textContent =
 "Notifications are ON.";
@@ -2533,8 +4448,10 @@ text.textContent =
 
 toggle.checked = false;
 
+
 status.textContent =
 "Notifications are OFF.";
+
 
 text.textContent =
 "Notifications are OFF.";
@@ -2564,11 +4481,14 @@ function showPage(page,button){
 document
 .querySelectorAll(".page")
 .forEach(
-p => p.classList.remove("active")
+p =>
+p.classList.remove("active")
 );
+
 
 const target =
 document.getElementById(page);
+
 
 if(target){
 
@@ -2576,11 +4496,14 @@ target.classList.add("active");
 
 }
 
+
 document
 .querySelectorAll(".nav-btn")
 .forEach(
-b => b.classList.remove("active")
+b =>
+b.classList.remove("active")
 );
+
 
 if(button){
 
@@ -2588,16 +4511,28 @@ button.classList.add("active");
 
 }
 
+
+/*
+  Refresh Requests whenever user opens the page.
+*/
+
+if(page === "requests"){
+
+loadRequests();
+
+}
+
 }
 
 
 /* =========================================================
-GENERAL
+SCHEDULE ACTIONS
 ========================================================= */
 
 async function setScheduleCompleted(id,value){
 
 if(!currentUser) return;
+
 
 const {error} =
 await supabaseClient
@@ -2607,6 +4542,7 @@ completed:value
 })
 .eq("id",id)
 .eq("user_id",currentUser.id);
+
 
 if(error){
 
@@ -2619,6 +4555,7 @@ return;
 
 }
 
+
 await loadSchedules();
 
 }
@@ -2628,7 +4565,17 @@ async function deleteSchedule(id){
 
 if(!currentUser) return;
 
-if(!confirm("Delete this schedule?")) return;
+
+if(
+!confirm(
+"Delete this schedule?"
+)
+){
+
+return;
+
+}
+
 
 const {error} =
 await supabaseClient
@@ -2636,6 +4583,7 @@ await supabaseClient
 .delete()
 .eq("id",id)
 .eq("user_id",currentUser.id);
+
 
 if(error){
 
@@ -2648,10 +4596,15 @@ return;
 
 }
 
+
 await loadSchedules();
 
 }
 
+
+/* =========================================================
+LOGOUT
+========================================================= */
 
 async function logout(){
 
@@ -2659,13 +4612,16 @@ await supabaseClient
 .auth
 .signOut();
 
+
 currentUser = null;
 currentProfile = null;
+
 
 document
 .getElementById("app")
 .classList
 .add("hidden");
+
 
 document
 .getElementById("authScreen")
@@ -2674,6 +4630,10 @@ document
 
 }
 
+
+/* =========================================================
+MODALS
+========================================================= */
 
 function closeModal(id){
 
@@ -2685,19 +4645,33 @@ document
 }
 
 
+/* =========================================================
+MESSAGES
+========================================================= */
+
 function showError(message){
 
 const box =
-document.getElementById("authError");
+document.getElementById(
+"authError"
+);
 
-box.textContent = message;
 
-box.style.display = "block";
+box.textContent =
+message;
+
+
+box.style.display =
+"block";
+
 
 document
-.getElementById("authSuccess")
+.getElementById(
+"authSuccess"
+)
 .style
-.display = "none";
+.display =
+"none";
 
 }
 
@@ -2705,16 +4679,26 @@ document
 function showSuccess(message){
 
 const box =
-document.getElementById("authSuccess");
+document.getElementById(
+"authSuccess"
+);
 
-box.textContent = message;
 
-box.style.display = "block";
+box.textContent =
+message;
+
+
+box.style.display =
+"block";
+
 
 document
-.getElementById("authError")
+.getElementById(
+"authError"
+)
 .style
-.display = "none";
+.display =
+"none";
 
 }
 
@@ -2722,26 +4706,52 @@ document
 function clearMessages(){
 
 document
-.getElementById("authError")
+.getElementById(
+"authError"
+)
 .style
-.display = "none";
+.display =
+"none";
+
 
 document
-.getElementById("authSuccess")
+.getElementById(
+"authSuccess"
+)
 .style
-.display = "none";
+.display =
+"none";
 
 }
 
 
+/* =========================================================
+SECURITY
+========================================================= */
+
 function escapeHTML(value){
 
 return String(value)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
+.replaceAll(
+"&",
+"&amp;"
+)
+.replaceAll(
+"<",
+"&lt;"
+)
+.replaceAll(
+">",
+"&gt;"
+)
+.replaceAll(
+'"',
+"&quot;"
+)
+.replaceAll(
+"'",
+"&#039;"
+);
 
 }
 
@@ -2757,10 +4767,12 @@ await supabaseClient
 .auth
 .getSession();
 
+
 if(data.session){
 
 currentUser =
 data.session.user;
+
 
 await loadProfile();
 
@@ -2776,6 +4788,10 @@ document
 }
 
 
+/*
+  Auth state listener.
+*/
+
 supabaseClient
 .auth
 .onAuthStateChange(
@@ -2788,6 +4804,7 @@ document
 .classList
 .add("hidden");
 
+
 document
 .getElementById("authScreen")
 .classList
@@ -2798,6 +4815,10 @@ document
 }
 );
 
+
+/*
+  Start ConnectSphere.
+*/
 
 startApp();
 
