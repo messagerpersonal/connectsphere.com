@@ -109,7 +109,7 @@ h1{
 }
 
 .success-btn{
-  background:#e8f7ec;
+  background:#e7f7ea;
   color:#287a35;
   padding:11px 16px;
   border-radius:10px;
@@ -245,20 +245,6 @@ h1{
 }
 
 .nav-icon{font-size:21px}
-
-.badge-count{
-  min-width:18px;
-  height:18px;
-  padding:0 5px;
-  border-radius:20px;
-  background:#e53935;
-  color:white;
-  font-size:10px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  margin-left:3px
-}
 
 .modal{
   display:none;
@@ -535,22 +521,14 @@ h1{
   font-size:13px
 }
 
-.status-text{
-  color:#777;
-  font-size:13px;
-  margin-top:5px
-}
-
-.connected-label{
-  color:#287a35;
-  font-weight:600;
-  font-size:13px
-}
-
-.pending-label{
-  color:#806c00;
-  font-weight:600;
-  font-size:13px
+.request-status{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:20px;
+  background:#eeeef5;
+  color:#666;
+  font-size:12px;
+  margin-top:6px
 }
 
 .request-section-title{
@@ -558,14 +536,11 @@ h1{
   margin:18px 0 10px
 }
 
-.notice{
-  padding:12px;
-  border-radius:12px;
-  background:#f1f0ff;
-  color:#4b3fc0;
-  font-size:13px;
-  line-height:1.5;
-  margin-bottom:12px
+.connection-card{
+  border:1px solid #eee;
+  border-radius:16px;
+  padding:15px;
+  margin-bottom:10px
 }
 
 @media(max-width:600px){
@@ -582,14 +557,6 @@ h1{
   .bottom-nav{overflow-x:auto}
 
   .nav-btn{min-width:65px}
-
-  .user-row{
-    align-items:flex-start
-  }
-
-  .user-row > button{
-    flex-shrink:0
-  }
 
 }
 </style>
@@ -708,9 +675,9 @@ onclick="showPage('settings')"
 
 <main>
 
-<!-- =======================================================
+<!-- =========================================================
 HOME
-======================================================= -->
+========================================================= -->
 
 <section id="home" class="page active">
 
@@ -750,9 +717,7 @@ Your Name
 
 <div class="card">
 
-<h3>
-People on ConnectSphere
-</h3>
+<h3>People on ConnectSphere</h3>
 
 <br>
 
@@ -769,15 +734,13 @@ Loading profiles...
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
 SEARCH
-======================================================= -->
+========================================================= -->
 
 <section id="search" class="page">
 
-<h1>
-Search
-</h1>
+<h1>Search</h1>
 
 <p class="subtitle">
 Find registered ConnectSphere users.
@@ -801,23 +764,24 @@ Start typing to search.
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
 REQUESTS
-======================================================= -->
+========================================================= -->
 
 <section id="requests" class="page">
 
-<h1>
-Requests
-</h1>
+<h1>Requests</h1>
 
 <p class="subtitle">
 Manage your connection requests.
 </p>
 
-<div
-id="requestsContent"
->
+
+<div class="request-section-title">
+Incoming Requests
+</div>
+
+<div id="incomingRequests">
 
 <div class="empty">
 Loading requests...
@@ -825,36 +789,58 @@ Loading requests...
 
 </div>
 
-</section>
 
+<div class="request-section-title">
+Sent Requests
+</div>
 
-<!-- =======================================================
-CHATS
-======================================================= -->
-
-<section id="chats" class="page">
-
-<h1>
-Messages
-</h1>
-
-<p class="subtitle">
-Your conversations.
-</p>
+<div id="sentRequests">
 
 <div class="empty">
+Loading requests...
+</div>
 
-Messaging will be connected after the
-connection system is verified.
+</div>
+
+
+<div class="request-section-title">
+Your Connections
+</div>
+
+<div id="connectionsList">
+
+<div class="empty">
+Loading connections...
+</div>
 
 </div>
 
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
+CHATS
+========================================================= -->
+
+<section id="chats" class="page">
+
+<h1>Messages</h1>
+
+<p class="subtitle">
+Your conversations.
+</p>
+
+<div class="empty">
+Real-time encrypted messaging will be added after
+the connection system is working.
+</div>
+
+</section>
+
+
+<!-- =========================================================
 SCHEDULE
-======================================================= -->
+========================================================= -->
 
 <section id="schedule" class="page">
 
@@ -865,6 +851,7 @@ My Schedule 📅
 <p class="subtitle">
 Build daily habits, weekly plans and one-time reminders.
 </p>
+
 
 <div class="card">
 
@@ -926,9 +913,9 @@ Loading your schedules...
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
 PROFILE
-======================================================= -->
+========================================================= -->
 
 <section id="profile" class="page">
 
@@ -949,6 +936,7 @@ Your Name
 @username
 </p>
 
+
 <div class="stat-row">
 
 <div class="stat">
@@ -963,6 +951,7 @@ Connections
 
 </div>
 
+
 <div class="stat">
 
 <strong id="requestCount">
@@ -976,6 +965,7 @@ Requests
 </div>
 
 </div>
+
 
 <button
 class="primary"
@@ -1004,9 +994,9 @@ Your bio will appear here.
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
 SETTINGS
-======================================================= -->
+========================================================= -->
 
 <section id="settings" class="page">
 
@@ -1080,6 +1070,7 @@ Notifications 🔔
 Turn browser notifications ON or OFF for ConnectSphere reminders.
 </p>
 
+
 <div class="setting">
 
 <div>
@@ -1094,6 +1085,7 @@ Notifications are OFF.
 
 </div>
 
+
 <label class="switch">
 
 <input
@@ -1107,6 +1099,7 @@ onchange="togglePushNotifications()"
 </label>
 
 </div>
+
 
 <div
 id="notificationStatus"
@@ -1158,11 +1151,8 @@ Security 🔐
 Your account uses Supabase Authentication
 and database Row Level Security.
 
-Connection requests are protected by
-user-level RLS policies.
-
-Schedule data is protected by
-user-level RLS policies.
+Schedule data and connection requests
+are protected by user-level RLS policies.
 
 </p>
 
@@ -1217,13 +1207,6 @@ onclick="showPage('requests',this)"
 </span>
 
 Requests
-
-<span
-id="navRequestBadge"
-class="badge-count hidden"
->
-0
-</span>
 
 </button>
 
@@ -1322,7 +1305,6 @@ Save Profile
 </button>
 
 </div>
-
 </div>
 
 
@@ -1348,6 +1330,7 @@ onclick="closeModal('scheduleModal')"
 Add Schedule
 </h2>
 
+
 <label class="form-label">
 Title
 </label>
@@ -1356,6 +1339,7 @@ Title
 id="scheduleTitle"
 placeholder="Example: Study for 30 minutes"
 >
+
 
 <label class="form-label">
 Description
@@ -1366,6 +1350,7 @@ id="scheduleDescription"
 rows="3"
 placeholder="Optional details"
 ></textarea>
+
 
 <label class="form-label">
 Type
@@ -1389,6 +1374,7 @@ One-time
 </option>
 
 </select>
+
 
 <label class="form-label">
 Reminder time
@@ -1470,17 +1456,16 @@ Save Schedule
 </button>
 
 </div>
-
 </div>
 
-
-<!-- =========================================================
-SUPABASE
-========================================================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+
+/* =========================================================
+SUPABASE
+========================================================= */
 
 const SUPABASE_URL =
 "https://hwjojlqhzeqtfcxmfrjk.supabase.co";
@@ -1524,11 +1509,13 @@ document.getElementById("passwordToggle");
 if(password.type === "password"){
 
 password.type = "text";
+
 button.textContent = "🙈";
 
 }else{
 
 password.type = "password";
+
 button.textContent = "👁️";
 
 }
@@ -1545,10 +1532,14 @@ document
 .classList
 .toggle("hidden",loginMode);
 
+
 document
 .getElementById("authButton")
 .textContent =
-loginMode ? "Log In" : "Sign Up";
+loginMode
+? "Log In"
+: "Sign Up";
+
 
 document
 .getElementById("authSubtitle")
@@ -1557,6 +1548,7 @@ loginMode
 ? "Welcome back to ConnectSphere."
 : "Create your account and connect.";
 
+
 document
 .getElementById("switchText")
 .textContent =
@@ -1564,10 +1556,14 @@ loginMode
 ? "Don't have an account?"
 : "Already have an account?";
 
+
 document
 .getElementById("switchButton")
 .textContent =
-loginMode ? "Sign Up" : "Log In";
+loginMode
+? "Sign Up"
+: "Log In";
+
 
 clearMessages();
 
@@ -1579,10 +1575,14 @@ async function handleAuth(){
 clearMessages();
 
 const email =
-document.getElementById("authEmail").value.trim();
+document.getElementById("authEmail")
+.value
+.trim();
 
 const password =
-document.getElementById("authPassword").value;
+document.getElementById("authPassword")
+.value;
+
 
 if(!email || !password){
 
@@ -1601,15 +1601,14 @@ if(loginMode){
 
 const {data,error} =
 await supabaseClient.auth.signInWithPassword({
-
 email,
 password
-
 });
 
 if(error) throw error;
 
 currentUser = data.user;
+
 
 if(!currentUser){
 
@@ -1629,6 +1628,7 @@ const name =
 document.getElementById("signupName")
 .value
 .trim();
+
 
 const username =
 document
@@ -1667,7 +1667,6 @@ email,
 password,
 
 options:{
-
 emailRedirectTo:
 "https://messagerpersonal.github.io/connectsphere.com/",
 
@@ -1702,15 +1701,18 @@ showSuccess(
 
 loginMode = true;
 
+
 document
 .getElementById("signupFields")
 .classList
 .add("hidden");
 
+
 document
 .getElementById("authButton")
 .textContent =
 "Log In";
+
 
 document
 .getElementById("authSubtitle")
@@ -1772,6 +1774,7 @@ if(!data){
 const metadata =
 currentUser.user_metadata || {};
 
+
 const displayName =
 metadata.display_name ||
 currentUser.email?.split("@")[0] ||
@@ -1788,15 +1791,22 @@ currentUser.id
 );
 
 
-const {data:newProfile,error:createError} =
+const {
+data:newProfile,
+error:createError
+} =
 await supabaseClient
 .from("profiles")
 .insert({
 
 id:currentUser.id,
+
 username,
+
 display_name:displayName,
+
 bio:"",
+
 avatar_url:null
 
 })
@@ -1817,6 +1827,7 @@ return;
 
 }
 
+
 currentProfile = newProfile;
 
 }else{
@@ -1832,9 +1843,9 @@ updateProfileUI();
 
 await loadPeople();
 
-await loadSchedules();
+await loadConnectionRequests();
 
-await loadConnectionData();
+await loadSchedules();
 
 await checkNotificationStatus();
 
@@ -1847,6 +1858,7 @@ document
 .getElementById("authScreen")
 .classList
 .add("hidden");
+
 
 document
 .getElementById("app")
@@ -1865,50 +1877,60 @@ const name =
 currentProfile.display_name ||
 "Your Name";
 
+
 const username =
 currentProfile.username ||
 "username";
 
+
 const bio =
 currentProfile.bio ||
 "Your bio will appear here.";
+
 
 const letter =
 name.charAt(0).toUpperCase() ||
 "Y";
 
 
-document.getElementById("homeName")
+document
+.getElementById("homeName")
 .textContent =
 name;
 
 
-document.getElementById("homeUsername")
+document
+.getElementById("homeUsername")
 .textContent =
 "@" + username;
 
 
-document.getElementById("profileName")
+document
+.getElementById("profileName")
 .textContent =
 name;
 
 
-document.getElementById("profileUsername")
+document
+.getElementById("profileUsername")
 .textContent =
 "@" + username;
 
 
-document.getElementById("profileBio")
+document
+.getElementById("profileBio")
 .textContent =
 bio;
 
 
-document.getElementById("homeAvatar")
+document
+.getElementById("homeAvatar")
 .textContent =
 letter;
 
 
-document.getElementById("profileAvatar")
+document
+.getElementById("profileAvatar")
 .textContent =
 letter;
 
@@ -1938,7 +1960,9 @@ if(error){
 
 console.error(error);
 
-document.getElementById("suggestions").innerHTML =
+document
+.getElementById("suggestions")
+.innerHTML =
 '<div class="empty">Unable to load profiles.</div>';
 
 return;
@@ -1946,12 +1970,12 @@ return;
 }
 
 
-await renderPeople(data || []);
+renderPeople(data || []);
 
 }
 
 
-async function renderPeople(users){
+function renderPeople(users){
 
 const container =
 document.getElementById("suggestions");
@@ -1967,84 +1991,23 @@ return;
 }
 
 
-const ids =
-users.map(user => user.id);
-
-const requestMap =
-await getRequestStates(ids);
-
-
 container.innerHTML =
 users
-.map(user => profileCard(user,requestMap))
+.map(profileCard)
 .join("");
 
 }
 
 
-function profileCard(user,requestMap = {}){
+function profileCard(user){
 
 const name =
 user.display_name ||
 "User";
 
+
 const letter =
 name.charAt(0).toUpperCase();
-
-
-const state =
-requestMap[user.id] ||
-{
-type:"none",
-requestId:null
-};
-
-
-let actionHTML = "";
-
-
-if(state.type === "connected"){
-
-actionHTML = `
-<div class="connected-label">
-✓ Connected
-</div>
-`;
-
-}else if(state.type === "sent"){
-
-actionHTML = `
-<button
-class="secondary"
-onclick="cancelConnectionRequest('${user.id}')"
->
-Pending
-</button>
-`;
-
-}else if(state.type === "received"){
-
-actionHTML = `
-<button
-class="primary"
-onclick="openRequestsPage()"
->
-Respond
-</button>
-`;
-
-}else{
-
-actionHTML = `
-<button
-class="primary"
-onclick="sendConnectionRequest('${user.id}')"
->
-Connect
-</button>
-`;
-
-}
 
 
 return `
@@ -2079,7 +2042,7 @@ ${escapeHTML(user.bio || "")}
 display:flex;
 flex-direction:column;
 gap:7px;
-align-items:flex-end
+align-items:flex-end;
 ">
 
 <button
@@ -2089,7 +2052,12 @@ onclick="viewProfile('${user.id}')"
 View
 </button>
 
-${actionHTML}
+<button
+class="primary"
+onclick="sendConnectionRequest('${user.id}')"
+>
+Connect
+</button>
 
 </div>
 
@@ -2103,7 +2071,7 @@ ${actionHTML}
 
 
 /* =========================================================
-SEARCH
+SEARCH USERS
 ========================================================= */
 
 async function searchUsers(){
@@ -2177,1017 +2145,10 @@ return;
 }
 
 
-const ids =
-data.map(user => user.id);
-
-const requestMap =
-await getRequestStates(ids);
-
-
 container.innerHTML =
 data
-.map(user => profileCard(user,requestMap))
+.map(profileCard)
 .join("");
-
-}
-
-
-/* =========================================================
-CONNECTION REQUESTS
-========================================================= */
-
-
-/*
-  Get all relevant requests for the current user.
-
-  This matches your verified RLS SELECT policy:
-
-  auth.uid() = sender_id
-  OR
-  auth.uid() = receiver_id
-*/
-
-async function loadConnectionData(){
-
-if(!currentUser) return;
-
-
-await loadRequests();
-
-await updatePeopleConnectionStates();
-
-await updateConnectionStats();
-
-}
-
-
-/*
-  Get request state for a list of other user IDs.
-
-  Possible states:
-
-  connected
-  sent
-  received
-  none
-*/
-
-async function getRequestStates(userIds){
-
-const result = {};
-
-
-if(!currentUser || !userIds.length){
-
-return result;
-
-}
-
-
-const uniqueIds =
-[...new Set(userIds)]
-.filter(id => id !== currentUser.id);
-
-
-if(!uniqueIds.length){
-
-return result;
-
-}
-
-
-const {data,error} =
-await supabaseClient
-.from("connection_requests")
-.select(
-"id,sender_id,receiver_id,status"
-)
-.or(
-`sender_id.in.(${uniqueIds.join(",")}),receiver_id.in.(${uniqueIds.join(",")})`
-);
-
-
-if(error){
-
-console.error(
-"Could not load connection states:",
-error
-);
-
-return result;
-
-}
-
-
-(data || []).forEach(request => {
-
-const otherId =
-request.sender_id === currentUser.id
-? request.receiver_id
-: request.sender_id;
-
-
-if(!otherId) return;
-
-
-if(request.status === "accepted"){
-
-result[otherId] = {
-
-type:"connected",
-requestId:request.id
-
-};
-
-return;
-
-}
-
-
-if(
-request.status === "pending" &&
-request.sender_id === currentUser.id
-){
-
-result[otherId] = {
-
-type:"sent",
-requestId:request.id
-
-};
-
-return;
-
-}
-
-
-if(
-request.status === "pending" &&
-request.receiver_id === currentUser.id
-){
-
-result[otherId] = {
-
-type:"received",
-requestId:request.id
-
-};
-
-return;
-
-}
-
-});
-
-
-return result;
-
-}
-
-
-/*
-  Send a new connection request.
-
-  Your verified INSERT policy is:
-
-  auth.uid() = sender_id
-*/
-
-async function sendConnectionRequest(receiverId){
-
-if(!currentUser){
-
-alert(
-"Please log in again."
-);
-
-return;
-
-}
-
-
-if(!receiverId){
-
-alert(
-"Invalid receiver."
-);
-
-return;
-
-}
-
-
-if(receiverId === currentUser.id){
-
-alert(
-"You cannot send a request to yourself."
-);
-
-return;
-
-}
-
-
-try{
-
-const existing =
-await supabaseClient
-.from("connection_requests")
-.select(
-"id,sender_id,receiver_id,status"
-)
-.or(
-`and(sender_id.eq.${currentUser.id},receiver_id.eq.${receiverId}),and(sender_id.eq.${receiverId},receiver_id.eq.${currentUser.id})`
-)
-.limit(1);
-
-
-if(existing.error){
-
-throw existing.error;
-
-}
-
-
-if(existing.data && existing.data.length){
-
-const request =
-existing.data[0];
-
-
-if(request.status === "accepted"){
-
-alert(
-"You are already connected."
-);
-
-return;
-
-}
-
-
-if(
-request.status === "pending" &&
-request.sender_id === currentUser.id
-){
-
-alert(
-"Connection request is already pending."
-);
-
-return;
-
-}
-
-
-if(
-request.status === "pending" &&
-request.receiver_id === currentUser.id
-){
-
-alert(
-"This user has already sent you a request. Check Requests."
-);
-
-return;
-
-}
-
-}
-
-
-/*
-  INSERT request.
-*/
-
-const {error} =
-await supabaseClient
-.from("connection_requests")
-.insert({
-
-sender_id:currentUser.id,
-receiver_id:receiverId,
-status:"pending"
-
-});
-
-
-if(error){
-
-console.error(
-"Send request error:",
-error
-);
-
-if(error.code === "23505"){
-
-alert(
-"That connection request already exists."
-);
-
-}else{
-
-alert(
-"Could not send connection request: " +
-error.message
-);
-
-}
-
-return;
-
-}
-
-
-alert(
-"Connection request sent successfully! ✅"
-);
-
-
-await refreshConnectionUI();
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"Something went wrong while sending the request."
-);
-
-}
-
-}
-
-
-/*
-  Cancel a request sent by the current user.
-
-  Your verified DELETE policy allows:
-
-  sender OR receiver
-*/
-
-async function cancelConnectionRequest(otherUserId){
-
-if(!currentUser) return;
-
-
-if(
-!confirm(
-"Cancel this connection request?"
-)
-){
-
-return;
-
-}
-
-
-const {error} =
-await supabaseClient
-.from("connection_requests")
-.delete()
-.eq("sender_id",currentUser.id)
-.eq("receiver_id",otherUserId)
-.eq("status","pending");
-
-
-if(error){
-
-console.error(
-"Cancel request error:",
-error
-);
-
-alert(
-"Could not cancel request: " +
-error.message
-);
-
-return;
-
-}
-
-
-await refreshConnectionUI();
-
-}
-
-
-/*
-  Load requests received by the current user.
-
-  The SELECT policy allows the receiver to see them.
-*/
-
-async function loadRequests(){
-
-const container =
-document.getElementById("requestsContent");
-
-
-if(!container || !currentUser) return;
-
-
-container.innerHTML =
-'<div class="empty">Loading requests...</div>';
-
-
-const {data,error} =
-await supabaseClient
-.from("connection_requests")
-.select(
-"id,sender_id,receiver_id,status,created_at"
-)
-.eq("receiver_id",currentUser.id)
-.order("created_at",{ascending:false});
-
-
-if(error){
-
-console.error(
-"Load requests error:",
-error
-);
-
-container.innerHTML =
-'<div class="empty">Unable to load requests: ' +
-escapeHTML(error.message) +
-'</div>';
-
-return;
-
-}
-
-
-const pendingRequests =
-(data || [])
-.filter(
-request => request.status === "pending"
-);
-
-
-updateRequestBadge(
-pendingRequests.length
-);
-
-
-if(!pendingRequests.length){
-
-container.innerHTML = `
-
-<div class="notice">
-When someone sends you a connection request,
-it will appear here.
-</div>
-
-<div class="empty">
-No pending connection requests.
-</div>
-
-`;
-
-return;
-
-}
-
-
-/*
-  Load sender profiles.
-*/
-
-const senderIds =
-pendingRequests.map(
-request => request.sender_id
-);
-
-
-const {data:profiles,error:profileError} =
-await supabaseClient
-.from("profiles")
-.select(
-"id,username,display_name,bio,avatar_url"
-)
-.in("id",senderIds);
-
-
-if(profileError){
-
-console.error(
-"Request profile error:",
-profileError
-);
-
-container.innerHTML =
-'<div class="empty">Could not load request profiles.</div>';
-
-return;
-
-}
-
-
-const profileMap = {};
-
-(profiles || []).forEach(profile => {
-
-profileMap[profile.id] =
-profile;
-
-});
-
-
-container.innerHTML = `
-
-<div class="notice">
-
-You have
-<strong>${pendingRequests.length}</strong>
-pending connection request${pendingRequests.length === 1 ? "" : "s"}.
-
-</div>
-
-<h3 class="request-section-title">
-Incoming Requests
-</h3>
-
-${
-pendingRequests
-.map(
-request =>
-requestCard(
-request,
-profileMap[request.sender_id]
-)
-)
-.join("")
-}
-
-`;
-
-}
-
-
-/*
-  Render one incoming request.
-*/
-
-function requestCard(request,user){
-
-if(!user){
-
-return `
-<div class="card">
-<div class="empty">
-User profile could not be loaded.
-</div>
-</div>
-`;
-
-}
-
-
-const name =
-user.display_name ||
-"User";
-
-
-const letter =
-name.charAt(0).toUpperCase();
-
-
-return `
-
-<div class="card">
-
-<div class="user-row">
-
-<div class="avatar">
-${escapeHTML(letter)}
-</div>
-
-
-<div class="user-info">
-
-<strong>
-${escapeHTML(name)}
-</strong>
-
-<span>
-@${escapeHTML(user.username || "")}
-</span>
-
-<span>
-${escapeHTML(user.bio || "")}
-</span>
-
-<span class="status-text">
-Requested ${formatDate(request.created_at)}
-</span>
-
-</div>
-
-</div>
-
-
-<div class="request-actions">
-
-<button
-class="primary"
-onclick="acceptConnectionRequest('${request.id}')"
->
-Accept
-</button>
-
-
-<button
-class="danger"
-onclick="rejectConnectionRequest('${request.id}')"
->
-Reject
-</button>
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/*
-  Accept request.
-
-  Your verified UPDATE policy is:
-
-  USING:
-  auth.uid() = receiver_id
-
-  WITH CHECK:
-  auth.uid() = receiver_id
-
-  Therefore the receiver can change pending -> accepted.
-*/
-
-async function acceptConnectionRequest(requestId){
-
-if(!currentUser) return;
-
-
-const {data,error} =
-await supabaseClient
-.from("connection_requests")
-.update({
-status:"accepted"
-})
-.eq("id",requestId)
-.eq("receiver_id",currentUser.id)
-.eq("status","pending")
-.select()
-.single();
-
-
-if(error){
-
-console.error(
-"Accept request error:",
-error
-);
-
-alert(
-"Could not accept request: " +
-error.message
-);
-
-return;
-
-}
-
-
-if(!data){
-
-alert(
-"The request could not be updated. It may have already been handled."
-);
-
-return;
-
-}
-
-
-alert(
-"Connection accepted! 🎉"
-);
-
-
-await refreshConnectionUI();
-
-}
-
-
-/*
-  Reject request.
-
-  DELETE policy allows receiver.
-*/
-
-async function rejectConnectionRequest(requestId){
-
-if(!currentUser) return;
-
-
-if(
-!confirm(
-"Reject this connection request?"
-)
-){
-
-return;
-
-}
-
-
-const {error} =
-await supabaseClient
-.from("connection_requests")
-.delete()
-.eq("id",requestId)
-.eq("receiver_id",currentUser.id);
-
-
-if(error){
-
-console.error(
-"Reject request error:",
-error
-);
-
-alert(
-"Could not reject request: " +
-error.message
-);
-
-return;
-
-}
-
-
-await refreshConnectionUI();
-
-}
-
-
-/*
-  Refresh all connection-related UI.
-*/
-
-async function refreshConnectionUI(){
-
-await loadRequests();
-
-await updatePeopleConnectionStates();
-
-await updateConnectionStats();
-
-}
-
-
-/*
-  Re-render Home and Search cards with current states.
-*/
-
-async function updatePeopleConnectionStates(){
-
-if(!currentUser) return;
-
-
-/*
-  Refresh Home suggestions.
-*/
-
-const {data:people,error} =
-await supabaseClient
-.from("profiles")
-.select(
-"id,username,display_name,bio,avatar_url"
-)
-.neq("id",currentUser.id)
-.limit(20);
-
-
-if(!error){
-
-await renderPeople(people || []);
-
-}
-
-
-/*
-  Refresh Search results if a search is active.
-*/
-
-const searchInput =
-document.getElementById("searchInput");
-
-
-if(
-searchInput &&
-searchInput.value.trim()
-){
-
-await searchUsers();
-
-}
-
-}
-
-
-/*
-  Update profile statistics.
-*/
-
-async function updateConnectionStats(){
-
-if(!currentUser) return;
-
-
-const {data,error} =
-await supabaseClient
-.from("connection_requests")
-.select(
-"id,sender_id,receiver_id,status"
-)
-.or(
-`sender_id.eq.${currentUser.id},receiver_id.eq.${currentUser.id}`
-);
-
-
-if(error){
-
-console.error(
-"Connection statistics error:",
-error
-);
-
-return;
-
-}
-
-
-const requests =
-data || [];
-
-
-const connections =
-requests.filter(
-request =>
-request.status === "accepted"
-).length;
-
-
-const pendingIncoming =
-requests.filter(
-request =>
-request.status === "pending" &&
-request.receiver_id === currentUser.id
-).length;
-
-
-const connectionCount =
-document.getElementById(
-"connectionCount"
-);
-
-
-const requestCount =
-document.getElementById(
-"requestCount"
-);
-
-
-if(connectionCount){
-
-connectionCount.textContent =
-connections;
-
-}
-
-
-if(requestCount){
-
-requestCount.textContent =
-pendingIncoming;
-
-}
-
-
-updateRequestBadge(
-pendingIncoming
-);
-
-}
-
-
-/*
-  Update the Requests badge.
-*/
-
-function updateRequestBadge(count){
-
-const badge =
-document.getElementById(
-"navRequestBadge"
-);
-
-
-if(!badge) return;
-
-
-if(count > 0){
-
-badge.textContent =
-count;
-
-badge.classList.remove(
-"hidden"
-);
-
-}else{
-
-badge.classList.add(
-"hidden"
-);
-
-}
-
-}
-
-
-/*
-  Open Requests page.
-*/
-
-async function openRequestsPage(){
-
-const buttons =
-document.querySelectorAll(
-".nav-btn"
-);
-
-
-let requestsButton = null;
-
-
-buttons.forEach(button => {
-
-if(
-button.textContent.includes("Requests")
-){
-
-requestsButton =
-button;
-
-}
-
-});
-
-
-showPage(
-"requests",
-requestsButton
-);
-
-
-await loadRequests();
-
-}
-
-
-/*
-  Format request date.
-*/
-
-function formatDate(value){
-
-if(!value) return "";
-
-
-try{
-
-return new Date(value)
-.toLocaleString(
-[],
-{
-dateStyle:"medium",
-timeStyle:"short"
-}
-);
-
-}catch(error){
-
-return "";
-
-}
 
 }
 
@@ -3217,53 +2178,12 @@ return;
 }
 
 
-const stateMap =
-await getRequestStates([id]);
-
-
-const state =
-stateMap[id] ||
-{
-type:"none"
-};
-
-
-let connectionText =
-"";
-
-
-if(state.type === "connected"){
-
-connectionText =
-"\n\n✓ Connected";
-
-}else if(state.type === "sent"){
-
-connectionText =
-"\n\n⏳ Connection request pending";
-
-}else if(state.type === "received"){
-
-connectionText =
-"\n\n📩 This user sent you a request";
-
-}
-
-
 alert(
-
 (data.display_name || "User") +
-
 "\n@" +
-
 (data.username || "") +
-
 "\n\n" +
-
-(data.bio || "") +
-
-connectionText
-
+(data.bio || "")
 );
 
 }
@@ -3278,15 +2198,21 @@ function editProfile(){
 if(!currentProfile) return;
 
 
-document.getElementById("editName").value =
+document
+.getElementById("editName")
+.value =
 currentProfile.display_name || "";
 
 
-document.getElementById("editUsername").value =
+document
+.getElementById("editUsername")
+.value =
 currentProfile.username || "";
 
 
-document.getElementById("editBio").value =
+document
+.getElementById("editBio")
+.value =
 currentProfile.bio || "";
 
 
@@ -3350,7 +2276,9 @@ await supabaseClient
 .update({
 
 display_name:name,
+
 username,
+
 bio
 
 })
@@ -3362,13 +2290,9 @@ bio
 if(error){
 
 alert(
-
 error.code === "23505"
-
 ? "That username is already taken."
-
 : error.message
-
 );
 
 return;
@@ -3385,6 +2309,978 @@ closeModal("profileModal");
 alert(
 "Profile updated successfully."
 );
+
+}
+
+
+/* =========================================================
+CONNECTION REQUESTS
+========================================================= */
+
+
+/*
+  Send a connection request.
+
+  connection_requests columns:
+
+  id
+  sender_id
+  receiver_id
+  status
+  created_at
+*/
+
+async function sendConnectionRequest(receiverId){
+
+if(!currentUser){
+
+alert(
+"Please log in again."
+);
+
+return;
+
+}
+
+
+if(receiverId === currentUser.id){
+
+alert(
+"You cannot send a request to yourself."
+);
+
+return;
+
+}
+
+
+try{
+
+/*
+  First check if there is already a request
+  in either direction.
+*/
+
+const {data:existing,error:checkError} =
+await supabaseClient
+.from("connection_requests")
+.select(
+"id,sender_id,receiver_id,status,created_at"
+)
+.or(
+`and(sender_id.eq.${currentUser.id},receiver_id.eq.${receiverId}),and(sender_id.eq.${receiverId},receiver_id.eq.${currentUser.id})`
+)
+.limit(1);
+
+
+if(checkError){
+
+console.error(
+"Connection request check error:",
+checkError
+);
+
+alert(
+"Could not check the connection request: " +
+checkError.message
+);
+
+return;
+
+}
+
+
+if(existing && existing.length){
+
+const request = existing[0];
+
+
+if(request.status === "pending"){
+
+if(request.sender_id === currentUser.id){
+
+alert(
+"Connection request already sent."
+);
+
+}else{
+
+alert(
+"This user has already sent you a connection request. Check Requests."
+);
+
+}
+
+return;
+
+}
+
+
+if(request.status === "accepted"){
+
+alert(
+"You are already connected."
+);
+
+return;
+
+}
+
+
+/*
+  If an old rejected request exists,
+  try creating a fresh pending request.
+*/
+
+}
+
+
+const {error} =
+await supabaseClient
+.from("connection_requests")
+.insert({
+
+sender_id:currentUser.id,
+
+receiver_id:receiverId,
+
+status:"pending"
+
+});
+
+
+if(error){
+
+console.error(
+"Send connection request error:",
+error
+);
+
+if(error.code === "23505"){
+
+alert(
+"Connection request already exists."
+);
+
+}else{
+
+alert(
+"Could not send connection request: " +
+error.message
+);
+
+}
+
+return;
+
+}
+
+
+alert(
+"Connection request sent successfully! ✅"
+);
+
+
+/*
+  Refresh request information.
+*/
+
+await loadConnectionRequests();
+
+}
+
+
+async function loadConnectionRequests(){
+
+if(!currentUser) return;
+
+
+/*
+  Incoming requests:
+  receiver_id = current user
+*/
+
+const {
+data:incoming,
+error:incomingError
+} =
+await supabaseClient
+.from("connection_requests")
+.select(
+"id,sender_id,receiver_id,status,created_at"
+)
+.eq("receiver_id",currentUser.id)
+.order("created_at",{ascending:false});
+
+
+if(incomingError){
+
+console.error(
+"Incoming request error:",
+incomingError
+);
+
+document
+.getElementById("incomingRequests")
+.innerHTML =
+'<div class="empty">Unable to load incoming requests: ' +
+escapeHTML(incomingError.message) +
+'</div>';
+
+}else{
+
+await renderIncomingRequests(
+incoming || []
+);
+
+}
+
+
+/*
+  Sent requests:
+  sender_id = current user
+*/
+
+const {
+data:sent,
+error:sentError
+} =
+await supabaseClient
+.from("connection_requests")
+.select(
+"id,sender_id,receiver_id,status,created_at"
+)
+.eq("sender_id",currentUser.id)
+.order("created_at",{ascending:false});
+
+
+if(sentError){
+
+console.error(
+"Sent request error:",
+sentError
+);
+
+document
+.getElementById("sentRequests")
+.innerHTML =
+'<div class="empty">Unable to load sent requests: ' +
+escapeHTML(sentError.message) +
+'</div>';
+
+}else{
+
+await renderSentRequests(
+sent || []
+);
+
+}
+
+
+/*
+  Connections:
+  accepted requests in either direction.
+*/
+
+const {
+data:accepted,
+error:acceptedError
+} =
+await supabaseClient
+.from("connection_requests")
+.select(
+"id,sender_id,receiver_id,status,created_at"
+)
+.eq("status","accepted");
+
+
+if(acceptedError){
+
+console.error(
+"Connections error:",
+acceptedError
+);
+
+document
+.getElementById("connectionsList")
+.innerHTML =
+'<div class="empty">Unable to load connections.</div>';
+
+}else{
+
+const myConnections =
+(accepted || [])
+.filter(
+r =>
+r.sender_id === currentUser.id ||
+r.receiver_id === currentUser.id
+);
+
+await renderConnections(
+myConnections
+);
+
+}
+
+
+/*
+  Update profile request count.
+*/
+
+const pendingIncoming =
+(incoming || [])
+.filter(
+r => r.status === "pending"
+).length;
+
+
+const requestCount =
+document.getElementById("requestCount");
+
+
+if(requestCount){
+
+requestCount.textContent =
+pendingIncoming;
+
+}
+
+}
+
+
+/* =========================================================
+INCOMING REQUESTS
+========================================================= */
+
+async function renderIncomingRequests(requests){
+
+const container =
+document.getElementById("incomingRequests");
+
+
+const pending =
+requests.filter(
+r => r.status === "pending"
+);
+
+
+if(!pending.length){
+
+container.innerHTML =
+'<div class="empty">No pending incoming requests.</div>';
+
+return;
+
+}
+
+
+const ids =
+pending.map(
+r => r.sender_id
+);
+
+
+const {data:profiles,error} =
+await supabaseClient
+.from("profiles")
+.select(
+"id,username,display_name,bio,avatar_url"
+)
+.in("id",ids);
+
+
+if(error){
+
+console.error(error);
+
+container.innerHTML =
+'<div class="empty">Unable to load request profiles.</div>';
+
+return;
+
+}
+
+
+const profileMap = {};
+
+(profiles || []).forEach(
+p => {
+profileMap[p.id] = p;
+}
+);
+
+
+container.innerHTML =
+pending.map(
+request => {
+
+const user =
+profileMap[request.sender_id];
+
+
+const name =
+user?.display_name ||
+"ConnectSphere User";
+
+
+const username =
+user?.username ||
+"";
+
+
+const letter =
+name.charAt(0).toUpperCase();
+
+
+return `
+
+<div class="connection-card">
+
+<div class="user-row">
+
+<div class="avatar">
+${escapeHTML(letter)}
+</div>
+
+<div class="user-info">
+
+<strong>
+${escapeHTML(name)}
+</strong>
+
+<span>
+@${escapeHTML(username)}
+</span>
+
+<span>
+Wants to connect with you.
+</span>
+
+</div>
+
+</div>
+
+
+<div class="request-actions">
+
+<button
+class="success-btn"
+onclick="acceptConnectionRequest('${request.id}')"
+>
+Accept
+</button>
+
+<button
+class="danger"
+onclick="rejectConnectionRequest('${request.id}')"
+>
+Reject
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}
+).join("");
+
+}
+
+
+/* =========================================================
+SENT REQUESTS
+========================================================= */
+
+async function renderSentRequests(requests){
+
+const container =
+document.getElementById("sentRequests");
+
+
+if(!requests.length){
+
+container.innerHTML =
+'<div class="empty">You have not sent any requests.</div>';
+
+return;
+
+}
+
+
+const ids =
+requests.map(
+r => r.receiver_id
+);
+
+
+const {data:profiles,error} =
+await supabaseClient
+.from("profiles")
+.select(
+"id,username,display_name,bio,avatar_url"
+)
+.in("id",ids);
+
+
+if(error){
+
+console.error(error);
+
+container.innerHTML =
+'<div class="empty">Unable to load sent request profiles.</div>';
+
+return;
+
+}
+
+
+const profileMap = {};
+
+(profiles || []).forEach(
+p => {
+profileMap[p.id] = p;
+}
+);
+
+
+container.innerHTML =
+requests.map(
+request => {
+
+const user =
+profileMap[request.receiver_id];
+
+
+const name =
+user?.display_name ||
+"ConnectSphere User";
+
+
+const username =
+user?.username ||
+"";
+
+
+const letter =
+name.charAt(0).toUpperCase();
+
+
+let statusText =
+"Pending";
+
+
+if(request.status === "accepted"){
+
+statusText =
+"Accepted";
+
+}else if(request.status === "rejected"){
+
+statusText =
+"Rejected";
+
+}
+
+
+return `
+
+<div class="connection-card">
+
+<div class="user-row">
+
+<div class="avatar">
+${escapeHTML(letter)}
+</div>
+
+<div class="user-info">
+
+<strong>
+${escapeHTML(name)}
+</strong>
+
+<span>
+@${escapeHTML(username)}
+</span>
+
+<span class="request-status">
+${escapeHTML(statusText)}
+</span>
+
+</div>
+
+</div>
+
+
+${
+request.status === "pending"
+
+?
+
+`
+
+<div class="request-actions">
+
+<button
+class="danger"
+onclick="cancelConnectionRequest('${request.id}')"
+>
+Cancel Request
+</button>
+
+</div>
+
+`
+
+:
+
+""
+
+}
+
+</div>
+
+`;
+
+}
+).join("");
+
+}
+
+
+/* =========================================================
+ACCEPT REQUEST
+========================================================= */
+
+async function acceptConnectionRequest(requestId){
+
+if(!currentUser) return;
+
+
+const {data:request,error:findError} =
+await supabaseClient
+.from("connection_requests")
+.select(
+"id,sender_id,receiver_id,status"
+)
+.eq("id",requestId)
+.eq("receiver_id",currentUser.id)
+.single();
+
+
+if(findError){
+
+console.error(
+"Find request error:",
+findError
+);
+
+alert(
+"Could not find this request: " +
+findError.message
+);
+
+return;
+
+}
+
+
+if(request.status !== "pending"){
+
+alert(
+"This request is no longer pending."
+);
+
+await loadConnectionRequests();
+
+return;
+
+}
+
+
+const {error} =
+await supabaseClient
+.from("connection_requests")
+.update({
+status:"accepted"
+})
+.eq("id",requestId)
+.eq("receiver_id",currentUser.id)
+.eq("status","pending");
+
+
+if(error){
+
+console.error(
+"Accept request error:",
+error
+);
+
+alert(
+"Could not accept request: " +
+error.message
+);
+
+return;
+
+}
+
+
+alert(
+"Connection accepted! 🎉"
+);
+
+
+await loadConnectionRequests();
+
+}
+
+
+/* =========================================================
+REJECT REQUEST
+========================================================= */
+
+async function rejectConnectionRequest(requestId){
+
+if(!currentUser) return;
+
+
+if(
+!confirm(
+"Reject this connection request?"
+)
+){
+
+return;
+
+}
+
+
+const {error} =
+await supabaseClient
+.from("connection_requests")
+.update({
+status:"rejected"
+})
+.eq("id",requestId)
+.eq("receiver_id",currentUser.id)
+.eq("status","pending");
+
+
+if(error){
+
+console.error(
+"Reject request error:",
+error
+);
+
+alert(
+"Could not reject request: " +
+error.message
+);
+
+return;
+
+}
+
+
+await loadConnectionRequests();
+
+}
+
+
+/* =========================================================
+CANCEL SENT REQUEST
+========================================================= */
+
+async function cancelConnectionRequest(requestId){
+
+if(!currentUser) return;
+
+
+if(
+!confirm(
+"Cancel this connection request?"
+)
+){
+
+return;
+
+}
+
+
+const {error} =
+await supabaseClient
+.from("connection_requests")
+.delete()
+.eq("id",requestId)
+.eq("sender_id",currentUser.id);
+
+
+if(error){
+
+console.error(
+"Cancel request error:",
+error
+);
+
+alert(
+"Could not cancel request: " +
+error.message
+);
+
+return;
+
+}
+
+
+await loadConnectionRequests();
+
+}
+
+
+/* =========================================================
+CONNECTIONS
+========================================================= */
+
+async function renderConnections(requests){
+
+const container =
+document.getElementById("connectionsList");
+
+
+if(!requests.length){
+
+container.innerHTML =
+'<div class="empty">No connections yet.</div>';
+
+const count =
+document.getElementById("connectionCount");
+
+if(count){
+count.textContent = "0";
+}
+
+return;
+
+}
+
+
+const ids =
+requests.map(
+r =>
+r.sender_id === currentUser.id
+? r.receiver_id
+: r.sender_id
+);
+
+
+const uniqueIds =
+[...new Set(ids)];
+
+
+const {data:profiles,error} =
+await supabaseClient
+.from("profiles")
+.select(
+"id,username,display_name,bio,avatar_url"
+)
+.in("id",uniqueIds);
+
+
+if(error){
+
+console.error(
+"Connection profile error:",
+error
+);
+
+container.innerHTML =
+'<div class="empty">Unable to load connections.</div>';
+
+return;
+
+}
+
+
+const profileMap = {};
+
+(profiles || []).forEach(
+p => {
+profileMap[p.id] = p;
+}
+);
+
+
+container.innerHTML =
+uniqueIds.map(
+id => {
+
+const user =
+profileMap[id];
+
+
+const name =
+user?.display_name ||
+"ConnectSphere User";
+
+
+const username =
+user?.username ||
+"";
+
+
+const letter =
+name.charAt(0).toUpperCase();
+
+
+return `
+
+<div class="connection-card">
+
+<div class="user-row">
+
+<div class="avatar">
+${escapeHTML(letter)}
+</div>
+
+<div class="user-info">
+
+<strong>
+${escapeHTML(name)}
+</strong>
+
+<span>
+@${escapeHTML(username)}
+</span>
+
+<span>
+Connected ✅
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}
+).join("");
+
+
+const count =
+document.getElementById("connectionCount");
+
+
+if(count){
+
+count.textContent =
+uniqueIds.length;
+
+}
 
 }
 
@@ -3410,7 +3306,9 @@ if(error){
 
 console.error(error);
 
-document.getElementById("scheduleList").innerHTML =
+document
+.getElementById("scheduleList")
+.innerHTML =
 '<div class="empty">Unable to load schedules: ' +
 escapeHTML(error.message) +
 '</div>';
@@ -3430,17 +3328,12 @@ function formatSchedule(s){
 if(s.schedule_type === "daily"){
 
 return (
-
 "Every day" +
-
 (
-
 s.reminder_time
 ? " at " + formatTime(s.reminder_time)
 : ""
-
 )
-
 );
 
 }
@@ -3449,7 +3342,6 @@ s.reminder_time
 if(s.schedule_type === "weekly"){
 
 const days = [
-
 "Sunday",
 "Monday",
 "Tuesday",
@@ -3457,49 +3349,34 @@ const days = [
 "Thursday",
 "Friday",
 "Saturday"
-
 ];
 
 
 return (
-
 "Every " +
-
 days[Number(s.day_of_week)] +
-
 (
-
 s.reminder_time
 ? " at " + formatTime(s.reminder_time)
 : ""
-
 )
-
 );
 
 }
 
 
 return (
-
 "One-time" +
-
 (
-
 s.reminder_date
 ? " on " + s.reminder_date
 : ""
-
 ) +
-
 (
-
 s.reminder_time
 ? " at " + formatTime(s.reminder_time)
 : ""
-
 )
-
 );
 
 }
@@ -3518,12 +3395,7 @@ const d =
 new Date();
 
 
-d.setHours(
-h,
-m,
-0,
-0
-);
+d.setHours(h,m,0,0);
 
 
 return d.toLocaleTimeString(
@@ -3633,8 +3505,7 @@ Delete
 </div>
 
 `
-)
-.join("");
+).join("");
 
 
 updateScheduleProgress(list);
@@ -3803,12 +3674,19 @@ return;
 let payload = {
 
 user_id:currentUser.id,
+
 title,
+
 description,
+
 schedule_type:type,
+
 reminder_time:time,
+
 reminder_date:null,
+
 day_of_week:null,
+
 completed:false
 
 };
@@ -3892,8 +3770,7 @@ const padding =
 
 const base64 =
 (
-base64String +
-padding
+base64String + padding
 )
 .replace(/-/g,"+")
 .replace(/_/g,"/");
@@ -3905,8 +3782,7 @@ atob(base64);
 
 return Uint8Array.from(
 [...rawData].map(
-char =>
-char.charCodeAt(0)
+char => char.charCodeAt(0)
 )
 );
 
@@ -3923,8 +3799,7 @@ PUSH_FUNCTION_URL,
 {
 method:"GET",
 headers:{
-apikey:
-SUPABASE_PUBLISHABLE_KEY
+apikey:SUPABASE_PUBLISHABLE_KEY
 }
 }
 );
@@ -4002,10 +3877,6 @@ throw new Error(
 }
 
 
-/*
- Delete old subscription with same endpoint.
-*/
-
 await supabaseClient
 .from("push_subscriptions")
 .delete()
@@ -4013,18 +3884,17 @@ await supabaseClient
 .eq("endpoint",json.endpoint);
 
 
-/*
- Insert new subscription.
-*/
-
 const {error} =
 await supabaseClient
 .from("push_subscriptions")
 .insert({
 
 user_id:currentUser.id,
+
 endpoint:json.endpoint,
+
 p256dh:json.keys.p256dh,
+
 auth:json.keys.auth
 
 });
@@ -4058,11 +3928,7 @@ async function removePushSubscriptionFromDatabase(endpoint){
 if(
 !currentUser ||
 !endpoint
-){
-
-return;
-
-}
+) return;
 
 
 const {error} =
@@ -4275,7 +4141,6 @@ document
 .textContent =
 "Notifications are OFF.";
 
-
 }catch(error){
 
 console.error(
@@ -4364,19 +4229,10 @@ document.getElementById(
 );
 
 
-if(
-!toggle ||
-!status
-){
-
-return;
-
-}
+if(!toggle || !status) return;
 
 
-if(
-!("Notification" in window)
-){
+if(!("Notification" in window)){
 
 status.textContent =
 "Notifications are not supported by this browser.";
@@ -4400,7 +4256,6 @@ status.textContent =
 text.textContent =
 "Notifications are OFF.";
 
-
 return;
 
 }
@@ -4408,9 +4263,7 @@ return;
 
 try{
 
-if(
-!("serviceWorker" in navigator)
-){
+if(!("serviceWorker" in navigator)){
 
 return;
 
@@ -4465,6 +4318,7 @@ console.warn(
 error
 );
 
+
 toggle.checked = false;
 
 }
@@ -4513,12 +4367,13 @@ button.classList.add("active");
 
 
 /*
-  Refresh Requests whenever user opens the page.
+  Refresh requests whenever
+  the Requests page is opened.
 */
 
 if(page === "requests"){
 
-loadRequests();
+loadConnectionRequests();
 
 }
 
@@ -4614,6 +4469,7 @@ await supabaseClient
 
 
 currentUser = null;
+
 currentProfile = null;
 
 
@@ -4726,32 +4582,17 @@ document
 
 
 /* =========================================================
-SECURITY
+SECURITY / HTML ESCAPING
 ========================================================= */
 
 function escapeHTML(value){
 
 return String(value)
-.replaceAll(
-"&",
-"&amp;"
-)
-.replaceAll(
-"<",
-"&lt;"
-)
-.replaceAll(
-">",
-"&gt;"
-)
-.replaceAll(
-'"',
-"&quot;"
-)
-.replaceAll(
-"'",
-"&#039;"
-);
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
@@ -4788,10 +4629,6 @@ document
 }
 
 
-/*
-  Auth state listener.
-*/
-
 supabaseClient
 .auth
 .onAuthStateChange(
@@ -4815,10 +4652,6 @@ document
 }
 );
 
-
-/*
-  Start ConnectSphere.
-*/
 
 startApp();
 
