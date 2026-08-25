@@ -14,13 +14,21 @@
   padding:0
 }
 
+html{
+  scroll-behavior:smooth
+}
+
 body{
   font-family:Arial,Helvetica,sans-serif;
   background:#f4f5fb;
-  color:#171724
+  color:#171724;
+  min-height:100vh
 }
 
-button,input,select,textarea{
+button,
+input,
+select,
+textarea{
   font:inherit
 }
 
@@ -28,6 +36,19 @@ button{
   cursor:pointer;
   border:0
 }
+
+button:disabled{
+  cursor:not-allowed;
+  opacity:.6
+}
+
+.hidden{
+  display:none!important
+}
+
+/* =========================================================
+APP
+========================================================= */
 
 .app{
   max-width:1100px;
@@ -60,12 +81,21 @@ header{
   width:40px;
   height:40px;
   border-radius:50%;
-  background:#f1f1f7
+  background:#f1f1f7;
+  transition:.2s
 }
+
+.icon-btn:hover{
+  background:#e7e5f8
+}
+
+/* =========================================================
+MAIN
+========================================================= */
 
 main{
   padding:20px;
-  padding-bottom:90px
+  padding-bottom:95px
 }
 
 .page{
@@ -83,8 +113,13 @@ h1{
 
 .subtitle{
   color:#777;
-  margin-bottom:20px
+  margin-bottom:20px;
+  line-height:1.5
 }
+
+/* =========================================================
+CARDS / BUTTONS
+========================================================= */
 
 .card{
   background:white;
@@ -100,7 +135,12 @@ h1{
   color:white;
   padding:11px 16px;
   border-radius:10px;
-  font-weight:600
+  font-weight:600;
+  transition:.2s
+}
+
+.primary:hover{
+  background:#4d3ec4
 }
 
 .primary:disabled{
@@ -116,11 +156,19 @@ h1{
   font-weight:600
 }
 
+.secondary:hover{
+  background:#e2e2eb
+}
+
 .danger{
   background:#ffe8e8;
   color:#c62828;
   padding:11px 16px;
   border-radius:10px
+}
+
+.danger:hover{
+  background:#ffdcdc
 }
 
 .success-btn{
@@ -130,6 +178,14 @@ h1{
   border-radius:10px;
   font-weight:600
 }
+
+.success-btn:hover{
+  background:#d8f1dc
+}
+
+/* =========================================================
+SEARCH
+========================================================= */
 
 .search-box{
   width:100%;
@@ -141,8 +197,13 @@ h1{
 }
 
 .search-box:focus{
-  border-color:#5b4bdb
+  border-color:#5b4bdb;
+  box-shadow:0 0 0 3px rgba(91,75,219,.08)
 }
+
+/* =========================================================
+USER / AVATAR
+========================================================= */
 
 .user-row{
   display:flex;
@@ -171,19 +232,27 @@ h1{
 }
 
 .user-info{
-  flex:1
+  flex:1;
+  min-width:0
 }
 
 .user-info strong{
-  display:block
+  display:block;
+  overflow:hidden;
+  text-overflow:ellipsis
 }
 
 .user-info span{
   color:#777;
   font-size:13px;
   display:block;
-  margin-top:3px
+  margin-top:3px;
+  overflow-wrap:anywhere
 }
+
+/* =========================================================
+PROFILE
+========================================================= */
 
 .profile{
   text-align:center
@@ -215,10 +284,15 @@ h1{
   font-size:13px
 }
 
+/* =========================================================
+SETTINGS
+========================================================= */
+
 .setting{
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:15px;
   padding:16px 4px;
   border-bottom:1px solid #eee
 }
@@ -230,14 +304,24 @@ h1{
 .setting small{
   display:block;
   color:#777;
-  margin-top:4px
+  margin-top:4px;
+  line-height:1.4
 }
+
+/* =========================================================
+EMPTY
+========================================================= */
 
 .empty{
   text-align:center;
   padding:40px 15px;
-  color:#888
+  color:#888;
+  line-height:1.5
 }
+
+/* =========================================================
+BOTTOM NAV
+========================================================= */
 
 .bottom-nav{
   position:fixed;
@@ -255,13 +339,17 @@ h1{
 }
 
 .nav-btn{
+  position:relative;
   background:none;
   color:#777;
   display:flex;
   flex-direction:column;
   align-items:center;
+  justify-content:center;
   gap:4px;
-  font-size:12px
+  font-size:12px;
+  min-width:65px;
+  height:60px
 }
 
 .nav-btn.active{
@@ -270,8 +358,40 @@ h1{
 }
 
 .nav-icon{
-  font-size:21px
+  font-size:21px;
+  line-height:1
 }
+
+/* =========================================================
+REQUEST RED BADGE
+========================================================= */
+
+.request-badge{
+  position:absolute;
+  top:1px;
+  right:9px;
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  border-radius:20px;
+  background:#e53935;
+  color:white;
+  font-size:10px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px solid white;
+  line-height:1
+}
+
+.request-badge.hidden{
+  display:none!important
+}
+
+/* =========================================================
+MODALS
+========================================================= */
 
 .modal{
   display:none;
@@ -306,8 +426,13 @@ h1{
   background:#eee;
   border-radius:50%;
   width:34px;
-  height:34px
+  height:34px;
+  font-size:20px
 }
+
+/* =========================================================
+AUTH
+========================================================= */
 
 .auth-screen{
   min-height:100vh;
@@ -343,7 +468,13 @@ h1{
   padding:13px;
   border:1px solid #ddd;
   border-radius:12px;
-  margin-bottom:10px
+  margin-bottom:10px;
+  outline:none
+}
+
+.auth-box input:focus{
+  border-color:#5b4bdb;
+  box-shadow:0 0 0 3px rgba(91,75,219,.08)
 }
 
 .password-wrap{
@@ -382,7 +513,7 @@ h1{
   color:#5b4bdb;
   margin:0;
   padding:0;
-  cursor:pointer
+  font-weight:600
 }
 
 .error{
@@ -391,7 +522,8 @@ h1{
   padding:10px;
   border-radius:10px;
   margin-bottom:10px;
-  display:none
+  display:none;
+  line-height:1.4
 }
 
 .success{
@@ -400,12 +532,13 @@ h1{
   padding:10px;
   border-radius:10px;
   margin-bottom:10px;
-  display:none
+  display:none;
+  line-height:1.4
 }
 
-.hidden{
-  display:none!important
-}
+/* =========================================================
+SCHEDULE
+========================================================= */
 
 .schedule-item{
   border:1px solid #eee;
@@ -421,19 +554,22 @@ h1{
 }
 
 .schedule-top>div:first-child{
-  flex:1
+  flex:1;
+  min-width:0
 }
 
 .schedule-title{
   font-weight:700;
-  font-size:16px
+  font-size:16px;
+  overflow-wrap:anywhere
 }
 
 .schedule-meta{
   font-size:13px;
   color:#777;
   margin-top:5px;
-  line-height:1.5
+  line-height:1.5;
+  overflow-wrap:anywhere
 }
 
 .schedule-actions{
@@ -477,7 +613,8 @@ h1{
 .progress-fill{
   height:100%;
   background:#5b4bdb;
-  width:0
+  width:0;
+  transition:width .3s
 }
 
 .form-label{
@@ -494,8 +631,19 @@ h1{
   padding:12px;
   border:1px solid #ddd;
   border-radius:11px;
-  margin-bottom:8px
+  margin-bottom:8px;
+  outline:none
 }
+
+.modal-box select:focus,
+.modal-box textarea:focus,
+.modal-box input:focus{
+  border-color:#5b4bdb
+}
+
+/* =========================================================
+NOTIFICATIONS
+========================================================= */
 
 .notification-status{
   color:#777;
@@ -540,13 +688,17 @@ h1{
   box-shadow:0 1px 4px rgba(0,0,0,.2)
 }
 
-.switch input:checked+.slider{
+.switch input:checked + .slider{
   background:#5b4bdb
 }
 
-.switch input:checked+.slider:before{
+.switch input:checked + .slider:before{
   transform:translateX(22px)
 }
+
+/* =========================================================
+REQUESTS
+========================================================= */
 
 .request-actions{
   display:flex;
@@ -583,11 +735,24 @@ h1{
   margin-bottom:10px
 }
 
+/* =========================================================
+LOADING
+========================================================= */
+
+.loading{
+  opacity:.65;
+  pointer-events:none
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
 @media(max-width:600px){
 
   main{
     padding:16px;
-    padding-bottom:90px
+    padding-bottom:95px
   }
 
   header{
@@ -598,22 +763,80 @@ h1{
     font-size:23px
   }
 
+  .subtitle{
+    font-size:14px
+  }
+
   .bottom-nav{
-    overflow-x:auto
+    overflow-x:auto;
+    justify-content:flex-start
   }
 
   .nav-btn{
-    min-width:65px
+    flex:1 0 65px
+  }
+
+  .user-row{
+    align-items:flex-start
+  }
+
+  .user-row>.user-info{
+    min-width:0
+  }
+
+  .user-row>div:last-child{
+    flex-shrink:0
+  }
+
+  .card{
+    border-radius:15px
+  }
+
+  .stat-row{
+    gap:30px
+  }
+
+  .modal{
+    padding:12px
+  }
+
+  .modal-box{
+    border-radius:17px;
+    padding:17px
   }
 
   .auth-screen{
-    align-items:flex-start;
-    padding-top:35px
+    padding:14px
   }
 
   .auth-box{
-    padding:22px 18px
+    padding:20px
   }
+
+  .request-badge{
+    right:7px
+  }
+
+}
+
+@media(max-width:420px){
+
+  .user-row{
+    flex-wrap:wrap
+  }
+
+  .user-row>div:last-child{
+    width:100%;
+    flex-direction:row!important;
+    justify-content:flex-end;
+    align-items:center!important
+  }
+
+  .profile .avatar{
+    width:80px;
+    height:80px
+  }
+
 }
 </style>
 </head>
@@ -641,16 +864,15 @@ AUTH SCREEN
 
       <input
         id="signupName"
-        type="text"
         placeholder="Full name"
         autocomplete="name"
       >
 
       <input
         id="signupUsername"
-        type="text"
         placeholder="Username"
         autocomplete="username"
+        maxlength="30"
       >
 
     </div>
@@ -675,6 +897,8 @@ AUTH SCREEN
         type="button"
         class="password-toggle"
         id="passwordToggle"
+        onclick="togglePassword()"
+        aria-label="Show password"
       >
         👁️
       </button>
@@ -682,9 +906,9 @@ AUTH SCREEN
     </div>
 
     <button
-      type="button"
       id="authButton"
       class="primary"
+      onclick="handleAuth()"
     >
       Sign Up
     </button>
@@ -696,10 +920,10 @@ AUTH SCREEN
       </span>
 
       <button
-        type="button"
+        onclick="toggleAuthMode()"
         id="switchButton"
       >
-        Log In
+        Log in
       </button>
 
     </div>
@@ -722,9 +946,9 @@ MAIN APP
   </div>
 
   <button
-    type="button"
     class="icon-btn"
-    id="settingsTopButton"
+    onclick="showPage('settings')"
+    aria-label="Settings"
   >
     ⚙️
   </button>
@@ -734,7 +958,9 @@ MAIN APP
 
 <main>
 
-<!-- HOME -->
+<!-- =========================================================
+HOME
+========================================================= -->
 
 <section id="home" class="page active">
 
@@ -748,7 +974,10 @@ MAIN APP
 
     <div class="user-row">
 
-      <div class="avatar" id="homeAvatar">
+      <div
+        class="avatar"
+        id="homeAvatar"
+      >
         Y
       </div>
 
@@ -788,7 +1017,9 @@ MAIN APP
 </section>
 
 
-<!-- SEARCH -->
+<!-- =========================================================
+SEARCH
+========================================================= -->
 
 <section id="search" class="page">
 
@@ -802,6 +1033,8 @@ MAIN APP
     id="searchInput"
     class="search-box"
     placeholder="Search people..."
+    oninput="searchUsers()"
+    autocomplete="off"
   >
 
   <div id="searchResults">
@@ -815,7 +1048,9 @@ MAIN APP
 </section>
 
 
-<!-- REQUESTS -->
+<!-- =========================================================
+REQUESTS
+========================================================= -->
 
 <section id="requests" class="page">
 
@@ -824,6 +1059,7 @@ MAIN APP
   <p class="subtitle">
     Manage your connection requests.
   </p>
+
 
   <div class="request-section-title">
     Incoming Requests
@@ -837,6 +1073,7 @@ MAIN APP
 
   </div>
 
+
   <div class="request-section-title">
     Sent Requests
   </div>
@@ -848,6 +1085,7 @@ MAIN APP
     </div>
 
   </div>
+
 
   <div class="request-section-title">
     Your Connections
@@ -864,7 +1102,9 @@ MAIN APP
 </section>
 
 
-<!-- CHATS -->
+<!-- =========================================================
+CHATS
+========================================================= -->
 
 <section id="chats" class="page">
 
@@ -875,14 +1115,16 @@ MAIN APP
   </p>
 
   <div class="empty">
-    Real-time encrypted messaging will be added after
-    the connection system is working.
+    Real-time private messaging will be added after
+    the connection system is fully working.
   </div>
 
 </section>
 
 
-<!-- SCHEDULE -->
+<!-- =========================================================
+SCHEDULE
+========================================================= -->
 
 <section id="schedule" class="page">
 
@@ -893,6 +1135,7 @@ MAIN APP
   <p class="subtitle">
     Build daily habits, weekly plans and one-time reminders.
   </p>
+
 
   <div class="card">
 
@@ -923,9 +1166,8 @@ MAIN APP
       </div>
 
       <button
-        type="button"
         class="primary"
-        id="addScheduleButton"
+        onclick="openScheduleModal()"
       >
         + Add
       </button>
@@ -955,7 +1197,9 @@ MAIN APP
 </section>
 
 
-<!-- PROFILE -->
+<!-- =========================================================
+PROFILE
+========================================================= -->
 
 <section id="profile" class="page">
 
@@ -976,6 +1220,7 @@ MAIN APP
       @username
     </p>
 
+
     <div class="stat-row">
 
       <div class="stat">
@@ -989,6 +1234,7 @@ MAIN APP
         </span>
 
       </div>
+
 
       <div class="stat">
 
@@ -1004,10 +1250,10 @@ MAIN APP
 
     </div>
 
+
     <button
-      type="button"
       class="primary"
-      id="editProfileButton"
+      onclick="editProfile()"
     >
       Edit Profile
     </button>
@@ -1032,7 +1278,9 @@ MAIN APP
 </section>
 
 
-<!-- SETTINGS -->
+<!-- =========================================================
+SETTINGS
+========================================================= -->
 
 <section id="settings" class="page">
 
@@ -1043,6 +1291,7 @@ MAIN APP
   <p class="subtitle">
     Control your account.
   </p>
+
 
   <div class="card">
 
@@ -1093,6 +1342,8 @@ MAIN APP
   </div>
 
 
+  <!-- NOTIFICATIONS -->
+
   <div class="card">
 
     <h3>
@@ -1102,6 +1353,7 @@ MAIN APP
     <p class="notification-status">
       Turn browser notifications ON or OFF for ConnectSphere reminders.
     </p>
+
 
     <div class="setting">
 
@@ -1117,11 +1369,13 @@ MAIN APP
 
       </div>
 
+
       <label class="switch">
 
         <input
           type="checkbox"
           id="notificationToggle"
+          onchange="togglePushNotifications()"
         >
 
         <span class="slider"></span>
@@ -1129,6 +1383,7 @@ MAIN APP
       </label>
 
     </div>
+
 
     <div
       id="notificationStatus"
@@ -1149,9 +1404,8 @@ MAIN APP
     <br>
 
     <button
-      type="button"
       class="secondary"
-      id="editProfileSettingsButton"
+      onclick="editProfile()"
     >
       Edit profile
     </button>
@@ -1159,9 +1413,8 @@ MAIN APP
     <br><br>
 
     <button
-      type="button"
       class="danger"
-      id="logoutButton"
+      onclick="logout()"
     >
       Log out
     </button>
@@ -1194,62 +1447,101 @@ MAIN APP
 </main>
 
 
-<!-- BOTTOM NAV -->
+<!-- =========================================================
+BOTTOM NAVIGATION
+========================================================= -->
 
 <nav class="bottom-nav">
 
   <button
-    type="button"
     class="nav-btn active"
-    data-page="home"
+    onclick="showPage('home',this)"
   >
-    <span class="nav-icon">🏠</span>
+
+    <span class="nav-icon">
+      🏠
+    </span>
+
     Home
+
   </button>
 
+
   <button
-    type="button"
     class="nav-btn"
-    data-page="search"
+    onclick="showPage('search',this)"
   >
-    <span class="nav-icon">🔎</span>
+
+    <span class="nav-icon">
+      🔎
+    </span>
+
     Search
+
   </button>
 
+
   <button
-    type="button"
     class="nav-btn"
-    data-page="requests"
+    id="requestsNavButton"
+    onclick="showPage('requests',this)"
   >
-    <span class="nav-icon">👥</span>
+
+    <span class="nav-icon">
+      👥
+    </span>
+
     Requests
+
+    <span
+      id="requestBadge"
+      class="request-badge hidden"
+    >
+      0
+    </span>
+
   </button>
 
+
   <button
-    type="button"
     class="nav-btn"
-    data-page="chats"
+    onclick="showPage('chats',this)"
   >
-    <span class="nav-icon">💬</span>
+
+    <span class="nav-icon">
+      💬
+    </span>
+
     Chats
+
   </button>
 
+
   <button
-    type="button"
     class="nav-btn"
-    data-page="schedule"
+    onclick="showPage('schedule',this)"
   >
-    <span class="nav-icon">📅</span>
+
+    <span class="nav-icon">
+      📅
+    </span>
+
     Schedule
+
   </button>
 
+
   <button
-    type="button"
     class="nav-btn"
-    data-page="profile"
+    onclick="showPage('profile',this)"
   >
-    <span class="nav-icon">👤</span>
+
+    <span class="nav-icon">
+      👤
+    </span>
+
     Profile
+
   </button>
 
 </nav>
@@ -1257,7 +1549,9 @@ MAIN APP
 </div>
 
 
-<!-- PROFILE MODAL -->
+<!-- =========================================================
+PROFILE MODAL
+========================================================= -->
 
 <div
   class="modal"
@@ -1267,9 +1561,8 @@ MAIN APP
   <div class="modal-box">
 
     <button
-      type="button"
       class="close"
-      id="closeProfileModal"
+      onclick="closeModal('profileModal')"
     >
       ×
     </button>
@@ -1278,25 +1571,40 @@ MAIN APP
       Edit Profile
     </h2>
 
+    <label class="form-label">
+      Name
+    </label>
+
     <input
       id="editName"
       placeholder="Your name"
+      maxlength="100"
     >
+
+    <label class="form-label">
+      Username
+    </label>
 
     <input
       id="editUsername"
       placeholder="Username"
+      maxlength="30"
     >
 
-    <input
+    <label class="form-label">
+      Bio
+    </label>
+
+    <textarea
       id="editBio"
-      placeholder="Bio"
-    >
+      rows="3"
+      placeholder="Your bio"
+      maxlength="300"
+    ></textarea>
 
     <button
-      type="button"
       class="primary"
-      id="saveProfileButton"
+      onclick="saveProfile()"
     >
       Save Profile
     </button>
@@ -1306,7 +1614,9 @@ MAIN APP
 </div>
 
 
-<!-- SCHEDULE MODAL -->
+<!-- =========================================================
+SCHEDULE MODAL
+========================================================= -->
 
 <div
   class="modal"
@@ -1316,9 +1626,8 @@ MAIN APP
   <div class="modal-box">
 
     <button
-      type="button"
       class="close"
-      id="closeScheduleModal"
+      onclick="closeModal('scheduleModal')"
     >
       ×
     </button>
@@ -1327,6 +1636,7 @@ MAIN APP
       Add Schedule
     </h2>
 
+
     <label class="form-label">
       Title
     </label>
@@ -1334,7 +1644,9 @@ MAIN APP
     <input
       id="scheduleTitle"
       placeholder="Example: Study for 30 minutes"
+      maxlength="150"
     >
+
 
     <label class="form-label">
       Description
@@ -1344,13 +1656,18 @@ MAIN APP
       id="scheduleDescription"
       rows="3"
       placeholder="Optional details"
+      maxlength="500"
     ></textarea>
+
 
     <label class="form-label">
       Type
     </label>
 
-    <select id="scheduleType">
+    <select
+      id="scheduleType"
+      onchange="updateScheduleFields()"
+    >
 
       <option value="daily">
         Daily
@@ -1366,6 +1683,7 @@ MAIN APP
 
     </select>
 
+
     <label class="form-label">
       Reminder time
     </label>
@@ -1374,6 +1692,7 @@ MAIN APP
       id="scheduleTime"
       type="time"
     >
+
 
     <div
       id="weeklyField"
@@ -1386,17 +1705,38 @@ MAIN APP
 
       <select id="scheduleDay">
 
-        <option value="0">Sunday</option>
-        <option value="1">Monday</option>
-        <option value="2">Tuesday</option>
-        <option value="3">Wednesday</option>
-        <option value="4">Thursday</option>
-        <option value="5">Friday</option>
-        <option value="6">Saturday</option>
+        <option value="0">
+          Sunday
+        </option>
+
+        <option value="1">
+          Monday
+        </option>
+
+        <option value="2">
+          Tuesday
+        </option>
+
+        <option value="3">
+          Wednesday
+        </option>
+
+        <option value="4">
+          Thursday
+        </option>
+
+        <option value="5">
+          Friday
+        </option>
+
+        <option value="6">
+          Saturday
+        </option>
 
       </select>
 
     </div>
+
 
     <div
       id="onceField"
@@ -1414,11 +1754,11 @@ MAIN APP
 
     </div>
 
+
     <button
-      type="button"
       class="primary"
       style="width:100%;margin-top:8px"
-      id="saveScheduleButton"
+      onclick="saveSchedule()"
     >
       Save Schedule
     </button>
@@ -1428,10 +1768,7 @@ MAIN APP
 </div>
 
 
-<!-- SUPABASE -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 
 <script>
 
@@ -1445,125 +1782,32 @@ const SUPABASE_URL =
 const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_-GofAlZERkBVXbEOQpF3Rg_w0mGMaA4";
 
-let supabaseClient = null;
+const supabaseClient =
+window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
 
-let currentUser = null;
-let currentProfile = null;
-let loginMode = false;
 
 const PUSH_FUNCTION_URL =
 SUPABASE_URL +
 "/functions/v1/hyper-processor";
 
+
 const VAPID_PUBLIC_KEY =
 "BPXQwAeUakIVhv46REqOG4rbgPeOG2vA3XD4dcU62Njv_QBuiumeMdMKaP-slpYsWEKt7k8oWRDNNt4qpJX670A";
 
 
-/* =========================================================
-INITIALIZE
-========================================================= */
-
-function initializeSupabase(){
-
-  if(
-    !window.supabase ||
-    !window.supabase.createClient
-  ){
-
-    showError(
-      "ConnectSphere could not load Supabase. Please check your internet connection and refresh the page."
-    );
-
-    return false;
-  }
-
-  supabaseClient =
-    window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_PUBLISHABLE_KEY
-    );
-
-  return true;
-}
+let currentUser = null;
+let currentProfile = null;
+let loginMode = false;
+let appStarting = false;
+let authLoading = false;
+let searchTimer = null;
 
 
 /* =========================================================
-AUTH MODE
-========================================================= */
-
-function toggleAuthMode(){
-
-  loginMode = !loginMode;
-
-  const signupFields =
-    document.getElementById("signupFields");
-
-  const authButton =
-    document.getElementById("authButton");
-
-  const subtitle =
-    document.getElementById("authSubtitle");
-
-  const switchText =
-    document.getElementById("switchText");
-
-  const switchButton =
-    document.getElementById("switchButton");
-
-  if(loginMode){
-
-    signupFields.classList.add("hidden");
-
-    authButton.textContent =
-      "Log In";
-
-    subtitle.textContent =
-      "Welcome back to ConnectSphere.";
-
-    switchText.textContent =
-      "Don't have an account?";
-
-    switchButton.textContent =
-      "Sign Up";
-
-    document
-      .getElementById("authPassword")
-      .setAttribute(
-        "autocomplete",
-        "current-password"
-      );
-
-  }else{
-
-    signupFields.classList.remove("hidden");
-
-    authButton.textContent =
-      "Sign Up";
-
-    subtitle.textContent =
-      "Create your account and connect.";
-
-    switchText.textContent =
-      "Already have an account?";
-
-    switchButton.textContent =
-      "Log In";
-
-    document
-      .getElementById("authPassword")
-      .setAttribute(
-        "autocomplete",
-        "new-password"
-      );
-
-  }
-
-  clearMessages();
-}
-
-
-/* =========================================================
-PASSWORD
+AUTH
 ========================================================= */
 
 function togglePassword(){
@@ -1574,53 +1818,90 @@ function togglePassword(){
   const button =
     document.getElementById("passwordToggle");
 
-  if(
-    password.type === "password"
-  ){
+  if(password.type === "password"){
 
     password.type = "text";
 
-    button.textContent =
-      "🙈";
+    button.textContent = "🙈";
 
   }else{
 
     password.type = "password";
 
-    button.textContent =
-      "👁️";
+    button.textContent = "👁️";
 
   }
+
 }
 
 
-/* =========================================================
-AUTHENTICATION
-========================================================= */
+function toggleAuthMode(){
 
-async function handleAuth(){
+  loginMode = !loginMode;
+
+  document
+    .getElementById("signupFields")
+    .classList
+    .toggle("hidden",loginMode);
+
+
+  document
+    .getElementById("authButton")
+    .textContent =
+    loginMode
+    ? "Log In"
+    : "Sign Up";
+
+
+  document
+    .getElementById("authSubtitle")
+    .textContent =
+    loginMode
+    ? "Welcome back to ConnectSphere."
+    : "Create your account and connect.";
+
+
+  document
+    .getElementById("switchText")
+    .textContent =
+    loginMode
+    ? "Don't have an account?"
+    : "Already have an account?";
+
+
+  document
+    .getElementById("switchButton")
+    .textContent =
+    loginMode
+    ? "Sign Up"
+    : "Log In";
+
 
   clearMessages();
 
-  if(!supabaseClient){
+}
 
-    showError(
-      "Supabase is not loaded. Please refresh the page."
-    );
 
+async function handleAuth(){
+
+  if(authLoading){
     return;
   }
+
+  clearMessages();
 
   const email =
     document
       .getElementById("authEmail")
       .value
-      .trim();
+      .trim()
+      .toLowerCase();
 
   const password =
     document
       .getElementById("authPassword")
       .value;
+
 
   if(!email || !password){
 
@@ -1629,48 +1910,58 @@ async function handleAuth(){
     );
 
     return;
+
   }
 
-  const authButton =
-    document.getElementById("authButton");
 
-  authButton.disabled = true;
+  if(!email.includes("@")){
 
-  authButton.textContent =
-    loginMode
-      ? "Logging in..."
-      : "Creating account...";
+    showError(
+      "Please enter a valid email address."
+    );
+
+    return;
+
+  }
+
+
+  if(password.length < 6){
+
+    showError(
+      "Password must contain at least 6 characters."
+    );
+
+    return;
+
+  }
+
+
+  setAuthLoading(true);
+
 
   try{
 
     if(loginMode){
 
-      const {
-        data,
-        error
-      } =
-      await supabaseClient.auth.signInWithPassword({
-
-        email:email,
-
-        password:password
-
-      });
+      const {data,error} =
+        await supabaseClient.auth.signInWithPassword({
+          email,
+          password
+        });
 
       if(error){
         throw error;
       }
 
-      currentUser =
-        data.user;
+      currentUser = data.user;
+
 
       if(!currentUser){
 
-        showError(
+        throw new Error(
           "Login succeeded, but no user was returned."
         );
 
-        return;
       }
 
       await loadProfile();
@@ -1683,12 +1974,14 @@ async function handleAuth(){
           .value
           .trim();
 
+
       const username =
         document
           .getElementById("signupUsername")
           .value
           .trim()
           .toLowerCase();
+
 
       if(!name || !username){
 
@@ -1697,84 +1990,109 @@ async function handleAuth(){
         );
 
         return;
+
       }
 
-      if(
-        !/^[a-z0-9_]{3,30}$/.test(username)
-      ){
+
+      if(!/^[a-z0-9_]{3,30}$/.test(username)){
 
         showError(
           "Username must be 3-30 characters using letters, numbers or underscore."
         );
 
         return;
+
       }
 
-      const {
-        data,
-        error
-      } =
-      await supabaseClient.auth.signUp({
 
-        email:email,
+      const {data,error} =
+        await supabaseClient.auth.signUp({
 
-        password:password,
+          email,
+          password,
 
-        options:{
-          emailRedirectTo:
-          "https://messagerpersonal.github.io/connectsphere.com/",
+          options:{
+            emailRedirectTo:
+            "https://messagerpersonal.github.io/connectsphere.com/",
 
-          data:{
-            display_name:name,
-            username:username
+            data:{
+              display_name:name,
+              username
+            }
+
           }
-        }
 
-      });
+        });
+
 
       if(error){
         throw error;
       }
 
+
       if(!data.user){
 
-        showError(
+        throw new Error(
           "Signup did not return a user. Please try again."
         );
 
-        return;
       }
+
+
+      /*
+        If email confirmation is enabled,
+        Supabase normally returns a user without
+        an active session.
+      */
+
+      if(data.session){
+
+        currentUser = data.user;
+
+        await loadProfile();
+
+        return;
+
+      }
+
 
       showSuccess(
         "Account created! Check your email, confirm your account, then log in."
       );
 
+
       loginMode = true;
+
 
       document
         .getElementById("signupFields")
         .classList
         .add("hidden");
 
+
       document
         .getElementById("authButton")
         .textContent =
         "Log In";
+
 
       document
         .getElementById("authSubtitle")
         .textContent =
         "Check your email, then log in.";
 
+
       document
         .getElementById("switchText")
         .textContent =
         "Don't have an account?";
 
+
       document
         .getElementById("switchButton")
         .textContent =
         "Sign Up";
+
     }
 
   }catch(error){
@@ -1785,27 +2103,48 @@ async function handleAuth(){
     );
 
     showError(
-      error.message ||
+      error?.message ||
       "Authentication failed."
     );
 
   }finally{
 
-    authButton.disabled = false;
-
-    if(!loginMode){
-
-      authButton.textContent =
-        "Sign Up";
-
-    }else{
-
-      authButton.textContent =
-        "Log In";
-
-    }
+    setAuthLoading(false);
 
   }
+
+}
+
+
+function setAuthLoading(loading){
+
+  authLoading = loading;
+
+  const button =
+    document.getElementById("authButton");
+
+  if(!button){
+    return;
+  }
+
+  button.disabled = loading;
+
+  if(loading){
+
+    button.textContent =
+      loginMode
+      ? "Logging in..."
+      : "Creating account...";
+
+  }else{
+
+    button.textContent =
+      loginMode
+      ? "Log In"
+      : "Sign Up";
+
+  }
+
 }
 
 
@@ -1815,21 +2154,25 @@ PROFILE
 
 async function loadProfile(){
 
-  if(!currentUser) return;
+  if(!currentUser){
+    return;
+  }
 
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select("*")
-    .eq("id",currentUser.id)
-    .maybeSingle();
+
+  const {data,error} =
+    await supabaseClient
+      .from("profiles")
+      .select("*")
+      .eq("id",currentUser.id)
+      .maybeSingle();
+
 
   if(error){
 
-    console.error(error);
+    console.error(
+      "Profile load error:",
+      error
+    );
 
     showError(
       "Could not load your profile: " +
@@ -1837,17 +2180,21 @@ async function loadProfile(){
     );
 
     return;
+
   }
+
 
   if(!data){
 
     const metadata =
       currentUser.user_metadata || {};
 
+
     const displayName =
       metadata.display_name ||
       currentUser.email?.split("@")[0] ||
       "User";
+
 
     const username =
       metadata.username ||
@@ -1858,31 +2205,36 @@ async function loadProfile(){
           .slice(0,8)
       );
 
+
     const {
       data:newProfile,
       error:createError
     } =
-    await supabaseClient
-      .from("profiles")
-      .insert({
+      await supabaseClient
+        .from("profiles")
+        .insert({
 
-        id:currentUser.id,
+          id:currentUser.id,
 
-        username:username,
+          username,
 
-        display_name:displayName,
+          display_name:displayName,
 
-        bio:"",
+          bio:"",
 
-        avatar_url:null
+          avatar_url:null
 
-      })
-      .select()
-      .single();
+        })
+        .select()
+        .single();
+
 
     if(createError){
 
-      console.error(createError);
+      console.error(
+        "Profile creation error:",
+        createError
+      );
 
       showError(
         "Your account is logged in, but profile creation failed: " +
@@ -1890,16 +2242,18 @@ async function loadProfile(){
       );
 
       return;
+
     }
 
-    currentProfile =
-      newProfile;
+
+    currentProfile = newProfile;
 
   }else{
 
-    currentProfile =
-      data;
+    currentProfile = data;
+
   }
+
 
   showApp();
 
@@ -1912,6 +2266,7 @@ async function loadProfile(){
   await loadSchedules();
 
   await checkNotificationStatus();
+
 }
 
 
@@ -1922,67 +2277,83 @@ function showApp(){
     .classList
     .add("hidden");
 
+
   document
     .getElementById("app")
     .classList
     .remove("hidden");
+
 }
 
 
 function updateProfileUI(){
 
-  if(!currentProfile) return;
+  if(!currentProfile){
+    return;
+  }
+
 
   const name =
     currentProfile.display_name ||
     "Your Name";
 
+
   const username =
     currentProfile.username ||
     "username";
+
 
   const bio =
     currentProfile.bio ||
     "Your bio will appear here.";
 
+
   const letter =
     name.charAt(0).toUpperCase() ||
     "Y";
+
 
   document
     .getElementById("homeName")
     .textContent =
     name;
 
+
   document
     .getElementById("homeUsername")
     .textContent =
     "@" + username;
+
 
   document
     .getElementById("profileName")
     .textContent =
     name;
 
+
   document
     .getElementById("profileUsername")
     .textContent =
     "@" + username;
+
 
   document
     .getElementById("profileBio")
     .textContent =
     bio;
 
+
   document
     .getElementById("homeAvatar")
     .textContent =
     letter;
 
+
   document
     .getElementById("profileAvatar")
     .textContent =
     letter;
+
 }
 
 
@@ -1992,23 +2363,27 @@ PEOPLE
 
 async function loadPeople(){
 
-  if(!currentUser) return;
+  if(!currentUser){
+    return;
+  }
 
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select(
-      "id,username,display_name,bio,avatar_url"
-    )
-    .neq("id",currentUser.id)
-    .limit(20);
+
+  const {data,error} =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "id,username,display_name,bio,avatar_url"
+      )
+      .neq("id",currentUser.id)
+      .limit(20);
+
 
   if(error){
 
-    console.error(error);
+    console.error(
+      "People load error:",
+      error
+    );
 
     document
       .getElementById("suggestions")
@@ -2016,9 +2391,12 @@ async function loadPeople(){
       '<div class="empty">Unable to load profiles.</div>';
 
     return;
+
   }
 
+
   renderPeople(data || []);
+
 }
 
 
@@ -2027,18 +2405,22 @@ function renderPeople(users){
   const container =
     document.getElementById("suggestions");
 
+
   if(!users.length){
 
     container.innerHTML =
       '<div class="empty">No other users yet.</div>';
 
     return;
+
   }
+
 
   container.innerHTML =
     users
       .map(profileCard)
       .join("");
+
 }
 
 
@@ -2048,73 +2430,92 @@ function profileCard(user){
     user.display_name ||
     "User";
 
+
   const letter =
-    name.charAt(0).toUpperCase();
+    name.charAt(0).toUpperCase() ||
+    "U";
+
 
   return `
 
-  <div class="card">
+    <div class="card">
 
-    <div class="user-row">
+      <div class="user-row">
 
-      <div class="avatar">
-        ${escapeHTML(letter)}
-      </div>
+        <div class="avatar">
+          ${escapeHTML(letter)}
+        </div>
 
-      <div class="user-info">
+        <div class="user-info">
 
-        <strong>
-          ${escapeHTML(name)}
-        </strong>
+          <strong>
+            ${escapeHTML(name)}
+          </strong>
 
-        <span>
-          @${escapeHTML(user.username || "")}
-        </span>
+          <span>
+            @${escapeHTML(user.username || "")}
+          </span>
 
-        <span>
-          ${escapeHTML(user.bio || "")}
-        </span>
+          ${
+            user.bio
+            ?
+            `<span>${escapeHTML(user.bio)}</span>`
+            :
+            ""
+          }
 
-      </div>
+        </div>
 
-      <div style="
-        display:flex;
-        flex-direction:column;
-        gap:7px;
-        align-items:flex-end;
-      ">
+        <div style="
+          display:flex;
+          flex-direction:column;
+          gap:7px;
+          align-items:flex-end;
+        ">
 
-        <button
-          type="button"
-          class="secondary"
-          onclick="viewProfile('${user.id}')"
-        >
-          View
-        </button>
+          <button
+            class="secondary"
+            onclick="viewProfile('${escapeJS(user.id)}')"
+          >
+            View
+          </button>
 
-        <button
-          type="button"
-          class="primary"
-          onclick="sendConnectionRequest('${user.id}')"
-        >
-          Connect
-        </button>
+          <button
+            class="primary"
+            onclick="sendConnectionRequest('${escapeJS(user.id)}')"
+          >
+            Connect
+          </button>
+
+        </div>
 
       </div>
 
     </div>
 
-  </div>
-
   `;
+
 }
 
 
 /* =========================================================
-SEARCH
+SEARCH USERS
 ========================================================= */
 
-async function searchUsers(){
+function searchUsers(){
+
+  clearTimeout(searchTimer);
+
+  searchTimer =
+    setTimeout(
+      performSearch,
+      250
+    );
+
+}
+
+
+async function performSearch(){
 
   const query =
     document
@@ -2123,8 +2524,10 @@ async function searchUsers(){
       .trim()
       .toLowerCase();
 
+
   const container =
     document.getElementById("searchResults");
+
 
   if(!query){
 
@@ -2132,7 +2535,9 @@ async function searchUsers(){
       '<div class="empty">Start typing to search.</div>';
 
     return;
+
   }
+
 
   if(!currentUser){
 
@@ -2140,26 +2545,51 @@ async function searchUsers(){
       '<div class="empty">Please log in again.</div>';
 
     return;
+
   }
 
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select(
-      "id,username,display_name,bio,avatar_url"
-    )
-    .neq("id",currentUser.id)
-    .or(
-      `username.ilike.%${query}%,display_name.ilike.%${query}%`
-    )
-    .limit(20);
+
+  /*
+    Keep special characters from breaking
+    the PostgREST filter expression.
+  */
+
+  const safeQuery =
+    query
+      .replace(/[%_]/g,"")
+      .replace(/[(),]/g,"")
+      .slice(0,50);
+
+
+  if(!safeQuery){
+
+    container.innerHTML =
+      '<div class="empty">Enter a valid search.</div>';
+
+    return;
+
+  }
+
+
+  const {data,error} =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "id,username,display_name,bio,avatar_url"
+      )
+      .neq("id",currentUser.id)
+      .or(
+        `username.ilike.%${safeQuery}%,display_name.ilike.%${safeQuery}%`
+      )
+      .limit(20);
+
 
   if(error){
 
-    console.error(error);
+    console.error(
+      "Search error:",
+      error
+    );
 
     container.innerHTML =
       '<div class="empty">Search failed: ' +
@@ -2167,7 +2597,9 @@ async function searchUsers(){
       '</div>';
 
     return;
+
   }
+
 
   if(!data || !data.length){
 
@@ -2175,12 +2607,15 @@ async function searchUsers(){
       '<div class="empty">No users found.</div>';
 
     return;
+
   }
+
 
   container.innerHTML =
     data
       .map(profileCard)
       .join("");
+
 }
 
 
@@ -2190,32 +2625,54 @@ VIEW PROFILE
 
 async function viewProfile(id){
 
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select("*")
-    .eq("id",id)
-    .single();
+  if(!id){
+    return;
+  }
+
+
+  const {data,error} =
+    await supabaseClient
+      .from("profiles")
+      .select("*")
+      .eq("id",id)
+      .maybeSingle();
+
 
   if(error){
+
+    console.error(
+      "View profile error:",
+      error
+    );
 
     alert(
       "Unable to load profile."
     );
 
     return;
+
   }
+
+
+  if(!data){
+
+    alert(
+      "Profile not found."
+    );
+
+    return;
+
+  }
+
 
   alert(
     (data.display_name || "User") +
     "\n@" +
     (data.username || "") +
     "\n\n" +
-    (data.bio || "")
+    (data.bio || "No bio.")
   );
+
 }
 
 
@@ -2225,37 +2682,50 @@ EDIT PROFILE
 
 function editProfile(){
 
-  if(!currentProfile) return;
+  if(!currentProfile){
+    return;
+  }
+
 
   document
     .getElementById("editName")
     .value =
     currentProfile.display_name || "";
 
+
   document
     .getElementById("editUsername")
     .value =
     currentProfile.username || "";
+
 
   document
     .getElementById("editBio")
     .value =
     currentProfile.bio || "";
 
+
   document
     .getElementById("profileModal")
     .classList
     .add("show");
+
 }
 
 
 async function saveProfile(){
+
+  if(!currentUser){
+    return;
+  }
+
 
   const name =
     document
       .getElementById("editName")
       .value
       .trim();
+
 
   const username =
     document
@@ -2264,11 +2734,13 @@ async function saveProfile(){
       .trim()
       .toLowerCase();
 
+
   const bio =
     document
       .getElementById("editBio")
       .value
       .trim();
+
 
   if(!name || !username){
 
@@ -2277,51 +2749,57 @@ async function saveProfile(){
     );
 
     return;
+
   }
 
-  if(
-    !/^[a-z0-9_]{3,30}$/.test(username)
-  ){
+
+  if(!/^[a-z0-9_]{3,30}$/.test(username)){
 
     alert(
       "Username must be 3-30 characters using letters, numbers or underscore."
     );
 
     return;
+
   }
 
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .update({
 
-      display_name:name,
+  const {data,error} =
+    await supabaseClient
+      .from("profiles")
+      .update({
 
-      username:username,
+        display_name:name,
 
-      bio:bio
+        username,
 
-    })
-    .eq("id",currentUser.id)
-    .select()
-    .single();
+        bio
+
+      })
+      .eq("id",currentUser.id)
+      .select()
+      .single();
+
 
   if(error){
 
+    console.error(
+      "Save profile error:",
+      error
+    );
+
     alert(
       error.code === "23505"
-        ? "That username is already taken."
-        : error.message
+      ? "That username is already taken."
+      : error.message
     );
 
     return;
+
   }
 
-  currentProfile =
-    data;
+
+  currentProfile = data;
 
   updateProfileUI();
 
@@ -2330,6 +2808,7 @@ async function saveProfile(){
   alert(
     "Profile updated successfully."
   );
+
 }
 
 
@@ -2346,38 +2825,50 @@ async function sendConnectionRequest(receiverId){
     );
 
     return;
+
   }
 
-  if(
-    receiverId === currentUser.id
-  ){
+
+  if(!receiverId){
+
+    return;
+
+  }
+
+
+  if(receiverId === currentUser.id){
 
     alert(
       "You cannot send a request to yourself."
     );
 
     return;
+
   }
+
 
   try{
 
-    const {
-      data:existing,
-      error:checkError
-    } =
-    await supabaseClient
-      .from("connection_requests")
-      .select(
-        "id,sender_id,receiver_id,status,created_at"
-      )
-      .or(
-        `and(sender_id.eq.${currentUser.id},receiver_id.eq.${receiverId}),and(sender_id.eq.${receiverId},receiver_id.eq.${currentUser.id})`
-      )
-      .limit(1);
+    /*
+      Check both directions for an existing request.
+    */
+
+    const {data:existing,error:checkError} =
+      await supabaseClient
+        .from("connection_requests")
+        .select(
+          "id,sender_id,receiver_id,status,created_at"
+        )
+        .or(
+          `and(sender_id.eq.${currentUser.id},receiver_id.eq.${receiverId}),and(sender_id.eq.${receiverId},receiver_id.eq.${currentUser.id})`
+        )
+        .limit(1);
+
 
     if(checkError){
 
       console.error(
+        "Connection request check error:",
         checkError
       );
 
@@ -2387,19 +2878,17 @@ async function sendConnectionRequest(receiverId){
       );
 
       return;
+
     }
 
-    if(
-      existing &&
-      existing.length
-    ){
+
+    if(existing && existing.length){
 
       const request =
         existing[0];
 
-      if(
-        request.status === "pending"
-      ){
+
+      if(request.status === "pending"){
 
         if(
           request.sender_id ===
@@ -2415,70 +2904,89 @@ async function sendConnectionRequest(receiverId){
           alert(
             "This user has already sent you a connection request. Check Requests."
           );
+
         }
 
         return;
+
       }
 
-      if(
-        request.status === "accepted"
-      ){
+
+      if(request.status === "accepted"){
 
         alert(
           "You are already connected."
         );
 
         return;
+
       }
+
     }
 
-    const {
-      error
-    } =
-    await supabaseClient
-      .from("connection_requests")
-      .insert({
 
-        sender_id:currentUser.id,
+    const {error} =
+      await supabaseClient
+        .from("connection_requests")
+        .insert({
 
-        receiver_id:receiverId,
+          sender_id:currentUser.id,
 
-        status:"pending"
+          receiver_id:receiverId,
 
-      });
+          status:"pending"
+
+        });
+
 
     if(error){
 
       console.error(
+        "Send connection request error:",
         error
       );
 
-      alert(
-        error.code === "23505"
-          ? "Connection request already exists."
-          : "Could not send connection request: " +
-            error.message
-      );
+      if(error.code === "23505"){
+
+        alert(
+          "Connection request already exists."
+        );
+
+      }else{
+
+        alert(
+          "Could not send connection request: " +
+          error.message
+        );
+
+      }
 
       return;
+
     }
+
 
     alert(
       "Connection request sent successfully! ✅"
     );
+
 
     await loadConnectionRequests();
 
   }catch(error){
 
     console.error(
+      "Connection request error:",
       error
     );
 
     alert(
-      "Something went wrong while sending the request."
+      error.message ||
+      "Could not send connection request."
     );
+
   }
+
 }
 
 
@@ -2488,29 +2996,38 @@ LOAD CONNECTION REQUESTS
 
 async function loadConnectionRequests(){
 
-  if(!currentUser) return;
+  if(!currentUser){
+    return;
+  }
+
+
+  /*
+    Incoming
+  */
 
   const {
     data:incoming,
     error:incomingError
   } =
-  await supabaseClient
-    .from("connection_requests")
-    .select(
-      "id,sender_id,receiver_id,status,created_at"
-    )
-    .eq(
-      "receiver_id",
-      currentUser.id
-    )
-    .order(
-      "created_at",
-      {ascending:false}
-    );
+    await supabaseClient
+      .from("connection_requests")
+      .select(
+        "id,sender_id,receiver_id,status,created_at"
+      )
+      .eq(
+        "receiver_id",
+        currentUser.id
+      )
+      .order(
+        "created_at",
+        {ascending:false}
+      );
+
 
   if(incomingError){
 
     console.error(
+      "Incoming request error:",
       incomingError
     );
 
@@ -2526,29 +3043,37 @@ async function loadConnectionRequests(){
     await renderIncomingRequests(
       incoming || []
     );
+
   }
+
+
+  /*
+    Sent
+  */
 
   const {
     data:sent,
     error:sentError
   } =
-  await supabaseClient
-    .from("connection_requests")
-    .select(
-      "id,sender_id,receiver_id,status,created_at"
-    )
-    .eq(
-      "sender_id",
-      currentUser.id
-    )
-    .order(
-      "created_at",
-      {ascending:false}
-    );
+    await supabaseClient
+      .from("connection_requests")
+      .select(
+        "id,sender_id,receiver_id,status,created_at"
+      )
+      .eq(
+        "sender_id",
+        currentUser.id
+      )
+      .order(
+        "created_at",
+        {ascending:false}
+      );
+
 
   if(sentError){
 
     console.error(
+      "Sent request error:",
       sentError
     );
 
@@ -2564,25 +3089,33 @@ async function loadConnectionRequests(){
     await renderSentRequests(
       sent || []
     );
+
   }
+
+
+  /*
+    Accepted connections
+  */
 
   const {
     data:accepted,
     error:acceptedError
   } =
-  await supabaseClient
-    .from("connection_requests")
-    .select(
-      "id,sender_id,receiver_id,status,created_at"
-    )
-    .eq(
-      "status",
-      "accepted"
-    );
+    await supabaseClient
+      .from("connection_requests")
+      .select(
+        "id,sender_id,receiver_id,status,created_at"
+      )
+      .eq(
+        "status",
+        "accepted"
+      );
+
 
   if(acceptedError){
 
     console.error(
+      "Connections error:",
       acceptedError
     );
 
@@ -2604,24 +3137,92 @@ async function loadConnectionRequests(){
     await renderConnections(
       myConnections
     );
+
   }
+
+
+  /*
+    IMPORTANT:
+    This is what controls the RED Requests badge.
+  */
 
   const pendingIncoming =
     (incoming || [])
       .filter(
         r => r.status === "pending"
-      )
-      .length;
+      ).length;
 
-  document
-    .getElementById("requestCount")
-    .textContent =
-    pendingIncoming;
+
+  updateRequestBadge(
+    pendingIncoming
+  );
+
+
+  const requestCount =
+    document.getElementById(
+      "requestCount"
+    );
+
+
+  if(requestCount){
+
+    requestCount.textContent =
+      pendingIncoming;
+
+  }
+
 }
 
 
 /* =========================================================
-INCOMING
+REQUEST RED BADGE
+========================================================= */
+
+function updateRequestBadge(count){
+
+  const badge =
+    document.getElementById(
+      "requestBadge"
+    );
+
+
+  if(!badge){
+    return;
+  }
+
+
+  const number =
+    Number(count) || 0;
+
+
+  if(number <= 0){
+
+    badge.textContent = "0";
+
+    badge.classList.add(
+      "hidden"
+    );
+
+    return;
+
+  }
+
+
+  badge.textContent =
+    number > 99
+    ? "99+"
+    : String(number);
+
+
+  badge.classList.remove(
+    "hidden"
+  );
+
+}
+
+
+/* =========================================================
+INCOMING REQUESTS
 ========================================================= */
 
 async function renderIncomingRequests(requests){
@@ -2631,10 +3232,12 @@ async function renderIncomingRequests(requests){
       "incomingRequests"
     );
 
+
   const pending =
     requests.filter(
       r => r.status === "pending"
     );
+
 
   if(!pending.length){
 
@@ -2642,33 +3245,42 @@ async function renderIncomingRequests(requests){
       '<div class="empty">No pending incoming requests.</div>';
 
     return;
+
   }
+
 
   const ids =
     pending.map(
       r => r.sender_id
     );
 
-  const {
-    data:profiles,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select(
-      "id,username,display_name,bio,avatar_url"
-    )
-    .in("id",ids);
+
+  const {data:profiles,error} =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "id,username,display_name,bio,avatar_url"
+      )
+      .in(
+        "id",
+        ids
+      );
+
 
   if(error){
 
-    console.error(error);
+    console.error(
+      "Incoming profile error:",
+      error
+    );
 
     container.innerHTML =
       '<div class="empty">Unable to load request profiles.</div>';
 
     return;
+
   }
+
 
   const profileMap = {};
 
@@ -2677,6 +3289,7 @@ async function renderIncomingRequests(requests){
       profileMap[p.id] = p;
     }
   );
+
 
   container.innerHTML =
     pending
@@ -2688,78 +3301,82 @@ async function renderIncomingRequests(requests){
               request.sender_id
             ];
 
+
           const name =
             user?.display_name ||
             "ConnectSphere User";
+
 
           const username =
             user?.username ||
             "";
 
+
           const letter =
-            name
-              .charAt(0)
-              .toUpperCase();
+            name.charAt(0).toUpperCase() ||
+            "U";
+
 
           return `
 
-          <div class="connection-card">
+            <div class="connection-card">
 
-            <div class="user-row">
+              <div class="user-row">
 
-              <div class="avatar">
-                ${escapeHTML(letter)}
+                <div class="avatar">
+                  ${escapeHTML(letter)}
+                </div>
+
+                <div class="user-info">
+
+                  <strong>
+                    ${escapeHTML(name)}
+                  </strong>
+
+                  <span>
+                    @${escapeHTML(username)}
+                  </span>
+
+                  <span>
+                    Wants to connect with you.
+                  </span>
+
+                </div>
+
               </div>
 
-              <div class="user-info">
 
-                <strong>
-                  ${escapeHTML(name)}
-                </strong>
+              <div class="request-actions">
 
-                <span>
-                  @${escapeHTML(username)}
-                </span>
+                <button
+                  class="success-btn"
+                  onclick="acceptConnectionRequest('${escapeJS(request.id)}')"
+                >
+                  Accept
+                </button>
 
-                <span>
-                  Wants to connect with you.
-                </span>
+                <button
+                  class="danger"
+                  onclick="rejectConnectionRequest('${escapeJS(request.id)}')"
+                >
+                  Reject
+                </button>
 
               </div>
 
             </div>
-
-            <div class="request-actions">
-
-              <button
-                type="button"
-                class="success-btn"
-                onclick="acceptConnectionRequest('${request.id}')"
-              >
-                Accept
-              </button>
-
-              <button
-                type="button"
-                class="danger"
-                onclick="rejectConnectionRequest('${request.id}')"
-              >
-                Reject
-              </button>
-
-            </div>
-
-          </div>
 
           `;
+
         }
       )
       .join("");
+
 }
 
 
 /* =========================================================
-SENT
+SENT REQUESTS
 ========================================================= */
 
 async function renderSentRequests(requests){
@@ -2769,39 +3386,49 @@ async function renderSentRequests(requests){
       "sentRequests"
     );
 
+
   if(!requests.length){
 
     container.innerHTML =
       '<div class="empty">You have not sent any requests.</div>';
 
     return;
+
   }
+
 
   const ids =
     requests.map(
       r => r.receiver_id
     );
 
-  const {
-    data:profiles,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select(
-      "id,username,display_name,bio,avatar_url"
-    )
-    .in("id",ids);
+
+  const {data:profiles,error} =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "id,username,display_name,bio,avatar_url"
+      )
+      .in(
+        "id",
+        ids
+      );
+
 
   if(error){
 
-    console.error(error);
+    console.error(
+      "Sent profile error:",
+      error
+    );
 
     container.innerHTML =
       '<div class="empty">Unable to load sent request profiles.</div>';
 
     return;
+
   }
+
 
   const profileMap = {};
 
@@ -2810,6 +3437,7 @@ async function renderSentRequests(requests){
       profileMap[p.id] = p;
     }
   );
+
 
   container.innerHTML =
     requests
@@ -2821,125 +3449,143 @@ async function renderSentRequests(requests){
               request.receiver_id
             ];
 
+
           const name =
             user?.display_name ||
             "ConnectSphere User";
+
 
           const username =
             user?.username ||
             "";
 
+
           const letter =
-            name
-              .charAt(0)
-              .toUpperCase();
+            name.charAt(0).toUpperCase() ||
+            "U";
+
 
           let statusText =
             "Pending";
 
+
           if(
-            request.status === "accepted"
+            request.status ===
+            "accepted"
           ){
 
             statusText =
               "Accepted";
 
           }else if(
-            request.status === "rejected"
+            request.status ===
+            "rejected"
           ){
 
             statusText =
               "Rejected";
+
           }
+
 
           return `
 
-          <div class="connection-card">
+            <div class="connection-card">
 
-            <div class="user-row">
+              <div class="user-row">
 
-              <div class="avatar">
-                ${escapeHTML(letter)}
+                <div class="avatar">
+                  ${escapeHTML(letter)}
+                </div>
+
+                <div class="user-info">
+
+                  <strong>
+                    ${escapeHTML(name)}
+                  </strong>
+
+                  <span>
+                    @${escapeHTML(username)}
+                  </span>
+
+                  <span class="request-status">
+                    ${escapeHTML(statusText)}
+                  </span>
+
+                </div>
+
               </div>
 
-              <div class="user-info">
 
-                <strong>
-                  ${escapeHTML(name)}
-                </strong>
+              ${
+                request.status === "pending"
+                ?
+                `
 
-                <span>
-                  @${escapeHTML(username)}
-                </span>
+                  <div class="request-actions">
 
-                <span class="request-status">
-                  ${escapeHTML(statusText)}
-                </span>
+                    <button
+                      class="danger"
+                      onclick="cancelConnectionRequest('${escapeJS(request.id)}')"
+                    >
+                      Cancel Request
+                    </button>
 
-              </div>
+                  </div>
+
+                `
+                :
+                ""
+              }
 
             </div>
 
-            ${
-              request.status === "pending"
-
-              ?
-
-              `
-              <div class="request-actions">
-
-                <button
-                  type="button"
-                  class="danger"
-                  onclick="cancelConnectionRequest('${request.id}')"
-                >
-                  Cancel Request
-                </button>
-
-              </div>
-              `
-
-              :
-
-              ""
-            }
-
-          </div>
-
           `;
+
         }
       )
       .join("");
+
 }
 
 
 /* =========================================================
-ACCEPT
+ACCEPT REQUEST
 ========================================================= */
 
-async function acceptConnectionRequest(requestId){
+async function acceptConnectionRequest(
+  requestId
+){
 
-  if(!currentUser) return;
+  if(!currentUser){
+    return;
+  }
+
 
   const {
     data:request,
     error:findError
   } =
-  await supabaseClient
-    .from("connection_requests")
-    .select(
-      "id,sender_id,receiver_id,status"
-    )
-    .eq("id",requestId)
-    .eq(
-      "receiver_id",
-      currentUser.id
-    )
-    .single();
+    await supabaseClient
+      .from("connection_requests")
+      .select(
+        "id,sender_id,receiver_id,status"
+      )
+      .eq(
+        "id",
+        requestId
+      )
+      .eq(
+        "receiver_id",
+        currentUser.id
+      )
+      .maybeSingle();
+
 
   if(findError){
 
     console.error(
+      "Find request error:",
       findError
     );
 
@@ -2949,11 +3595,24 @@ async function acceptConnectionRequest(requestId){
     );
 
     return;
+
   }
 
-  if(
-    request.status !== "pending"
-  ){
+
+  if(!request){
+
+    alert(
+      "This request no longer exists."
+    );
+
+    await loadConnectionRequests();
+
+    return;
+
+  }
+
+
+  if(request.status !== "pending"){
 
     alert(
       "This request is no longer pending."
@@ -2962,29 +3621,34 @@ async function acceptConnectionRequest(requestId){
     await loadConnectionRequests();
 
     return;
+
   }
 
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("connection_requests")
-    .update({
-      status:"accepted"
-    })
-    .eq("id",requestId)
-    .eq(
-      "receiver_id",
-      currentUser.id
-    )
-    .eq(
-      "status",
-      "pending"
-    );
+
+  const {error} =
+    await supabaseClient
+      .from("connection_requests")
+      .update({
+        status:"accepted"
+      })
+      .eq(
+        "id",
+        requestId
+      )
+      .eq(
+        "receiver_id",
+        currentUser.id
+      )
+      .eq(
+        "status",
+        "pending"
+      );
+
 
   if(error){
 
     console.error(
+      "Accept request error:",
       error
     );
 
@@ -2994,23 +3658,32 @@ async function acceptConnectionRequest(requestId){
     );
 
     return;
+
   }
+
 
   alert(
     "Connection accepted! 🎉"
   );
 
+
   await loadConnectionRequests();
+
 }
 
 
 /* =========================================================
-REJECT
+REJECT REQUEST
 ========================================================= */
 
-async function rejectConnectionRequest(requestId){
+async function rejectConnectionRequest(
+  requestId
+){
 
-  if(!currentUser) return;
+  if(!currentUser){
+    return;
+  }
+
 
   if(
     !confirm(
@@ -3019,32 +3692,34 @@ async function rejectConnectionRequest(requestId){
   ){
 
     return;
+
   }
 
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("connection_requests")
-    .update({
-      status:"rejected"
-    })
-    .eq(
-      "id",
-      requestId
-    )
-    .eq(
-      "receiver_id",
-      currentUser.id
-    )
-    .eq(
-      "status",
-      "pending"
-    );
+
+  const {error} =
+    await supabaseClient
+      .from("connection_requests")
+      .update({
+        status:"rejected"
+      })
+      .eq(
+        "id",
+        requestId
+      )
+      .eq(
+        "receiver_id",
+        currentUser.id
+      )
+      .eq(
+        "status",
+        "pending"
+      );
+
 
   if(error){
 
     console.error(
+      "Reject request error:",
       error
     );
 
@@ -3054,19 +3729,27 @@ async function rejectConnectionRequest(requestId){
     );
 
     return;
+
   }
 
+
   await loadConnectionRequests();
+
 }
 
 
 /* =========================================================
-CANCEL
+CANCEL SENT REQUEST
 ========================================================= */
 
-async function cancelConnectionRequest(requestId){
+async function cancelConnectionRequest(
+  requestId
+){
 
-  if(!currentUser) return;
+  if(!currentUser){
+    return;
+  }
+
 
   if(
     !confirm(
@@ -3075,26 +3758,28 @@ async function cancelConnectionRequest(requestId){
   ){
 
     return;
+
   }
 
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("connection_requests")
-    .delete()
-    .eq(
-      "id",
-      requestId
-    )
-    .eq(
-      "sender_id",
-      currentUser.id
-    );
+
+  const {error} =
+    await supabaseClient
+      .from("connection_requests")
+      .delete()
+      .eq(
+        "id",
+        requestId
+      )
+      .eq(
+        "sender_id",
+        currentUser.id
+      );
+
 
   if(error){
 
     console.error(
+      "Cancel request error:",
       error
     );
 
@@ -3104,9 +3789,12 @@ async function cancelConnectionRequest(requestId){
     );
 
     return;
+
   }
 
+
   await loadConnectionRequests();
+
 }
 
 
@@ -3114,56 +3802,67 @@ async function cancelConnectionRequest(requestId){
 CONNECTIONS
 ========================================================= */
 
-async function renderConnections(requests){
+async function renderConnections(
+  requests
+){
 
   const container =
     document.getElementById(
       "connectionsList"
     );
 
+
   if(!requests.length){
 
     container.innerHTML =
       '<div class="empty">No connections yet.</div>';
 
-    document
-      .getElementById(
+
+    const count =
+      document.getElementById(
         "connectionCount"
-      )
-      .textContent =
-      "0";
+      );
+
+
+    if(count){
+      count.textContent = "0";
+    }
+
 
     return;
+
   }
+
 
   const ids =
     requests.map(
       r =>
         r.sender_id === currentUser.id
-          ? r.receiver_id
-          : r.sender_id
+        ? r.receiver_id
+        : r.sender_id
     );
+
 
   const uniqueIds =
     [...new Set(ids)];
 
-  const {
-    data:profiles,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select(
-      "id,username,display_name,bio,avatar_url"
-    )
-    .in(
-      "id",
-      uniqueIds
-    );
+
+  const {data:profiles,error} =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "id,username,display_name,bio,avatar_url"
+      )
+      .in(
+        "id",
+        uniqueIds
+      );
+
 
   if(error){
 
     console.error(
+      "Connection profile error:",
       error
     );
 
@@ -3171,7 +3870,9 @@ async function renderConnections(requests){
       '<div class="empty">Unable to load connections.</div>';
 
     return;
+
   }
+
 
   const profileMap = {};
 
@@ -3181,6 +3882,7 @@ async function renderConnections(requests){
     }
   );
 
+
   container.innerHTML =
     uniqueIds
       .map(
@@ -3189,60 +3891,72 @@ async function renderConnections(requests){
           const user =
             profileMap[id];
 
+
           const name =
             user?.display_name ||
             "ConnectSphere User";
+
 
           const username =
             user?.username ||
             "";
 
+
           const letter =
-            name
-              .charAt(0)
-              .toUpperCase();
+            name.charAt(0).toUpperCase() ||
+            "U";
+
 
           return `
 
-          <div class="connection-card">
+            <div class="connection-card">
 
-            <div class="user-row">
+              <div class="user-row">
 
-              <div class="avatar">
-                ${escapeHTML(letter)}
-              </div>
+                <div class="avatar">
+                  ${escapeHTML(letter)}
+                </div>
 
-              <div class="user-info">
+                <div class="user-info">
 
-                <strong>
-                  ${escapeHTML(name)}
-                </strong>
+                  <strong>
+                    ${escapeHTML(name)}
+                  </strong>
 
-                <span>
-                  @${escapeHTML(username)}
-                </span>
+                  <span>
+                    @${escapeHTML(username)}
+                  </span>
 
-                <span>
-                  Connected ✅
-                </span>
+                  <span>
+                    Connected ✅
+                  </span>
+
+                </div>
 
               </div>
 
             </div>
 
-          </div>
-
           `;
+
         }
       )
       .join("");
 
-  document
-    .getElementById(
+
+  const count =
+    document.getElementById(
       "connectionCount"
-    )
-    .textContent =
-    uniqueIds.length;
+    );
+
+
+  if(count){
+
+    count.textContent =
+      uniqueIds.length;
+
+  }
+
 }
 
 
@@ -3252,69 +3966,76 @@ SCHEDULES
 
 async function loadSchedules(){
 
-  if(!currentUser) return;
+  if(!currentUser){
+    return;
+  }
 
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("schedules")
-    .select("*")
-    .eq(
-      "user_id",
-      currentUser.id
-    )
-    .order(
-      "created_at",
-      {ascending:false}
-    );
+
+  const {data,error} =
+    await supabaseClient
+      .from("schedules")
+      .select("*")
+      .eq(
+        "user_id",
+        currentUser.id
+      )
+      .order(
+        "created_at",
+        {ascending:false}
+      );
+
 
   if(error){
 
     console.error(
+      "Schedule load error:",
       error
     );
 
     document
-      .getElementById(
-        "scheduleList"
-      )
+      .getElementById("scheduleList")
       .innerHTML =
       '<div class="empty">Unable to load schedules: ' +
       escapeHTML(error.message) +
       '</div>';
 
     return;
+
   }
+
 
   renderSchedules(
     data || []
   );
+
 }
 
 
 function formatSchedule(s){
 
   if(
-    s.schedule_type === "daily"
+    s.schedule_type ===
+    "daily"
   ){
 
     return (
       "Every day" +
       (
         s.reminder_time
-          ? " at " +
-            formatTime(
-              s.reminder_time
-            )
-          : ""
+        ? " at " +
+          formatTime(
+            s.reminder_time
+          )
+        : ""
       )
     );
+
   }
 
+
   if(
-    s.schedule_type === "weekly"
+    s.schedule_type ===
+    "weekly"
   ){
 
     const days = [
@@ -3327,55 +4048,79 @@ function formatSchedule(s){
       "Saturday"
     ];
 
+
+    const day =
+      days[
+        Number(s.day_of_week)
+      ] ||
+      "selected day";
+
+
     return (
       "Every " +
-      days[
-        Number(
-          s.day_of_week
-        )
-      ] +
+      day +
       (
         s.reminder_time
-          ? " at " +
-            formatTime(
-              s.reminder_time
-            )
-          : ""
-      )
-    );
-  }
-
-  return (
-    "One-time" +
-    (
-      s.reminder_date
-        ? " on " +
-          s.reminder_date
-        : ""
-    ) +
-    (
-      s.reminder_time
         ? " at " +
           formatTime(
             s.reminder_time
           )
         : ""
+      )
+    );
+
+  }
+
+
+  return (
+    "One-time" +
+    (
+      s.reminder_date
+      ? " on " +
+        s.reminder_date
+      : ""
+    ) +
+    (
+      s.reminder_time
+      ? " at " +
+        formatTime(
+          s.reminder_time
+        )
+      : ""
     )
   );
+
 }
 
 
 function formatTime(t){
 
-  if(!t) return "";
+  if(!t){
+    return "";
+  }
 
-  const [h,m] =
-    t
+
+  const parts =
+    String(t)
       .split(":")
       .map(Number);
 
+
+  const h =
+    Number.isFinite(parts[0])
+    ? parts[0]
+    : 0;
+
+
+  const m =
+    Number.isFinite(parts[1])
+    ? parts[1]
+    : 0;
+
+
   const d =
     new Date();
+
 
   d.setHours(
     h,
@@ -3384,6 +4129,7 @@ function formatTime(t){
     0
   );
 
+
   return d.toLocaleTimeString(
     [],
     {
@@ -3391,6 +4137,7 @@ function formatTime(t){
       minute:"2-digit"
     }
   );
+
 }
 
 
@@ -3401,6 +4148,7 @@ function renderSchedules(list){
       "scheduleList"
     );
 
+
   if(!list.length){
 
     container.innerHTML =
@@ -3409,74 +4157,78 @@ function renderSchedules(list){
     updateScheduleProgress([]);
 
     return;
+
   }
+
 
   container.innerHTML =
     list
       .map(
         s => `
 
-        <div class="schedule-item ${
-          s.completed
+          <div class="schedule-item ${
+            s.completed
             ? "completed"
             : ""
-        }">
+          }">
 
-          <div class="schedule-top">
+            <div class="schedule-top">
 
-            <div>
+              <div>
 
-              <div class="schedule-title">
+                <div class="schedule-title">
 
-                ${escapeHTML(s.title)}
+                  ${escapeHTML(
+                    s.title ||
+                    "Untitled schedule"
+                  )}
 
-                <span class="badge">
-                  ${escapeHTML(s.schedule_type)}
-                </span>
+                  <span class="badge">
+                    ${escapeHTML(
+                      s.schedule_type ||
+                      "schedule"
+                    )}
+                  </span>
+
+                </div>
+
+                <div class="schedule-meta">
+
+                  ${
+                    s.description
+                    ?
+                    escapeHTML(
+                      s.description
+                    ) +
+                    "<br>"
+                    :
+                    ""
+                  }
+
+                  ${escapeHTML(
+                    formatSchedule(s)
+                  )}
+
+                </div>
 
               </div>
 
-              <div class="schedule-meta">
-
-                ${escapeHTML(
-                  s.description || ""
-                )}
-
-                ${
-                  s.description
-                    ? "<br>"
-                    : ""
-                }
-
-                ${escapeHTML(
-                  formatSchedule(s)
-                )}
-
+              <div>
+                ${s.completed ? "✅" : "⏰"}
               </div>
 
             </div>
 
-            <div>
+
+            <div class="schedule-actions">
+
               ${
                 s.completed
-                  ? "✅"
-                  : "⏰"
-              }
-            </div>
-
-          </div>
-
-          <div class="schedule-actions">
-
-            ${
-              s.completed
-
                 ?
 
                 `<button
-                  type="button"
                   class="secondary"
-                  onclick="setScheduleCompleted('${s.id}',false)"
+                  onclick="setScheduleCompleted('${escapeJS(s.id)}',false)"
                 >
                   Mark active
                 </button>`
@@ -3484,52 +4236,58 @@ function renderSchedules(list){
                 :
 
                 `<button
-                  type="button"
                   class="primary"
-                  onclick="setScheduleCompleted('${s.id}',true)"
+                  onclick="setScheduleCompleted('${escapeJS(s.id)}',true)"
                 >
                   Complete
                 </button>`
-            }
+              }
 
-            <button
-              type="button"
-              class="danger"
-              onclick="deleteSchedule('${s.id}')"
-            >
-              Delete
-            </button>
+
+              <button
+                class="danger"
+                onclick="deleteSchedule('${escapeJS(s.id)}')"
+              >
+                Delete
+              </button>
+
+            </div>
 
           </div>
-
-        </div>
 
         `
       )
       .join("");
 
+
   updateScheduleProgress(
     list
   );
+
 }
 
 
-function updateScheduleProgress(list){
+function updateScheduleProgress(
+  list
+){
 
   const done =
     list.filter(
       x => x.completed
     ).length;
 
+
   const total =
     list.length;
 
+
   const pct =
     total
-      ? Math.round(
-          done / total * 100
-        )
-      : 0;
+    ? Math.round(
+        done / total * 100
+      )
+    : 0;
+
 
   document
     .getElementById(
@@ -3538,6 +4296,7 @@ function updateScheduleProgress(list){
     .textContent =
     `${pct}% completed (${done}/${total})`;
 
+
   document
     .getElementById(
       "scheduleProgressFill"
@@ -3545,6 +4304,7 @@ function updateScheduleProgress(list){
     .style
     .width =
     pct + "%";
+
 }
 
 
@@ -3556,11 +4316,13 @@ function openScheduleModal(){
     )
     .value = "";
 
+
   document
     .getElementById(
       "scheduleDescription"
     )
     .value = "";
+
 
   document
     .getElementById(
@@ -3568,17 +4330,20 @@ function openScheduleModal(){
     )
     .value = "daily";
 
+
   document
     .getElementById(
       "scheduleTime"
     )
     .value = "";
 
+
   document
     .getElementById(
       "scheduleDate"
     )
     .value = "";
+
 
   document
     .getElementById(
@@ -3589,7 +4354,9 @@ function openScheduleModal(){
       new Date().getDay()
     );
 
+
   updateScheduleFields();
+
 
   document
     .getElementById(
@@ -3597,6 +4364,7 @@ function openScheduleModal(){
     )
     .classList
     .add("show");
+
 }
 
 
@@ -3609,6 +4377,7 @@ function updateScheduleFields(){
       )
       .value;
 
+
   document
     .getElementById(
       "weeklyField"
@@ -3619,6 +4388,7 @@ function updateScheduleFields(){
       type !== "weekly"
     );
 
+
   document
     .getElementById(
       "onceField"
@@ -3628,6 +4398,7 @@ function updateScheduleFields(){
       "hidden",
       type !== "once"
     );
+
 }
 
 
@@ -3640,7 +4411,9 @@ async function saveSchedule(){
     );
 
     return;
+
   }
+
 
   const title =
     document
@@ -3650,6 +4423,7 @@ async function saveSchedule(){
       .value
       .trim();
 
+
   const description =
     document
       .getElementById(
@@ -3658,6 +4432,7 @@ async function saveSchedule(){
       .value
       .trim();
 
+
   const type =
     document
       .getElementById(
@@ -3665,13 +4440,15 @@ async function saveSchedule(){
       )
       .value;
 
+
   const time =
     document
       .getElementById(
         "scheduleTime"
       )
       .value ||
-    null;
+      null;
+
 
   if(!title){
 
@@ -3680,16 +4457,17 @@ async function saveSchedule(){
     );
 
     return;
+
   }
+
 
   let payload = {
 
-    user_id:
-      currentUser.id,
+    user_id:currentUser.id,
 
-    title:title,
+    title,
 
-    description:description,
+    description,
 
     schedule_type:type,
 
@@ -3700,11 +4478,11 @@ async function saveSchedule(){
     day_of_week:null,
 
     completed:false
+
   };
 
-  if(
-    type === "weekly"
-  ){
+
+  if(type === "weekly"){
 
     payload.day_of_week =
       Number(
@@ -3714,11 +4492,11 @@ async function saveSchedule(){
           )
           .value
       );
+
   }
 
-  if(
-    type === "once"
-  ){
+
+  if(type === "once"){
 
     const date =
       document
@@ -3727,6 +4505,7 @@ async function saveSchedule(){
         )
         .value;
 
+
     if(!date){
 
       alert(
@@ -3734,22 +4513,30 @@ async function saveSchedule(){
       );
 
       return;
+
     }
+
 
     payload.reminder_date =
       date;
+
   }
 
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("schedules")
-    .insert(payload);
+
+  const {error} =
+    await supabaseClient
+      .from("schedules")
+      .insert(
+        payload
+      );
+
 
   if(error){
 
-    console.error(error);
+    console.error(
+      "Save schedule error:",
+      error
+    );
 
     alert(
       "Could not save schedule: " +
@@ -3757,13 +4544,17 @@ async function saveSchedule(){
     );
 
     return;
+
   }
+
 
   closeModal(
     "scheduleModal"
   );
 
+
   await loadSchedules();
+
 }
 
 
@@ -3771,7 +4562,9 @@ async function saveSchedule(){
 PUSH NOTIFICATIONS
 ========================================================= */
 
-function urlBase64ToUint8Array(base64String){
+function urlBase64ToUint8Array(
+  base64String
+){
 
   const padding =
     "=".repeat(
@@ -3781,6 +4574,7 @@ function urlBase64ToUint8Array(base64String){
       ) % 4
     );
 
+
   const base64 =
     (
       base64String +
@@ -3789,8 +4583,10 @@ function urlBase64ToUint8Array(base64String){
       .replace(/-/g,"+")
       .replace(/_/g,"/");
 
+
   const rawData =
     atob(base64);
+
 
   return Uint8Array.from(
     [...rawData]
@@ -3799,6 +4595,7 @@ function urlBase64ToUint8Array(base64String){
           char.charCodeAt(0)
       )
   );
+
 }
 
 
@@ -3818,10 +4615,12 @@ async function getVapidPublicKey(){
         }
       );
 
+
     if(response.ok){
 
       const data =
         await response.json();
+
 
       if(
         data &&
@@ -3829,30 +4628,46 @@ async function getVapidPublicKey(){
       ){
 
         return data.publicKey;
+
       }
+
     }
 
   }catch(error){
 
     console.warn(
-      "Could not get VAPID key from function."
+      "Could not get VAPID key from function.",
+      error
     );
+
   }
 
+
   return VAPID_PUBLIC_KEY;
+
 }
 
 
 async function getServiceWorkerRegistration(){
 
-  return await navigator
-    .serviceWorker
-    .register(
-      "./sw.js",
-      {
-        scope:"./"
-      }
+  if(
+    !("serviceWorker" in navigator)
+  ){
+
+    throw new Error(
+      "Service workers are not supported."
     );
+
+  }
+
+
+  return await navigator.serviceWorker.register(
+    "./sw.js",
+    {
+      scope:"./"
+    }
+  );
+
 }
 
 
@@ -3865,10 +4680,13 @@ async function savePushSubscription(
     throw new Error(
       "You must be logged in."
     );
+
   }
+
 
   const json =
     subscription.toJSON();
+
 
   if(
     !json.endpoint ||
@@ -3880,7 +4698,9 @@ async function savePushSubscription(
     throw new Error(
       "Invalid push subscription."
     );
+
   }
+
 
   await supabaseClient
     .from("push_subscriptions")
@@ -3894,26 +4714,26 @@ async function savePushSubscription(
       json.endpoint
     );
 
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("push_subscriptions")
-    .insert({
 
-      user_id:
-        currentUser.id,
+  const {error} =
+    await supabaseClient
+      .from("push_subscriptions")
+      .insert({
 
-      endpoint:
-        json.endpoint,
+        user_id:
+          currentUser.id,
 
-      p256dh:
-        json.keys.p256dh,
+        endpoint:
+          json.endpoint,
 
-      auth:
-        json.keys.auth
+        p256dh:
+          json.keys.p256dh,
 
-    });
+        auth:
+          json.keys.auth
+
+      });
+
 
   if(error){
 
@@ -3926,12 +4746,15 @@ async function savePushSubscription(
       "Push subscription could not be saved: " +
       error.message
     );
+
   }
+
 
   localStorage.setItem(
     "connectsphere_push_subscription",
     JSON.stringify(json)
   );
+
 }
 
 
@@ -3942,22 +4765,26 @@ async function removePushSubscriptionFromDatabase(
   if(
     !currentUser ||
     !endpoint
-  ) return;
+  ){
 
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("push_subscriptions")
-    .delete()
-    .eq(
-      "user_id",
-      currentUser.id
-    )
-    .eq(
-      "endpoint",
-      endpoint
-    );
+    return;
+
+  }
+
+
+  const {error} =
+    await supabaseClient
+      .from("push_subscriptions")
+      .delete()
+      .eq(
+        "user_id",
+        currentUser.id
+      )
+      .eq(
+        "endpoint",
+        endpoint
+      );
+
 
   if(error){
 
@@ -3965,7 +4792,9 @@ async function removePushSubscriptionFromDatabase(
       "Could not remove push subscription:",
       error
     );
+
   }
+
 }
 
 
@@ -3976,84 +4805,95 @@ async function enablePushNotifications(){
     throw new Error(
       "Please log in first."
     );
+
   }
 
-  if(
-    !("Notification" in window)
-  ){
+
+  if(!("Notification" in window)){
 
     throw new Error(
       "This browser does not support notifications."
     );
+
   }
 
-  if(
-    !("serviceWorker" in navigator)
-  ){
+
+  if(!("serviceWorker" in navigator)){
 
     throw new Error(
       "Service workers are not supported."
     );
+
   }
 
-  if(
-    !("PushManager" in window)
-  ){
+
+  if(!("PushManager" in window)){
 
     throw new Error(
       "Push notifications are not supported."
     );
+
   }
+
 
   const status =
     document.getElementById(
       "notificationStatus"
     );
 
+
   status.textContent =
     "Requesting notification permission...";
+
 
   const permission =
     await Notification.requestPermission();
 
-  if(
-    permission !== "granted"
-  ){
+
+  if(permission !== "granted"){
 
     throw new Error(
       "Notification permission was not granted."
     );
+
   }
+
 
   status.textContent =
     "Registering notification service...";
 
+
   const registration =
     await getServiceWorkerRegistration();
 
-  await navigator
-    .serviceWorker
-    .ready;
+
+  await navigator.serviceWorker.ready;
+
 
   const publicKey =
     await getVapidPublicKey();
+
 
   if(!publicKey){
 
     throw new Error(
       "VAPID public key is missing."
     );
+
   }
+
 
   let subscription =
     await registration
       .pushManager
       .getSubscription();
 
+
   if(!subscription){
 
     status.textContent =
       "Creating secure push subscription...";
+
 
     subscription =
       await registration
@@ -4068,17 +4908,22 @@ async function enablePushNotifications(){
             )
 
         });
+
   }
+
 
   status.textContent =
     "Saving notification subscription...";
+
 
   await savePushSubscription(
     subscription
   );
 
+
   status.textContent =
     "Notifications are ON ✅";
+
 
   document
     .getElementById(
@@ -4087,7 +4932,9 @@ async function enablePushNotifications(){
     .textContent =
     "Notifications are ON.";
 
+
   return subscription;
+
 }
 
 
@@ -4098,39 +4945,71 @@ async function disablePushNotifications(){
       "notificationStatus"
     );
 
-  const registration =
-    await getServiceWorkerRegistration();
 
-  const subscription =
-    await registration
-      .pushManager
-      .getSubscription();
+  try{
 
-  if(subscription){
+    if(
+      !("serviceWorker" in navigator)
+    ){
 
-    const endpoint =
-      subscription.endpoint;
+      return;
 
-    await subscription.unsubscribe();
+    }
 
-    await removePushSubscriptionFromDatabase(
-      endpoint
+
+    const registration =
+      await getServiceWorkerRegistration();
+
+
+    const subscription =
+      await registration
+        .pushManager
+        .getSubscription();
+
+
+    if(subscription){
+
+      const endpoint =
+        subscription.endpoint;
+
+
+      await subscription.unsubscribe();
+
+
+      await removePushSubscriptionFromDatabase(
+        endpoint
+      );
+
+    }
+
+
+    localStorage.removeItem(
+      "connectsphere_push_subscription"
     );
+
+
+    status.textContent =
+      "Notifications are OFF.";
+
+
+    document
+      .getElementById(
+        "notificationSwitchText"
+      )
+      .textContent =
+      "Notifications are OFF.";
+
+  }catch(error){
+
+    console.error(
+      "Disable notification error:",
+      error
+    );
+
+    throw error;
+
   }
 
-  localStorage.removeItem(
-    "connectsphere_push_subscription"
-  );
-
-  status.textContent =
-    "Notifications are OFF.";
-
-  document
-    .getElementById(
-      "notificationSwitchText"
-    )
-    .textContent =
-    "Notifications are OFF.";
 }
 
 
@@ -4141,12 +5020,15 @@ async function togglePushNotifications(){
       "notificationToggle"
     );
 
+
   const status =
     document.getElementById(
       "notificationStatus"
     );
 
+
   toggle.disabled = true;
+
 
   try{
 
@@ -4167,8 +5049,10 @@ async function togglePushNotifications(){
       error
     );
 
+
     toggle.checked =
       !toggle.checked;
+
 
     status.textContent =
       error.message ||
@@ -4177,7 +5061,9 @@ async function togglePushNotifications(){
   }finally{
 
     toggle.disabled = false;
+
   }
+
 }
 
 
@@ -4188,28 +5074,44 @@ async function checkNotificationStatus(){
       "notificationToggle"
     );
 
+
   const status =
     document.getElementById(
       "notificationStatus"
     );
+
 
   const text =
     document.getElementById(
       "notificationSwitchText"
     );
 
-  if(!toggle || !status)
-    return;
 
   if(
-    !("Notification" in window)
+    !toggle ||
+    !status ||
+    !text
   ){
+
+    return;
+
+  }
+
+
+  if(!("Notification" in window)){
+
+    toggle.checked = false;
 
     status.textContent =
       "Notifications are not supported by this browser.";
 
+    text.textContent =
+      "Notifications are OFF.";
+
     return;
+
   }
+
 
   if(
     Notification.permission ===
@@ -4225,7 +5127,9 @@ async function checkNotificationStatus(){
       "Notifications are OFF.";
 
     return;
+
   }
+
 
   try{
 
@@ -4234,22 +5138,19 @@ async function checkNotificationStatus(){
     ){
 
       return;
+
     }
 
+
     const registration =
-      await navigator
-        .serviceWorker
-        .register(
-          "./sw.js",
-          {
-            scope:"./"
-          }
-        );
+      await getServiceWorkerRegistration();
+
 
     const subscription =
       await registration
         .pushManager
         .getSubscription();
+
 
     if(subscription){
 
@@ -4270,6 +5171,7 @@ async function checkNotificationStatus(){
 
       text.textContent =
         "Notifications are OFF.";
+
     }
 
   }catch(error){
@@ -4280,7 +5182,9 @@ async function checkNotificationStatus(){
     );
 
     toggle.checked = false;
+
   }
+
 }
 
 
@@ -4302,17 +5206,21 @@ function showPage(
         )
     );
 
+
   const target =
     document.getElementById(
       page
     );
+
 
   if(target){
 
     target.classList.add(
       "active"
     );
+
   }
+
 
   document
     .querySelectorAll(".nav-btn")
@@ -4323,19 +5231,60 @@ function showPage(
         )
     );
 
+
   if(button){
 
     button.classList.add(
       "active"
     );
+
+  }else{
+
+    const navButton =
+      document.querySelector(
+        `.nav-btn[onclick*="showPage('${page}'"]`
+      );
+
+    if(navButton){
+
+      navButton.classList.add(
+        "active"
+      );
+
+    }
+
   }
 
+
   if(
-    page === "requests"
+    page ===
+    "requests"
   ){
 
     loadConnectionRequests();
+
   }
+
+
+  if(
+    page ===
+    "home"
+  ){
+
+    loadPeople();
+
+  }
+
+
+  if(
+    page ===
+    "schedule"
+  ){
+
+    loadSchedules();
+
+  }
+
 }
 
 
@@ -4348,26 +5297,33 @@ async function setScheduleCompleted(
   value
 ){
 
-  if(!currentUser) return;
+  if(!currentUser){
+    return;
+  }
 
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("schedules")
-    .update({
-      completed:value
-    })
-    .eq(
-      "id",
-      id
-    )
-    .eq(
-      "user_id",
-      currentUser.id
-    );
+
+  const {error} =
+    await supabaseClient
+      .from("schedules")
+      .update({
+        completed:value
+      })
+      .eq(
+        "id",
+        id
+      )
+      .eq(
+        "user_id",
+        currentUser.id
+      );
+
 
   if(error){
+
+    console.error(
+      "Schedule update error:",
+      error
+    );
 
     alert(
       "Could not update schedule: " +
@@ -4375,15 +5331,21 @@ async function setScheduleCompleted(
     );
 
     return;
+
   }
 
+
   await loadSchedules();
+
 }
 
 
 async function deleteSchedule(id){
 
-  if(!currentUser) return;
+  if(!currentUser){
+    return;
+  }
+
 
   if(
     !confirm(
@@ -4392,24 +5354,30 @@ async function deleteSchedule(id){
   ){
 
     return;
+
   }
 
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("schedules")
-    .delete()
-    .eq(
-      "id",
-      id
-    )
-    .eq(
-      "user_id",
-      currentUser.id
-    );
+
+  const {error} =
+    await supabaseClient
+      .from("schedules")
+      .delete()
+      .eq(
+        "id",
+        id
+      )
+      .eq(
+        "user_id",
+        currentUser.id
+      );
+
 
   if(error){
+
+    console.error(
+      "Delete schedule error:",
+      error
+    );
 
     alert(
       "Could not delete schedule: " +
@@ -4417,9 +5385,12 @@ async function deleteSchedule(id){
     );
 
     return;
+
   }
 
+
   await loadSchedules();
+
 }
 
 
@@ -4429,44 +5400,44 @@ LOGOUT
 
 async function logout(){
 
-  if(!supabaseClient)
-    return;
+  try{
 
-  await supabaseClient
-    .auth
-    .signOut();
+    await supabaseClient
+      .auth
+      .signOut();
+
+  }catch(error){
+
+    console.error(
+      "Logout error:",
+      error
+    );
+
+  }
+
 
   currentUser = null;
 
   currentProfile = null;
+
+
+  updateRequestBadge(0);
+
 
   document
     .getElementById("app")
     .classList
     .add("hidden");
 
+
   document
     .getElementById("authScreen")
     .classList
     .remove("hidden");
 
-  loginMode = true;
-
-  toggleAuthMode();
-
-  loginMode = false;
-
-  toggleAuthMode();
-
-  document
-    .getElementById("authEmail")
-    .value = "";
-
-  document
-    .getElementById("authPassword")
-    .value = "";
 
   clearMessages();
+
 }
 
 
@@ -4479,13 +5450,48 @@ function closeModal(id){
   const modal =
     document.getElementById(id);
 
+
   if(modal){
 
-    modal
-      .classList
-      .remove("show");
+    modal.classList.remove(
+      "show"
+    );
+
   }
+
 }
+
+
+/*
+  Close modal when clicking
+  outside the modal box.
+*/
+
+document
+  .querySelectorAll(".modal")
+  .forEach(
+    modal => {
+
+      modal.addEventListener(
+        "click",
+        event => {
+
+          if(
+            event.target ===
+            modal
+          ){
+
+            modal.classList.remove(
+              "show"
+            );
+
+          }
+
+        }
+      );
+
+    }
+  );
 
 
 /* =========================================================
@@ -4499,11 +5505,14 @@ function showError(message){
       "authError"
     );
 
+
   box.textContent =
     message;
 
+
   box.style.display =
     "block";
+
 
   document
     .getElementById(
@@ -4512,6 +5521,7 @@ function showError(message){
     .style
     .display =
     "none";
+
 }
 
 
@@ -4522,11 +5532,14 @@ function showSuccess(message){
       "authSuccess"
     );
 
+
   box.textContent =
     message;
 
+
   box.style.display =
     "block";
+
 
   document
     .getElementById(
@@ -4535,6 +5548,7 @@ function showSuccess(message){
     .style
     .display =
     "none";
+
 }
 
 
@@ -4548,6 +5562,7 @@ function clearMessages(){
     .display =
     "none";
 
+
   document
     .getElementById(
       "authSuccess"
@@ -4555,16 +5570,19 @@ function clearMessages(){
     .style
     .display =
     "none";
+
 }
 
 
 /* =========================================================
-ESCAPE HTML
+SECURITY / HTML ESCAPING
 ========================================================= */
 
 function escapeHTML(value){
 
-  return String(value)
+  return String(
+    value ?? ""
+  )
     .replaceAll(
       "&",
       "&amp;"
@@ -4585,237 +5603,32 @@ function escapeHTML(value){
       "'",
       "&#039;"
     );
+
 }
 
 
-/* =========================================================
-BUTTON EVENT LISTENERS
-========================================================= */
+function escapeJS(value){
 
-function setupButtons(){
-
-  /* AUTH */
-
-  document
-    .getElementById(
-      "switchButton"
+  return String(
+    value ?? ""
+  )
+    .replaceAll(
+      "\\",
+      "\\\\"
     )
-    .addEventListener(
-      "click",
-      function(event){
-
-        event.preventDefault();
-
-        toggleAuthMode();
-
-      }
+    .replaceAll(
+      "'",
+      "\\'"
+    )
+    .replaceAll(
+      "\n",
+      "\\n"
+    )
+    .replaceAll(
+      "\r",
+      "\\r"
     );
 
-
-  document
-    .getElementById(
-      "authButton"
-    )
-    .addEventListener(
-      "click",
-      function(event){
-
-        event.preventDefault();
-
-        handleAuth();
-
-      }
-    );
-
-
-  document
-    .getElementById(
-      "passwordToggle"
-    )
-    .addEventListener(
-      "click",
-      function(event){
-
-        event.preventDefault();
-
-        togglePassword();
-
-      }
-    );
-
-
-  /* SEARCH */
-
-  document
-    .getElementById(
-      "searchInput"
-    )
-    .addEventListener(
-      "input",
-      searchUsers
-    );
-
-
-  /* SETTINGS */
-
-  document
-    .getElementById(
-      "settingsTopButton"
-    )
-    .addEventListener(
-      "click",
-      function(){
-
-        showPage(
-          "settings",
-          null
-        );
-
-      }
-    );
-
-
-  document
-    .getElementById(
-      "editProfileButton"
-    )
-    .addEventListener(
-      "click",
-      editProfile
-    );
-
-
-  document
-    .getElementById(
-      "editProfileSettingsButton"
-    )
-    .addEventListener(
-      "click",
-      editProfile
-    );
-
-
-  document
-    .getElementById(
-      "saveProfileButton"
-    )
-    .addEventListener(
-      "click",
-      saveProfile
-    );
-
-
-  document
-    .getElementById(
-      "closeProfileModal"
-    )
-    .addEventListener(
-      "click",
-      function(){
-
-        closeModal(
-          "profileModal"
-        );
-
-      }
-    );
-
-
-  /* SCHEDULE */
-
-  document
-    .getElementById(
-      "addScheduleButton"
-    )
-    .addEventListener(
-      "click",
-      openScheduleModal
-    );
-
-
-  document
-    .getElementById(
-      "closeScheduleModal"
-    )
-    .addEventListener(
-      "click",
-      function(){
-
-        closeModal(
-          "scheduleModal"
-        );
-
-      }
-    );
-
-
-  document
-    .getElementById(
-      "saveScheduleButton"
-    )
-    .addEventListener(
-      "click",
-      saveSchedule
-    );
-
-
-  document
-    .getElementById(
-      "scheduleType"
-    )
-    .addEventListener(
-      "change",
-      updateScheduleFields
-    );
-
-
-  /* NOTIFICATIONS */
-
-  document
-    .getElementById(
-      "notificationToggle"
-    )
-    .addEventListener(
-      "change",
-      togglePushNotifications
-    );
-
-
-  /* LOGOUT */
-
-  document
-    .getElementById(
-      "logoutButton"
-    )
-    .addEventListener(
-      "click",
-      logout
-    );
-
-
-  /* NAVIGATION */
-
-  document
-    .querySelectorAll(
-      ".nav-btn"
-    )
-    .forEach(
-      button => {
-
-        button.addEventListener(
-          "click",
-          function(){
-
-            showPage(
-              button.dataset.page,
-              button
-            );
-
-          }
-        );
-
-      }
-    );
 }
 
 
@@ -4825,14 +5638,13 @@ START APP
 
 async function startApp(){
 
-  if(
-    !initializeSupabase()
-  ){
-
+  if(appStarting){
     return;
   }
 
-  setupButtons();
+
+  appStarting = true;
+
 
   try{
 
@@ -4840,28 +5652,28 @@ async function startApp(){
       data,
       error
     } =
-    await supabaseClient
-      .auth
-      .getSession();
+      await supabaseClient
+        .auth
+        .getSession();
+
 
     if(error){
 
       console.error(
+        "Session error:",
         error
       );
 
-      showError(
-        "Could not check your login session: " +
-        error.message
-      );
-
       return;
+
     }
+
 
     if(data.session){
 
       currentUser =
         data.session.user;
+
 
       await loadProfile();
 
@@ -4873,6 +5685,15 @@ async function startApp(){
         )
         .classList
         .remove("hidden");
+
+
+      document
+        .getElementById(
+          "app"
+        )
+        .classList
+        .add("hidden");
+
     }
 
   }catch(error){
@@ -4883,85 +5704,114 @@ async function startApp(){
     );
 
     showError(
-      "ConnectSphere could not start: " +
-      error.message
+      "Unable to start ConnectSphere. Please refresh the page."
     );
+
+  }finally{
+
+    appStarting = false;
+
   }
+
 }
 
 
 /* =========================================================
-AUTH STATE
+AUTH STATE LISTENER
 ========================================================= */
 
-function setupAuthListener(){
+supabaseClient
+  .auth
+  .onAuthStateChange(
+    async(
+      event,
+      session
+    ) => {
 
-  if(!supabaseClient)
-    return;
+      console.log(
+        "Auth event:",
+        event
+      );
 
-  supabaseClient
-    .auth
-    .onAuthStateChange(
-      async (
-        event,
-        session
-      ) => {
+
+      if(
+        event ===
+        "SIGNED_OUT"
+      ){
+
+        currentUser = null;
+
+        currentProfile = null;
+
+        updateRequestBadge(0);
+
+
+        document
+          .getElementById(
+            "app"
+          )
+          .classList
+          .add("hidden");
+
+
+        document
+          .getElementById(
+            "authScreen"
+          )
+          .classList
+          .remove("hidden");
+
+
+        return;
+
+      }
+
+
+      if(
+        (
+          event ===
+          "SIGNED_IN"
+          ||
+          event ===
+          "INITIAL_SESSION"
+          ||
+          event ===
+          "TOKEN_REFRESHED"
+        )
+        &&
+        session?.user
+      ){
+
+        /*
+          Avoid unnecessary duplicate profile
+          loading when the initial session is
+          already being handled by startApp().
+        */
 
         if(
-          event ===
-          "SIGNED_OUT"
-        ){
-
-          document
-            .getElementById(
-              "app"
-            )
-            .classList
-            .add("hidden");
-
-          document
-            .getElementById(
-              "authScreen"
-            )
-            .classList
-            .remove("hidden");
-
-          currentUser = null;
-
-          currentProfile = null;
-        }
-
-        if(
-          event ===
-          "SIGNED_IN" &&
-          session
+          !currentUser ||
+          currentUser.id !==
+          session.user.id
         ){
 
           currentUser =
             session.user;
 
           await loadProfile();
+
         }
 
       }
-    );
-}
+
+    }
+  );
 
 
 /* =========================================================
-BOOT
+START
 ========================================================= */
 
-document.addEventListener(
-  "DOMContentLoaded",
-  async function(){
-
-    await startApp();
-
-    setupAuthListener();
-
-  }
-);
+startApp();
 
 </script>
 
