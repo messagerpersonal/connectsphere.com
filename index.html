@@ -8,54 +8,23 @@
 <title>ConnectSphere</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0
-}
-
-html{
-  scroll-behavior:smooth
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
   font-family:Arial,Helvetica,sans-serif;
   background:#f4f5fb;
   color:#171724;
-  min-height:100vh
 }
 
-button,
-input,
-select,
-textarea{
-  font:inherit
-}
-
-button{
-  cursor:pointer;
-  border:0
-}
-
-button:disabled{
-  cursor:not-allowed;
-  opacity:.6
-}
-
-.hidden{
-  display:none!important
-}
-
-/* =========================================================
-APP
-========================================================= */
+button,input,select,textarea{font:inherit}
+button{cursor:pointer;border:0}
 
 .app{
   max-width:1100px;
   min-height:100vh;
   margin:auto;
   background:white;
-  position:relative
+  position:relative;
 }
 
 header{
@@ -68,13 +37,13 @@ header{
   position:sticky;
   top:0;
   background:white;
-  z-index:10
+  z-index:10;
 }
 
 .logo{
   font-size:22px;
   font-weight:800;
-  color:#5b4bdb
+  color:#5b4bdb;
 }
 
 .icon-btn{
@@ -82,44 +51,25 @@ header{
   height:40px;
   border-radius:50%;
   background:#f1f1f7;
-  transition:.2s
 }
-
-.icon-btn:hover{
-  background:#e7e5f8
-}
-
-/* =========================================================
-MAIN
-========================================================= */
 
 main{
   padding:20px;
-  padding-bottom:95px
+  padding-bottom:90px;
 }
 
-.page{
-  display:none
-}
-
-.page.active{
-  display:block
-}
+.page{display:none}
+.page.active{display:block}
 
 h1{
   font-size:26px;
-  margin-bottom:8px
+  margin-bottom:8px;
 }
 
 .subtitle{
   color:#777;
   margin-bottom:20px;
-  line-height:1.5
 }
-
-/* =========================================================
-CARDS / BUTTONS
-========================================================= */
 
 .card{
   background:white;
@@ -127,7 +77,7 @@ CARDS / BUTTONS
   border-radius:18px;
   padding:16px;
   margin-bottom:12px;
-  box-shadow:0 3px 12px rgba(0,0,0,.04)
+  box-shadow:0 3px 12px rgba(0,0,0,.04);
 }
 
 .primary{
@@ -136,16 +86,11 @@ CARDS / BUTTONS
   padding:11px 16px;
   border-radius:10px;
   font-weight:600;
-  transition:.2s
-}
-
-.primary:hover{
-  background:#4d3ec4
 }
 
 .primary:disabled{
   opacity:.6;
-  cursor:not-allowed
+  cursor:not-allowed;
 }
 
 .secondary{
@@ -153,22 +98,14 @@ CARDS / BUTTONS
   color:#333;
   padding:11px 16px;
   border-radius:10px;
-  font-weight:600
-}
-
-.secondary:hover{
-  background:#e2e2eb
+  font-weight:600;
 }
 
 .danger{
   background:#ffe8e8;
   color:#c62828;
   padding:11px 16px;
-  border-radius:10px
-}
-
-.danger:hover{
-  background:#ffdcdc
+  border-radius:10px;
 }
 
 .success-btn{
@@ -176,16 +113,24 @@ CARDS / BUTTONS
   color:#287a35;
   padding:11px 16px;
   border-radius:10px;
-  font-weight:600
+  font-weight:600;
 }
 
-.success-btn:hover{
-  background:#d8f1dc
+.warning-btn{
+  background:#fff3d6;
+  color:#8a6100;
+  padding:11px 16px;
+  border-radius:10px;
+  font-weight:600;
 }
 
-/* =========================================================
-SEARCH
-========================================================= */
+.info-btn{
+  background:#e5f1ff;
+  color:#245f9e;
+  padding:11px 16px;
+  border-radius:10px;
+  font-weight:600;
+}
 
 .search-box{
   width:100%;
@@ -193,22 +138,17 @@ SEARCH
   border:1px solid #ddd;
   border-radius:14px;
   outline:none;
-  margin-bottom:12px
+  margin-bottom:12px;
 }
 
 .search-box:focus{
   border-color:#5b4bdb;
-  box-shadow:0 0 0 3px rgba(91,75,219,.08)
 }
-
-/* =========================================================
-USER / AVATAR
-========================================================= */
 
 .user-row{
   display:flex;
   align-items:center;
-  gap:12px
+  gap:12px;
 }
 
 .avatar{
@@ -221,25 +161,23 @@ USER / AVATAR
   align-items:center;
   justify-content:center;
   font-weight:bold;
-  flex-shrink:0
+  flex-shrink:0;
 }
 
 .profile .avatar{
   width:90px;
   height:90px;
   margin:0 auto 12px;
-  font-size:30px
+  font-size:30px;
 }
 
 .user-info{
   flex:1;
-  min-width:0
+  min-width:0;
 }
 
 .user-info strong{
   display:block;
-  overflow:hidden;
-  text-overflow:ellipsis
 }
 
 .user-info span{
@@ -247,81 +185,44 @@ USER / AVATAR
   font-size:13px;
   display:block;
   margin-top:3px;
-  overflow-wrap:anywhere
+  overflow-wrap:anywhere;
 }
 
-/* =========================================================
-PROFILE
-========================================================= */
-
 .profile{
-  text-align:center
+  text-align:center;
 }
 
 .profile h2{
-  margin-bottom:5px
+  margin-bottom:5px;
 }
 
 .profile p{
   color:#777;
-  margin-bottom:18px
+  margin-bottom:18px;
 }
 
 .stat-row{
   display:flex;
   justify-content:center;
   gap:45px;
-  margin:20px 0
+  margin:20px 0;
 }
 
 .stat strong{
   display:block;
-  font-size:20px
+  font-size:20px;
 }
 
 .stat span{
   color:#777;
-  font-size:13px
+  font-size:13px;
 }
-
-/* =========================================================
-SETTINGS
-========================================================= */
-
-.setting{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  padding:16px 4px;
-  border-bottom:1px solid #eee
-}
-
-.setting:last-child{
-  border-bottom:0
-}
-
-.setting small{
-  display:block;
-  color:#777;
-  margin-top:4px;
-  line-height:1.4
-}
-
-/* =========================================================
-EMPTY
-========================================================= */
 
 .empty{
   text-align:center;
   padding:40px 15px;
   color:#888;
-  line-height:1.5
 }
-
-/* =========================================================
-BOTTOM NAV
-========================================================= */
 
 .bottom-nav{
   position:fixed;
@@ -335,63 +236,27 @@ BOTTOM NAV
   display:flex;
   justify-content:space-around;
   align-items:center;
-  z-index:20
+  z-index:20;
 }
 
 .nav-btn{
-  position:relative;
   background:none;
   color:#777;
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
   gap:4px;
   font-size:12px;
-  min-width:65px;
-  height:60px
 }
 
 .nav-btn.active{
   color:#5b4bdb;
-  font-weight:bold
+  font-weight:bold;
 }
 
 .nav-icon{
   font-size:21px;
-  line-height:1
 }
-
-/* =========================================================
-REQUEST RED BADGE
-========================================================= */
-
-.request-badge{
-  position:absolute;
-  top:1px;
-  right:9px;
-  min-width:18px;
-  height:18px;
-  padding:0 5px;
-  border-radius:20px;
-  background:#e53935;
-  color:white;
-  font-size:10px;
-  font-weight:800;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:2px solid white;
-  line-height:1
-}
-
-.request-badge.hidden{
-  display:none!important
-}
-
-/* =========================================================
-MODALS
-========================================================= */
 
 .modal{
   display:none;
@@ -401,11 +266,11 @@ MODALS
   z-index:50;
   align-items:center;
   justify-content:center;
-  padding:20px
+  padding:20px;
 }
 
 .modal.show{
-  display:flex
+  display:flex;
 }
 
 .modal-box{
@@ -414,11 +279,11 @@ MODALS
   border-radius:20px;
   padding:20px;
   max-height:90vh;
-  overflow:auto
+  overflow:auto;
 }
 
 .modal-box h2{
-  margin-bottom:15px
+  margin-bottom:15px;
 }
 
 .close{
@@ -427,12 +292,7 @@ MODALS
   border-radius:50%;
   width:34px;
   height:34px;
-  font-size:20px
 }
-
-/* =========================================================
-AUTH
-========================================================= */
 
 .auth-screen{
   min-height:100vh;
@@ -440,7 +300,7 @@ AUTH
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:20px
+  padding:20px;
 }
 
 .auth-box{
@@ -448,19 +308,19 @@ AUTH
   background:white;
   border-radius:22px;
   padding:25px;
-  box-shadow:0 5px 25px rgba(0,0,0,.08)
+  box-shadow:0 5px 25px rgba(0,0,0,.08);
 }
 
 .auth-box h1{
   text-align:center;
   color:#5b4bdb;
-  margin-bottom:5px
+  margin-bottom:5px;
 }
 
 .auth-box p{
   text-align:center;
   color:#777;
-  margin-bottom:20px
+  margin-bottom:20px;
 }
 
 .auth-box input{
@@ -469,20 +329,14 @@ AUTH
   border:1px solid #ddd;
   border-radius:12px;
   margin-bottom:10px;
-  outline:none
-}
-
-.auth-box input:focus{
-  border-color:#5b4bdb;
-  box-shadow:0 0 0 3px rgba(91,75,219,.08)
 }
 
 .password-wrap{
-  position:relative
+  position:relative;
 }
 
 .password-wrap input{
-  padding-right:50px
+  padding-right:50px;
 }
 
 .password-toggle{
@@ -493,18 +347,18 @@ AUTH
   height:42px;
   background:transparent;
   color:#666;
-  font-size:20px
+  font-size:20px;
 }
 
 .auth-box button.primary{
   width:100%;
-  margin-top:5px
+  margin-top:5px;
 }
 
 .auth-switch{
   text-align:center;
   margin-top:15px;
-  font-size:14px
+  font-size:14px;
 }
 
 .auth-switch button{
@@ -513,7 +367,6 @@ AUTH
   color:#5b4bdb;
   margin:0;
   padding:0;
-  font-weight:600
 }
 
 .error{
@@ -523,7 +376,6 @@ AUTH
   border-radius:10px;
   margin-bottom:10px;
   display:none;
-  line-height:1.4
 }
 
 .success{
@@ -533,35 +385,32 @@ AUTH
   border-radius:10px;
   margin-bottom:10px;
   display:none;
-  line-height:1.4
 }
 
-/* =========================================================
-SCHEDULE
-========================================================= */
+.hidden{
+  display:none!important;
+}
 
 .schedule-item{
   border:1px solid #eee;
   border-radius:16px;
   padding:15px;
-  margin-bottom:10px
+  margin-bottom:10px;
 }
 
 .schedule-top{
   display:flex;
   gap:10px;
-  align-items:flex-start
+  align-items:flex-start;
 }
 
 .schedule-top>div:first-child{
   flex:1;
-  min-width:0
 }
 
 .schedule-title{
   font-weight:700;
   font-size:16px;
-  overflow-wrap:anywhere
 }
 
 .schedule-meta{
@@ -569,28 +418,27 @@ SCHEDULE
   color:#777;
   margin-top:5px;
   line-height:1.5;
-  overflow-wrap:anywhere
 }
 
 .schedule-actions{
   display:flex;
   gap:8px;
   flex-wrap:wrap;
-  margin-top:12px
+  margin-top:12px;
 }
 
 .schedule-actions button{
   padding:8px 11px;
   border-radius:9px;
-  font-size:13px
+  font-size:13px;
 }
 
 .completed{
-  opacity:.65
+  opacity:.65;
 }
 
 .completed .schedule-title{
-  text-decoration:line-through
+  text-decoration:line-through;
 }
 
 .badge{
@@ -599,7 +447,7 @@ SCHEDULE
   border-radius:20px;
   background:#eeeef5;
   font-size:11px;
-  margin-left:5px
+  margin-left:5px;
 }
 
 .progress-bar{
@@ -607,21 +455,21 @@ SCHEDULE
   background:#eee;
   border-radius:20px;
   overflow:hidden;
-  margin-top:10px
+  margin-top:10px;
 }
 
 .progress-fill{
   height:100%;
   background:#5b4bdb;
   width:0;
-  transition:width .3s
+  transition:width .25s;
 }
 
 .form-label{
   display:block;
   font-size:13px;
   font-weight:600;
-  margin:8px 0 6px
+  margin:8px 0 6px;
 }
 
 .modal-box select,
@@ -632,24 +480,13 @@ SCHEDULE
   border:1px solid #ddd;
   border-radius:11px;
   margin-bottom:8px;
-  outline:none
 }
-
-.modal-box select:focus,
-.modal-box textarea:focus,
-.modal-box input:focus{
-  border-color:#5b4bdb
-}
-
-/* =========================================================
-NOTIFICATIONS
-========================================================= */
 
 .notification-status{
   color:#777;
   font-size:13px;
   line-height:1.5;
-  margin-top:10px
+  margin-top:10px;
 }
 
 .switch{
@@ -657,13 +494,13 @@ NOTIFICATIONS
   display:inline-block;
   width:52px;
   height:30px;
-  flex-shrink:0
+  flex-shrink:0;
 }
 
 .switch input{
   opacity:0;
   width:0;
-  height:0
+  height:0;
 }
 
 .slider{
@@ -672,7 +509,7 @@ NOTIFICATIONS
   cursor:pointer;
   background:#ccc;
   border-radius:30px;
-  transition:.25s
+  transition:.25s;
 }
 
 .slider:before{
@@ -685,32 +522,28 @@ NOTIFICATIONS
   background:white;
   border-radius:50%;
   transition:.25s;
-  box-shadow:0 1px 4px rgba(0,0,0,.2)
+  box-shadow:0 1px 4px rgba(0,0,0,.2);
 }
 
 .switch input:checked + .slider{
-  background:#5b4bdb
+  background:#5b4bdb;
 }
 
 .switch input:checked + .slider:before{
-  transform:translateX(22px)
+  transform:translateX(22px);
 }
-
-/* =========================================================
-REQUESTS
-========================================================= */
 
 .request-actions{
   display:flex;
   gap:8px;
   flex-wrap:wrap;
-  margin-top:12px
+  margin-top:12px;
 }
 
 .request-actions button{
   padding:9px 12px;
   border-radius:9px;
-  font-size:13px
+  font-size:13px;
 }
 
 .request-status{
@@ -720,1051 +553,839 @@ REQUESTS
   background:#eeeef5;
   color:#666;
   font-size:12px;
-  margin-top:6px
+  margin-top:6px;
 }
 
 .request-section-title{
   font-size:17px;
-  margin:18px 0 10px
+  margin:18px 0 10px;
 }
 
 .connection-card{
   border:1px solid #eee;
   border-radius:16px;
   padding:15px;
-  margin-bottom:10px
+  margin-bottom:10px;
 }
 
-/* =========================================================
-LOADING
-========================================================= */
-
-.loading{
-  opacity:.65;
-  pointer-events:none
+.relationship-button{
+  min-width:110px;
+  white-space:nowrap;
 }
-
-/* =========================================================
-MOBILE
-========================================================= */
 
 @media(max-width:600px){
 
   main{
     padding:16px;
-    padding-bottom:95px
+    padding-bottom:90px;
   }
 
   header{
-    padding:0 14px
+    padding:0 14px;
   }
 
   h1{
-    font-size:23px
-  }
-
-  .subtitle{
-    font-size:14px
+    font-size:23px;
   }
 
   .bottom-nav{
     overflow-x:auto;
-    justify-content:flex-start
   }
 
   .nav-btn{
-    flex:1 0 65px
+    min-width:65px;
   }
 
   .user-row{
-    align-items:flex-start
+    align-items:flex-start;
   }
 
-  .user-row>.user-info{
-    min-width:0
+  .user-row > div:last-child{
+    flex-shrink:0;
   }
 
-  .user-row>div:last-child{
-    flex-shrink:0
+  .relationship-button{
+    min-width:100px;
+    padding:9px 10px!important;
+    font-size:12px;
   }
-
-  .card{
-    border-radius:15px
-  }
-
-  .stat-row{
-    gap:30px
-  }
-
-  .modal{
-    padding:12px
-  }
-
-  .modal-box{
-    border-radius:17px;
-    padding:17px
-  }
-
-  .auth-screen{
-    padding:14px
-  }
-
-  .auth-box{
-    padding:20px
-  }
-
-  .request-badge{
-    right:7px
-  }
-
-}
-
-@media(max-width:420px){
-
-  .user-row{
-    flex-wrap:wrap
-  }
-
-  .user-row>div:last-child{
-    width:100%;
-    flex-direction:row!important;
-    justify-content:flex-end;
-    align-items:center!important
-  }
-
-  .profile .avatar{
-    width:80px;
-    height:80px
-  }
-
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================================================
-AUTH SCREEN
-========================================================= -->
+<!-- AUTH -->
 
 <div id="authScreen" class="auth-screen">
 
-  <div class="auth-box">
+<div class="auth-box">
 
-    <h1>ConnectSphere</h1>
+<h1>ConnectSphere</h1>
 
-    <p id="authSubtitle">
-      Create your account and connect.
-    </p>
+<p id="authSubtitle">
+Create your account and connect.
+</p>
 
-    <div id="authError" class="error"></div>
-    <div id="authSuccess" class="success"></div>
+<div id="authError" class="error"></div>
+<div id="authSuccess" class="success"></div>
 
-    <div id="signupFields">
+<div id="signupFields">
 
-      <input
-        id="signupName"
-        placeholder="Full name"
-        autocomplete="name"
-      >
+<input id="signupName" placeholder="Full name">
 
-      <input
-        id="signupUsername"
-        placeholder="Username"
-        autocomplete="username"
-        maxlength="30"
-      >
-
-    </div>
-
-    <input
-      id="authEmail"
-      type="email"
-      placeholder="Email"
-      autocomplete="email"
-    >
-
-    <div class="password-wrap">
-
-      <input
-        id="authPassword"
-        type="password"
-        placeholder="Password"
-        autocomplete="current-password"
-      >
-
-      <button
-        type="button"
-        class="password-toggle"
-        id="passwordToggle"
-        onclick="togglePassword()"
-        aria-label="Show password"
-      >
-        👁️
-      </button>
-
-    </div>
-
-    <button
-      id="authButton"
-      class="primary"
-      onclick="handleAuth()"
-    >
-      Sign Up
-    </button>
-
-    <div class="auth-switch">
-
-      <span id="switchText">
-        Already have an account?
-      </span>
-
-      <button
-        onclick="toggleAuthMode()"
-        id="switchButton"
-      >
-        Log in
-      </button>
-
-    </div>
-
-  </div>
+<input id="signupUsername" placeholder="Username">
 
 </div>
 
+<input
+id="authEmail"
+type="email"
+placeholder="Email"
+>
 
-<!-- =========================================================
-MAIN APP
-========================================================= -->
+<div class="password-wrap">
+
+<input
+id="authPassword"
+type="password"
+placeholder="Password"
+>
+
+<button
+type="button"
+class="password-toggle"
+id="passwordToggle"
+onclick="togglePassword()"
+>
+👁️
+</button>
+
+</div>
+
+<button
+id="authButton"
+class="primary"
+onclick="handleAuth()"
+>
+Sign Up
+</button>
+
+<div class="auth-switch">
+
+<span id="switchText">
+Already have an account?
+</span>
+
+<button
+onclick="toggleAuthMode()"
+id="switchButton"
+>
+Log in
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- MAIN APP -->
 
 <div id="app" class="app hidden">
 
 <header>
 
-  <div class="logo">
-    ConnectSphere
-  </div>
+<div class="logo">
+ConnectSphere
+</div>
 
-  <button
-    class="icon-btn"
-    onclick="showPage('settings')"
-    aria-label="Settings"
-  >
-    ⚙️
-  </button>
+<div>
+<button
+class="icon-btn"
+onclick="showPage('settings')"
+>
+⚙️
+</button>
+</div>
 
 </header>
 
-
 <main>
 
-<!-- =========================================================
-HOME
-========================================================= -->
+<!-- HOME -->
 
 <section id="home" class="page active">
 
-  <h1>Welcome 👋</h1>
+<h1>Welcome 👋</h1>
 
-  <p class="subtitle">
-    Connect with people and start conversations.
-  </p>
+<p class="subtitle">
+Connect with people and start conversations.
+</p>
 
-  <div class="card">
+<div class="card">
 
-    <div class="user-row">
+<div class="user-row">
 
-      <div
-        class="avatar"
-        id="homeAvatar"
-      >
-        Y
-      </div>
+<div class="avatar" id="homeAvatar">
+Y
+</div>
 
-      <div class="user-info">
+<div class="user-info">
 
-        <strong id="homeName">
-          Your Name
-        </strong>
+<strong id="homeName">
+Your Name
+</strong>
 
-        <span id="homeUsername">
-          @username
-        </span>
+<span id="homeUsername">
+@username
+</span>
 
-      </div>
+</div>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
+<div class="card">
 
-  <div class="card">
+<h3>People on ConnectSphere</h3>
 
-    <h3>People on ConnectSphere</h3>
+<br>
 
-    <br>
+<div id="suggestions">
 
-    <div id="suggestions">
+<div class="empty">
+Loading profiles...
+</div>
 
-      <div class="empty">
-        Loading profiles...
-      </div>
+</div>
 
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =========================================================
-SEARCH
-========================================================= -->
+<!-- SEARCH -->
 
 <section id="search" class="page">
 
-  <h1>Search</h1>
+<h1>Search</h1>
 
-  <p class="subtitle">
-    Find registered ConnectSphere users.
-  </p>
+<p class="subtitle">
+Find registered ConnectSphere users.
+</p>
 
-  <input
-    id="searchInput"
-    class="search-box"
-    placeholder="Search people..."
-    oninput="searchUsers()"
-    autocomplete="off"
-  >
+<input
+id="searchInput"
+class="search-box"
+placeholder="Search people..."
+oninput="searchUsers()"
+>
 
-  <div id="searchResults">
+<div id="searchResults">
 
-    <div class="empty">
-      Start typing to search.
-    </div>
+<div class="empty">
+Start typing to search.
+</div>
 
-  </div>
+</div>
 
 </section>
 
 
-<!-- =========================================================
-REQUESTS
-========================================================= -->
+<!-- REQUESTS -->
 
 <section id="requests" class="page">
 
-  <h1>Requests</h1>
+<h1>Requests</h1>
 
-  <p class="subtitle">
-    Manage your connection requests.
-  </p>
+<p class="subtitle">
+Manage your connection requests.
+</p>
 
+<div class="request-section-title">
+Incoming Requests
+</div>
 
-  <div class="request-section-title">
-    Incoming Requests
-  </div>
+<div id="incomingRequests">
+<div class="empty">
+Loading requests...
+</div>
+</div>
 
-  <div id="incomingRequests">
+<div class="request-section-title">
+Sent Requests
+</div>
 
-    <div class="empty">
-      Loading requests...
-    </div>
+<div id="sentRequests">
+<div class="empty">
+Loading requests...
+</div>
+</div>
 
-  </div>
+<div class="request-section-title">
+Your Connections
+</div>
 
-
-  <div class="request-section-title">
-    Sent Requests
-  </div>
-
-  <div id="sentRequests">
-
-    <div class="empty">
-      Loading requests...
-    </div>
-
-  </div>
-
-
-  <div class="request-section-title">
-    Your Connections
-  </div>
-
-  <div id="connectionsList">
-
-    <div class="empty">
-      Loading connections...
-    </div>
-
-  </div>
+<div id="connectionsList">
+<div class="empty">
+Loading connections...
+</div>
+</div>
 
 </section>
 
 
-<!-- =========================================================
-CHATS
-========================================================= -->
+<!-- CHATS -->
 
 <section id="chats" class="page">
 
-  <h1>Messages</h1>
+<h1>Messages</h1>
 
-  <p class="subtitle">
-    Your conversations.
-  </p>
+<p class="subtitle">
+Your conversations.
+</p>
 
-  <div class="empty">
-    Real-time private messaging will be added after
-    the connection system is fully working.
-  </div>
+<div class="empty">
+Real-time encrypted messaging will be added after
+the connection system is working.
+</div>
 
 </section>
 
 
-<!-- =========================================================
-SCHEDULE
-========================================================= -->
+<!-- SCHEDULE -->
 
 <section id="schedule" class="page">
 
-  <h1>
-    My Schedule 📅
-  </h1>
+<h1>My Schedule 📅</h1>
 
-  <p class="subtitle">
-    Build daily habits, weekly plans and one-time reminders.
-  </p>
+<p class="subtitle">
+Build daily habits, weekly plans and one-time reminders.
+</p>
 
+<div class="card">
 
-  <div class="card">
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px
+">
 
-    <div style="
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px
-    ">
+<div>
 
-      <div>
+<strong>Progress</strong>
 
-        <strong>
-          Progress
-        </strong>
+<div
+id="scheduleProgressText"
+style="
+color:#777;
+font-size:13px;
+margin-top:4px
+"
+>
+0% completed
+</div>
 
-        <div
-          id="scheduleProgressText"
-          style="
-            color:#777;
-            font-size:13px;
-            margin-top:4px
-          "
-        >
-          0% completed
-        </div>
+</div>
 
-      </div>
+<button
+class="primary"
+onclick="openScheduleModal()"
+>
++ Add
+</button>
 
-      <button
-        class="primary"
-        onclick="openScheduleModal()"
-      >
-        + Add
-      </button>
+</div>
 
-    </div>
+<div class="progress-bar">
 
-    <div class="progress-bar">
+<div
+id="scheduleProgressFill"
+class="progress-fill"
+></div>
 
-      <div
-        id="scheduleProgressFill"
-        class="progress-fill"
-      ></div>
+</div>
 
-    </div>
+</div>
 
-  </div>
+<div id="scheduleList">
 
+<div class="empty">
+Loading your schedules...
+</div>
 
-  <div id="scheduleList">
-
-    <div class="empty">
-      Loading your schedules...
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =========================================================
-PROFILE
-========================================================= -->
+<!-- PROFILE -->
 
 <section id="profile" class="page">
 
-  <div class="card profile">
+<div class="card profile">
 
-    <div
-      class="avatar"
-      id="profileAvatar"
-    >
-      Y
-    </div>
+<div
+class="avatar"
+id="profileAvatar"
+>
+Y
+</div>
 
-    <h2 id="profileName">
-      Your Name
-    </h2>
+<h2 id="profileName">
+Your Name
+</h2>
 
-    <p id="profileUsername">
-      @username
-    </p>
+<p id="profileUsername">
+@username
+</p>
 
+<div class="stat-row">
 
-    <div class="stat-row">
+<div class="stat">
 
-      <div class="stat">
+<strong id="connectionCount">
+0
+</strong>
 
-        <strong id="connectionCount">
-          0
-        </strong>
+<span>
+Connections
+</span>
 
-        <span>
-          Connections
-        </span>
+</div>
 
-      </div>
+<div class="stat">
 
+<strong id="requestCount">
+0
+</strong>
 
-      <div class="stat">
+<span>
+Requests
+</span>
 
-        <strong id="requestCount">
-          0
-        </strong>
+</div>
 
-        <span>
-          Requests
-        </span>
+</div>
 
-      </div>
+<button
+class="primary"
+onclick="editProfile()"
+>
+Edit Profile
+</button>
 
-    </div>
+</div>
 
+<div class="card">
 
-    <button
-      class="primary"
-      onclick="editProfile()"
-    >
-      Edit Profile
-    </button>
+<h3>About</h3>
 
-  </div>
+<br>
 
+<p id="profileBio">
+Your bio will appear here.
+</p>
 
-  <div class="card">
-
-    <h3>
-      About
-    </h3>
-
-    <br>
-
-    <p id="profileBio">
-      Your bio will appear here.
-    </p>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =========================================================
-SETTINGS
-========================================================= -->
+<!-- SETTINGS -->
 
 <section id="settings" class="page">
 
-  <h1>
-    Settings
-  </h1>
+<h1>Settings</h1>
 
-  <p class="subtitle">
-    Control your account.
-  </p>
+<p class="subtitle">
+Control your account.
+</p>
 
+<div class="card">
 
-  <div class="card">
+<div class="setting">
 
-    <div class="setting">
+<div>
 
-      <div>
+<strong>
+Private account
+</strong>
 
-        <strong>
-          Private account
-        </strong>
+<small>
+Require requests before connecting.
+</small>
 
-        <small>
-          Require requests before connecting.
-        </small>
+</div>
 
-      </div>
+<input
+type="checkbox"
+id="privateAccount"
+>
 
-      <input
-        type="checkbox"
-        id="privateAccount"
-      >
+</div>
 
-    </div>
+<div class="setting">
 
+<div>
 
-    <div class="setting">
+<strong>
+Show online status
+</strong>
 
-      <div>
+<small>
+Allow connections to see your status.
+</small>
 
-        <strong>
-          Show online status
-        </strong>
+</div>
 
-        <small>
-          Allow connections to see your status.
-        </small>
+<input
+type="checkbox"
+id="onlineStatus"
+checked
+>
 
-      </div>
+</div>
 
-      <input
-        type="checkbox"
-        id="onlineStatus"
-        checked
-      >
-
-    </div>
-
-  </div>
+</div>
 
 
-  <!-- NOTIFICATIONS -->
+<div class="card">
 
-  <div class="card">
+<h3>Notifications 🔔</h3>
 
-    <h3>
-      Notifications 🔔
-    </h3>
+<p class="notification-status">
+Turn browser notifications ON or OFF for ConnectSphere reminders.
+</p>
 
-    <p class="notification-status">
-      Turn browser notifications ON or OFF for ConnectSphere reminders.
-    </p>
+<div class="setting">
 
+<div>
 
-    <div class="setting">
+<strong>
+Push Notifications
+</strong>
 
-      <div>
+<small id="notificationSwitchText">
+Notifications are OFF.
+</small>
 
-        <strong>
-          Push Notifications
-        </strong>
+</div>
 
-        <small id="notificationSwitchText">
-          Notifications are OFF.
-        </small>
+<label class="switch">
 
-      </div>
+<input
+type="checkbox"
+id="notificationToggle"
+onchange="togglePushNotifications()"
+>
 
+<span class="slider"></span>
 
-      <label class="switch">
+</label>
 
-        <input
-          type="checkbox"
-          id="notificationToggle"
-          onchange="togglePushNotifications()"
-        >
+</div>
 
-        <span class="slider"></span>
+<div
+id="notificationStatus"
+class="notification-status"
+>
+Notifications are not enabled.
+</div>
 
-      </label>
-
-    </div>
-
-
-    <div
-      id="notificationStatus"
-      class="notification-status"
-    >
-      Notifications are not enabled.
-    </div>
-
-  </div>
+</div>
 
 
-  <div class="card">
+<div class="card">
 
-    <h3>
-      Account
-    </h3>
+<h3>Account</h3>
 
-    <br>
+<br>
 
-    <button
-      class="secondary"
-      onclick="editProfile()"
-    >
-      Edit profile
-    </button>
+<button
+class="secondary"
+onclick="editProfile()"
+>
+Edit profile
+</button>
 
-    <br><br>
+<br><br>
 
-    <button
-      class="danger"
-      onclick="logout()"
-    >
-      Log out
-    </button>
+<button
+class="danger"
+onclick="logout()"
+>
+Log out
+</button>
 
-  </div>
+</div>
 
 
-  <div class="card">
+<div class="card">
 
-    <h3>
-      Security 🔐
-    </h3>
+<h3>Security 🔐</h3>
 
-    <br>
+<br>
 
-    <p style="color:#777;line-height:1.6">
+<p style="color:#777;line-height:1.6">
 
-      Your account uses Supabase Authentication
-      and database Row Level Security.
+Your account uses Supabase Authentication
+and database Row Level Security.
 
-      Schedule data and connection requests
-      are protected by user-level RLS policies.
+Schedule data and connection requests
+are protected by user-level RLS policies.
 
-    </p>
+</p>
 
-  </div>
+</div>
 
 </section>
 
 </main>
 
 
-<!-- =========================================================
-BOTTOM NAVIGATION
-========================================================= -->
+<!-- BOTTOM NAV -->
 
 <nav class="bottom-nav">
 
-  <button
-    class="nav-btn active"
-    onclick="showPage('home',this)"
-  >
+<button
+class="nav-btn active"
+onclick="showPage('home',this)"
+>
 
-    <span class="nav-icon">
-      🏠
-    </span>
+<span class="nav-icon">🏠</span>
 
-    Home
+Home
 
-  </button>
+</button>
 
+<button
+class="nav-btn"
+onclick="showPage('search',this)"
+>
 
-  <button
-    class="nav-btn"
-    onclick="showPage('search',this)"
-  >
+<span class="nav-icon">🔎</span>
 
-    <span class="nav-icon">
-      🔎
-    </span>
+Search
 
-    Search
+</button>
 
-  </button>
+<button
+class="nav-btn"
+onclick="showPage('requests',this)"
+>
 
+<span class="nav-icon">👥</span>
 
-  <button
-    class="nav-btn"
-    id="requestsNavButton"
-    onclick="showPage('requests',this)"
-  >
+Requests
 
-    <span class="nav-icon">
-      👥
-    </span>
+</button>
 
-    Requests
+<button
+class="nav-btn"
+onclick="showPage('chats',this)"
+>
 
-    <span
-      id="requestBadge"
-      class="request-badge hidden"
-    >
-      0
-    </span>
+<span class="nav-icon">💬</span>
 
-  </button>
+Chats
 
+</button>
 
-  <button
-    class="nav-btn"
-    onclick="showPage('chats',this)"
-  >
+<button
+class="nav-btn"
+onclick="showPage('schedule',this)"
+>
 
-    <span class="nav-icon">
-      💬
-    </span>
+<span class="nav-icon">📅</span>
 
-    Chats
+Schedule
 
-  </button>
+</button>
 
+<button
+class="nav-btn"
+onclick="showPage('profile',this)"
+>
 
-  <button
-    class="nav-btn"
-    onclick="showPage('schedule',this)"
-  >
+<span class="nav-icon">👤</span>
 
-    <span class="nav-icon">
-      📅
-    </span>
+Profile
 
-    Schedule
-
-  </button>
-
-
-  <button
-    class="nav-btn"
-    onclick="showPage('profile',this)"
-  >
-
-    <span class="nav-icon">
-      👤
-    </span>
-
-    Profile
-
-  </button>
+</button>
 
 </nav>
 
 </div>
 
 
-<!-- =========================================================
-PROFILE MODAL
-========================================================= -->
+<!-- PROFILE MODAL -->
 
 <div
-  class="modal"
-  id="profileModal"
+class="modal"
+id="profileModal"
 >
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <button
-      class="close"
-      onclick="closeModal('profileModal')"
-    >
-      ×
-    </button>
+<button
+class="close"
+onclick="closeModal('profileModal')"
+>
+×
+</button>
 
-    <h2>
-      Edit Profile
-    </h2>
+<h2>Edit Profile</h2>
 
-    <label class="form-label">
-      Name
-    </label>
+<input
+id="editName"
+class="search-box"
+placeholder="Your name"
+>
 
-    <input
-      id="editName"
-      placeholder="Your name"
-      maxlength="100"
-    >
+<input
+id="editUsername"
+class="search-box"
+placeholder="Username"
+>
 
-    <label class="form-label">
-      Username
-    </label>
+<input
+id="editBio"
+class="search-box"
+placeholder="Bio"
+>
 
-    <input
-      id="editUsername"
-      placeholder="Username"
-      maxlength="30"
-    >
+<button
+class="primary"
+onclick="saveProfile()"
+>
+Save Profile
+</button>
 
-    <label class="form-label">
-      Bio
-    </label>
-
-    <textarea
-      id="editBio"
-      rows="3"
-      placeholder="Your bio"
-      maxlength="300"
-    ></textarea>
-
-    <button
-      class="primary"
-      onclick="saveProfile()"
-    >
-      Save Profile
-    </button>
-
-  </div>
-
+</div>
 </div>
 
 
-<!-- =========================================================
-SCHEDULE MODAL
-========================================================= -->
+<!-- SCHEDULE MODAL -->
 
 <div
-  class="modal"
-  id="scheduleModal"
+class="modal"
+id="scheduleModal"
 >
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <button
-      class="close"
-      onclick="closeModal('scheduleModal')"
-    >
-      ×
-    </button>
+<button
+class="close"
+onclick="closeModal('scheduleModal')"
+>
+×
+</button>
 
-    <h2>
-      Add Schedule
-    </h2>
+<h2>Add Schedule</h2>
 
+<label class="form-label">
+Title
+</label>
 
-    <label class="form-label">
-      Title
-    </label>
+<input
+id="scheduleTitle"
+placeholder="Example: Study for 30 minutes"
+>
 
-    <input
-      id="scheduleTitle"
-      placeholder="Example: Study for 30 minutes"
-      maxlength="150"
-    >
+<label class="form-label">
+Description
+</label>
 
+<textarea
+id="scheduleDescription"
+rows="3"
+placeholder="Optional details"
+></textarea>
 
-    <label class="form-label">
-      Description
-    </label>
+<label class="form-label">
+Type
+</label>
 
-    <textarea
-      id="scheduleDescription"
-      rows="3"
-      placeholder="Optional details"
-      maxlength="500"
-    ></textarea>
+<select
+id="scheduleType"
+onchange="updateScheduleFields()"
+>
 
+<option value="daily">
+Daily
+</option>
 
-    <label class="form-label">
-      Type
-    </label>
+<option value="weekly">
+Weekly
+</option>
 
-    <select
-      id="scheduleType"
-      onchange="updateScheduleFields()"
-    >
+<option value="once">
+One-time
+</option>
 
-      <option value="daily">
-        Daily
-      </option>
+</select>
 
-      <option value="weekly">
-        Weekly
-      </option>
+<label class="form-label">
+Reminder time
+</label>
 
-      <option value="once">
-        One-time
-      </option>
+<input
+id="scheduleTime"
+type="time"
+>
 
-    </select>
+<div
+id="weeklyField"
+class="hidden"
+>
 
+<label class="form-label">
+Day of week
+</label>
 
-    <label class="form-label">
-      Reminder time
-    </label>
+<select id="scheduleDay">
 
-    <input
-      id="scheduleTime"
-      type="time"
-    >
+<option value="0">Sunday</option>
+<option value="1">Monday</option>
+<option value="2">Tuesday</option>
+<option value="3">Wednesday</option>
+<option value="4">Thursday</option>
+<option value="5">Friday</option>
+<option value="6">Saturday</option>
 
+</select>
 
-    <div
-      id="weeklyField"
-      class="hidden"
-    >
+</div>
 
-      <label class="form-label">
-        Day of week
-      </label>
+<div
+id="onceField"
+class="hidden"
+>
 
-      <select id="scheduleDay">
+<label class="form-label">
+Date
+</label>
 
-        <option value="0">
-          Sunday
-        </option>
+<input
+id="scheduleDate"
+type="date"
+>
 
-        <option value="1">
-          Monday
-        </option>
+</div>
 
-        <option value="2">
-          Tuesday
-        </option>
+<button
+class="primary"
+style="width:100%;margin-top:8px"
+onclick="saveSchedule()"
+>
+Save Schedule
+</button>
 
-        <option value="3">
-          Wednesday
-        </option>
-
-        <option value="4">
-          Thursday
-        </option>
-
-        <option value="5">
-          Friday
-        </option>
-
-        <option value="6">
-          Saturday
-        </option>
-
-      </select>
-
-    </div>
-
-
-    <div
-      id="onceField"
-      class="hidden"
-    >
-
-      <label class="form-label">
-        Date
-      </label>
-
-      <input
-        id="scheduleDate"
-        type="date"
-      >
-
-    </div>
-
-
-    <button
-      class="primary"
-      style="width:100%;margin-top:8px"
-      onclick="saveSchedule()"
-    >
-      Save Schedule
-    </button>
-
-  </div>
-
+</div>
 </div>
 
 
@@ -1784,26 +1405,35 @@ const SUPABASE_PUBLISHABLE_KEY =
 
 const supabaseClient =
 window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
+SUPABASE_URL,
+SUPABASE_PUBLISHABLE_KEY
 );
-
 
 const PUSH_FUNCTION_URL =
 SUPABASE_URL +
 "/functions/v1/hyper-processor";
 
-
 const VAPID_PUBLIC_KEY =
 "BPXQwAeUakIVhv46REqOG4rbgPeOG2vA3XD4dcU62Njv_QBuiumeMdMKaP-slpYsWEKt7k8oWRDNNt4qpJX670A";
-
 
 let currentUser = null;
 let currentProfile = null;
 let loginMode = false;
-let appStarting = false;
-let authLoading = false;
-let searchTimer = null;
+
+/*
+  IMPORTANT:
+  This stores the relationship between the current user
+  and every profile we display.
+
+  Possible values:
+
+  none
+  outgoing_pending
+  incoming_pending
+  connected
+*/
+
+let relationshipMap = new Map();
 
 
 /* =========================================================
@@ -1812,338 +1442,222 @@ AUTH
 
 function togglePassword(){
 
-  const password =
-    document.getElementById("authPassword");
+const password =
+document.getElementById("authPassword");
 
-  const button =
-    document.getElementById("passwordToggle");
+const button =
+document.getElementById("passwordToggle");
 
-  if(password.type === "password"){
+if(password.type === "password"){
 
-    password.type = "text";
+password.type = "text";
+button.textContent = "🙈";
 
-    button.textContent = "🙈";
+}else{
 
-  }else{
+password.type = "password";
+button.textContent = "👁️";
 
-    password.type = "password";
-
-    button.textContent = "👁️";
-
-  }
+}
 
 }
 
 
 function toggleAuthMode(){
 
-  loginMode = !loginMode;
+loginMode = !loginMode;
 
-  document
-    .getElementById("signupFields")
-    .classList
-    .toggle("hidden",loginMode);
+document
+.getElementById("signupFields")
+.classList
+.toggle("hidden",loginMode);
 
+document
+.getElementById("authButton")
+.textContent =
+loginMode
+? "Log In"
+: "Sign Up";
 
-  document
-    .getElementById("authButton")
-    .textContent =
-    loginMode
-    ? "Log In"
-    : "Sign Up";
+document
+.getElementById("authSubtitle")
+.textContent =
+loginMode
+? "Welcome back to ConnectSphere."
+: "Create your account and connect.";
 
+document
+.getElementById("switchText")
+.textContent =
+loginMode
+? "Don't have an account?"
+: "Already have an account?";
 
-  document
-    .getElementById("authSubtitle")
-    .textContent =
-    loginMode
-    ? "Welcome back to ConnectSphere."
-    : "Create your account and connect.";
+document
+.getElementById("switchButton")
+.textContent =
+loginMode
+? "Sign Up"
+: "Log In";
 
-
-  document
-    .getElementById("switchText")
-    .textContent =
-    loginMode
-    ? "Don't have an account?"
-    : "Already have an account?";
-
-
-  document
-    .getElementById("switchButton")
-    .textContent =
-    loginMode
-    ? "Sign Up"
-    : "Log In";
-
-
-  clearMessages();
+clearMessages();
 
 }
 
 
 async function handleAuth(){
 
-  if(authLoading){
-    return;
-  }
+clearMessages();
 
-  clearMessages();
+const email =
+document
+.getElementById("authEmail")
+.value
+.trim();
 
-  const email =
-    document
-      .getElementById("authEmail")
-      .value
-      .trim()
-      .toLowerCase();
+const password =
+document
+.getElementById("authPassword")
+.value;
 
-  const password =
-    document
-      .getElementById("authPassword")
-      .value;
+if(!email || !password){
 
+showError(
+"Please enter your email and password."
+);
 
-  if(!email || !password){
-
-    showError(
-      "Please enter your email and password."
-    );
-
-    return;
-
-  }
-
-
-  if(!email.includes("@")){
-
-    showError(
-      "Please enter a valid email address."
-    );
-
-    return;
-
-  }
-
-
-  if(password.length < 6){
-
-    showError(
-      "Password must contain at least 6 characters."
-    );
-
-    return;
-
-  }
-
-
-  setAuthLoading(true);
-
-
-  try{
-
-    if(loginMode){
-
-      const {data,error} =
-        await supabaseClient.auth.signInWithPassword({
-          email,
-          password
-        });
-
-      if(error){
-        throw error;
-      }
-
-      currentUser = data.user;
-
-
-      if(!currentUser){
-
-        throw new Error(
-          "Login succeeded, but no user was returned."
-        );
-
-      }
-
-      await loadProfile();
-
-    }else{
-
-      const name =
-        document
-          .getElementById("signupName")
-          .value
-          .trim();
-
-
-      const username =
-        document
-          .getElementById("signupUsername")
-          .value
-          .trim()
-          .toLowerCase();
-
-
-      if(!name || !username){
-
-        showError(
-          "Please enter your name and username."
-        );
-
-        return;
-
-      }
-
-
-      if(!/^[a-z0-9_]{3,30}$/.test(username)){
-
-        showError(
-          "Username must be 3-30 characters using letters, numbers or underscore."
-        );
-
-        return;
-
-      }
-
-
-      const {data,error} =
-        await supabaseClient.auth.signUp({
-
-          email,
-          password,
-
-          options:{
-            emailRedirectTo:
-            "https://messagerpersonal.github.io/connectsphere.com/",
-
-            data:{
-              display_name:name,
-              username
-            }
-
-          }
-
-        });
-
-
-      if(error){
-        throw error;
-      }
-
-
-      if(!data.user){
-
-        throw new Error(
-          "Signup did not return a user. Please try again."
-        );
-
-      }
-
-
-      /*
-        If email confirmation is enabled,
-        Supabase normally returns a user without
-        an active session.
-      */
-
-      if(data.session){
-
-        currentUser = data.user;
-
-        await loadProfile();
-
-        return;
-
-      }
-
-
-      showSuccess(
-        "Account created! Check your email, confirm your account, then log in."
-      );
-
-
-      loginMode = true;
-
-
-      document
-        .getElementById("signupFields")
-        .classList
-        .add("hidden");
-
-
-      document
-        .getElementById("authButton")
-        .textContent =
-        "Log In";
-
-
-      document
-        .getElementById("authSubtitle")
-        .textContent =
-        "Check your email, then log in.";
-
-
-      document
-        .getElementById("switchText")
-        .textContent =
-        "Don't have an account?";
-
-
-      document
-        .getElementById("switchButton")
-        .textContent =
-        "Sign Up";
-
-    }
-
-  }catch(error){
-
-    console.error(
-      "Authentication error:",
-      error
-    );
-
-    showError(
-      error?.message ||
-      "Authentication failed."
-    );
-
-  }finally{
-
-    setAuthLoading(false);
-
-  }
+return;
 
 }
 
+try{
 
-function setAuthLoading(loading){
+if(loginMode){
 
-  authLoading = loading;
+const {data,error} =
+await supabaseClient.auth.signInWithPassword({
+email,
+password
+});
 
-  const button =
-    document.getElementById("authButton");
+if(error) throw error;
 
-  if(!button){
-    return;
-  }
+currentUser = data.user;
 
-  button.disabled = loading;
+if(!currentUser){
 
-  if(loading){
+showError(
+"Login succeeded, but no user was returned."
+);
 
-    button.textContent =
-      loginMode
-      ? "Logging in..."
-      : "Creating account...";
+return;
 
-  }else{
+}
 
-    button.textContent =
-      loginMode
-      ? "Log In"
-      : "Sign Up";
+await loadProfile();
 
-  }
+}else{
+
+const name =
+document
+.getElementById("signupName")
+.value
+.trim();
+
+const username =
+document
+.getElementById("signupUsername")
+.value
+.trim()
+.toLowerCase();
+
+if(!name || !username){
+
+showError(
+"Please enter your name and username."
+);
+
+return;
+
+}
+
+if(!/^[a-z0-9_]{3,30}$/.test(username)){
+
+showError(
+"Username must be 3-30 characters using letters, numbers or underscore."
+);
+
+return;
+
+}
+
+const {data,error} =
+await supabaseClient.auth.signUp({
+
+email,
+password,
+
+options:{
+emailRedirectTo:
+"https://messagerpersonal.github.io/connectsphere.com/",
+
+data:{
+display_name:name,
+username
+}
+
+}
+
+});
+
+if(error) throw error;
+
+if(!data.user){
+
+showError(
+"Signup did not return a user. Please try again."
+);
+
+return;
+
+}
+
+showSuccess(
+"Account created! Check your email, confirm your account, then log in."
+);
+
+loginMode = true;
+
+document
+.getElementById("signupFields")
+.classList
+.add("hidden");
+
+document
+.getElementById("authButton")
+.textContent =
+"Log In";
+
+document
+.getElementById("authSubtitle")
+.textContent =
+"Check your email, then log in.";
+
+}
+
+}catch(error){
+
+console.error(
+"Authentication error:",
+error
+);
+
+showError(
+error.message ||
+"Authentication failed."
+);
+
+}
 
 }
 
@@ -2154,205 +1668,361 @@ PROFILE
 
 async function loadProfile(){
 
-  if(!currentUser){
-    return;
-  }
+if(!currentUser) return;
 
+const {data,error} =
+await supabaseClient
+.from("profiles")
+.select("*")
+.eq("id",currentUser.id)
+.maybeSingle();
 
-  const {data,error} =
-    await supabaseClient
-      .from("profiles")
-      .select("*")
-      .eq("id",currentUser.id)
-      .maybeSingle();
+if(error){
 
+console.error(error);
 
-  if(error){
+showError(
+"Could not load your profile: " +
+error.message
+);
 
-    console.error(
-      "Profile load error:",
-      error
-    );
+return;
 
-    showError(
-      "Could not load your profile: " +
-      error.message
-    );
+}
 
-    return;
+if(!data){
 
-  }
+const metadata =
+currentUser.user_metadata || {};
 
+const displayName =
+metadata.display_name ||
+currentUser.email?.split("@")[0] ||
+"User";
 
-  if(!data){
+const username =
+metadata.username ||
+(
+"user_" +
+currentUser.id
+.replace(/-/g,"")
+.slice(0,8)
+);
 
-    const metadata =
-      currentUser.user_metadata || {};
+const {
+data:newProfile,
+error:createError
+} =
+await supabaseClient
+.from("profiles")
+.insert({
 
+id:currentUser.id,
+username,
+display_name:displayName,
+bio:"",
+avatar_url:null
 
-    const displayName =
-      metadata.display_name ||
-      currentUser.email?.split("@")[0] ||
-      "User";
+})
+.select()
+.single();
 
+if(createError){
 
-    const username =
-      metadata.username ||
-      (
-        "user_" +
-        currentUser.id
-          .replace(/-/g,"")
-          .slice(0,8)
-      );
+console.error(createError);
 
+showError(
+"Your account is logged in, but profile creation failed: " +
+createError.message
+);
 
-    const {
-      data:newProfile,
-      error:createError
-    } =
-      await supabaseClient
-        .from("profiles")
-        .insert({
+return;
 
-          id:currentUser.id,
+}
 
-          username,
+currentProfile = newProfile;
 
-          display_name:displayName,
+}else{
 
-          bio:"",
+currentProfile = data;
 
-          avatar_url:null
+}
 
-        })
-        .select()
-        .single();
+showApp();
 
+updateProfileUI();
 
-    if(createError){
+await loadRelationshipMap();
 
-      console.error(
-        "Profile creation error:",
-        createError
-      );
+await loadPeople();
 
-      showError(
-        "Your account is logged in, but profile creation failed: " +
-        createError.message
-      );
+await loadConnectionRequests();
 
-      return;
+await loadSchedules();
 
-    }
-
-
-    currentProfile = newProfile;
-
-  }else{
-
-    currentProfile = data;
-
-  }
-
-
-  showApp();
-
-  updateProfileUI();
-
-  await loadPeople();
-
-  await loadConnectionRequests();
-
-  await loadSchedules();
-
-  await checkNotificationStatus();
+await checkNotificationStatus();
 
 }
 
 
 function showApp(){
 
-  document
-    .getElementById("authScreen")
-    .classList
-    .add("hidden");
+document
+.getElementById("authScreen")
+.classList
+.add("hidden");
 
-
-  document
-    .getElementById("app")
-    .classList
-    .remove("hidden");
+document
+.getElementById("app")
+.classList
+.remove("hidden");
 
 }
 
 
 function updateProfileUI(){
 
-  if(!currentProfile){
-    return;
-  }
+if(!currentProfile) return;
+
+const name =
+currentProfile.display_name ||
+"Your Name";
+
+const username =
+currentProfile.username ||
+"username";
+
+const bio =
+currentProfile.bio ||
+"Your bio will appear here.";
+
+const letter =
+name.charAt(0).toUpperCase() ||
+"Y";
+
+document
+.getElementById("homeName")
+.textContent =
+name;
+
+document
+.getElementById("homeUsername")
+.textContent =
+"@" + username;
+
+document
+.getElementById("profileName")
+.textContent =
+name;
+
+document
+.getElementById("profileUsername")
+.textContent =
+"@" + username;
+
+document
+.getElementById("profileBio")
+.textContent =
+bio;
+
+document
+.getElementById("homeAvatar")
+.textContent =
+letter;
+
+document
+.getElementById("profileAvatar")
+.textContent =
+letter;
+
+}
 
 
-  const name =
-    currentProfile.display_name ||
-    "Your Name";
+/* =========================================================
+RELATIONSHIP MAP
+========================================================= */
+
+/*
+  THIS IS THE IMPORTANT FIX.
+
+  We load all requests involving the current user.
+
+  If status is accepted:
+      connected
+
+  If status is pending and current user is sender:
+      outgoing_pending
+
+  If status is pending and current user is receiver:
+      incoming_pending
+
+  This prevents the Connect button from appearing
+  for existing friends.
+*/
+
+async function loadRelationshipMap(){
+
+relationshipMap = new Map();
+
+if(!currentUser) return;
+
+const {data,error} =
+await supabaseClient
+.from("connection_requests")
+.select(
+"id,sender_id,receiver_id,status,created_at"
+)
+.or(
+`sender_id.eq.${currentUser.id},receiver_id.eq.${currentUser.id}`
+);
+
+if(error){
+
+console.error(
+"Relationship map error:",
+error
+);
+
+return;
+
+}
+
+(data || []).forEach(request => {
+
+const otherUserId =
+request.sender_id === currentUser.id
+? request.receiver_id
+: request.sender_id;
+
+if(!otherUserId) return;
+
+/*
+  Accepted always wins.
+*/
+
+if(request.status === "accepted"){
+
+relationshipMap.set(
+otherUserId,
+"connected"
+);
+
+return;
+
+}
+
+/*
+  Don't overwrite an accepted connection.
+*/
+
+if(
+relationshipMap.get(otherUserId) === "connected"
+){
+
+return;
+
+}
+
+if(
+request.status === "pending"
+){
+
+if(
+request.sender_id === currentUser.id
+){
+
+relationshipMap.set(
+otherUserId,
+"outgoing_pending"
+);
+
+}else{
+
+relationshipMap.set(
+otherUserId,
+"incoming_pending"
+);
+
+}
+
+}
+
+});
+
+}
 
 
-  const username =
-    currentProfile.username ||
-    "username";
+/* =========================================================
+RELATIONSHIP BUTTON
+========================================================= */
+
+function getRelationshipStatus(userId){
+
+return relationshipMap.get(userId) || "none";
+
+}
 
 
-  const bio =
-    currentProfile.bio ||
-    "Your bio will appear here.";
+function relationshipButton(userId){
 
+const status =
+getRelationshipStatus(userId);
 
-  const letter =
-    name.charAt(0).toUpperCase() ||
-    "Y";
+if(status === "connected"){
 
+return `
 
-  document
-    .getElementById("homeName")
-    .textContent =
-    name;
+<button
+class="success-btn relationship-button"
+disabled
+>
+✓ Connected
+</button>
 
+`;
 
-  document
-    .getElementById("homeUsername")
-    .textContent =
-    "@" + username;
+}
 
+if(status === "outgoing_pending"){
 
-  document
-    .getElementById("profileName")
-    .textContent =
-    name;
+return `
 
+<button
+class="warning-btn relationship-button"
+disabled
+>
+Request Sent
+</button>
 
-  document
-    .getElementById("profileUsername")
-    .textContent =
-    "@" + username;
+`;
 
+}
 
-  document
-    .getElementById("profileBio")
-    .textContent =
-    bio;
+if(status === "incoming_pending"){
 
+return `
 
-  document
-    .getElementById("homeAvatar")
-    .textContent =
-    letter;
+<button
+class="info-btn relationship-button"
+onclick="acceptRequestFromUser('${userId}')"
+>
+Accept
+</button>
 
+`;
 
-  document
-    .getElementById("profileAvatar")
-    .textContent =
-    letter;
+}
+
+return `
+
+<button
+class="primary relationship-button"
+onclick="sendConnectionRequest('${userId}')"
+>
+Connect
+</button>
+
+`;
 
 }
 
@@ -2363,137 +2033,117 @@ PEOPLE
 
 async function loadPeople(){
 
-  if(!currentUser){
-    return;
-  }
+if(!currentUser) return;
 
+await loadRelationshipMap();
 
-  const {data,error} =
-    await supabaseClient
-      .from("profiles")
-      .select(
-        "id,username,display_name,bio,avatar_url"
-      )
-      .neq("id",currentUser.id)
-      .limit(20);
+const {data,error} =
+await supabaseClient
+.from("profiles")
+.select(
+"id,username,display_name,bio,avatar_url"
+)
+.neq("id",currentUser.id)
+.limit(50);
 
+if(error){
 
-  if(error){
+console.error(error);
 
-    console.error(
-      "People load error:",
-      error
-    );
+document
+.getElementById("suggestions")
+.innerHTML =
+'<div class="empty">Unable to load profiles.</div>';
 
-    document
-      .getElementById("suggestions")
-      .innerHTML =
-      '<div class="empty">Unable to load profiles.</div>';
+return;
 
-    return;
+}
 
-  }
-
-
-  renderPeople(data || []);
+renderPeople(data || []);
 
 }
 
 
 function renderPeople(users){
 
-  const container =
-    document.getElementById("suggestions");
+const container =
+document.getElementById("suggestions");
 
+if(!users.length){
 
-  if(!users.length){
+container.innerHTML =
+'<div class="empty">No other users yet.</div>';
 
-    container.innerHTML =
-      '<div class="empty">No other users yet.</div>';
+return;
 
-    return;
+}
 
-  }
-
-
-  container.innerHTML =
-    users
-      .map(profileCard)
-      .join("");
+container.innerHTML =
+users
+.map(profileCard)
+.join("");
 
 }
 
 
 function profileCard(user){
 
-  const name =
-    user.display_name ||
-    "User";
+const name =
+user.display_name ||
+"User";
 
+const letter =
+name.charAt(0).toUpperCase();
 
-  const letter =
-    name.charAt(0).toUpperCase() ||
-    "U";
+return `
 
+<div class="card">
 
-  return `
+<div class="user-row">
 
-    <div class="card">
+<div class="avatar">
+${escapeHTML(letter)}
+</div>
 
-      <div class="user-row">
+<div class="user-info">
 
-        <div class="avatar">
-          ${escapeHTML(letter)}
-        </div>
+<strong>
+${escapeHTML(name)}
+</strong>
 
-        <div class="user-info">
+<span>
+@${escapeHTML(user.username || "")}
+</span>
 
-          <strong>
-            ${escapeHTML(name)}
-          </strong>
+<span>
+${escapeHTML(user.bio || "")}
+</span>
 
-          <span>
-            @${escapeHTML(user.username || "")}
-          </span>
+</div>
 
-          ${
-            user.bio
-            ?
-            `<span>${escapeHTML(user.bio)}</span>`
-            :
-            ""
-          }
+<div style="
+display:flex;
+flex-direction:column;
+gap:7px;
+align-items:flex-end;
+">
 
-        </div>
+<button
+class="secondary"
+onclick="viewProfile('${user.id}')"
+>
+View
+</button>
 
-        <div style="
-          display:flex;
-          flex-direction:column;
-          gap:7px;
-          align-items:flex-end;
-        ">
+${relationshipButton(user.id)}
 
-          <button
-            class="secondary"
-            onclick="viewProfile('${escapeJS(user.id)}')"
-          >
-            View
-          </button>
+</div>
 
-          <button
-            class="primary"
-            onclick="sendConnectionRequest('${escapeJS(user.id)}')"
-          >
-            Connect
-          </button>
+</div>
 
-        </div>
+</div>
 
-      </div>
-
-    </div>
-
-  `;
+`;
 
 }
 
@@ -2502,119 +2152,91 @@ function profileCard(user){
 SEARCH USERS
 ========================================================= */
 
-function searchUsers(){
+let searchTimer = null;
 
-  clearTimeout(searchTimer);
+async function searchUsers(){
 
-  searchTimer =
-    setTimeout(
-      performSearch,
-      250
-    );
+clearTimeout(searchTimer);
+
+searchTimer =
+setTimeout(
+performSearch,
+250
+);
 
 }
 
 
 async function performSearch(){
 
-  const query =
-    document
-      .getElementById("searchInput")
-      .value
-      .trim()
-      .toLowerCase();
+const query =
+document
+.getElementById("searchInput")
+.value
+.trim()
+.toLowerCase();
 
+const container =
+document.getElementById("searchResults");
 
-  const container =
-    document.getElementById("searchResults");
+if(!query){
 
+container.innerHTML =
+'<div class="empty">Start typing to search.</div>';
 
-  if(!query){
+return;
 
-    container.innerHTML =
-      '<div class="empty">Start typing to search.</div>';
+}
 
-    return;
+if(!currentUser){
 
-  }
+container.innerHTML =
+'<div class="empty">Please log in again.</div>';
 
+return;
 
-  if(!currentUser){
+}
 
-    container.innerHTML =
-      '<div class="empty">Please log in again.</div>';
+await loadRelationshipMap();
 
-    return;
+const {data,error} =
+await supabaseClient
+.from("profiles")
+.select(
+"id,username,display_name,bio,avatar_url"
+)
+.neq("id",currentUser.id)
+.or(
+`username.ilike.%${query}%,display_name.ilike.%${query}%`
+)
+.limit(20);
 
-  }
+if(error){
 
+console.error(error);
 
-  /*
-    Keep special characters from breaking
-    the PostgREST filter expression.
-  */
+container.innerHTML =
+'<div class="empty">Search failed: ' +
+escapeHTML(error.message) +
+'</div>';
 
-  const safeQuery =
-    query
-      .replace(/[%_]/g,"")
-      .replace(/[(),]/g,"")
-      .slice(0,50);
+return;
 
+}
 
-  if(!safeQuery){
+if(!data || !data.length){
 
-    container.innerHTML =
-      '<div class="empty">Enter a valid search.</div>';
+container.innerHTML =
+'<div class="empty">No users found.</div>';
 
-    return;
+return;
 
-  }
+}
 
-
-  const {data,error} =
-    await supabaseClient
-      .from("profiles")
-      .select(
-        "id,username,display_name,bio,avatar_url"
-      )
-      .neq("id",currentUser.id)
-      .or(
-        `username.ilike.%${safeQuery}%,display_name.ilike.%${safeQuery}%`
-      )
-      .limit(20);
-
-
-  if(error){
-
-    console.error(
-      "Search error:",
-      error
-    );
-
-    container.innerHTML =
-      '<div class="empty">Search failed: ' +
-      escapeHTML(error.message) +
-      '</div>';
-
-    return;
-
-  }
-
-
-  if(!data || !data.length){
-
-    container.innerHTML =
-      '<div class="empty">No users found.</div>';
-
-    return;
-
-  }
-
-
-  container.innerHTML =
-    data
-      .map(profileCard)
-      .join("");
+container.innerHTML =
+data
+.map(profileCard)
+.join("");
 
 }
 
@@ -2625,53 +2247,30 @@ VIEW PROFILE
 
 async function viewProfile(id){
 
-  if(!id){
-    return;
-  }
+const {data,error} =
+await supabaseClient
+.from("profiles")
+.select("*")
+.eq("id",id)
+.single();
 
+if(error){
 
-  const {data,error} =
-    await supabaseClient
-      .from("profiles")
-      .select("*")
-      .eq("id",id)
-      .maybeSingle();
+alert(
+"Unable to load profile."
+);
 
+return;
 
-  if(error){
+}
 
-    console.error(
-      "View profile error:",
-      error
-    );
-
-    alert(
-      "Unable to load profile."
-    );
-
-    return;
-
-  }
-
-
-  if(!data){
-
-    alert(
-      "Profile not found."
-    );
-
-    return;
-
-  }
-
-
-  alert(
-    (data.display_name || "User") +
-    "\n@" +
-    (data.username || "") +
-    "\n\n" +
-    (data.bio || "No bio.")
-  );
+alert(
+(data.display_name || "User") +
+"\n@" +
+(data.username || "") +
+"\n\n" +
+(data.bio || "")
+);
 
 }
 
@@ -2682,132 +2281,107 @@ EDIT PROFILE
 
 function editProfile(){
 
-  if(!currentProfile){
-    return;
-  }
+if(!currentProfile) return;
 
+document
+.getElementById("editName")
+.value =
+currentProfile.display_name || "";
 
-  document
-    .getElementById("editName")
-    .value =
-    currentProfile.display_name || "";
+document
+.getElementById("editUsername")
+.value =
+currentProfile.username || "";
 
+document
+.getElementById("editBio")
+.value =
+currentProfile.bio || "";
 
-  document
-    .getElementById("editUsername")
-    .value =
-    currentProfile.username || "";
-
-
-  document
-    .getElementById("editBio")
-    .value =
-    currentProfile.bio || "";
-
-
-  document
-    .getElementById("profileModal")
-    .classList
-    .add("show");
+document
+.getElementById("profileModal")
+.classList
+.add("show");
 
 }
 
 
 async function saveProfile(){
 
-  if(!currentUser){
-    return;
-  }
+const name =
+document
+.getElementById("editName")
+.value
+.trim();
 
+const username =
+document
+.getElementById("editUsername")
+.value
+.trim()
+.toLowerCase();
 
-  const name =
-    document
-      .getElementById("editName")
-      .value
-      .trim();
+const bio =
+document
+.getElementById("editBio")
+.value
+.trim();
 
+if(!name || !username){
 
-  const username =
-    document
-      .getElementById("editUsername")
-      .value
-      .trim()
-      .toLowerCase();
+alert(
+"Name and username are required."
+);
 
+return;
 
-  const bio =
-    document
-      .getElementById("editBio")
-      .value
-      .trim();
+}
 
+if(!/^[a-z0-9_]{3,30}$/.test(username)){
 
-  if(!name || !username){
+alert(
+"Username must be 3-30 characters using letters, numbers or underscore."
+);
 
-    alert(
-      "Name and username are required."
-    );
+return;
 
-    return;
+}
 
-  }
+const {data,error} =
+await supabaseClient
+.from("profiles")
+.update({
 
+display_name:name,
+username,
+bio
 
-  if(!/^[a-z0-9_]{3,30}$/.test(username)){
+})
+.eq("id",currentUser.id)
+.select()
+.single();
 
-    alert(
-      "Username must be 3-30 characters using letters, numbers or underscore."
-    );
+if(error){
 
-    return;
+alert(
+error.code === "23505"
+? "That username is already taken."
+: error.message
+);
 
-  }
+return;
 
+}
 
-  const {data,error} =
-    await supabaseClient
-      .from("profiles")
-      .update({
+currentProfile = data;
 
-        display_name:name,
+updateProfileUI();
 
-        username,
+closeModal("profileModal");
 
-        bio
-
-      })
-      .eq("id",currentUser.id)
-      .select()
-      .single();
-
-
-  if(error){
-
-    console.error(
-      "Save profile error:",
-      error
-    );
-
-    alert(
-      error.code === "23505"
-      ? "That username is already taken."
-      : error.message
-    );
-
-    return;
-
-  }
-
-
-  currentProfile = data;
-
-  updateProfileUI();
-
-  closeModal("profileModal");
-
-  alert(
-    "Profile updated successfully."
-  );
+alert(
+"Profile updated successfully."
+);
 
 }
 
@@ -2818,174 +2392,196 @@ CONNECTION REQUESTS
 
 async function sendConnectionRequest(receiverId){
 
-  if(!currentUser){
+if(!currentUser){
 
-    alert(
-      "Please log in again."
-    );
+alert(
+"Please log in again."
+);
 
-    return;
+return;
 
-  }
+}
 
+if(receiverId === currentUser.id){
 
-  if(!receiverId){
+alert(
+"You cannot send a request to yourself."
+);
 
-    return;
+return;
 
-  }
+}
 
+await loadRelationshipMap();
 
-  if(receiverId === currentUser.id){
+const currentStatus =
+getRelationshipStatus(receiverId);
 
-    alert(
-      "You cannot send a request to yourself."
-    );
+/*
+  IMPORTANT:
+  Never send another request if already connected.
+*/
 
-    return;
+if(currentStatus === "connected"){
 
-  }
+alert(
+"You are already connected with this user. ✅"
+);
 
+return;
 
-  try{
+}
 
-    /*
-      Check both directions for an existing request.
-    */
+if(currentStatus === "outgoing_pending"){
 
-    const {data:existing,error:checkError} =
-      await supabaseClient
-        .from("connection_requests")
-        .select(
-          "id,sender_id,receiver_id,status,created_at"
-        )
-        .or(
-          `and(sender_id.eq.${currentUser.id},receiver_id.eq.${receiverId}),and(sender_id.eq.${receiverId},receiver_id.eq.${currentUser.id})`
-        )
-        .limit(1);
+alert(
+"Connection request already sent."
+);
 
+return;
 
-    if(checkError){
+}
 
-      console.error(
-        "Connection request check error:",
-        checkError
-      );
+if(currentStatus === "incoming_pending"){
 
-      alert(
-        "Could not check the connection request: " +
-        checkError.message
-      );
+alert(
+"This user has already sent you a request. Check Requests."
+);
 
-      return;
+return;
 
-    }
+}
 
+const {error} =
+await supabaseClient
+.from("connection_requests")
+.insert({
 
-    if(existing && existing.length){
+sender_id:currentUser.id,
+receiver_id:receiverId,
+status:"pending"
 
-      const request =
-        existing[0];
+});
 
+if(error){
 
-      if(request.status === "pending"){
+console.error(
+"Send connection request error:",
+error
+);
 
-        if(
-          request.sender_id ===
-          currentUser.id
-        ){
+if(error.code === "23505"){
 
-          alert(
-            "Connection request already sent."
-          );
+alert(
+"Connection request already exists."
+);
 
-        }else{
+}else{
 
-          alert(
-            "This user has already sent you a connection request. Check Requests."
-          );
+alert(
+"Could not send connection request: " +
+error.message
+);
 
-        }
+}
 
-        return;
+return;
 
-      }
+}
 
+relationshipMap.set(
+receiverId,
+"outgoing_pending"
+);
 
-      if(request.status === "accepted"){
+alert(
+"Connection request sent successfully! ✅"
+);
 
-        alert(
-          "You are already connected."
-        );
+await loadConnectionRequests();
 
-        return;
+await loadPeople();
 
-      }
+}
 
-    }
 
+/* =========================================================
+ACCEPT FROM PEOPLE LIST
+========================================================= */
 
-    const {error} =
-      await supabaseClient
-        .from("connection_requests")
-        .insert({
+async function acceptRequestFromUser(senderId){
 
-          sender_id:currentUser.id,
+if(!currentUser) return;
 
-          receiver_id:receiverId,
+const {data:request,error:findError} =
+await supabaseClient
+.from("connection_requests")
+.select(
+"id,sender_id,receiver_id,status"
+)
+.eq("sender_id",senderId)
+.eq("receiver_id",currentUser.id)
+.eq("status","pending")
+.maybeSingle();
 
-          status:"pending"
+if(findError){
 
-        });
+console.error(findError);
 
+alert(
+"Could not find the request: " +
+findError.message
+);
 
-    if(error){
+return;
 
-      console.error(
-        "Send connection request error:",
-        error
-      );
+}
 
-      if(error.code === "23505"){
+if(!request){
 
-        alert(
-          "Connection request already exists."
-        );
+alert(
+"This request is no longer available."
+);
 
-      }else{
+await loadRelationshipMap();
+await loadPeople();
 
-        alert(
-          "Could not send connection request: " +
-          error.message
-        );
+return;
 
-      }
+}
 
-      return;
+const {error} =
+await supabaseClient
+.from("connection_requests")
+.update({
+status:"accepted"
+})
+.eq("id",request.id)
+.eq("receiver_id",currentUser.id)
+.eq("status","pending");
 
-    }
+if(error){
 
+alert(
+"Could not accept request: " +
+error.message
+);
 
-    alert(
-      "Connection request sent successfully! ✅"
-    );
+return;
 
+}
 
-    await loadConnectionRequests();
+relationshipMap.set(
+senderId,
+"connected"
+);
 
-  }catch(error){
+alert(
+"Connection accepted! 🎉"
+);
 
-    console.error(
-      "Connection request error:",
-      error
-    );
-
-    alert(
-      error.message ||
-      "Could not send connection request."
-    );
-
-  }
+await loadConnectionRequests();
+await loadPeople();
 
 }
 
@@ -2996,804 +2592,597 @@ LOAD CONNECTION REQUESTS
 
 async function loadConnectionRequests(){
 
-  if(!currentUser){
-    return;
-  }
+if(!currentUser) return;
+
+await loadRelationshipMap();
+
+const {
+data:incoming,
+error:incomingError
+} =
+await supabaseClient
+.from("connection_requests")
+.select(
+"id,sender_id,receiver_id,status,created_at"
+)
+.eq("receiver_id",currentUser.id)
+.order("created_at",{ascending:false});
+
+if(incomingError){
+
+console.error(
+"Incoming request error:",
+incomingError
+);
+
+document
+.getElementById("incomingRequests")
+.innerHTML =
+'<div class="empty">Unable to load incoming requests: ' +
+escapeHTML(incomingError.message) +
+'</div>';
+
+}else{
+
+await renderIncomingRequests(
+incoming || []
+);
+
+}
 
 
-  /*
-    Incoming
-  */
+const {
+data:sent,
+error:sentError
+} =
+await supabaseClient
+.from("connection_requests")
+.select(
+"id,sender_id,receiver_id,status,created_at"
+)
+.eq("sender_id",currentUser.id)
+.order("created_at",{ascending:false});
 
-  const {
-    data:incoming,
-    error:incomingError
-  } =
-    await supabaseClient
-      .from("connection_requests")
-      .select(
-        "id,sender_id,receiver_id,status,created_at"
-      )
-      .eq(
-        "receiver_id",
-        currentUser.id
-      )
-      .order(
-        "created_at",
-        {ascending:false}
-      );
+if(sentError){
 
+console.error(
+"Sent request error:",
+sentError
+);
 
-  if(incomingError){
+document
+.getElementById("sentRequests")
+.innerHTML =
+'<div class="empty">Unable to load sent requests: ' +
+escapeHTML(sentError.message) +
+'</div>';
 
-    console.error(
-      "Incoming request error:",
-      incomingError
-    );
+}else{
 
-    document
-      .getElementById("incomingRequests")
-      .innerHTML =
-      '<div class="empty">Unable to load incoming requests: ' +
-      escapeHTML(incomingError.message) +
-      '</div>';
+await renderSentRequests(
+sent || []
+);
 
-  }else{
-
-    await renderIncomingRequests(
-      incoming || []
-    );
-
-  }
+}
 
 
-  /*
-    Sent
-  */
+const {
+data:accepted,
+error:acceptedError
+} =
+await supabaseClient
+.from("connection_requests")
+.select(
+"id,sender_id,receiver_id,status,created_at"
+)
+.eq("status","accepted");
 
-  const {
-    data:sent,
-    error:sentError
-  } =
-    await supabaseClient
-      .from("connection_requests")
-      .select(
-        "id,sender_id,receiver_id,status,created_at"
-      )
-      .eq(
-        "sender_id",
-        currentUser.id
-      )
-      .order(
-        "created_at",
-        {ascending:false}
-      );
+if(acceptedError){
 
+console.error(
+"Connections error:",
+acceptedError
+);
 
-  if(sentError){
+document
+.getElementById("connectionsList")
+.innerHTML =
+'<div class="empty">Unable to load connections.</div>';
 
-    console.error(
-      "Sent request error:",
-      sentError
-    );
+}else{
 
-    document
-      .getElementById("sentRequests")
-      .innerHTML =
-      '<div class="empty">Unable to load sent requests: ' +
-      escapeHTML(sentError.message) +
-      '</div>';
+const myConnections =
+(accepted || [])
+.filter(
+r =>
+r.sender_id === currentUser.id ||
+r.receiver_id === currentUser.id
+);
 
-  }else{
+await renderConnections(
+myConnections
+);
 
-    await renderSentRequests(
-      sent || []
-    );
+}
 
-  }
+const pendingIncoming =
+(incoming || [])
+.filter(
+r => r.status === "pending"
+).length;
 
+const requestCount =
+document.getElementById("requestCount");
 
-  /*
-    Accepted connections
-  */
+if(requestCount){
 
-  const {
-    data:accepted,
-    error:acceptedError
-  } =
-    await supabaseClient
-      .from("connection_requests")
-      .select(
-        "id,sender_id,receiver_id,status,created_at"
-      )
-      .eq(
-        "status",
-        "accepted"
-      );
+requestCount.textContent =
+pendingIncoming;
 
-
-  if(acceptedError){
-
-    console.error(
-      "Connections error:",
-      acceptedError
-    );
-
-    document
-      .getElementById("connectionsList")
-      .innerHTML =
-      '<div class="empty">Unable to load connections.</div>';
-
-  }else{
-
-    const myConnections =
-      (accepted || [])
-        .filter(
-          r =>
-            r.sender_id === currentUser.id ||
-            r.receiver_id === currentUser.id
-        );
-
-    await renderConnections(
-      myConnections
-    );
-
-  }
-
-
-  /*
-    IMPORTANT:
-    This is what controls the RED Requests badge.
-  */
-
-  const pendingIncoming =
-    (incoming || [])
-      .filter(
-        r => r.status === "pending"
-      ).length;
-
-
-  updateRequestBadge(
-    pendingIncoming
-  );
-
-
-  const requestCount =
-    document.getElementById(
-      "requestCount"
-    );
-
-
-  if(requestCount){
-
-    requestCount.textContent =
-      pendingIncoming;
-
-  }
+}
 
 }
 
 
 /* =========================================================
-REQUEST RED BADGE
-========================================================= */
-
-function updateRequestBadge(count){
-
-  const badge =
-    document.getElementById(
-      "requestBadge"
-    );
-
-
-  if(!badge){
-    return;
-  }
-
-
-  const number =
-    Number(count) || 0;
-
-
-  if(number <= 0){
-
-    badge.textContent = "0";
-
-    badge.classList.add(
-      "hidden"
-    );
-
-    return;
-
-  }
-
-
-  badge.textContent =
-    number > 99
-    ? "99+"
-    : String(number);
-
-
-  badge.classList.remove(
-    "hidden"
-  );
-
-}
-
-
-/* =========================================================
-INCOMING REQUESTS
+INCOMING
 ========================================================= */
 
 async function renderIncomingRequests(requests){
 
-  const container =
-    document.getElementById(
-      "incomingRequests"
-    );
+const container =
+document.getElementById("incomingRequests");
 
+const pending =
+requests.filter(
+r => r.status === "pending"
+);
 
-  const pending =
-    requests.filter(
-      r => r.status === "pending"
-    );
+if(!pending.length){
 
+container.innerHTML =
+'<div class="empty">No pending incoming requests.</div>';
 
-  if(!pending.length){
+return;
 
-    container.innerHTML =
-      '<div class="empty">No pending incoming requests.</div>';
+}
 
-    return;
+const ids =
+pending.map(
+r => r.sender_id
+);
 
-  }
+const {data:profiles,error} =
+await supabaseClient
+.from("profiles")
+.select(
+"id,username,display_name,bio,avatar_url"
+)
+.in("id",ids);
 
+if(error){
 
-  const ids =
-    pending.map(
-      r => r.sender_id
-    );
+console.error(error);
 
+container.innerHTML =
+'<div class="empty">Unable to load request profiles.</div>';
 
-  const {data:profiles,error} =
-    await supabaseClient
-      .from("profiles")
-      .select(
-        "id,username,display_name,bio,avatar_url"
-      )
-      .in(
-        "id",
-        ids
-      );
+return;
 
+}
 
-  if(error){
+const profileMap = {};
 
-    console.error(
-      "Incoming profile error:",
-      error
-    );
+(profiles || []).forEach(
+p => {
+profileMap[p.id] = p;
+}
+);
 
-    container.innerHTML =
-      '<div class="empty">Unable to load request profiles.</div>';
+container.innerHTML =
+pending.map(
+request => {
 
-    return;
+const user =
+profileMap[request.sender_id];
 
-  }
+const name =
+user?.display_name ||
+"ConnectSphere User";
 
+const username =
+user?.username ||
+"";
 
-  const profileMap = {};
+const letter =
+name.charAt(0).toUpperCase();
 
-  (profiles || []).forEach(
-    p => {
-      profileMap[p.id] = p;
-    }
-  );
+return `
 
+<div class="connection-card">
 
-  container.innerHTML =
-    pending
-      .map(
-        request => {
+<div class="user-row">
 
-          const user =
-            profileMap[
-              request.sender_id
-            ];
+<div class="avatar">
+${escapeHTML(letter)}
+</div>
 
+<div class="user-info">
 
-          const name =
-            user?.display_name ||
-            "ConnectSphere User";
+<strong>
+${escapeHTML(name)}
+</strong>
 
+<span>
+@${escapeHTML(username)}
+</span>
 
-          const username =
-            user?.username ||
-            "";
+<span>
+Wants to connect with you.
+</span>
 
+</div>
 
-          const letter =
-            name.charAt(0).toUpperCase() ||
-            "U";
+</div>
 
+<div class="request-actions">
 
-          return `
+<button
+class="success-btn"
+onclick="acceptConnectionRequest('${request.id}')"
+>
+Accept
+</button>
 
-            <div class="connection-card">
+<button
+class="danger"
+onclick="rejectConnectionRequest('${request.id}')"
+>
+Reject
+</button>
 
-              <div class="user-row">
+</div>
 
-                <div class="avatar">
-                  ${escapeHTML(letter)}
-                </div>
+</div>
 
-                <div class="user-info">
+`;
 
-                  <strong>
-                    ${escapeHTML(name)}
-                  </strong>
-
-                  <span>
-                    @${escapeHTML(username)}
-                  </span>
-
-                  <span>
-                    Wants to connect with you.
-                  </span>
-
-                </div>
-
-              </div>
-
-
-              <div class="request-actions">
-
-                <button
-                  class="success-btn"
-                  onclick="acceptConnectionRequest('${escapeJS(request.id)}')"
-                >
-                  Accept
-                </button>
-
-                <button
-                  class="danger"
-                  onclick="rejectConnectionRequest('${escapeJS(request.id)}')"
-                >
-                  Reject
-                </button>
-
-              </div>
-
-            </div>
-
-          `;
-
-        }
-      )
-      .join("");
+}
+).join("");
 
 }
 
 
 /* =========================================================
-SENT REQUESTS
+SENT
 ========================================================= */
 
 async function renderSentRequests(requests){
 
-  const container =
-    document.getElementById(
-      "sentRequests"
-    );
+const container =
+document.getElementById("sentRequests");
 
+if(!requests.length){
 
-  if(!requests.length){
+container.innerHTML =
+'<div class="empty">You have not sent any requests.</div>';
 
-    container.innerHTML =
-      '<div class="empty">You have not sent any requests.</div>';
+return;
 
-    return;
+}
 
-  }
+const ids =
+requests.map(
+r => r.receiver_id
+);
 
+const {data:profiles,error} =
+await supabaseClient
+.from("profiles")
+.select(
+"id,username,display_name,bio,avatar_url"
+)
+.in("id",ids);
 
-  const ids =
-    requests.map(
-      r => r.receiver_id
-    );
+if(error){
 
+console.error(error);
 
-  const {data:profiles,error} =
-    await supabaseClient
-      .from("profiles")
-      .select(
-        "id,username,display_name,bio,avatar_url"
-      )
-      .in(
-        "id",
-        ids
-      );
+container.innerHTML =
+'<div class="empty">Unable to load sent request profiles.</div>';
 
+return;
 
-  if(error){
+}
 
-    console.error(
-      "Sent profile error:",
-      error
-    );
+const profileMap = {};
 
-    container.innerHTML =
-      '<div class="empty">Unable to load sent request profiles.</div>';
+(profiles || []).forEach(
+p => {
+profileMap[p.id] = p;
+}
+);
 
-    return;
+container.innerHTML =
+requests.map(
+request => {
 
-  }
+const user =
+profileMap[request.receiver_id];
 
+const name =
+user?.display_name ||
+"ConnectSphere User";
 
-  const profileMap = {};
+const username =
+user?.username ||
+"";
 
-  (profiles || []).forEach(
-    p => {
-      profileMap[p.id] = p;
-    }
-  );
+const letter =
+name.charAt(0).toUpperCase();
 
+let statusText =
+"Pending";
 
-  container.innerHTML =
-    requests
-      .map(
-        request => {
+if(request.status === "accepted"){
 
-          const user =
-            profileMap[
-              request.receiver_id
-            ];
+statusText =
+"Accepted";
 
+}else if(request.status === "rejected"){
 
-          const name =
-            user?.display_name ||
-            "ConnectSphere User";
+statusText =
+"Rejected";
 
+}
 
-          const username =
-            user?.username ||
-            "";
+return `
 
+<div class="connection-card">
 
-          const letter =
-            name.charAt(0).toUpperCase() ||
-            "U";
+<div class="user-row">
 
+<div class="avatar">
+${escapeHTML(letter)}
+</div>
 
-          let statusText =
-            "Pending";
+<div class="user-info">
 
+<strong>
+${escapeHTML(name)}
+</strong>
 
-          if(
-            request.status ===
-            "accepted"
-          ){
+<span>
+@${escapeHTML(username)}
+</span>
 
-            statusText =
-              "Accepted";
+<span class="request-status">
+${escapeHTML(statusText)}
+</span>
 
-          }else if(
-            request.status ===
-            "rejected"
-          ){
+</div>
 
-            statusText =
-              "Rejected";
+</div>
 
-          }
+${
+request.status === "pending"
 
+?
 
-          return `
+`
 
-            <div class="connection-card">
+<div class="request-actions">
 
-              <div class="user-row">
+<button
+class="danger"
+onclick="cancelConnectionRequest('${request.id}')"
+>
+Cancel Request
+</button>
 
-                <div class="avatar">
-                  ${escapeHTML(letter)}
-                </div>
+</div>
 
-                <div class="user-info">
+`
 
-                  <strong>
-                    ${escapeHTML(name)}
-                  </strong>
+:
 
-                  <span>
-                    @${escapeHTML(username)}
-                  </span>
+""
 
-                  <span class="request-status">
-                    ${escapeHTML(statusText)}
-                  </span>
+}
 
-                </div>
+</div>
 
-              </div>
+`;
 
-
-              ${
-                request.status === "pending"
-                ?
-                `
-
-                  <div class="request-actions">
-
-                    <button
-                      class="danger"
-                      onclick="cancelConnectionRequest('${escapeJS(request.id)}')"
-                    >
-                      Cancel Request
-                    </button>
-
-                  </div>
-
-                `
-                :
-                ""
-              }
-
-            </div>
-
-          `;
-
-        }
-      )
-      .join("");
+}
+).join("");
 
 }
 
 
 /* =========================================================
-ACCEPT REQUEST
+ACCEPT
 ========================================================= */
 
-async function acceptConnectionRequest(
-  requestId
-){
+async function acceptConnectionRequest(requestId){
 
-  if(!currentUser){
-    return;
-  }
+if(!currentUser) return;
 
+const {data:request,error:findError} =
+await supabaseClient
+.from("connection_requests")
+.select(
+"id,sender_id,receiver_id,status"
+)
+.eq("id",requestId)
+.eq("receiver_id",currentUser.id)
+.single();
 
-  const {
-    data:request,
-    error:findError
-  } =
-    await supabaseClient
-      .from("connection_requests")
-      .select(
-        "id,sender_id,receiver_id,status"
-      )
-      .eq(
-        "id",
-        requestId
-      )
-      .eq(
-        "receiver_id",
-        currentUser.id
-      )
-      .maybeSingle();
+if(findError){
 
+console.error(
+"Find request error:",
+findError
+);
 
-  if(findError){
+alert(
+"Could not find this request: " +
+findError.message
+);
 
-    console.error(
-      "Find request error:",
-      findError
-    );
+return;
 
-    alert(
-      "Could not find this request: " +
-      findError.message
-    );
+}
 
-    return;
+if(request.status !== "pending"){
 
-  }
+alert(
+"This request is no longer pending."
+);
 
+await loadConnectionRequests();
 
-  if(!request){
+return;
 
-    alert(
-      "This request no longer exists."
-    );
+}
 
-    await loadConnectionRequests();
+const {error} =
+await supabaseClient
+.from("connection_requests")
+.update({
+status:"accepted"
+})
+.eq("id",requestId)
+.eq("receiver_id",currentUser.id)
+.eq("status","pending");
 
-    return;
+if(error){
 
-  }
+console.error(
+"Accept request error:",
+error
+);
 
+alert(
+"Could not accept request: " +
+error.message
+);
 
-  if(request.status !== "pending"){
+return;
 
-    alert(
-      "This request is no longer pending."
-    );
+}
 
-    await loadConnectionRequests();
+relationshipMap.set(
+request.sender_id,
+"connected"
+);
 
-    return;
+alert(
+"Connection accepted! 🎉"
+);
 
-  }
+await loadConnectionRequests();
 
-
-  const {error} =
-    await supabaseClient
-      .from("connection_requests")
-      .update({
-        status:"accepted"
-      })
-      .eq(
-        "id",
-        requestId
-      )
-      .eq(
-        "receiver_id",
-        currentUser.id
-      )
-      .eq(
-        "status",
-        "pending"
-      );
-
-
-  if(error){
-
-    console.error(
-      "Accept request error:",
-      error
-    );
-
-    alert(
-      "Could not accept request: " +
-      error.message
-    );
-
-    return;
-
-  }
-
-
-  alert(
-    "Connection accepted! 🎉"
-  );
-
-
-  await loadConnectionRequests();
+await loadPeople();
 
 }
 
 
 /* =========================================================
-REJECT REQUEST
+REJECT
 ========================================================= */
 
-async function rejectConnectionRequest(
-  requestId
+async function rejectConnectionRequest(requestId){
+
+if(!currentUser) return;
+
+if(
+!confirm(
+"Reject this connection request?"
+)
 ){
 
-  if(!currentUser){
-    return;
-  }
+return;
 
+}
 
-  if(
-    !confirm(
-      "Reject this connection request?"
-    )
-  ){
+const {error} =
+await supabaseClient
+.from("connection_requests")
+.update({
+status:"rejected"
+})
+.eq("id",requestId)
+.eq("receiver_id",currentUser.id)
+.eq("status","pending");
 
-    return;
+if(error){
 
-  }
+console.error(
+"Reject request error:",
+error
+);
 
+alert(
+"Could not reject request: " +
+error.message
+);
 
-  const {error} =
-    await supabaseClient
-      .from("connection_requests")
-      .update({
-        status:"rejected"
-      })
-      .eq(
-        "id",
-        requestId
-      )
-      .eq(
-        "receiver_id",
-        currentUser.id
-      )
-      .eq(
-        "status",
-        "pending"
-      );
+return;
 
+}
 
-  if(error){
+await loadConnectionRequests();
 
-    console.error(
-      "Reject request error:",
-      error
-    );
-
-    alert(
-      "Could not reject request: " +
-      error.message
-    );
-
-    return;
-
-  }
-
-
-  await loadConnectionRequests();
+await loadPeople();
 
 }
 
 
 /* =========================================================
-CANCEL SENT REQUEST
+CANCEL
 ========================================================= */
 
-async function cancelConnectionRequest(
-  requestId
+async function cancelConnectionRequest(requestId){
+
+if(!currentUser) return;
+
+if(
+!confirm(
+"Cancel this connection request?"
+)
 ){
 
-  if(!currentUser){
-    return;
-  }
+return;
 
+}
 
-  if(
-    !confirm(
-      "Cancel this connection request?"
-    )
-  ){
+const {error} =
+await supabaseClient
+.from("connection_requests")
+.delete()
+.eq("id",requestId)
+.eq("sender_id",currentUser.id);
 
-    return;
+if(error){
 
-  }
+console.error(
+"Cancel request error:",
+error
+);
 
+alert(
+"Could not cancel request: " +
+error.message
+);
 
-  const {error} =
-    await supabaseClient
-      .from("connection_requests")
-      .delete()
-      .eq(
-        "id",
-        requestId
-      )
-      .eq(
-        "sender_id",
-        currentUser.id
-      );
+return;
 
+}
 
-  if(error){
+await loadConnectionRequests();
 
-    console.error(
-      "Cancel request error:",
-      error
-    );
-
-    alert(
-      "Could not cancel request: " +
-      error.message
-    );
-
-    return;
-
-  }
-
-
-  await loadConnectionRequests();
+await loadPeople();
 
 }
 
@@ -3802,160 +3191,130 @@ async function cancelConnectionRequest(
 CONNECTIONS
 ========================================================= */
 
-async function renderConnections(
-  requests
-){
+async function renderConnections(requests){
 
-  const container =
-    document.getElementById(
-      "connectionsList"
-    );
+const container =
+document.getElementById("connectionsList");
 
+if(!requests.length){
 
-  if(!requests.length){
+container.innerHTML =
+'<div class="empty">No connections yet.</div>';
 
-    container.innerHTML =
-      '<div class="empty">No connections yet.</div>';
+const count =
+document.getElementById("connectionCount");
 
+if(count){
+count.textContent = "0";
+}
 
-    const count =
-      document.getElementById(
-        "connectionCount"
-      );
+return;
 
+}
 
-    if(count){
-      count.textContent = "0";
-    }
+const ids =
+requests.map(
+r =>
+r.sender_id === currentUser.id
+? r.receiver_id
+: r.sender_id
+);
 
+const uniqueIds =
+[...new Set(ids)];
 
-    return;
+const {data:profiles,error} =
+await supabaseClient
+.from("profiles")
+.select(
+"id,username,display_name,bio,avatar_url"
+)
+.in("id",uniqueIds);
 
-  }
+if(error){
 
+console.error(
+"Connection profile error:",
+error
+);
 
-  const ids =
-    requests.map(
-      r =>
-        r.sender_id === currentUser.id
-        ? r.receiver_id
-        : r.sender_id
-    );
+container.innerHTML =
+'<div class="empty">Unable to load connections.</div>';
 
+return;
 
-  const uniqueIds =
-    [...new Set(ids)];
+}
 
+const profileMap = {};
 
-  const {data:profiles,error} =
-    await supabaseClient
-      .from("profiles")
-      .select(
-        "id,username,display_name,bio,avatar_url"
-      )
-      .in(
-        "id",
-        uniqueIds
-      );
+(profiles || []).forEach(
+p => {
+profileMap[p.id] = p;
+}
+);
 
+container.innerHTML =
+uniqueIds.map(
+id => {
 
-  if(error){
+const user =
+profileMap[id];
 
-    console.error(
-      "Connection profile error:",
-      error
-    );
+const name =
+user?.display_name ||
+"ConnectSphere User";
 
-    container.innerHTML =
-      '<div class="empty">Unable to load connections.</div>';
+const username =
+user?.username ||
+"";
 
-    return;
+const letter =
+name.charAt(0).toUpperCase();
 
-  }
+return `
 
+<div class="connection-card">
 
-  const profileMap = {};
+<div class="user-row">
 
-  (profiles || []).forEach(
-    p => {
-      profileMap[p.id] = p;
-    }
-  );
+<div class="avatar">
+${escapeHTML(letter)}
+</div>
 
+<div class="user-info">
 
-  container.innerHTML =
-    uniqueIds
-      .map(
-        id => {
+<strong>
+${escapeHTML(name)}
+</strong>
 
-          const user =
-            profileMap[id];
+<span>
+@${escapeHTML(username)}
+</span>
 
+<span>
+Connected ✅
+</span>
 
-          const name =
-            user?.display_name ||
-            "ConnectSphere User";
+</div>
 
+</div>
 
-          const username =
-            user?.username ||
-            "";
+</div>
 
+`;
 
-          const letter =
-            name.charAt(0).toUpperCase() ||
-            "U";
+}
+).join("");
 
+const count =
+document.getElementById("connectionCount");
 
-          return `
+if(count){
 
-            <div class="connection-card">
+count.textContent =
+uniqueIds.length;
 
-              <div class="user-row">
-
-                <div class="avatar">
-                  ${escapeHTML(letter)}
-                </div>
-
-                <div class="user-info">
-
-                  <strong>
-                    ${escapeHTML(name)}
-                  </strong>
-
-                  <span>
-                    @${escapeHTML(username)}
-                  </span>
-
-                  <span>
-                    Connected ✅
-                  </span>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          `;
-
-        }
-      )
-      .join("");
-
-
-  const count =
-    document.getElementById(
-      "connectionCount"
-    );
-
-
-  if(count){
-
-    count.textContent =
-      uniqueIds.length;
-
-  }
+}
 
 }
 
@@ -3966,594 +3325,419 @@ SCHEDULES
 
 async function loadSchedules(){
 
-  if(!currentUser){
-    return;
-  }
+if(!currentUser) return;
 
+const {data,error} =
+await supabaseClient
+.from("schedules")
+.select("*")
+.eq("user_id",currentUser.id)
+.order("created_at",{ascending:false});
 
-  const {data,error} =
-    await supabaseClient
-      .from("schedules")
-      .select("*")
-      .eq(
-        "user_id",
-        currentUser.id
-      )
-      .order(
-        "created_at",
-        {ascending:false}
-      );
+if(error){
 
+console.error(error);
 
-  if(error){
+document
+.getElementById("scheduleList")
+.innerHTML =
+'<div class="empty">Unable to load schedules: ' +
+escapeHTML(error.message) +
+'</div>';
 
-    console.error(
-      "Schedule load error:",
-      error
-    );
+return;
 
-    document
-      .getElementById("scheduleList")
-      .innerHTML =
-      '<div class="empty">Unable to load schedules: ' +
-      escapeHTML(error.message) +
-      '</div>';
+}
 
-    return;
-
-  }
-
-
-  renderSchedules(
-    data || []
-  );
+renderSchedules(data || []);
 
 }
 
 
 function formatSchedule(s){
 
-  if(
-    s.schedule_type ===
-    "daily"
-  ){
+if(s.schedule_type === "daily"){
 
-    return (
-      "Every day" +
-      (
-        s.reminder_time
-        ? " at " +
-          formatTime(
-            s.reminder_time
-          )
-        : ""
-      )
-    );
+return (
+"Every day" +
+(
+s.reminder_time
+? " at " + formatTime(s.reminder_time)
+: ""
+)
+);
 
-  }
+}
 
+if(s.schedule_type === "weekly"){
 
-  if(
-    s.schedule_type ===
-    "weekly"
-  ){
+const days = [
+"Sunday",
+"Monday",
+"Tuesday",
+"Wednesday",
+"Thursday",
+"Friday",
+"Saturday"
+];
 
-    const days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ];
+return (
+"Every " +
+days[Number(s.day_of_week)] +
+(
+s.reminder_time
+? " at " + formatTime(s.reminder_time)
+: ""
+)
+);
 
+}
 
-    const day =
-      days[
-        Number(s.day_of_week)
-      ] ||
-      "selected day";
-
-
-    return (
-      "Every " +
-      day +
-      (
-        s.reminder_time
-        ? " at " +
-          formatTime(
-            s.reminder_time
-          )
-        : ""
-      )
-    );
-
-  }
-
-
-  return (
-    "One-time" +
-    (
-      s.reminder_date
-      ? " on " +
-        s.reminder_date
-      : ""
-    ) +
-    (
-      s.reminder_time
-      ? " at " +
-        formatTime(
-          s.reminder_time
-        )
-      : ""
-    )
-  );
+return (
+"One-time" +
+(
+s.reminder_date
+? " on " + s.reminder_date
+: ""
+) +
+(
+s.reminder_time
+? " at " + formatTime(s.reminder_time)
+: ""
+)
+);
 
 }
 
 
 function formatTime(t){
 
-  if(!t){
-    return "";
-  }
+if(!t) return "";
 
+const [h,m] =
+t.split(":").map(Number);
 
-  const parts =
-    String(t)
-      .split(":")
-      .map(Number);
+const d =
+new Date();
 
+d.setHours(h,m,0,0);
 
-  const h =
-    Number.isFinite(parts[0])
-    ? parts[0]
-    : 0;
-
-
-  const m =
-    Number.isFinite(parts[1])
-    ? parts[1]
-    : 0;
-
-
-  const d =
-    new Date();
-
-
-  d.setHours(
-    h,
-    m,
-    0,
-    0
-  );
-
-
-  return d.toLocaleTimeString(
-    [],
-    {
-      hour:"numeric",
-      minute:"2-digit"
-    }
-  );
+return d.toLocaleTimeString(
+[],
+{
+hour:"numeric",
+minute:"2-digit"
+}
+);
 
 }
 
 
 function renderSchedules(list){
 
-  const container =
-    document.getElementById(
-      "scheduleList"
-    );
+const container =
+document.getElementById("scheduleList");
 
+if(!list.length){
 
-  if(!list.length){
+container.innerHTML =
+'<div class="empty">No schedules yet. Tap + Add to create your first one.</div>';
 
-    container.innerHTML =
-      '<div class="empty">No schedules yet. Tap + Add to create your first one.</div>';
+updateScheduleProgress([]);
 
-    updateScheduleProgress([]);
+return;
 
-    return;
+}
 
-  }
+container.innerHTML =
+list.map(
+s => `
 
+<div class="schedule-item ${
+s.completed ? "completed" : ""
+}">
 
-  container.innerHTML =
-    list
-      .map(
-        s => `
+<div class="schedule-top">
 
-          <div class="schedule-item ${
-            s.completed
-            ? "completed"
-            : ""
-          }">
+<div>
 
-            <div class="schedule-top">
+<div class="schedule-title">
 
-              <div>
+${escapeHTML(s.title)}
 
-                <div class="schedule-title">
+<span class="badge">
+${escapeHTML(s.schedule_type)}
+</span>
 
-                  ${escapeHTML(
-                    s.title ||
-                    "Untitled schedule"
-                  )}
+</div>
 
-                  <span class="badge">
-                    ${escapeHTML(
-                      s.schedule_type ||
-                      "schedule"
-                    )}
-                  </span>
+<div class="schedule-meta">
 
-                </div>
+${escapeHTML(s.description || "")}
 
-                <div class="schedule-meta">
+${s.description ? "<br>" : ""}
 
-                  ${
-                    s.description
-                    ?
-                    escapeHTML(
-                      s.description
-                    ) +
-                    "<br>"
-                    :
-                    ""
-                  }
+${escapeHTML(formatSchedule(s))}
 
-                  ${escapeHTML(
-                    formatSchedule(s)
-                  )}
+</div>
 
-                </div>
+</div>
 
-              </div>
+<div>
+${s.completed ? "✅" : "⏰"}
+</div>
 
-              <div>
-                ${s.completed ? "✅" : "⏰"}
-              </div>
+</div>
 
-            </div>
+<div class="schedule-actions">
 
+${
+s.completed
 
-            <div class="schedule-actions">
+?
 
-              ${
-                s.completed
-                ?
+`<button
+class="secondary"
+onclick="setScheduleCompleted('${s.id}',false)"
+>
+Mark active
+</button>`
 
-                `<button
-                  class="secondary"
-                  onclick="setScheduleCompleted('${escapeJS(s.id)}',false)"
-                >
-                  Mark active
-                </button>`
+:
 
-                :
+`<button
+class="primary"
+onclick="setScheduleCompleted('${s.id}',true)"
+>
+Complete
+</button>`
+}
 
-                `<button
-                  class="primary"
-                  onclick="setScheduleCompleted('${escapeJS(s.id)}',true)"
-                >
-                  Complete
-                </button>`
-              }
+<button
+class="danger"
+onclick="deleteSchedule('${s.id}')"
+>
+Delete
+</button>
 
+</div>
 
-              <button
-                class="danger"
-                onclick="deleteSchedule('${escapeJS(s.id)}')"
-              >
-                Delete
-              </button>
+</div>
 
-            </div>
+`
+).join("");
 
-          </div>
-
-        `
-      )
-      .join("");
-
-
-  updateScheduleProgress(
-    list
-  );
+updateScheduleProgress(list);
 
 }
 
 
-function updateScheduleProgress(
-  list
-){
+function updateScheduleProgress(list){
 
-  const done =
-    list.filter(
-      x => x.completed
-    ).length;
+const done =
+list.filter(
+x => x.completed
+).length;
 
+const total =
+list.length;
 
-  const total =
-    list.length;
+const pct =
+total
+? Math.round(done / total * 100)
+: 0;
 
+document
+.getElementById("scheduleProgressText")
+.textContent =
+`${pct}% completed (${done}/${total})`;
 
-  const pct =
-    total
-    ? Math.round(
-        done / total * 100
-      )
-    : 0;
-
-
-  document
-    .getElementById(
-      "scheduleProgressText"
-    )
-    .textContent =
-    `${pct}% completed (${done}/${total})`;
-
-
-  document
-    .getElementById(
-      "scheduleProgressFill"
-    )
-    .style
-    .width =
-    pct + "%";
+document
+.getElementById("scheduleProgressFill")
+.style
+.width =
+pct + "%";
 
 }
 
 
 function openScheduleModal(){
 
-  document
-    .getElementById(
-      "scheduleTitle"
-    )
-    .value = "";
+document
+.getElementById("scheduleTitle")
+.value = "";
 
+document
+.getElementById("scheduleDescription")
+.value = "";
 
-  document
-    .getElementById(
-      "scheduleDescription"
-    )
-    .value = "";
+document
+.getElementById("scheduleType")
+.value = "daily";
 
+document
+.getElementById("scheduleTime")
+.value = "";
 
-  document
-    .getElementById(
-      "scheduleType"
-    )
-    .value = "daily";
+document
+.getElementById("scheduleDate")
+.value = "";
 
+document
+.getElementById("scheduleDay")
+.value =
+String(
+new Date().getDay()
+);
 
-  document
-    .getElementById(
-      "scheduleTime"
-    )
-    .value = "";
+updateScheduleFields();
 
-
-  document
-    .getElementById(
-      "scheduleDate"
-    )
-    .value = "";
-
-
-  document
-    .getElementById(
-      "scheduleDay"
-    )
-    .value =
-    String(
-      new Date().getDay()
-    );
-
-
-  updateScheduleFields();
-
-
-  document
-    .getElementById(
-      "scheduleModal"
-    )
-    .classList
-    .add("show");
+document
+.getElementById("scheduleModal")
+.classList
+.add("show");
 
 }
 
 
 function updateScheduleFields(){
 
-  const type =
-    document
-      .getElementById(
-        "scheduleType"
-      )
-      .value;
+const type =
+document
+.getElementById("scheduleType")
+.value;
 
+document
+.getElementById("weeklyField")
+.classList
+.toggle(
+"hidden",
+type !== "weekly"
+);
 
-  document
-    .getElementById(
-      "weeklyField"
-    )
-    .classList
-    .toggle(
-      "hidden",
-      type !== "weekly"
-    );
-
-
-  document
-    .getElementById(
-      "onceField"
-    )
-    .classList
-    .toggle(
-      "hidden",
-      type !== "once"
-    );
+document
+.getElementById("onceField")
+.classList
+.toggle(
+"hidden",
+type !== "once"
+);
 
 }
 
 
 async function saveSchedule(){
 
-  if(!currentUser){
+if(!currentUser){
 
-    alert(
-      "Please log in again."
-    );
+alert(
+"Please log in again."
+);
 
-    return;
+return;
 
-  }
+}
 
+const title =
+document
+.getElementById("scheduleTitle")
+.value
+.trim();
 
-  const title =
-    document
-      .getElementById(
-        "scheduleTitle"
-      )
-      .value
-      .trim();
+const description =
+document
+.getElementById("scheduleDescription")
+.value
+.trim();
 
+const type =
+document
+.getElementById("scheduleType")
+.value;
 
-  const description =
-    document
-      .getElementById(
-        "scheduleDescription"
-      )
-      .value
-      .trim();
+const time =
+document
+.getElementById("scheduleTime")
+.value ||
+null;
 
+if(!title){
 
-  const type =
-    document
-      .getElementById(
-        "scheduleType"
-      )
-      .value;
+alert(
+"Please enter a schedule title."
+);
 
+return;
 
-  const time =
-    document
-      .getElementById(
-        "scheduleTime"
-      )
-      .value ||
-      null;
+}
 
+let payload = {
 
-  if(!title){
+user_id:currentUser.id,
+title,
+description,
+schedule_type:type,
+reminder_time:time,
+reminder_date:null,
+day_of_week:null,
+completed:false
 
-    alert(
-      "Please enter a schedule title."
-    );
+};
 
-    return;
+if(type === "weekly"){
 
-  }
+payload.day_of_week =
+Number(
+document
+.getElementById("scheduleDay")
+.value
+);
 
+}
 
-  let payload = {
+if(type === "once"){
 
-    user_id:currentUser.id,
+const date =
+document
+.getElementById("scheduleDate")
+.value;
 
-    title,
+if(!date){
 
-    description,
+alert(
+"Please choose a date."
+);
 
-    schedule_type:type,
+return;
 
-    reminder_time:time,
+}
 
-    reminder_date:null,
+payload.reminder_date =
+date;
 
-    day_of_week:null,
+}
 
-    completed:false
+const {error} =
+await supabaseClient
+.from("schedules")
+.insert(payload);
 
-  };
+if(error){
 
+console.error(error);
 
-  if(type === "weekly"){
+alert(
+"Could not save schedule: " +
+error.message
+);
 
-    payload.day_of_week =
-      Number(
-        document
-          .getElementById(
-            "scheduleDay"
-          )
-          .value
-      );
+return;
 
-  }
+}
 
+closeModal("scheduleModal");
 
-  if(type === "once"){
-
-    const date =
-      document
-        .getElementById(
-          "scheduleDate"
-        )
-        .value;
-
-
-    if(!date){
-
-      alert(
-        "Please choose a date."
-      );
-
-      return;
-
-    }
-
-
-    payload.reminder_date =
-      date;
-
-  }
-
-
-  const {error} =
-    await supabaseClient
-      .from("schedules")
-      .insert(
-        payload
-      );
-
-
-  if(error){
-
-    console.error(
-      "Save schedule error:",
-      error
-    );
-
-    alert(
-      "Could not save schedule: " +
-      error.message
-    );
-
-    return;
-
-  }
-
-
-  closeModal(
-    "scheduleModal"
-  );
-
-
-  await loadSchedules();
+await loadSchedules();
 
 }
 
@@ -4562,628 +3746,502 @@ async function saveSchedule(){
 PUSH NOTIFICATIONS
 ========================================================= */
 
-function urlBase64ToUint8Array(
-  base64String
-){
+function urlBase64ToUint8Array(base64String){
 
-  const padding =
-    "=".repeat(
-      (
-        4 -
-        base64String.length % 4
-      ) % 4
-    );
+const padding =
+"=".repeat(
+(4 - base64String.length % 4) % 4
+);
 
+const base64 =
+(
+base64String + padding
+)
+.replace(/-/g,"+")
+.replace(/_/g,"/");
 
-  const base64 =
-    (
-      base64String +
-      padding
-    )
-      .replace(/-/g,"+")
-      .replace(/_/g,"/");
+const rawData =
+atob(base64);
 
-
-  const rawData =
-    atob(base64);
-
-
-  return Uint8Array.from(
-    [...rawData]
-      .map(
-        char =>
-          char.charCodeAt(0)
-      )
-  );
+return Uint8Array.from(
+[...rawData].map(
+char => char.charCodeAt(0)
+)
+);
 
 }
 
 
 async function getVapidPublicKey(){
 
-  try{
+try{
 
-    const response =
-      await fetch(
-        PUSH_FUNCTION_URL,
-        {
-          method:"GET",
-          headers:{
-            apikey:
-              SUPABASE_PUBLISHABLE_KEY
-          }
-        }
-      );
+const response =
+await fetch(
+PUSH_FUNCTION_URL,
+{
+method:"GET",
+headers:{
+apikey:SUPABASE_PUBLISHABLE_KEY
+}
+}
+);
 
+if(response.ok){
 
-    if(response.ok){
+const data =
+await response.json();
 
-      const data =
-        await response.json();
+if(
+data &&
+data.publicKey
+){
 
+return data.publicKey;
 
-      if(
-        data &&
-        data.publicKey
-      ){
+}
 
-        return data.publicKey;
+}
 
-      }
+}catch(error){
 
-    }
+console.warn(
+"Could not get VAPID key from function."
+);
 
-  }catch(error){
+}
 
-    console.warn(
-      "Could not get VAPID key from function.",
-      error
-    );
-
-  }
-
-
-  return VAPID_PUBLIC_KEY;
+return VAPID_PUBLIC_KEY;
 
 }
 
 
 async function getServiceWorkerRegistration(){
 
-  if(
-    !("serviceWorker" in navigator)
-  ){
-
-    throw new Error(
-      "Service workers are not supported."
-    );
-
-  }
-
-
-  return await navigator.serviceWorker.register(
-    "./sw.js",
-    {
-      scope:"./"
-    }
-  );
+return await navigator.serviceWorker.register(
+"./sw.js",
+{
+scope:"./"
+}
+);
 
 }
 
 
-async function savePushSubscription(
-  subscription
+async function savePushSubscription(subscription){
+
+if(!currentUser){
+
+throw new Error(
+"You must be logged in."
+);
+
+}
+
+const json =
+subscription.toJSON();
+
+if(
+!json.endpoint ||
+!json.keys ||
+!json.keys.p256dh ||
+!json.keys.auth
 ){
 
-  if(!currentUser){
+throw new Error(
+"Invalid push subscription."
+);
 
-    throw new Error(
-      "You must be logged in."
-    );
+}
 
-  }
+await supabaseClient
+.from("push_subscriptions")
+.delete()
+.eq("user_id",currentUser.id)
+.eq("endpoint",json.endpoint);
 
+const {error} =
+await supabaseClient
+.from("push_subscriptions")
+.insert({
 
-  const json =
-    subscription.toJSON();
+user_id:currentUser.id,
+endpoint:json.endpoint,
+p256dh:json.keys.p256dh,
+auth:json.keys.auth
 
+});
 
-  if(
-    !json.endpoint ||
-    !json.keys ||
-    !json.keys.p256dh ||
-    !json.keys.auth
-  ){
+if(error){
 
-    throw new Error(
-      "Invalid push subscription."
-    );
+console.error(
+"Subscription database error:",
+error
+);
 
-  }
+throw new Error(
+"Push subscription could not be saved: " +
+error.message
+);
 
+}
 
-  await supabaseClient
-    .from("push_subscriptions")
-    .delete()
-    .eq(
-      "user_id",
-      currentUser.id
-    )
-    .eq(
-      "endpoint",
-      json.endpoint
-    );
-
-
-  const {error} =
-    await supabaseClient
-      .from("push_subscriptions")
-      .insert({
-
-        user_id:
-          currentUser.id,
-
-        endpoint:
-          json.endpoint,
-
-        p256dh:
-          json.keys.p256dh,
-
-        auth:
-          json.keys.auth
-
-      });
-
-
-  if(error){
-
-    console.error(
-      "Subscription database error:",
-      error
-    );
-
-    throw new Error(
-      "Push subscription could not be saved: " +
-      error.message
-    );
-
-  }
-
-
-  localStorage.setItem(
-    "connectsphere_push_subscription",
-    JSON.stringify(json)
-  );
+localStorage.setItem(
+"connectsphere_push_subscription",
+JSON.stringify(json)
+);
 
 }
 
 
-async function removePushSubscriptionFromDatabase(
-  endpoint
-){
+async function removePushSubscriptionFromDatabase(endpoint){
 
-  if(
-    !currentUser ||
-    !endpoint
-  ){
+if(
+!currentUser ||
+!endpoint
+) return;
 
-    return;
+const {error} =
+await supabaseClient
+.from("push_subscriptions")
+.delete()
+.eq("user_id",currentUser.id)
+.eq("endpoint",endpoint);
 
-  }
+if(error){
 
+console.error(
+"Could not remove push subscription:",
+error
+);
 
-  const {error} =
-    await supabaseClient
-      .from("push_subscriptions")
-      .delete()
-      .eq(
-        "user_id",
-        currentUser.id
-      )
-      .eq(
-        "endpoint",
-        endpoint
-      );
-
-
-  if(error){
-
-    console.error(
-      "Could not remove push subscription:",
-      error
-    );
-
-  }
+}
 
 }
 
 
 async function enablePushNotifications(){
 
-  if(!currentUser){
+if(!currentUser){
 
-    throw new Error(
-      "Please log in first."
-    );
+throw new Error(
+"Please log in first."
+);
 
-  }
+}
 
+if(!("Notification" in window)){
 
-  if(!("Notification" in window)){
+throw new Error(
+"This browser does not support notifications."
+);
 
-    throw new Error(
-      "This browser does not support notifications."
-    );
+}
 
-  }
+if(!("serviceWorker" in navigator)){
 
+throw new Error(
+"Service workers are not supported."
+);
 
-  if(!("serviceWorker" in navigator)){
+}
 
-    throw new Error(
-      "Service workers are not supported."
-    );
+if(!("PushManager" in window)){
 
-  }
+throw new Error(
+"Push notifications are not supported."
+);
 
+}
 
-  if(!("PushManager" in window)){
+const status =
+document.getElementById(
+"notificationStatus"
+);
 
-    throw new Error(
-      "Push notifications are not supported."
-    );
+status.textContent =
+"Requesting notification permission...";
 
-  }
+const permission =
+await Notification.requestPermission();
 
+if(permission !== "granted"){
 
-  const status =
-    document.getElementById(
-      "notificationStatus"
-    );
+throw new Error(
+"Notification permission was not granted."
+);
 
+}
 
-  status.textContent =
-    "Requesting notification permission...";
+status.textContent =
+"Registering notification service...";
 
+const registration =
+await getServiceWorkerRegistration();
 
-  const permission =
-    await Notification.requestPermission();
+await navigator.serviceWorker.ready;
 
+const publicKey =
+await getVapidPublicKey();
 
-  if(permission !== "granted"){
+if(!publicKey){
 
-    throw new Error(
-      "Notification permission was not granted."
-    );
+throw new Error(
+"VAPID public key is missing."
+);
 
-  }
+}
 
+let subscription =
+await registration
+.pushManager
+.getSubscription();
 
-  status.textContent =
-    "Registering notification service...";
+if(!subscription){
 
+status.textContent =
+"Creating secure push subscription...";
 
-  const registration =
-    await getServiceWorkerRegistration();
+subscription =
+await registration
+.pushManager
+.subscribe({
 
+userVisibleOnly:true,
 
-  await navigator.serviceWorker.ready;
+applicationServerKey:
+urlBase64ToUint8Array(
+publicKey
+)
 
+});
 
-  const publicKey =
-    await getVapidPublicKey();
+}
 
+status.textContent =
+"Saving notification subscription...";
 
-  if(!publicKey){
+await savePushSubscription(subscription);
 
-    throw new Error(
-      "VAPID public key is missing."
-    );
+status.textContent =
+"Notifications are ON ✅";
 
-  }
+document
+.getElementById(
+"notificationSwitchText"
+)
+.textContent =
+"Notifications are ON.";
 
-
-  let subscription =
-    await registration
-      .pushManager
-      .getSubscription();
-
-
-  if(!subscription){
-
-    status.textContent =
-      "Creating secure push subscription...";
-
-
-    subscription =
-      await registration
-        .pushManager
-        .subscribe({
-
-          userVisibleOnly:true,
-
-          applicationServerKey:
-            urlBase64ToUint8Array(
-              publicKey
-            )
-
-        });
-
-  }
-
-
-  status.textContent =
-    "Saving notification subscription...";
-
-
-  await savePushSubscription(
-    subscription
-  );
-
-
-  status.textContent =
-    "Notifications are ON ✅";
-
-
-  document
-    .getElementById(
-      "notificationSwitchText"
-    )
-    .textContent =
-    "Notifications are ON.";
-
-
-  return subscription;
+return subscription;
 
 }
 
 
 async function disablePushNotifications(){
 
-  const status =
-    document.getElementById(
-      "notificationStatus"
-    );
+const status =
+document.getElementById(
+"notificationStatus"
+);
 
+try{
 
-  try{
+const registration =
+await getServiceWorkerRegistration();
 
-    if(
-      !("serviceWorker" in navigator)
-    ){
+const subscription =
+await registration
+.pushManager
+.getSubscription();
 
-      return;
+if(subscription){
 
-    }
+const endpoint =
+subscription.endpoint;
 
+await subscription.unsubscribe();
 
-    const registration =
-      await getServiceWorkerRegistration();
+await removePushSubscriptionFromDatabase(
+endpoint
+);
 
+}
 
-    const subscription =
-      await registration
-        .pushManager
-        .getSubscription();
+localStorage.removeItem(
+"connectsphere_push_subscription"
+);
 
+status.textContent =
+"Notifications are OFF.";
 
-    if(subscription){
+document
+.getElementById(
+"notificationSwitchText"
+)
+.textContent =
+"Notifications are OFF.";
 
-      const endpoint =
-        subscription.endpoint;
+}catch(error){
 
+console.error(
+"Disable notification error:",
+error
+);
 
-      await subscription.unsubscribe();
+throw error;
 
-
-      await removePushSubscriptionFromDatabase(
-        endpoint
-      );
-
-    }
-
-
-    localStorage.removeItem(
-      "connectsphere_push_subscription"
-    );
-
-
-    status.textContent =
-      "Notifications are OFF.";
-
-
-    document
-      .getElementById(
-        "notificationSwitchText"
-      )
-      .textContent =
-      "Notifications are OFF.";
-
-  }catch(error){
-
-    console.error(
-      "Disable notification error:",
-      error
-    );
-
-    throw error;
-
-  }
+}
 
 }
 
 
 async function togglePushNotifications(){
 
-  const toggle =
-    document.getElementById(
-      "notificationToggle"
-    );
+const toggle =
+document.getElementById(
+"notificationToggle"
+);
 
+const status =
+document.getElementById(
+"notificationStatus"
+);
 
-  const status =
-    document.getElementById(
-      "notificationStatus"
-    );
+toggle.disabled = true;
 
+try{
 
-  toggle.disabled = true;
+if(toggle.checked){
 
+await enablePushNotifications();
 
-  try{
+}else{
 
-    if(toggle.checked){
+await disablePushNotifications();
 
-      await enablePushNotifications();
+}
 
-    }else{
+}catch(error){
 
-      await disablePushNotifications();
+console.error(
+"Notification toggle error:",
+error
+);
 
-    }
+toggle.checked =
+!toggle.checked;
 
-  }catch(error){
+status.textContent =
+error.message ||
+"Unable to change notification setting.";
 
-    console.error(
-      "Notification toggle error:",
-      error
-    );
+}finally{
 
+toggle.disabled = false;
 
-    toggle.checked =
-      !toggle.checked;
-
-
-    status.textContent =
-      error.message ||
-      "Unable to change notification setting.";
-
-  }finally{
-
-    toggle.disabled = false;
-
-  }
+}
 
 }
 
 
 async function checkNotificationStatus(){
 
-  const toggle =
-    document.getElementById(
-      "notificationToggle"
-    );
+const toggle =
+document.getElementById(
+"notificationToggle"
+);
 
+const status =
+document.getElementById(
+"notificationStatus"
+);
 
-  const status =
-    document.getElementById(
-      "notificationStatus"
-    );
+const text =
+document.getElementById(
+"notificationSwitchText"
+);
 
+if(!toggle || !status) return;
 
-  const text =
-    document.getElementById(
-      "notificationSwitchText"
-    );
+if(!("Notification" in window)){
 
+status.textContent =
+"Notifications are not supported by this browser.";
 
-  if(
-    !toggle ||
-    !status ||
-    !text
-  ){
+return;
 
-    return;
+}
 
-  }
+if(
+Notification.permission === "denied"
+){
 
+toggle.checked = false;
 
-  if(!("Notification" in window)){
+status.textContent =
+"Notifications are blocked by your browser. Enable them in browser settings.";
 
-    toggle.checked = false;
+text.textContent =
+"Notifications are OFF.";
 
-    status.textContent =
-      "Notifications are not supported by this browser.";
+return;
 
-    text.textContent =
-      "Notifications are OFF.";
+}
 
-    return;
+try{
 
-  }
+if(!("serviceWorker" in navigator)){
 
+return;
 
-  if(
-    Notification.permission ===
-    "denied"
-  ){
+}
 
-    toggle.checked = false;
+const registration =
+await navigator.serviceWorker.register(
+"./sw.js",
+{
+scope:"./"
+}
+);
 
-    status.textContent =
-      "Notifications are blocked by your browser. Enable them in browser settings.";
+const subscription =
+await registration
+.pushManager
+.getSubscription();
 
-    text.textContent =
-      "Notifications are OFF.";
+if(subscription){
 
-    return;
+toggle.checked = true;
 
-  }
+status.textContent =
+"Notifications are ON ✅";
 
+text.textContent =
+"Notifications are ON.";
 
-  try{
+}else{
 
-    if(
-      !("serviceWorker" in navigator)
-    ){
+toggle.checked = false;
 
-      return;
+status.textContent =
+"Notifications are OFF.";
 
-    }
+text.textContent =
+"Notifications are OFF.";
 
+}
 
-    const registration =
-      await getServiceWorkerRegistration();
+}catch(error){
 
+console.warn(
+"Notification status check failed:",
+error
+);
 
-    const subscription =
-      await registration
-        .pushManager
-        .getSubscription();
+toggle.checked = false;
 
-
-    if(subscription){
-
-      toggle.checked = true;
-
-      status.textContent =
-        "Notifications are ON ✅";
-
-      text.textContent =
-        "Notifications are ON.";
-
-    }else{
-
-      toggle.checked = false;
-
-      status.textContent =
-        "Notifications are OFF.";
-
-      text.textContent =
-        "Notifications are OFF.";
-
-    }
-
-  }catch(error){
-
-    console.warn(
-      "Notification status check failed:",
-      error
-    );
-
-    toggle.checked = false;
-
-  }
+}
 
 }
 
@@ -5192,98 +4250,48 @@ async function checkNotificationStatus(){
 NAVIGATION
 ========================================================= */
 
-function showPage(
-  page,
-  button
-){
+function showPage(page,button){
 
-  document
-    .querySelectorAll(".page")
-    .forEach(
-      p =>
-        p.classList.remove(
-          "active"
-        )
-    );
+document
+.querySelectorAll(".page")
+.forEach(
+p =>
+p.classList.remove("active")
+);
 
+const target =
+document.getElementById(page);
 
-  const target =
-    document.getElementById(
-      page
-    );
+if(target){
 
+target.classList.add("active");
 
-  if(target){
+}
 
-    target.classList.add(
-      "active"
-    );
+document
+.querySelectorAll(".nav-btn")
+.forEach(
+b =>
+b.classList.remove("active")
+);
 
-  }
+if(button){
 
+button.classList.add("active");
 
-  document
-    .querySelectorAll(".nav-btn")
-    .forEach(
-      b =>
-        b.classList.remove(
-          "active"
-        )
-    );
+}
 
+if(page === "requests"){
 
-  if(button){
+loadConnectionRequests();
 
-    button.classList.add(
-      "active"
-    );
+}
 
-  }else{
+if(page === "home"){
 
-    const navButton =
-      document.querySelector(
-        `.nav-btn[onclick*="showPage('${page}'"]`
-      );
+loadPeople();
 
-    if(navButton){
-
-      navButton.classList.add(
-        "active"
-      );
-
-    }
-
-  }
-
-
-  if(
-    page ===
-    "requests"
-  ){
-
-    loadConnectionRequests();
-
-  }
-
-
-  if(
-    page ===
-    "home"
-  ){
-
-    loadPeople();
-
-  }
-
-
-  if(
-    page ===
-    "schedule"
-  ){
-
-    loadSchedules();
-
-  }
+}
 
 }
 
@@ -5292,104 +4300,68 @@ function showPage(
 SCHEDULE ACTIONS
 ========================================================= */
 
-async function setScheduleCompleted(
-  id,
-  value
-){
+async function setScheduleCompleted(id,value){
 
-  if(!currentUser){
-    return;
-  }
+if(!currentUser) return;
 
+const {error} =
+await supabaseClient
+.from("schedules")
+.update({
+completed:value
+})
+.eq("id",id)
+.eq("user_id",currentUser.id);
 
-  const {error} =
-    await supabaseClient
-      .from("schedules")
-      .update({
-        completed:value
-      })
-      .eq(
-        "id",
-        id
-      )
-      .eq(
-        "user_id",
-        currentUser.id
-      );
+if(error){
 
+alert(
+"Could not update schedule: " +
+error.message
+);
 
-  if(error){
+return;
 
-    console.error(
-      "Schedule update error:",
-      error
-    );
+}
 
-    alert(
-      "Could not update schedule: " +
-      error.message
-    );
-
-    return;
-
-  }
-
-
-  await loadSchedules();
+await loadSchedules();
 
 }
 
 
 async function deleteSchedule(id){
 
-  if(!currentUser){
-    return;
-  }
+if(!currentUser) return;
 
+if(
+!confirm(
+"Delete this schedule?"
+)
+){
 
-  if(
-    !confirm(
-      "Delete this schedule?"
-    )
-  ){
+return;
 
-    return;
+}
 
-  }
+const {error} =
+await supabaseClient
+.from("schedules")
+.delete()
+.eq("id",id)
+.eq("user_id",currentUser.id);
 
+if(error){
 
-  const {error} =
-    await supabaseClient
-      .from("schedules")
-      .delete()
-      .eq(
-        "id",
-        id
-      )
-      .eq(
-        "user_id",
-        currentUser.id
-      );
+alert(
+"Could not delete schedule: " +
+error.message
+);
 
+return;
 
-  if(error){
+}
 
-    console.error(
-      "Delete schedule error:",
-      error
-    );
-
-    alert(
-      "Could not delete schedule: " +
-      error.message
-    );
-
-    return;
-
-  }
-
-
-  await loadSchedules();
+await loadSchedules();
 
 }
 
@@ -5400,43 +4372,23 @@ LOGOUT
 
 async function logout(){
 
-  try{
+await supabaseClient
+.auth
+.signOut();
 
-    await supabaseClient
-      .auth
-      .signOut();
+currentUser = null;
+currentProfile = null;
+relationshipMap.clear();
 
-  }catch(error){
+document
+.getElementById("app")
+.classList
+.add("hidden");
 
-    console.error(
-      "Logout error:",
-      error
-    );
-
-  }
-
-
-  currentUser = null;
-
-  currentProfile = null;
-
-
-  updateRequestBadge(0);
-
-
-  document
-    .getElementById("app")
-    .classList
-    .add("hidden");
-
-
-  document
-    .getElementById("authScreen")
-    .classList
-    .remove("hidden");
-
-
-  clearMessages();
+document
+.getElementById("authScreen")
+.classList
+.remove("hidden");
 
 }
 
@@ -5447,51 +4399,16 @@ MODALS
 
 function closeModal(id){
 
-  const modal =
-    document.getElementById(id);
+const modal =
+document.getElementById(id);
 
+if(modal){
 
-  if(modal){
-
-    modal.classList.remove(
-      "show"
-    );
-
-  }
+modal.classList.remove("show");
 
 }
 
-
-/*
-  Close modal when clicking
-  outside the modal box.
-*/
-
-document
-  .querySelectorAll(".modal")
-  .forEach(
-    modal => {
-
-      modal.addEventListener(
-        "click",
-        event => {
-
-          if(
-            event.target ===
-            modal
-          ){
-
-            modal.classList.remove(
-              "show"
-            );
-
-          }
-
-        }
-      );
-
-    }
-  );
+}
 
 
 /* =========================================================
@@ -5500,134 +4417,85 @@ MESSAGES
 
 function showError(message){
 
-  const box =
-    document.getElementById(
-      "authError"
-    );
+const box =
+document.getElementById(
+"authError"
+);
 
+box.textContent =
+message;
 
-  box.textContent =
-    message;
+box.style.display =
+"block";
 
-
-  box.style.display =
-    "block";
-
-
-  document
-    .getElementById(
-      "authSuccess"
-    )
-    .style
-    .display =
-    "none";
+document
+.getElementById(
+"authSuccess"
+)
+.style
+.display =
+"none";
 
 }
 
 
 function showSuccess(message){
 
-  const box =
-    document.getElementById(
-      "authSuccess"
-    );
+const box =
+document.getElementById(
+"authSuccess"
+);
 
+box.textContent =
+message;
 
-  box.textContent =
-    message;
+box.style.display =
+"block";
 
-
-  box.style.display =
-    "block";
-
-
-  document
-    .getElementById(
-      "authError"
-    )
-    .style
-    .display =
-    "none";
+document
+.getElementById(
+"authError"
+)
+.style
+.display =
+"none";
 
 }
 
 
 function clearMessages(){
 
-  document
-    .getElementById(
-      "authError"
-    )
-    .style
-    .display =
-    "none";
+document
+.getElementById(
+"authError"
+)
+.style
+.display =
+"none";
 
-
-  document
-    .getElementById(
-      "authSuccess"
-    )
-    .style
-    .display =
-    "none";
+document
+.getElementById(
+"authSuccess"
+)
+.style
+.display =
+"none";
 
 }
 
 
 /* =========================================================
-SECURITY / HTML ESCAPING
+SECURITY
 ========================================================= */
 
 function escapeHTML(value){
 
-  return String(
-    value ?? ""
-  )
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-
-}
-
-
-function escapeJS(value){
-
-  return String(
-    value ?? ""
-  )
-    .replaceAll(
-      "\\",
-      "\\\\"
-    )
-    .replaceAll(
-      "'",
-      "\\'"
-    )
-    .replaceAll(
-      "\n",
-      "\\n"
-    )
-    .replaceAll(
-      "\r",
-      "\\r"
-    );
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
@@ -5638,178 +4506,55 @@ START APP
 
 async function startApp(){
 
-  if(appStarting){
-    return;
-  }
+const {data} =
+await supabaseClient
+.auth
+.getSession();
 
+if(data.session){
 
-  appStarting = true;
+currentUser =
+data.session.user;
 
+await loadProfile();
 
-  try{
+}else{
 
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .auth
-        .getSession();
+document
+.getElementById("authScreen")
+.classList
+.remove("hidden");
 
-
-    if(error){
-
-      console.error(
-        "Session error:",
-        error
-      );
-
-      return;
-
-    }
-
-
-    if(data.session){
-
-      currentUser =
-        data.session.user;
-
-
-      await loadProfile();
-
-    }else{
-
-      document
-        .getElementById(
-          "authScreen"
-        )
-        .classList
-        .remove("hidden");
-
-
-      document
-        .getElementById(
-          "app"
-        )
-        .classList
-        .add("hidden");
-
-    }
-
-  }catch(error){
-
-    console.error(
-      "Startup error:",
-      error
-    );
-
-    showError(
-      "Unable to start ConnectSphere. Please refresh the page."
-    );
-
-  }finally{
-
-    appStarting = false;
-
-  }
+}
 
 }
 
 
-/* =========================================================
-AUTH STATE LISTENER
-========================================================= */
-
 supabaseClient
-  .auth
-  .onAuthStateChange(
-    async(
-      event,
-      session
-    ) => {
+.auth
+.onAuthStateChange(
+async(event,session) => {
 
-      console.log(
-        "Auth event:",
-        event
-      );
+if(event === "SIGNED_OUT"){
 
+currentUser = null;
+currentProfile = null;
+relationshipMap.clear();
 
-      if(
-        event ===
-        "SIGNED_OUT"
-      ){
+document
+.getElementById("app")
+.classList
+.add("hidden");
 
-        currentUser = null;
+document
+.getElementById("authScreen")
+.classList
+.remove("hidden");
 
-        currentProfile = null;
+}
 
-        updateRequestBadge(0);
-
-
-        document
-          .getElementById(
-            "app"
-          )
-          .classList
-          .add("hidden");
-
-
-        document
-          .getElementById(
-            "authScreen"
-          )
-          .classList
-          .remove("hidden");
-
-
-        return;
-
-      }
-
-
-      if(
-        (
-          event ===
-          "SIGNED_IN"
-          ||
-          event ===
-          "INITIAL_SESSION"
-          ||
-          event ===
-          "TOKEN_REFRESHED"
-        )
-        &&
-        session?.user
-      ){
-
-        /*
-          Avoid unnecessary duplicate profile
-          loading when the initial session is
-          already being handled by startApp().
-        */
-
-        if(
-          !currentUser ||
-          currentUser.id !==
-          session.user.id
-        ){
-
-          currentUser =
-            session.user;
-
-          await loadProfile();
-
-        }
-
-      }
-
-    }
-  );
-
-
-/* =========================================================
-START
-========================================================= */
+}
+);
 
 startApp();
 
