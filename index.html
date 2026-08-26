@@ -1,54 +1,477 @@
 <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#5b4bdb"><title>ConnectSphere</title><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><style>
-*{box-sizing:border-box}body{margin:0;font:15px Arial;background:#f5f5fb;color:#171724}button,input,textarea,select{font:inherit}button{border:0;cursor:pointer;border-radius:10px;padding:9px 13px}.primary{background:#5b4bdb;color:#fff}.secondary{background:#eeeef5}.danger{background:#ffe7e7;color:#c62828}.success{background:#e6f7e9;color:#287a35}.hide{display:none!important}.app{max-width:1100px;min-height:100vh;margin:auto;background:#fff}header{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid #eee;position:sticky;top:0;background:#fff;z-index:5}.logo{font-size:23px;font-weight:800;color:#5b4bdb}main{padding:18px 18px 90px}.page{display:none}.page.on{display:block}h1{margin:0 0 7px}.sub{color:#777;margin:0 0 18px}.card{background:#fff;border:1px solid #eee;border-radius:16px;padding:15px;margin:10px 0;box-shadow:0 2px 10px #00000008}.row{display:flex;align-items:center;gap:11px}.info{flex:1;min-width:0}.info b{display:block}.info small{display:block;color:#777;margin-top:3px}.avatar{width:46px;height:46px;border-radius:50%;background:#5b4bdb;color:#fff;display:grid;place-items:center;font-weight:700;flex:none}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#22c55e;margin-left:5px}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.empty{text-align:center;color:#888;padding:30px 10px}.stats{display:flex;justify-content:center;gap:45px;margin:20px}.stat{text-align:center;cursor:pointer}.stat b{display:block;font-size:21px}.stat small{color:#777}.search{width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;outline:0;margin-bottom:10px}.setting{display:flex;justify-content:space-between;align-items:center;padding:10px 0}.setting small{display:block;color:#777;margin-top:4px}.switch{width:50px;height:28px;position:relative}.switch input{opacity:0}.switch i{position:absolute;inset:0;background:#ccc;border-radius:20px}.switch i:before{content:"";position:absolute;width:22px;height:22px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}.switch input:checked+i{background:#5b4bdb}.switch input:checked+i:before{transform:translateX(22px)}.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(1100px,100%);height:70px;background:#fff;border-top:1px solid #eee;display:flex;justify-content:space-around;z-index:10}.nav button{background:none;color:#777;min-width:60px;position:relative;font-size:11px}.nav button.on{background:#f0effd;color:#5b4bdb;font-weight:700}.nav em{display:block;font-style:normal;font-size:21px}.badge,.unread{background:#e53935;color:#fff;border-radius:20px;font-size:10px;font-weight:700;padding:3px 6px}.badge{position:absolute;top:5px;right:8px}.chat{height:calc(100vh - 155px);display:grid;grid-template-columns:280px 1fr;gap:12px}.members,.window{border:1px solid #eee;border-radius:16px;overflow:hidden;min-height:0}.members{overflow:auto}.members h3{padding:14px;margin:0;border-bottom:1px solid #eee}.member{display:flex;gap:9px;align-items:center;padding:11px;border-bottom:1px solid #f1f1f1;cursor:pointer}.member.sel{background:#f1efff}.member .info{min-width:0}.member .last{font-size:12px;color:#777;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.unread{margin-left:5px}.window{display:flex;flex-direction:column;background:#fafaff}.head{padding:10px 13px;background:#fff;border-bottom:1px solid #eee;display:flex;align-items:center;gap:10px}.msgs{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:7px}.bubbleRow{display:flex}.bubbleRow.mine{justify-content:flex-end}.bubble{max-width:78%;width:max-content;padding:9px 11px;border-radius:15px;white-space:pre-wrap;word-break:break-word}.mine .bubble{background:#5b4bdb;color:#fff;border-bottom-right-radius:4px}.theirs .bubble{background:#fff;border:1px solid #e8e8ee;border-bottom-left-radius:4px}.time{font-size:9px;opacity:.65;text-align:right;margin-top:4px}.tools{margin-top:4px}.tools button{padding:2px 6px;background:#ffffffdd;font-size:10px}.theirs .tools button{background:#eeeef5}.reacts{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}.reacts button{padding:3px 7px;background:#fff;border:1px solid #ddd;font-size:11px}.send{display:flex;gap:8px;padding:10px;background:#fff;border-top:1px solid #eee}.send textarea{flex:1;min-height:44px;max-height:120px;resize:none;padding:11px;border:1px solid #ddd;border-radius:13px;outline:0}.send button{height:44px}.modal{position:fixed;inset:0;background:#0007;display:none;align-items:center;justify-content:center;padding:15px;z-index:20}.modal.on{display:flex}.box{background:#fff;border-radius:17px;padding:18px;width:min(450px,100%);max-height:90vh;overflow:auto}.box input,.box textarea,.box select{width:100%;padding:11px;border:1px solid #ddd;border-radius:10px;margin:5px 0}.auth{min-height:100vh;display:grid;place-items:center;padding:20px;background:#f5f5fb}.auth .box{box-shadow:0 8px 30px #0001}.auth h1{text-align:center;color:#5b4bdb}.auth button{width:100%;margin-top:7px}.err{color:#c62828;background:#ffecec;padding:9px;border-radius:9px;margin:7px 0}.schedule{border:1px solid #eee;border-radius:14px;padding:12px;margin:8px 0}.progress{height:9px;background:#eee;border-radius:10px;overflow:hidden}.progress i{display:block;height:100%;background:#5b4bdb;width:0}@media(max-width:750px){main{padding:14px 12px 88px}.chat{grid-template-columns:1fr;height:calc(100vh - 145px)}.members{max-height:145px}.bubble{max-width:88%}.nav button{min-width:50px}.logo{font-size:21px}}
+*{box-sizing:border-box}body{margin:0;font:15px Arial;background:#f5f5fb;color:#171724}button,input,textarea,select{font:inherit}button{border:0;cursor:pointer;border-radius:10px;padding:9px 13px}.primary{background:#5b4bdb;color:#fff}.secondary{background:#eeeef5}.danger{background:#ffe7e7;color:#c62828}.success{background:#e6f7e9;color:#287a35}.hide{display:none!important}.app{max-width:1100px;min-height:100vh;margin:auto;background:#fff}header{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid #eee;position:sticky;top:0;background:#fff;z-index:5}.logo{font-size:23px;font-weight:800;color:#5b4bdb}main{padding:18px 18px 90px}.page{display:none}.page.on{display:block}h1{margin:0 0 7px}.sub{color:#777;margin:0 0 18px}.card{background:#fff;border:1px solid #eee;border-radius:16px;padding:15px;margin:10px 0;box-shadow:0 2px 10px #00000008}.row{display:flex;align-items:center;gap:11px}.info{flex:1;min-width:0}.info b{display:block}.info small{display:block;color:#777;margin-top:3px}.avatar{width:46px;height:46px;border-radius:50%;background:#5b4bdb;color:#fff;display:grid;place-items:center;font-weight:700;flex:none}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#22c55e;margin-left:5px}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.empty{text-align:center;color:#888;padding:30px 10px}.stats{display:flex;justify-content:center;gap:45px;margin:20px}.stat{text-align:center;cursor:pointer}.stat b{display:block;font-size:21px}.stat small{color:#777}.search{width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;outline:0;margin-bottom:10px}.setting{display:flex;justify-content:space-between;align-items:center;padding:10px 0}.setting small{display:block;color:#777;margin-top:4px}.switch{width:50px;height:28px;position:relative;display:block}.switch input{opacity:0;width:0;height:0}.switch i{position:absolute;inset:0;background:#ccc;border-radius:20px}.switch i:before{content:"";position:absolute;width:22px;height:22px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}.switch input:checked+i{background:#5b4bdb}.switch input:checked+i:before{transform:translateX(22px)}.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(1100px,100%);height:70px;background:#fff;border-top:1px solid #eee;display:flex;justify-content:space-around;z-index:10}.nav button{background:none;color:#777;min-width:60px;position:relative;font-size:11px}.nav button.on{background:#f0effd;color:#5b4bdb;font-weight:700}.nav em{display:block;font-style:normal;font-size:21px}.badge,.unread{background:#e53935;color:#fff;border-radius:20px;font-size:10px;font-weight:700;padding:3px 6px}.badge{position:absolute;top:5px;right:8px}.chat{height:calc(100vh - 155px);display:grid;grid-template-columns:280px 1fr;gap:12px}.members,.window{border:1px solid #eee;border-radius:16px;overflow:hidden;min-height:0}.members{overflow:auto}.members h3{padding:14px;margin:0;border-bottom:1px solid #eee}.member{display:flex;gap:9px;align-items:center;padding:11px;border-bottom:1px solid #f1f1f1;cursor:pointer}.member.sel{background:#f1efff}.member .info{min-width:0}.member .last{font-size:12px;color:#777;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.unread{margin-left:5px}.window{display:flex;flex-direction:column;background:#fafaff}.head{padding:10px 13px;background:#fff;border-bottom:1px solid #eee;display:flex;align-items:center;gap:10px}.msgs{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:7px}.bubbleRow{display:flex}.bubbleRow.mine{justify-content:flex-end}.bubble{max-width:78%;width:max-content;padding:8px 10px;border-radius:15px;white-space:pre-wrap;word-break:break-word}.mine .bubble{background:#5b4bdb;color:#fff;border-bottom-right-radius:4px}.theirs .bubble{background:#fff;border:1px solid #e8e8ee;border-bottom-left-radius:4px}.time{font-size:9px;opacity:.65;text-align:right;margin-top:3px}.tools{margin-top:3px}.tools button{padding:2px 6px;background:#ffffffdd;font-size:10px}.theirs .tools button{background:#eeeef5}.reacts{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}.reacts button{padding:3px 7px;background:#fff;border:1px solid #ddd;font-size:11px}.send{display:flex;gap:8px;padding:10px;background:#fff;border-top:1px solid #eee}.send textarea{flex:1;min-height:44px;max-height:120px;resize:none;padding:11px;border:1px solid #ddd;border-radius:13px;outline:0}.send button{height:44px}.modal{position:fixed;inset:0;background:#0007;display:none;align-items:center;justify-content:center;padding:15px;z-index:20}.modal.on{display:flex}.box{background:#fff;border-radius:17px;padding:18px;width:min(450px,100%);max-height:90vh;overflow:auto}.box input,.box textarea,.box select{width:100%;padding:11px;border:1px solid #ddd;border-radius:10px;margin:5px 0}.auth{min-height:100vh;display:grid;place-items:center;padding:20px;background:#f5f5fb}.auth .box{box-shadow:0 8px 30px #0001}.auth h1{text-align:center;color:#5b4bdb}.auth button{width:100%;margin-top:7px}.err{color:#c62828;background:#ffecec;padding:9px;border-radius:9px;margin:7px 0}.schedule{border:1px solid #eee;border-radius:14px;padding:12px;margin:8px 0}.progress{height:9px;background:#eee;border-radius:10px;overflow:hidden}.progress i{display:block;height:100%;background:#5b4bdb;width:0}@media(max-width:750px){main{padding:14px 12px 88px}.chat{grid-template-columns:1fr;height:calc(100vh - 145px)}.members{max-height:145px}.bubble{max-width:88%}.nav button{min-width:50px}.logo{font-size:21px}.head{position:sticky;top:0}.msgs{padding:10px}.bubble{font-size:14px}}
 </style></head><body>
+
 <div id="auth" class="auth"><div class="box"><h1>ConnectSphere</h1><p id="authText">Sign in to continue</p><div id="authErr"></div><input id="email" type="email" placeholder="Email"><input id="pass" type="password" placeholder="Password"><input id="name" class="hide" placeholder="Display name"><input id="username" class="hide" placeholder="Username"><button class="primary" onclick="auth()" id="authBtn">Sign in</button><button class="secondary" onclick="mode()" id="modeBtn">Create account</button></div></div>
+
 <div id="app" class="app hide"><header><div class="logo">ConnectSphere</div><button class="secondary" onclick="page('settings')">⚙️</button></header><main>
+
 <section id="home" class="page on"><h1>Welcome 👋</h1><p class="sub">New people on ConnectSphere.</p><div id="suggestions"></div></section>
+
 <section id="search" class="page"><h1>Search</h1><p class="sub">Find ConnectSphere users.</p><input class="search" id="searchInput" placeholder="Search username or name" oninput="searchUsers()"><div id="searchResults"></div></section>
+
 <section id="requests" class="page"><h1>Requests</h1><p class="sub">Manage requests and connections.</p><h3>Incoming</h3><div id="incoming"></div><h3>Sent</h3><div id="sent"></div><h3 id="connTitle">Connections</h3><div id="connections"></div></section>
-<section id="chats" class="page"><h1>Messages 💬</h1><p class="sub">Private conversations with your connections.</p><div class="chat"><div class="members"><h3>Members</h3><div id="members"></div></div><div class="window"><div class="head"><button class="secondary" onclick="closeChat()">←</button><div id="chatAv" class="avatar">?</div><div class="info"><b id="chatName">Select a connection</b><small id="chatUser">Choose someone to chat.</small></div><button class="danger" onclick="deleteChat()">🗑️</button></div><div id="msgs" class="msgs"><div class="empty">Select a connection to start chatting.</div></div><div class="send"><textarea id="input" maxlength="2000" placeholder="Type a message..." disabled onkeydown="keydown(event)"></textarea><button class="primary" id="send" disabled onclick="send()">Send</button></div></div></div></section>
+
+<section id="chats" class="page"><h1>Messages 💬 <span id="chatTotal" class="unread hide">0</span></h1><p class="sub">Private conversations with your connections.</p><div class="chat"><div class="members"><h3>Members</h3><div id="members"></div></div><div class="window"><div class="head"><button class="secondary" onclick="closeChat()">←</button><div id="chatAv" class="avatar">?</div><div class="info"><b id="chatName">Select a connection</b><small id="chatUser">Choose someone to chat.</small></div><button class="danger" onclick="deleteChat()">🗑️</button></div><div id="msgs" class="msgs"><div class="empty">Select a connection to start chatting.</div></div><div class="send"><textarea id="input" maxlength="2000" placeholder="Type a message..." disabled onkeydown="keydown(event)"></textarea><button class="primary" id="send" disabled onclick="send()">Send</button></div></div></div></section>
+
 <section id="schedule" class="page"><h1>My Schedule 📅</h1><p class="sub">Daily, weekly and one-time plans.</p><div class="card"><button class="primary" onclick="addSchedule()">+ Add</button><p id="prog">0% completed</p><div class="progress"><i id="fill"></i></div></div><div id="schedules"></div></section>
+
 <section id="profile" class="page"><div class="card" style="text-align:center"><div id="pAv" class="avatar" style="margin:auto;width:86px;height:86px;font-size:28px">?</div><h2 id="pName">Your Name</h2><p id="pUser">@username</p><div class="stats"><div class="stat" onclick="connections()"><b id="count">0</b><small>Connections</small></div><div class="stat"><b id="reqCount">0</b><small>Requests</small></div></div><button class="primary" onclick="editProfile()">Edit Profile</button></div><div class="card"><h3>About</h3><p id="bio">Your bio will appear here.</p></div></section>
-<section id="settings" class="page"><h1>Settings</h1><p class="sub">Control your account.</p><div class="card"><div class="setting"><div><b>Private account</b><small>Require requests before connecting.</small></div><label class="switch"><input id="private" type="checkbox"><i></i></label></div><div class="setting"><div><b>Show online status</b><small>Let connections see your green online dot.</small></div><label class="switch"><input id="online" type="checkbox" checked><i></i></label></div></div><div class="card"><h3>Blocked Users 🚫</h3><p class="sub">Unblock someone to allow a new request again.</p><div id="blocked"></div></div><div class="card"><button class="danger" onclick="logout()">Log out</button></div></section>
-</main><nav class="nav"><button data-p="home" class="on" onclick="page('home')"><em>🏠</em>Home</button><button data-p="search" onclick="page('search')"><em>🔎</em>Search</button><button data-p="requests" onclick="page('requests')"><em>👥</em><i id="rb" class="badge hide">0</i>Requests</button><button data-p="chats" onclick="page('chats')"><em>💬</em><i id="mb" class="badge hide">0</i>Chats</button><button data-p="schedule" onclick="page('schedule')"><em>📅</em>Schedule</button><button data-p="profile" onclick="page('profile')"><em>👤</em>Profile</button></nav></div>
+
+<section id="settings" class="page"><h1>Settings</h1><p class="sub">Control your account.</p><div class="card">
+<div class="setting"><div><b>Private account</b><small id="privateText">Require approval before someone becomes your connection.</small></div><label class="switch"><input id="private" type="checkbox"><i></i></label></div>
+<div class="setting"><div><b>Show online status</b><small>Let connections see your green online dot.</small></div><label class="switch"><input id="online" type="checkbox"><i></i></label></div>
+</div>
+<div class="card"><h3>Blocked Users 🚫</h3><p class="sub">Unblock someone to allow a new request again.</p><div id="blocked"></div></div>
+<div class="card"><button class="danger" onclick="logout()">Log out</button></div></section>
+
+</main><nav class="nav">
+<button data-p="home" class="on" onclick="page('home')"><em>🏠</em>Home</button>
+<button data-p="search" onclick="page('search')"><em>🔎</em>Search</button>
+<button data-p="requests" onclick="page('requests')"><em>👥</em><i id="rb" class="badge hide">0</i>Requests</button>
+<button data-p="chats" onclick="page('chats')"><em>💬</em><i id="mb" class="badge hide">0</i>Chats</button>
+<button data-p="schedule" onclick="page('schedule')"><em>📅</em>Schedule</button>
+<button data-p="profile" onclick="page('profile')"><em>👤</em>Profile</button>
+</nav></div>
+
 <div id="modal" class="modal"><div class="box" id="modalBox"></div></div>
+
 <script>
-const URL="https://hwjojlqhzeqtfcxmfrjk.supabase.co",KEY="sb_publishable_-GofAlZERkBVXbEOQpF3Rg_w0mGMaA4",db=supabase.createClient(URL,KEY);let me=null,profile=null,sel=null,chan=null,pres=null,badgeTimer=null,onlineUsers=new Set,searchTimer=null,loginMode=false;const $=id=>document.getElementById(id),esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c])),attr=x=>String(x??'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-const key=(k,id='')=>`cs_${k}_${me?.id||'guest'}${id?'_'+id:''}`,blocked=()=>{try{return JSON.parse(localStorage.getItem(key('blocked'))||'[]')}catch{return[]}},isBlocked=id=>blocked().includes(id),saveBlocked=a=>localStorage.setItem(key('blocked'),JSON.stringify([...new Set(a)])),readAt=id=>localStorage.getItem(key('read',id)),setRead=id=>{localStorage.setItem(key('read',id),new Date().toISOString());badges()},setting=(k,d)=>localStorage.getItem(key(k))===null?d:localStorage.getItem(key(k))==='1',setSetting=(k,v)=>localStorage.setItem(key(k),v?'1':'0');
-function page(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));$(p)?.classList.add('on');document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('on',x.dataset.p===p));if(p==='home')people();if(p==='requests')requests();if(p==='chats'){members();if(sel){setRead(sel.id);messages()}}if(p==='schedule')schedules();if(p==='settings'){loadSettings();blockedUI()}}function connections(){page('requests');setTimeout(()=>document.getElementById('connTitle')?.scrollIntoView({behavior:'smooth'}),50)}
-function mode(){loginMode=!loginMode;$('authText').textContent=loginMode?'Create your account':'Sign in to continue';$('authBtn').textContent=loginMode?'Create account':'Sign in';$('modeBtn').textContent=loginMode?'Back to sign in':'Create account';$('name').classList.toggle('hide',!loginMode);$('username').classList.toggle('hide',!loginMode);$('authErr').innerHTML=''}
-async function auth(){const email=$('email').value.trim(),password=$('pass').value;if(!email||!password)return $('authErr').innerHTML='<div class="err">Enter email and password.</div>';let r;if(loginMode)r=await db.auth.signUp({email,password,options:{data:{display_name:$('name').value.trim(),username:$('username').value.trim().toLowerCase()}}});else r=await db.auth.signInWithPassword({email,password});if(r.error)return $('authErr').innerHTML=`<div class="err">${esc(r.error.message)}</div>`;if(loginMode&&!r.data.session)return $('authErr').innerHTML='<div>Check your email to confirm your account.</div>';if(r.data.user){me=r.data.user;await start()}}
-async function start(){let r=await db.from('profiles').select('*').eq('id',me.id).maybeSingle();if(r.error)return alert(r.error.message);if(!r.data){let m=me.user_metadata||{},u=m.username||'user_'+me.id.replaceAll('-','').slice(0,8),n=m.display_name||me.email?.split('@')[0]||'User';r=await db.from('profiles').insert({id:me.id,username:u,display_name:n,bio:'',avatar_url:null}).select().single();if(r.error)return alert(r.error.message)}profile=r.data;$('auth').classList.add('hide');$('app').classList.remove('hide');ui();loadSettings();await Promise.all([people(),requests(),members(),schedules()]);blockedUI();presence();realtime();badges();if(badgeTimer)clearInterval(badgeTimer);badgeTimer=setInterval(async()=>{await badges();if(sel&&$('chats').classList.contains('on'))await messages()},4000)}
-function ui(){let n=profile.display_name||'User',u=profile.username||'',b=profile.bio||'';['pName'].forEach(id=>$(id).textContent=n);$('pUser').textContent='@'+u;$('bio').textContent=b;$('pAv').textContent=n[0]?.toUpperCase()||'U'}
-async function status(id){let r=await db.from('connection_requests').select('sender_id,receiver_id,status,created_at').or(`and(sender_id.eq.${me.id},receiver_id.eq.${id}),and(sender_id.eq.${id},receiver_id.eq.${me.id})`).order('created_at',{ascending:false}).limit(1);if(r.error||!r.data?.length)return'none';let x=r.data[0];return x.status==='accepted'?'connected':x.sender_id===me.id?'sent':'incoming'}
-async function profiles(ids){if(!ids.length)return{};let r=await db.from('profiles').select('id,username,display_name,bio,avatar_url').in('id',ids);return Object.fromEntries((r.data||[]).map(x=>[x.id,x]))}
-function onlineDot(id){return onlineUsers.has(id)?'<span class="dot" title="Online"></span>':''}
-async function people(){if(!me)return;let r=await db.from('profiles').select('id,username,display_name,bio').neq('id',me.id).limit(100);if(r.error)return $('suggestions').innerHTML='<div class="empty">Unable to load people.</div>';let a=[];for(let u of r.data||[])if(!isBlocked(u.id)&&await status(u.id)==='none')a.push(u);$('suggestions').innerHTML=a.length?(await Promise.all(a.map(card))).join(''):'<div class="empty">No new people right now.</div>'}
-async function card(u){let n=u.display_name||'User';return `<div class="card"><div class="row"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}${onlineDot(u.id)}</b><small>@${esc(u.username||'')}</small><small>${esc(u.bio||'')}</small></div><button class="secondary" onclick="view('${attr(u.id)}')">View</button></div><div class="actions"><button class="primary" onclick="request('${attr(u.id)}')">Connect</button><button class="danger" onclick="block('${attr(u.id)}')">Block</button></div></div>`}
-async function view(id){let r=await db.from('profiles').select('display_name,username,bio').eq('id',id).single();if(!r.data)return;alert(`${r.data.display_name||'User'}\n@${r.data.username||''}\n\n${r.data.bio||''}`)}
-async function request(id){if(isBlocked(id))return alert('Unblock this person in Settings first.');let s=await status(id);if(s!=='none')return alert(s==='connected'?'Already connected.':s==='sent'?'Request already sent.':'They already sent you a request.');let r=await db.from('connection_requests').insert({sender_id:me.id,receiver_id:id,status:'pending'});if(r.error)return alert(r.error.message);await people();await requests();badges()}
-async function searchUsers(){clearTimeout(searchTimer);searchTimer=setTimeout(async()=>{let q=$('searchInput').value.trim().toLowerCase().replace(/[,%()]/g,''),box=$('searchResults');if(!q)return box.innerHTML='<div class="empty">Start typing to search.</div>';let r=await db.from('profiles').select('id,username,display_name,bio').neq('id',me.id).or(`username.ilike.%${q}%,display_name.ilike.%${q}%`).limit(30);let a=(r.data||[]).filter(x=>!isBlocked(x.id));box.innerHTML=a.length?(await Promise.all(a.map(async u=>{let s=await status(u.id),n=u.display_name||'User',act=s==='connected'?`<button class="primary" onclick="openChat('${attr(u.id)}')">Message</button>`:s==='sent'?'<button class="secondary" disabled>Request Sent</button>':s==='incoming'?'<button class="success" onclick="page(\'requests\')">Review Request</button>':`<button class="primary" onclick="request('${attr(u.id)}')">Connect</button>`;return `<div class="card"><div class="row"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}${onlineDot(u.id)}</b><small>@${esc(u.username||'')}</small></div></div><div class="actions">${act}<button class="danger" onclick="block('${attr(u.id)}')">Block</button></div></div>`}))).join(''):'<div class="empty">No users found.</div>'},200)}
-async function requests(){let r=await db.from('connection_requests').select('id,sender_id,receiver_id,status,created_at').or(`sender_id.eq.${me.id},receiver_id.eq.${me.id}`).order('created_at',{ascending:false}),a=r.data||[],inc=a.filter(x=>x.receiver_id===me.id&&x.status==='pending'),sent=a.filter(x=>x.sender_id===me.id&&x.status==='pending'),con=a.filter(x=>x.status==='accepted'),ids=[...new Set([...inc.map(x=>x.sender_id),...sent.map(x=>x.receiver_id),...con.flatMap(x=>[x.sender_id,x.receiver_id]).filter(x=>x!==me.id)])],map=await profiles(ids);$('incoming').innerHTML=inc.length?inc.map(x=>reqCard(x,map[x.sender_id],true)).join(''):'<div class="empty">No incoming requests.</div>';$('sent').innerHTML=sent.length?sent.map(x=>reqCard(x,map[x.receiver_id],false)).join(''):'<div class="empty">No sent requests.</div>';let cp=con.map(x=>x.sender_id===me.id?x.receiver_id:x.sender_id).filter(x=>!isBlocked(x));$('connections').innerHTML=cp.length?cp.map(id=>{let u=map[id]||{},n=u.display_name||'User';return `<div class="card"><div class="row"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}${onlineDot(id)}</b><small>@${esc(u.username||'')}</small><small>Connected ✅</small></div></div><div class="actions"><button class="primary" onclick="openChat('${attr(id)}')">Message</button><button class="danger" onclick="removeFriend('${attr(id)}')">Remove</button><button class="danger" onclick="block('${attr(id)}')">Block</button></div></div>`}).join(''):'<div class="empty">No connections yet.</div>';$('count').textContent=cp.length;$('reqCount').textContent=inc.length}
-function reqCard(x,u,incoming){let n=u?.display_name||'User';return `<div class="card"><div class="row"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}</b><small>@${esc(u?.username||'')}</small></div></div><div class="actions">${incoming?`<button class="success" onclick="accept('${attr(x.id)}')">Accept</button><button class="danger" onclick="reject('${attr(x.id)}')">Reject</button>`:`<button class="secondary" onclick="cancel('${attr(x.id)}')">Cancel</button>`}</div></div>`}
-async function accept(id){let r=await db.from('connection_requests').update({status:'accepted'}).eq('id',id).eq('receiver_id',me.id);if(r.error)return alert(r.error.message);await requests();await people();members();badges()}async function reject(id){await db.from('connection_requests').delete().eq('id',id).eq('receiver_id',me.id);requests();badges()}async function cancel(id){await db.from('connection_requests').delete().eq('id',id).eq('sender_id',me.id);requests();people();badges()}
-async function removeFriend(id){if(!confirm('Remove this connection?'))return;let r=await db.from('connection_requests').delete().or(`and(sender_id.eq.${me.id},receiver_id.eq.${id}),and(sender_id.eq.${id},receiver_id.eq.${me.id})`);if(r.error)return alert(r.error.message);if(sel?.id===id)closeChat();await requests();await people();members()}
-async function members(){if(!me)return;let r=await db.from('connection_requests').select('sender_id,receiver_id').eq('status','accepted'),ids=[...new Set((r.data||[]).filter(x=>x.sender_id===me.id||x.receiver_id===me.id).map(x=>x.sender_id===me.id?x.receiver_id:x.sender_id))].filter(x=>!isBlocked(x)),map=await profiles(ids),um=await unread(ids);$('members').innerHTML=ids.length?ids.map(id=>{let u=map[id]||{},n=u.display_name||'User',c=um[id]||0;return `<div class="member ${sel?.id===id?'sel':''}" onclick="openChat('${attr(id)}')"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}${onlineDot(id)}${c?`<span class="unread">${c>99?'99+':c}</span>`:''}</b><div class="last">@${esc(u.username||'')}</div></div></div>`}).join(''):'<div class="empty">No connections yet.</div>'}
-async function openChat(id){if(isBlocked(id))return alert('This user is blocked. Unblock them in Settings first.');if(await status(id)!=='connected')return alert('You can only message accepted connections.');let r=await db.from('profiles').select('id,username,display_name').eq('id',id).single();if(r.error)return alert(r.error.message);sel=r.data;page('chats');setRead(id);head();members();await messages();$('input').disabled=false;$('send').disabled=false}
-async function deleteChat(){if(!sel||!confirm('Delete this chat feed for you?'))return;let r=await db.from('messages').select('id').or(`and(sender_id.eq.${me.id},receiver_id.eq.${sel.id}),and(sender_id.eq.${sel.id},receiver_id.eq.${me.id})`);let ids=(r.data||[]).map(x=>({message_id:x.id,user_id:me.id}));if(ids.length){let q=await db.from('message_deletions').upsert(ids,{onConflict:'message_id,user_id'});if(q.error)return alert(q.error.message)}await messages();members()}function head(){let n=sel?.display_name||'Select a connection';$('chatName').textContent=n;$('chatUser').textContent=sel?'@'+(sel.username||''):'Choose someone to chat.';$('chatAv').textContent=n[0]?.toUpperCase()||'?'}function closeChat(){sel=null;$('input').value='';$('input').disabled=true;$('send').disabled=true;head();$('msgs').innerHTML='<div class="empty">Select a connection to start chatting.</div>';members()}
-async function unread(ids){if(!ids.length)return{};let r=await db.from('messages').select('sender_id,created_at').eq('receiver_id',me.id).in('sender_id',ids).order('created_at',{ascending:true}).limit(2000),o={};for(let m of r.data||[]){let last=readAt(m.sender_id);if(!last||new Date(m.created_at)>new Date(last))o[m.sender_id]=(o[m.sender_id]||0)+1}return o}
-async function badges(){if(!me)return;let [r,u]=await Promise.all([db.from('connection_requests').select('id').eq('receiver_id',me.id).eq('status','pending'),db.from('messages').select('sender_id,created_at').eq('receiver_id',me.id).order('created_at',{ascending:true}).limit(2000)]),n=0;for(let m of u.data||[]){let last=readAt(m.sender_id);if(!last||new Date(m.created_at)>new Date(last))n++}badge('mb',n);badge('rb',r.data?.length||0);if($('chats').classList.contains('on'))members()}function badge(id,n){let b=$(id);b.textContent=n>99?'99+':n;b.classList.toggle('hide',!n)}
-async function messages(){if(!sel)return;let r=await db.from('messages').select('id,sender_id,receiver_id,content,created_at').or(`and(sender_id.eq.${me.id},receiver_id.eq.${sel.id}),and(sender_id.eq.${sel.id},receiver_id.eq.${me.id})`).order('created_at',{ascending:true}).limit(300);if(r.error)return $('msgs').innerHTML='<div class="empty">Unable to load messages.</div>';let ids=(r.data||[]).map(x=>x.id),[rx,del]=await Promise.all([db.from('message_reactions').select('message_id,user_id,reaction').in('message_id',ids),db.from('message_deletions').select('message_id').eq('user_id',me.id).in('message_id',ids)]),ds=new Set((del.data||[]).map(x=>x.message_id)),rm={};for(let x of rx.data||[])(rm[x.message_id]??=[]).push(x);let a=(r.data||[]).filter(x=>!ds.has(x.id));$('msgs').innerHTML=a.length?a.map(x=>msgHTML(x,rm[x.id]||[])).join(''):'<div class="empty">No messages yet. Start the conversation! 👋</div>';$('msgs').scrollTop=$('msgs').scrollHeight;setRead(sel.id)}
-function msgHTML(m,rs){let mine=m.sender_id===me.id,c={};rs.forEach(x=>c[x.reaction]=(c[x.reaction]||0)+1),react=Object.entries(c).map(([r,n])=>`<button onclick="react('${attr(m.id)}','${attr(r)}')">${esc(r)} ${n}</button>`).join('');return `<div class="bubbleRow ${mine?'mine':'theirs'}"><div class="bubble"><div>${esc(m.content)}</div><div class="time">${new Date(m.created_at).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}</div>${react?`<div class="reacts">${react}</div>`:''}<div class="tools"><button onclick="actions('${attr(m.id)}','${attr(m.sender_id)}')">⋮</button></div></div></div>`}
-function keydown(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}}async function send(){let t=$('input').value.trim();if(!t||!sel)return;let r=await db.from('messages').insert({sender_id:me.id,receiver_id:sel.id,content:t});if(r.error)return alert(r.error.message);$('input').value='';await messages();members()}
-function actions(id,sender){let r=prompt('Type: 👍 ❤️ 😂 😮 😢 or d=delete for me, e=delete for everyone');if(!r)return;if(r==='d')return delMe(id);if(r==='e'&&sender===me.id)return delAll(id);if(['👍','❤️','😂','😮','😢'].includes(r))react(id,r)}async function react(id,r){let q=await db.from('message_reactions').select('id').eq('message_id',id).eq('user_id',me.id).eq('reaction',r).maybeSingle();if(q.data)await db.from('message_reactions').delete().eq('id',q.data.id);else await db.from('message_reactions').insert({message_id:id,user_id:me.id,reaction:r});messages()}async function delMe(id){await db.from('message_deletions').upsert({message_id:id,user_id:me.id});messages()}async function delAll(id){if(!confirm('Delete this message for everyone?'))return;await db.from('messages').delete().eq('id',id).eq('sender_id',me.id);messages()}
-function presence(){if(pres)db.removeChannel(pres);pres=db.channel('cs-presence',{config:{presence:{key:me.id}}}).on('presence',{event:'sync'},()=>{onlineUsers=new Set(Object.keys(pres.presenceState()).filter(x=>x!==me.id));people();members()}).on('presence',{event:'join'},x=>{onlineUsers.add(x.key);people();members()}).on('presence',{event:'leave'},x=>{onlineUsers.delete(x.key);people();members()}).subscribe(s=>{if(s==='SUBSCRIBED'&&setting('online',true))pres.track({online:true})})}
-function realtime(){if(chan)db.removeChannel(chan);chan=db.channel('cs-msg-'+me.id).on('postgres_changes',{event:'INSERT',schema:'public',table:'messages',filter:`receiver_id=eq.${me.id}`},async x=>{if(sel?.id===x.new.sender_id&&$('chats').classList.contains('on')){await messages()}else{members();badges()}}).on('postgres_changes',{event:'INSERT',schema:'public',table:'connection_requests',filter:`receiver_id=eq.${me.id}`},()=>{requests();people();badges()}).subscribe()}
-function loadSettings(){$('private').checked=setting('private',false);$('online').checked=setting('online',true);$('private').onchange=()=>setSetting('private',$('private').checked);$('online').onchange=()=>{setSetting('online',$('online').checked);if($('online').checked)pres?.track({online:true});else pres?.untrack();people();members()}}
-async function block(id){if(!confirm('Block this person?'))return;saveBlocked([...blocked(),id]);if(sel?.id===id)closeChat();await db.from('connection_requests').delete().or(`and(sender_id.eq.${me.id},receiver_id.eq.${id}),and(sender_id.eq.${id},receiver_id.eq.${me.id})`);blockedUI();await requests();await people();members()}
-function blockedUI(){let ids=blocked();if(!ids.length)return $('blocked').innerHTML='<div class="empty">No blocked users.</div>';profiles(ids).then(m=>{$('blocked').innerHTML=ids.map(id=>{let u=m[id]||{},n=u.display_name||'User';return `<div class="card"><div class="row"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}</b><small>@${esc(u.username||'')}</small></div><button class="success" onclick="unblock('${attr(id)}')">Unblock</button></div></div>`}).join('')})}function unblock(id){saveBlocked(blocked().filter(x=>x!==id));blockedUI();people();members()}
-function editProfile(){$('modalBox').innerHTML='<h2>Edit Profile</h2><input id="en" value="'+esc(profile.display_name||'')+'" placeholder="Name"><input id="eu" value="'+esc(profile.username||'')+'" placeholder="Username"><textarea id="eb" placeholder="Bio">'+esc(profile.bio||'')+'</textarea><div class="actions"><button class="primary" onclick="saveProfile()">Save</button><button class="secondary" onclick="modal(false)">Cancel</button></div>';modal(true)}async function saveProfile(){let n=$('en').value.trim(),u=$('eu').value.trim().toLowerCase(),b=$('eb').value.trim();if(!/^[a-z0-9_]{3,30}$/.test(u))return alert('Username must be 3-30 letters, numbers or underscore.');let r=await db.from('profiles').update({display_name:n,username:u,bio:b}).eq('id',me.id).select().single();if(r.error)return alert(r.error.message);profile=r.data;ui();modal(false);people()}
-function modal(on){$('modal').classList.toggle('on',on)}$('modal').onclick=e=>{if(e.target.id==='modal')modal(false)};
-async function schedules(){let r=await db.from('schedules').select('*').eq('user_id',me.id).order('created_at',{ascending:false});let a=r.data||[],done=a.filter(x=>x.completed).length,p=a.length?Math.round(done/a.length*100):0;$('prog').textContent=`${p}% completed (${done}/${a.length})`;$('fill').style.width=p+'%';$('schedules').innerHTML=a.length?a.map(x=>`<div class="schedule ${x.completed?'':'x'}"><b>${esc(x.title)}</b><p>${esc(x.description||'')}</p><small>${esc(x.schedule_type||'')}</small><div class="actions"><button class="${x.completed?'secondary':'primary'}" onclick="complete('${attr(x.id)}',${!x.completed})">${x.completed?'Mark active':'Complete'}</button><button class="danger" onclick="removeSchedule('${attr(x.id)}')">Delete</button></div></div>`).join(''):'<div class="empty">No schedules yet.</div>'}
-function addSchedule(){$('modalBox').innerHTML='<h2>Add Schedule</h2><input id="st" placeholder="Title"><input id="sd" placeholder="Description"><select id="sy"><option value="daily">Daily</option><option value="weekly">Weekly</option><option value="once">One-time</option></select><input id="stime" type="time"><input id="sdate" type="date"><div class="actions"><button class="primary" onclick="saveSchedule()">Save</button><button class="secondary" onclick="modal(false)">Cancel</button></div>';modal(true)}async function saveSchedule(){let title=$('st').value.trim();if(!title)return alert('Enter a title.');let type=$('sy').value,r={user_id:me.id,title,description:$('sd').value.trim(),schedule_type:type,reminder_time:$('stime').value||null,reminder_date:type==='once'?$('sdate').value:null,day_of_week:null,completed:false};if(type==='weekly')r.day_of_week=new Date().getDay();let q=await db.from('schedules').insert(r);if(q.error)return alert(q.error.message);modal(false);schedules()}async function complete(id,v){await db.from('schedules').update({completed:v}).eq('id',id).eq('user_id',me.id);schedules()}async function removeSchedule(id){if(confirm('Delete this schedule?')){await db.from('schedules').delete().eq('id',id).eq('user_id',me.id);schedules()}}
-async function logout(){if(chan)db.removeChannel(chan);if(pres)db.removeChannel(pres);clearInterval(badgeTimer);await db.auth.signOut();location.reload()}db.auth.getSession().then(async x=>{if(x.data.session){me=x.data.session.user;await start()}});db.auth.onAuthStateChange((e,s)=>{if(e==='SIGNED_OUT')location.reload()});
+const URL="https://hwjojlqhzeqtfcxmfrjk.supabase.co",KEY="sb_publishable_-GofAlZERkBVXbEOQpF3Rg_w0mGMaA4",db=supabase.createClient(URL,KEY);
+let me=null,profile=null,sel=null,chan=null,pres=null,badgeTimer=null,onlineUsers=new Set,searchTimer=null,loginMode=false;
+const $=id=>document.getElementById(id),esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c])),attr=x=>String(x??'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+const key=(k,id='')=>`cs_${k}_${me?.id||'guest'}${id?'_'+id:''}`;
+const blocked=()=>{try{return JSON.parse(localStorage.getItem(key('blocked'))||'[]')}catch{return[]}};
+const isBlocked=id=>blocked().includes(id);
+const saveBlocked=a=>localStorage.setItem(key('blocked'),JSON.stringify([...new Set(a)]));
+const readAt=id=>localStorage.getItem(key('read',id));
+const setRead=id=>{localStorage.setItem(key('read',id),new Date().toISOString());badges()};
+const setting=(k,d)=>localStorage.getItem(key(k))===null?d:localStorage.getItem(key(k))==='1';
+const setSetting=(k,v)=>localStorage.setItem(key(k),v?'1':'0');
+
+function page(p){
+ document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));
+ $(p)?.classList.add('on');
+ document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('on',x.dataset.p===p));
+ if(p==='home')people();
+ if(p==='requests')requests();
+ if(p==='chats'){members();if(sel){setRead(sel.id);messages()}}
+ if(p==='schedule')schedules();
+ if(p==='profile')ui();
+ if(p==='settings'){loadSettings();blockedUI()}
+}
+
+function connections(){
+ page('requests');
+ setTimeout(()=>document.getElementById('connTitle')?.scrollIntoView({behavior:'smooth'}),50)
+}
+
+function mode(){
+ loginMode=!loginMode;
+ $('authText').textContent=loginMode?'Create your account':'Sign in to continue';
+ $('authBtn').textContent=loginMode?'Create account':'Sign in';
+ $('modeBtn').textContent=loginMode?'Back to sign in':'Create account';
+ $('name').classList.toggle('hide',!loginMode);
+ $('username').classList.toggle('hide',!loginMode);
+ $('authErr').innerHTML=''
+}
+
+async function auth(){
+ const email=$('email').value.trim(),password=$('pass').value;
+ if(!email||!password)return $('authErr').innerHTML='<div class="err">Enter email and password.</div>';
+ let r;
+ if(loginMode)r=await db.auth.signUp({email,password,options:{data:{display_name:$('name').value.trim(),username:$('username').value.trim().toLowerCase()}}});
+ else r=await db.auth.signInWithPassword({email,password});
+ if(r.error)return $('authErr').innerHTML=`<div class="err">${esc(r.error.message)}</div>`;
+ if(loginMode&&!r.data.session)return $('authErr').innerHTML='<div>Check your email to confirm your account.</div>';
+ if(r.data.user){me=r.data.user;await start()}
+}
+
+async function start(){
+ let r=await db.from('profiles').select('*').eq('id',me.id).maybeSingle();
+ if(r.error)return alert(r.error.message);
+ if(!r.data){
+  let m=me.user_metadata||{},u=m.username||'user_'+me.id.replaceAll('-','').slice(0,8),n=m.display_name||me.email?.split('@')[0]||'User';
+  r=await db.from('profiles').insert({id:me.id,username:u,display_name:n,bio:'',avatar_url:null}).select().single();
+  if(r.error)return alert(r.error.message)
+ }
+ profile=r.data;
+ $('auth').classList.add('hide');$('app').classList.remove('hide');
+ ui();loadSettings();
+ await Promise.all([people(),requests(),members(),schedules()]);
+ blockedUI();presence();realtime();badges();
+ if(badgeTimer)clearInterval(badgeTimer);
+ badgeTimer=setInterval(async()=>{await badges();if(sel&&$('chats').classList.contains('on'))await messages()},3500)
+}
+
+function ui(){
+ let n=profile.display_name||'User';
+ $('pName').textContent=n;$('pUser').textContent='@'+(profile.username||'');
+ $('bio').textContent=profile.bio||'Your bio will appear here.';
+ $('pAv').textContent=n[0]?.toUpperCase()||'U'
+}
+
+async function status(id){
+ let r=await db.from('connection_requests').select('sender_id,receiver_id,status,created_at')
+ .or(`and(sender_id.eq.${me.id},receiver_id.eq.${id}),and(sender_id.eq.${id},receiver_id.eq.${me.id})`)
+ .order('created_at',{ascending:false}).limit(1);
+ if(r.error||!r.data?.length)return'none';
+ let x=r.data[0];
+ return x.status==='accepted'?'connected':x.sender_id===me.id?'sent':'incoming'
+}
+
+async function profiles(ids){
+ if(!ids.length)return{};
+ let r=await db.from('profiles').select('id,username,display_name,bio,avatar_url').in('id',ids);
+ return Object.fromEntries((r.data||[]).map(x=>[x.id,x]))
+}
+
+function onlineDot(id){
+ return onlineUsers.has(id)?'<span class="dot" title="Online"></span>':''
+}
+
+async function people(){
+ if(!me)return;
+ let r=await db.from('profiles').select('id,username,display_name,bio').neq('id',me.id).limit(100);
+ if(r.error)return $('suggestions').innerHTML='<div class="empty">Unable to load people.</div>';
+ let a=[];
+ for(let u of r.data||[]){
+  if(!isBlocked(u.id)&&await status(u.id)==='none')a.push(u)
+ }
+ $('suggestions').innerHTML=a.length?(await Promise.all(a.map(card))).join(''):'<div class="empty">No new people right now.</div>'
+}
+
+async function card(u){
+ let n=u.display_name||'User';
+ return `<div class="card"><div class="row"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}${onlineDot(u.id)}</b><small>@${esc(u.username||'')}</small><small>${esc(u.bio||'')}</small></div><button class="secondary" onclick="view('${attr(u.id)}')">View</button></div><div class="actions"><button class="primary" onclick="request('${attr(u.id)}')">Connect</button><button class="danger" onclick="block('${attr(u.id)}')">Block</button></div></div>`
+}
+
+async function view(id){
+ let r=await db.from('profiles').select('display_name,username,bio').eq('id',id).single();
+ if(!r.data)return;
+ alert(`${r.data.display_name||'User'}\n@${r.data.username||''}\n\n${r.data.bio||''}`)
+}
+
+async function request(id){
+ if(isBlocked(id))return alert('Unblock this person in Settings first.');
+ let s=await status(id);
+ if(s!=='none')return alert(s==='connected'?'Already connected.':s==='sent'?'Request already sent.':'They already sent you a request.');
+ let r=await db.from('connection_requests').insert({sender_id:me.id,receiver_id:id,status:'pending'});
+ if(r.error)return alert(r.error.message);
+ await people();await requests();badges()
+}
+
+async function searchUsers(){
+ clearTimeout(searchTimer);
+ searchTimer=setTimeout(async()=>{
+  let q=$('searchInput').value.trim().toLowerCase().replace(/[,%()]/g,''),box=$('searchResults');
+  if(!q)return box.innerHTML='<div class="empty">Start typing to search.</div>';
+  let r=await db.from('profiles').select('id,username,display_name,bio').neq('id',me.id).or(`username.ilike.%${q}%,display_name.ilike.%${q}%`).limit(30);
+  let a=(r.data||[]).filter(x=>!isBlocked(x.id));
+  box.innerHTML=a.length?(await Promise.all(a.map(async u=>{
+   let s=await status(u.id),n=u.display_name||'User';
+   let act=s==='connected'?`<button class="primary" onclick="openChat('${attr(u.id)}')">Message</button>`:s==='sent'?'<button class="secondary" disabled>Request Sent</button>':s==='incoming'?'<button class="success" onclick="page(\'requests\')">Review Request</button>':`<button class="primary" onclick="request('${attr(u.id)}')">Connect</button>`;
+   return `<div class="card"><div class="row"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}${onlineDot(u.id)}</b><small>@${esc(u.username||'')}</small></div></div><div class="actions">${act}<button class="danger" onclick="block('${attr(u.id)}')">Block</button></div></div>`
+  }))).join(''):'<div class="empty">No users found.</div>'
+ },200)
+}
+
+async function requests(){
+ let r=await db.from('connection_requests').select('id,sender_id,receiver_id,status,created_at').or(`sender_id.eq.${me.id},receiver_id.eq.${me.id}`).order('created_at',{ascending:false}),a=r.data||[];
+ let inc=a.filter(x=>x.receiver_id===me.id&&x.status==='pending'),sent=a.filter(x=>x.sender_id===me.id&&x.status==='pending'),con=a.filter(x=>x.status==='accepted');
+ let ids=[...new Set([...inc.map(x=>x.sender_id),...sent.map(x=>x.receiver_id),...con.flatMap(x=>[x.sender_id,x.receiver_id]).filter(x=>x!==me.id)])],map=await profiles(ids);
+ $('incoming').innerHTML=inc.length?inc.map(x=>reqCard(x,map[x.sender_id],true)).join(''):'<div class="empty">No incoming requests.</div>';
+ $('sent').innerHTML=sent.length?sent.map(x=>reqCard(x,map[x.receiver_id],false)).join(''):'<div class="empty">No sent requests.</div>';
+ let cp=con.map(x=>x.sender_id===me.id?x.receiver_id:x.sender_id).filter(x=>!isBlocked(x));
+ $('connections').innerHTML=cp.length?cp.map(id=>{
+  let u=map[id]||{},n=u.display_name||'User';
+  return `<div class="card"><div class="row"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}${onlineDot(id)}</b><small>@${esc(u.username||'')}</small><small>Connected ✅</small></div></div><div class="actions"><button class="primary" onclick="openChat('${attr(id)}')">Message</button><button class="danger" onclick="removeFriend('${attr(id)}')">Remove</button><button class="danger" onclick="block('${attr(id)}')">Block</button></div></div>`
+ }).join(''):'<div class="empty">No connections yet.</div>';
+ $('count').textContent=cp.length;$('reqCount').textContent=inc.length
+}
+
+function reqCard(x,u,incoming){
+ let n=u?.display_name||'User';
+ return `<div class="card"><div class="row"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}</b><small>@${esc(u?.username||'')}</small></div></div><div class="actions">${incoming?`<button class="success" onclick="accept('${attr(x.id)}')">Accept</button><button class="danger" onclick="reject('${attr(x.id)}')">Reject</button>`:`<button class="secondary" onclick="cancel('${attr(x.id)}')">Cancel</button>`}</div></div>`
+}
+
+async function accept(id){
+ let r=await db.from('connection_requests').update({status:'accepted'}).eq('id',id).eq('receiver_id',me.id);
+ if(r.error)return alert(r.error.message);
+ await requests();await people();await members();badges()
+}
+
+async function reject(id){
+ await db.from('connection_requests').delete().eq('id',id).eq('receiver_id',me.id);
+ await requests();await people();badges()
+}
+
+async function cancel(id){
+ await db.from('connection_requests').delete().eq('id',id).eq('sender_id',me.id);
+ await requests();await people();badges()
+}
+
+async function removeFriend(id){
+ if(!confirm('Remove this connection?'))return;
+ let r=await db.from('connection_requests').delete().or(`and(sender_id.eq.${me.id},receiver_id.eq.${id}),and(sender_id.eq.${id},receiver_id.eq.${me.id})`);
+ if(r.error)return alert(r.error.message);
+ if(sel?.id===id)closeChat();
+ await requests();await people();await members()
+}
+
+async function members(){
+ if(!me)return;
+ let r=await db.from('connection_requests').select('sender_id,receiver_id').eq('status','accepted');
+ let ids=[...new Set((r.data||[]).filter(x=>x.sender_id===me.id||x.receiver_id===me.id).map(x=>x.sender_id===me.id?x.receiver_id:x.sender_id))].filter(x=>!isBlocked(x));
+ let map=await profiles(ids),um=await unread(ids);
+ $('members').innerHTML=ids.length?ids.map(id=>{
+  let u=map[id]||{},n=u.display_name||'User',c=um[id]||0;
+  return `<div class="member ${sel?.id===id?'sel':''}" onclick="openChat('${attr(id)}')"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}${onlineDot(id)}${c?`<span class="unread">${c>99?'99+':c}</span>`:''}</b><div class="last">@${esc(u.username||'')}</div></div></div>`
+ }).join(''):'<div class="empty">No connections yet.</div>'
+}
+
+async function openChat(id){
+ if(isBlocked(id))return alert('This user is blocked. Unblock them in Settings first.');
+ if(await status(id)!=='connected')return alert('You can only message accepted connections.');
+ let r=await db.from('profiles').select('id,username,display_name').eq('id',id).single();
+ if(r.error)return alert(r.error.message);
+ sel=r.data;
+ page('chats');setRead(id);head();await members();await messages();
+ $('input').disabled=false;$('send').disabled=false
+}
+
+function head(){
+ let n=sel?.display_name||'Select a connection';
+ $('chatName').textContent=n;$('chatUser').textContent=sel?'@'+(sel.username||''):'Choose someone to chat.';
+ $('chatAv').textContent=n[0]?.toUpperCase()||'?'
+}
+
+function closeChat(){
+ sel=null;$('input').value='';$('input').disabled=true;$('send').disabled=true;
+ head();$('msgs').innerHTML='<div class="empty">Select a connection to start chatting.</div>';members()
+}
+
+async function unread(ids){
+ if(!ids.length)return{};
+ let r=await db.from('messages').select('sender_id,created_at').eq('receiver_id',me.id).in('sender_id',ids).order('created_at',{ascending:true}).limit(5000),o={};
+ for(let m of r.data||[]){
+  let last=readAt(m.sender_id);
+  if(!last||new Date(m.created_at)>new Date(last))o[m.sender_id]=(o[m.sender_id]||0)+1
+ }
+ return o
+}
+
+async function badges(){
+ if(!me)return;
+ let [r,u]=await Promise.all([
+  db.from('connection_requests').select('id').eq('receiver_id',me.id).eq('status','pending'),
+  db.from('messages').select('sender_id,created_at').eq('receiver_id',me.id).order('created_at',{ascending:true}).limit(5000)
+ ]);
+ let n=0;
+ for(let m of u.data||[]){
+  let last=readAt(m.sender_id);
+  if(!last||new Date(m.created_at)>new Date(last))n++
+ }
+ badge('mb',n);badge('chatTotal',n);badge('rb',r.data?.length||0);
+ if($('chats').classList.contains('on'))members()
+}
+
+function badge(id,n){
+ let b=$(id);if(!b)return;
+ b.textContent=n>99?'99+':n;b.classList.toggle('hide',!n)
+}
+
+async function messages(){
+ if(!sel)return;
+ let r=await db.from('messages').select('id,sender_id,receiver_id,content,created_at').or(`and(sender_id.eq.${me.id},receiver_id.eq.${sel.id}),and(sender_id.eq.${sel.id},receiver_id.eq.${me.id})`).order('created_at',{ascending:true}).limit(300);
+ if(r.error)return $('msgs').innerHTML='<div class="empty">Unable to load messages.</div>';
+ let ids=(r.data||[]).map(x=>x.id);
+ if(!ids.length){
+  $('msgs').innerHTML='<div class="empty">No messages yet. Start the conversation! 👋</div>';
+  setRead(sel.id);return
+ }
+ let [rx,del]=await Promise.all([
+  db.from('message_reactions').select('message_id,user_id,reaction').in('message_id',ids),
+  db.from('message_deletions').select('message_id').eq('user_id',me.id).in('message_id',ids)
+ ]);
+ let ds=new Set((del.data||[]).map(x=>x.message_id)),rm={};
+ for(let x of rx.data||[])(rm[x.message_id]??=[]).push(x);
+ let a=(r.data||[]).filter(x=>!ds.has(x.id));
+ $('msgs').innerHTML=a.length?a.map(x=>msgHTML(x,rm[x.id]||[])).join(''):'<div class="empty">No messages yet. Start the conversation! 👋</div>';
+ $('msgs').scrollTop=$('msgs').scrollHeight;setRead(sel.id)
+}
+
+function msgHTML(m,rs){
+ let mine=m.sender_id===me.id,c={};
+ rs.forEach(x=>c[x.reaction]=(c[x.reaction]||0)+1);
+ let react=Object.entries(c).map(([r,n])=>`<button onclick="react('${attr(m.id)}','${attr(r)}')">${esc(r)} ${n}</button>`).join('');
+ return `<div class="bubbleRow ${mine?'mine':'theirs'}"><div class="bubble"><div>${esc(m.content)}</div><div class="time">${new Date(m.created_at).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}</div>${react?`<div class="reacts">${react}</div>`:''}<div class="tools"><button onclick="actions('${attr(m.id)}','${attr(m.sender_id)}')">⋮</button></div></div></div>`
+}
+
+function keydown(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}}
+
+async function send(){
+ let t=$('input').value.trim();
+ if(!t||!sel)return;
+ let r=await db.from('messages').insert({sender_id:me.id,receiver_id:sel.id,content:t});
+ if(r.error)return alert(r.error.message);
+ $('input').value='';await messages();members();badges()
+}
+
+function actions(id,sender){
+ let r=prompt('Type: 👍 ❤️ 😂 😮 😢 or d=delete for me, e=delete for everyone');
+ if(!r)return;
+ if(r==='d')return delMe(id);
+ if(r==='e'&&sender===me.id)return delAll(id);
+ if(['👍','❤️','😂','😮','😢'].includes(r))react(id,r)
+}
+
+async function react(id,r){
+ let q=await db.from('message_reactions').select('id').eq('message_id',id).eq('user_id',me.id).eq('reaction',r).maybeSingle();
+ if(q.data)await db.from('message_reactions').delete().eq('id',q.data.id);
+ else await db.from('message_reactions').insert({message_id:id,user_id:me.id,reaction:r});
+ messages()
+}
+
+async function delMe(id){
+ await db.from('message_deletions').upsert({message_id:id,user_id:me.id});
+ messages()
+}
+
+async function delAll(id){
+ if(!confirm('Delete this message for everyone?'))return;
+ await db.from('messages').delete().eq('id',id).eq('sender_id',me.id);
+ messages()
+}
+
+function presence(){
+ if(pres)db.removeChannel(pres);
+ pres=db.channel('cs-presence',{config:{presence:{key:me.id}}})
+ .on('presence',{event:'sync'},()=>{
+  onlineUsers=new Set(Object.keys(pres.presenceState()).filter(x=>x!==me.id));
+  people();members()
+ })
+ .on('presence',{event:'join'},x=>{onlineUsers.add(x.key);people();members()})
+ .on('presence',{event:'leave'},x=>{onlineUsers.delete(x.key);people();members()})
+ .subscribe(s=>{
+  if(s==='SUBSCRIBED'&&setting('online',true))pres.track({online:true})
+ })
+}
+
+function realtime(){
+ if(chan)db.removeChannel(chan);
+ chan=db.channel('cs-live-'+me.id)
+ .on('postgres_changes',{event:'*',schema:'public',table:'messages'},async x=>{
+  let n=x.new||x.old||{};
+  if(n.sender_id===me.id||n.receiver_id===me.id){
+   if(sel&&$('chats').classList.contains('on'))await messages();
+   await members();await badges()
+  }
+ })
+ .on('postgres_changes',{event:'*',schema:'public',table:'connection_requests'},async()=>{
+  await requests();await people();await members();await badges()
+ })
+ .subscribe()
+}
+
+function loadSettings(){
+ $('private').checked=setting('private',false);
+ $('online').checked=setting('online',true);
+ $('private').onchange=()=>{
+  setSetting('private',$('private').checked);
+  $('privateText').textContent=$('private').checked?'Private account is ON — approve connection requests before connecting.':'Private account is OFF.';
+ };
+ $('privateText').textContent=$('private').checked?'Private account is ON — approve connection requests before connecting.':'Private account is OFF.';
+ $('online').onchange=()=>{
+  setSetting('online',$('online').checked);
+  if($('online').checked)pres?.track({online:true});else pres?.untrack();
+  people();members()
+ }
+}
+
+async function block(id){
+ if(!confirm('Block this person?'))return;
+ saveBlocked([...blocked(),id]);
+ if(sel?.id===id)closeChat();
+ await db.from('connection_requests').delete().or(`and(sender_id.eq.${me.id},receiver_id.eq.${id}),and(sender_id.eq.${id},receiver_id.eq.${me.id})`);
+ blockedUI();await requests();await people();members();badges()
+}
+
+function blockedUI(){
+ let ids=blocked();
+ if(!ids.length)return $('blocked').innerHTML='<div class="empty">No blocked users.</div>';
+ profiles(ids).then(m=>{
+  $('blocked').innerHTML=ids.map(id=>{
+   let u=m[id]||{},n=u.display_name||'User';
+   return `<div class="card"><div class="row"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}</b><small>@${esc(u.username||'')}</small></div><button class="success" onclick="unblock('${attr(id)}')">Unblock</button></div></div>`
+  }).join('')
+ })
+}
+
+function unblock(id){
+ saveBlocked(blocked().filter(x=>x!==id));
+ blockedUI();people();members();searchUsers()
+}
+
+function editProfile(){
+ $('modalBox').innerHTML='<h2>Edit Profile</h2><input id="en" value="'+esc(profile.display_name||'')+'" placeholder="Name"><input id="eu" value="'+esc(profile.username||'')+'" placeholder="Username"><textarea id="eb" placeholder="Bio">'+esc(profile.bio||'')+'</textarea><div class="actions"><button class="primary" onclick="saveProfile()">Save</button><button class="secondary" onclick="modal(false)">Cancel</button></div>';
+ modal(true)
+}
+
+async function saveProfile(){
+ let n=$('en').value.trim(),u=$('eu').value.trim().toLowerCase(),b=$('eb').value.trim();
+ if(!/^[a-z0-9_]{3,30}$/.test(u))return alert('Username must be 3-30 letters, numbers or underscore.');
+ let r=await db.from('profiles').update({display_name:n,username:u,bio:b}).eq('id',me.id).select().single();
+ if(r.error)return alert(r.error.message);
+ profile=r.data;ui();modal(false);people()
+}
+
+function modal(on){$('modal').classList.toggle('on',on)}
+$('modal').onclick=e=>{if(e.target.id==='modal')modal(false)}
+
+async function schedules(){
+ let r=await db.from('schedules').select('*').eq('user_id',me.id).order('created_at',{ascending:false}),a=r.data||[],done=a.filter(x=>x.completed).length,p=a.length?Math.round(done/a.length*100):0;
+ $('prog').textContent=`${p}% completed (${done}/${a.length})`;
+ $('fill').style.width=p+'%';
+ $('schedules').innerHTML=a.length?a.map(x=>`<div class="schedule"><b>${esc(x.title)}</b><p>${esc(x.description||'')}</p><small>${esc(x.schedule_type||'')}</small><div class="actions"><button class="${x.completed?'secondary':'primary'}" onclick="complete('${attr(x.id)}',${!x.completed})">${x.completed?'Mark active':'Complete'}</button><button class="danger" onclick="removeSchedule('${attr(x.id)}')">Delete</button></div></div>`).join(''):'<div class="empty">No schedules yet.</div>'
+}
+
+function addSchedule(){
+ $('modalBox').innerHTML='<h2>Add Schedule</h2><input id="st" placeholder="Title"><input id="sd" placeholder="Description"><select id="sy"><option value="daily">Daily</option><option value="weekly">Weekly</option><option value="once">One-time</option></select><input id="stime" type="time"><input id="sdate" type="date"><div class="actions"><button class="primary" onclick="saveSchedule()">Save</button><button class="secondary" onclick="modal(false)">Cancel</button></div>';
+ modal(true)
+}
+
+async function saveSchedule(){
+ let title=$('st').value.trim();
+ if(!title)return alert('Enter a title.');
+ let type=$('sy').value,r={user_id:me.id,title,description:$('sd').value.trim(),schedule_type:type,reminder_time:$('stime').value||null,reminder_date:type==='once'?$('sdate').value:null,day_of_week:null,completed:false};
+ if(type==='weekly')r.day_of_week=new Date().getDay();
+ let q=await db.from('schedules').insert(r);
+ if(q.error)return alert(q.error.message);
+ modal(false);schedules()
+}
+
+async function complete(id,v){
+ await db.from('schedules').update({completed:v}).eq('id',id).eq('user_id',me.id);schedules()
+}
+
+async function removeSchedule(id){
+ if(confirm('Delete this schedule?')){await db.from('schedules').delete().eq('id',id).eq('user_id',me.id);schedules()}
+}
+
+async function logout(){
+ if(chan)db.removeChannel(chan);
+ if(pres)db.removeChannel(pres);
+ clearInterval(badgeTimer);
+ await db.auth.signOut();
+ location.reload()
+}
+
+db.auth.getSession().then(async x=>{
+ if(x.data.session){me=x.data.session.user;await start()}
+});
+
+db.auth.onAuthStateChange((e,s)=>{
+ if(e==='SIGNED_OUT')location.reload()
+});
 </script></body></html>
