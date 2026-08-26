@@ -1,477 +1,6365 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#5b4bdb"><title>ConnectSphere</title><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><style>
-*{box-sizing:border-box}body{margin:0;font:15px Arial;background:#f5f5fb;color:#171724}button,input,textarea,select{font:inherit}button{border:0;cursor:pointer;border-radius:10px;padding:9px 13px}.primary{background:#5b4bdb;color:#fff}.secondary{background:#eeeef5}.danger{background:#ffe7e7;color:#c62828}.success{background:#e6f7e9;color:#287a35}.hide{display:none!important}.app{max-width:1100px;min-height:100vh;margin:auto;background:#fff}header{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid #eee;position:sticky;top:0;background:#fff;z-index:5}.logo{font-size:23px;font-weight:800;color:#5b4bdb}main{padding:18px 18px 90px}.page{display:none}.page.on{display:block}h1{margin:0 0 7px}.sub{color:#777;margin:0 0 18px}.card{background:#fff;border:1px solid #eee;border-radius:16px;padding:15px;margin:10px 0;box-shadow:0 2px 10px #00000008}.row{display:flex;align-items:center;gap:11px}.info{flex:1;min-width:0}.info b{display:block}.info small{display:block;color:#777;margin-top:3px}.avatar{width:46px;height:46px;border-radius:50%;background:#5b4bdb;color:#fff;display:grid;place-items:center;font-weight:700;flex:none}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#22c55e;margin-left:5px}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.empty{text-align:center;color:#888;padding:30px 10px}.stats{display:flex;justify-content:center;gap:45px;margin:20px}.stat{text-align:center;cursor:pointer}.stat b{display:block;font-size:21px}.stat small{color:#777}.search{width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;outline:0;margin-bottom:10px}.setting{display:flex;justify-content:space-between;align-items:center;padding:10px 0}.setting small{display:block;color:#777;margin-top:4px}.switch{width:50px;height:28px;position:relative;display:block}.switch input{opacity:0;width:0;height:0}.switch i{position:absolute;inset:0;background:#ccc;border-radius:20px}.switch i:before{content:"";position:absolute;width:22px;height:22px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}.switch input:checked+i{background:#5b4bdb}.switch input:checked+i:before{transform:translateX(22px)}.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(1100px,100%);height:70px;background:#fff;border-top:1px solid #eee;display:flex;justify-content:space-around;z-index:10}.nav button{background:none;color:#777;min-width:60px;position:relative;font-size:11px}.nav button.on{background:#f0effd;color:#5b4bdb;font-weight:700}.nav em{display:block;font-style:normal;font-size:21px}.badge,.unread{background:#e53935;color:#fff;border-radius:20px;font-size:10px;font-weight:700;padding:3px 6px}.badge{position:absolute;top:5px;right:8px}.chat{height:calc(100vh - 155px);display:grid;grid-template-columns:280px 1fr;gap:12px}.members,.window{border:1px solid #eee;border-radius:16px;overflow:hidden;min-height:0}.members{overflow:auto}.members h3{padding:14px;margin:0;border-bottom:1px solid #eee}.member{display:flex;gap:9px;align-items:center;padding:11px;border-bottom:1px solid #f1f1f1;cursor:pointer}.member.sel{background:#f1efff}.member .info{min-width:0}.member .last{font-size:12px;color:#777;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.unread{margin-left:5px}.window{display:flex;flex-direction:column;background:#fafaff}.head{padding:10px 13px;background:#fff;border-bottom:1px solid #eee;display:flex;align-items:center;gap:10px}.msgs{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:7px}.bubbleRow{display:flex}.bubbleRow.mine{justify-content:flex-end}.bubble{max-width:78%;width:max-content;padding:8px 10px;border-radius:15px;white-space:pre-wrap;word-break:break-word}.mine .bubble{background:#5b4bdb;color:#fff;border-bottom-right-radius:4px}.theirs .bubble{background:#fff;border:1px solid #e8e8ee;border-bottom-left-radius:4px}.time{font-size:9px;opacity:.65;text-align:right;margin-top:3px}.tools{margin-top:3px}.tools button{padding:2px 6px;background:#ffffffdd;font-size:10px}.theirs .tools button{background:#eeeef5}.reacts{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}.reacts button{padding:3px 7px;background:#fff;border:1px solid #ddd;font-size:11px}.send{display:flex;gap:8px;padding:10px;background:#fff;border-top:1px solid #eee}.send textarea{flex:1;min-height:44px;max-height:120px;resize:none;padding:11px;border:1px solid #ddd;border-radius:13px;outline:0}.send button{height:44px}.modal{position:fixed;inset:0;background:#0007;display:none;align-items:center;justify-content:center;padding:15px;z-index:20}.modal.on{display:flex}.box{background:#fff;border-radius:17px;padding:18px;width:min(450px,100%);max-height:90vh;overflow:auto}.box input,.box textarea,.box select{width:100%;padding:11px;border:1px solid #ddd;border-radius:10px;margin:5px 0}.auth{min-height:100vh;display:grid;place-items:center;padding:20px;background:#f5f5fb}.auth .box{box-shadow:0 8px 30px #0001}.auth h1{text-align:center;color:#5b4bdb}.auth button{width:100%;margin-top:7px}.err{color:#c62828;background:#ffecec;padding:9px;border-radius:9px;margin:7px 0}.schedule{border:1px solid #eee;border-radius:14px;padding:12px;margin:8px 0}.progress{height:9px;background:#eee;border-radius:10px;overflow:hidden}.progress i{display:block;height:100%;background:#5b4bdb;width:0}@media(max-width:750px){main{padding:14px 12px 88px}.chat{grid-template-columns:1fr;height:calc(100vh - 145px)}.members{max-height:145px}.bubble{max-width:88%}.nav button{min-width:50px}.logo{font-size:21px}.head{position:sticky;top:0}.msgs{padding:10px}.bubble{font-size:14px}}
-</style></head><body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
 
-<div id="auth" class="auth"><div class="box"><h1>ConnectSphere</h1><p id="authText">Sign in to continue</p><div id="authErr"></div><input id="email" type="email" placeholder="Email"><input id="pass" type="password" placeholder="Password"><input id="name" class="hide" placeholder="Display name"><input id="username" class="hide" placeholder="Username"><button class="primary" onclick="auth()" id="authBtn">Sign in</button><button class="secondary" onclick="mode()" id="modeBtn">Create account</button></div></div>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<div id="app" class="app hide"><header><div class="logo">ConnectSphere</div><button class="secondary" onclick="page('settings')">⚙️</button></header><main>
+<meta name="theme-color" content="#5b4bdb">
 
-<section id="home" class="page on"><h1>Welcome 👋</h1><p class="sub">New people on ConnectSphere.</p><div id="suggestions"></div></section>
+<meta name="description" content="ConnectSphere - private social connections and messaging">
 
-<section id="search" class="page"><h1>Search</h1><p class="sub">Find ConnectSphere users.</p><input class="search" id="searchInput" placeholder="Search username or name" oninput="searchUsers()"><div id="searchResults"></div></section>
+<title>ConnectSphere</title>
 
-<section id="requests" class="page"><h1>Requests</h1><p class="sub">Manage requests and connections.</p><h3>Incoming</h3><div id="incoming"></div><h3>Sent</h3><div id="sent"></div><h3 id="connTitle">Connections</h3><div id="connections"></div></section>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<section id="chats" class="page"><h1>Messages 💬 <span id="chatTotal" class="unread hide">0</span></h1><p class="sub">Private conversations with your connections.</p><div class="chat"><div class="members"><h3>Members</h3><div id="members"></div></div><div class="window"><div class="head"><button class="secondary" onclick="closeChat()">←</button><div id="chatAv" class="avatar">?</div><div class="info"><b id="chatName">Select a connection</b><small id="chatUser">Choose someone to chat.</small></div><button class="danger" onclick="deleteChat()">🗑️</button></div><div id="msgs" class="msgs"><div class="empty">Select a connection to start chatting.</div></div><div class="send"><textarea id="input" maxlength="2000" placeholder="Type a message..." disabled onkeydown="keydown(event)"></textarea><button class="primary" id="send" disabled onclick="send()">Send</button></div></div></div></section>
+<style>
 
-<section id="schedule" class="page"><h1>My Schedule 📅</h1><p class="sub">Daily, weekly and one-time plans.</p><div class="card"><button class="primary" onclick="addSchedule()">+ Add</button><p id="prog">0% completed</p><div class="progress"><i id="fill"></i></div></div><div id="schedules"></div></section>
+/* =========================
+   GLOBAL
+========================= */
 
-<section id="profile" class="page"><div class="card" style="text-align:center"><div id="pAv" class="avatar" style="margin:auto;width:86px;height:86px;font-size:28px">?</div><h2 id="pName">Your Name</h2><p id="pUser">@username</p><div class="stats"><div class="stat" onclick="connections()"><b id="count">0</b><small>Connections</small></div><div class="stat"><b id="reqCount">0</b><small>Requests</small></div></div><button class="primary" onclick="editProfile()">Edit Profile</button></div><div class="card"><h3>About</h3><p id="bio">Your bio will appear here.</p></div></section>
+* {
+    box-sizing: border-box;
+}
 
-<section id="settings" class="page"><h1>Settings</h1><p class="sub">Control your account.</p><div class="card">
-<div class="setting"><div><b>Private account</b><small id="privateText">Require approval before someone becomes your connection.</small></div><label class="switch"><input id="private" type="checkbox"><i></i></label></div>
-<div class="setting"><div><b>Show online status</b><small>Let connections see your green online dot.</small></div><label class="switch"><input id="online" type="checkbox"><i></i></label></div>
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    background: #f5f5fb;
+    color: #171724;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    border: 0;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 9px 13px;
+}
+
+button:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+}
+
+.primary {
+    background: #5b4bdb;
+    color: #fff;
+}
+
+.secondary {
+    background: #eeeef5;
+    color: #171724;
+}
+
+.danger {
+    background: #ffe7e7;
+    color: #c62828;
+}
+
+.success {
+    background: #e6f7e9;
+    color: #287a35;
+}
+
+.hide {
+    display: none !important;
+}
+
+
+/* =========================
+   APP
+========================= */
+
+.app {
+    width: 100%;
+    max-width: 1100px;
+    min-height: 100vh;
+    margin: auto;
+    background: #fff;
+}
+
+header {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 5;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+    color: #5b4bdb;
+}
+
+main {
+    padding: 18px 18px 90px;
+}
+
+.page {
+    display: none;
+}
+
+.page.on {
+    display: block;
+}
+
+h1 {
+    margin: 0 0 7px;
+}
+
+h2,
+h3 {
+    margin-top: 0;
+}
+
+.sub {
+    color: #777;
+    margin: 0 0 18px;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 16px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 2px 10px #00000008;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.info {
+    flex: 1;
+    min-width: 0;
+}
+
+.info b {
+    display: block;
+}
+
+.info small {
+    display: block;
+    color: #777;
+    margin-top: 3px;
+}
+
+.avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #5b4bdb;
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    flex: none;
+}
+
+.dot {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #22c55e;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.actions {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.empty {
+    text-align: center;
+    color: #888;
+    padding: 30px 10px;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+    margin: 20px;
+}
+
+.stat {
+    text-align: center;
+    cursor: pointer;
+}
+
+.stat b {
+    display: block;
+    font-size: 21px;
+}
+
+.stat small {
+    color: #777;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    outline: 0;
+    margin-bottom: 10px;
+}
+
+
+/* =========================
+   SETTINGS
+========================= */
+
+.setting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+}
+
+.setting + .setting {
+    border-top: 1px solid #eee;
+}
+
+.setting small {
+    display: block;
+    color: #777;
+    margin-top: 4px;
+}
+
+.switch {
+    width: 50px;
+    height: 28px;
+    position: relative;
+    display: block;
+    flex: none;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch i {
+    position: absolute;
+    inset: 0;
+    background: #ccc;
+    border-radius: 20px;
+    transition: .2s;
+}
+
+.switch i:before {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    left: 3px;
+    top: 3px;
+    background: #fff;
+    border-radius: 50%;
+    transition: .2s;
+}
+
+.switch input:checked + i {
+    background: #5b4bdb;
+}
+
+.switch input:checked + i:before {
+    transform: translateX(22px);
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1100px, 100%);
+    height: 70px;
+    background: #fff;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-around;
+    z-index: 10;
+}
+
+.nav button {
+    background: none;
+    color: #777;
+    min-width: 60px;
+    position: relative;
+    font-size: 11px;
+}
+
+.nav button.on {
+    background: #f0effd;
+    color: #5b4bdb;
+    font-weight: 700;
+}
+
+.nav em {
+    display: block;
+    font-style: normal;
+    font-size: 21px;
+}
+
+.badge,
+.unread {
+    background: #e53935;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 6px;
+}
+
+.badge {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+}
+
+
+/* =========================
+   CHAT
+========================= */
+
+.chat {
+    height: calc(100vh - 155px);
+    min-height: 420px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 12px;
+}
+
+.members,
+.window {
+    border: 1px solid #eee;
+    border-radius: 16px;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.members {
+    overflow-y: auto;
+    background: #fff;
+}
+
+.members h3 {
+    padding: 14px;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+}
+
+.member {
+    display: flex;
+    gap: 9px;
+    align-items: center;
+    padding: 11px;
+    border-bottom: 1px solid #f1f1f1;
+    cursor: pointer;
+}
+
+.member:hover {
+    background: #f8f7ff;
+}
+
+.member.sel {
+    background: #f1efff;
+}
+
+.member .info {
+    min-width: 0;
+}
+
+.member .last {
+    font-size: 12px;
+    color: #777;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.unread {
+    margin-left: 6px;
+}
+
+
+/* =========================
+   CHAT WINDOW
+========================= */
+
+.window {
+    display: flex;
+    flex-direction: column;
+    background: #fafaff;
+}
+
+.head {
+    padding: 10px 13px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.head .avatar {
+    width: 40px;
+    height: 40px;
+}
+
+.msgs {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.bubbleRow {
+    width: 100%;
+    display: flex;
+}
+
+.bubbleRow.mine {
+    justify-content: flex-end;
+}
+
+.bubble {
+    max-width: 72%;
+    width: fit-content;
+    padding: 8px 10px;
+    border-radius: 15px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    line-height: 1.35;
+}
+
+.mine .bubble {
+    background: #5b4bdb;
+    color: #fff;
+    border-bottom-right-radius: 4px;
+}
+
+.theirs .bubble {
+    background: #fff;
+    border: 1px solid #e8e8ee;
+    border-bottom-left-radius: 4px;
+}
+
+.time {
+    font-size: 9px;
+    opacity: .65;
+    text-align: right;
+    margin-top: 3px;
+}
+
+.tools {
+    margin-top: 3px;
+}
+
+.tools button {
+    padding: 2px 6px;
+    background: #ffffffdd;
+    font-size: 10px;
+}
+
+.theirs .tools button {
+    background: #eeeef5;
+}
+
+.reacts {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.reacts button {
+    padding: 3px 7px;
+    background: #fff;
+    border: 1px solid #ddd;
+    font-size: 11px;
+}
+
+.send {
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    background: #fff;
+    border-top: 1px solid #eee;
+}
+
+.send textarea {
+    flex: 1;
+    min-height: 44px;
+    max-height: 120px;
+    resize: none;
+    padding: 11px;
+    border: 1px solid #ddd;
+    border-radius: 13px;
+    outline: 0;
+}
+
+.send button {
+    height: 44px;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: #0007;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    z-index: 20;
+}
+
+.modal.on {
+    display: flex;
+}
+
+.box {
+    background: #fff;
+    border-radius: 17px;
+    padding: 18px;
+    width: min(450px, 100%);
+    max-height: 90vh;
+    overflow: auto;
+}
+
+.box input,
+.box textarea,
+.box select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 5px 0;
+}
+
+
+/* =========================
+   AUTH
+========================= */
+
+.auth {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: #f5f5fb;
+}
+
+.auth .box {
+    box-shadow: 0 8px 30px #0001;
+}
+
+.auth h1 {
+    text-align: center;
+    color: #5b4bdb;
+}
+
+.auth button {
+    width: 100%;
+    margin-top: 7px;
+}
+
+.err {
+    color: #c62828;
+    background: #ffecec;
+    padding: 9px;
+    border-radius: 9px;
+    margin: 7px 0;
+}
+
+
+/* =========================
+   SCHEDULE
+========================= */
+
+.schedule {
+    border: 1px solid #eee;
+    border-radius: 14px;
+    padding: 12px;
+    margin: 8px 0;
+}
+
+.progress {
+    height: 9px;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress i {
+    display: block;
+    height: 100%;
+    background: #5b4bdb;
+    width: 0;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 750px) {
+
+    main {
+        padding: 14px 12px 88px;
+    }
+
+    .chat {
+        grid-template-columns: 1fr;
+        height: calc(100vh - 145px);
+        min-height: 500px;
+    }
+
+    .members {
+        max-height: 145px;
+        min-height: 70px;
+    }
+
+    .bubble {
+        max-width: 88%;
+    }
+
+    .nav button {
+        min-width: 50px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .stats {
+        gap: 30px;
+    }
+
+    .head {
+        flex: none;
+    }
+
+    .msgs {
+        padding: 10px;
+    }
+
+    .bubble {
+        font-size: 14px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================================================
+     AUTHENTICATION
+========================================================= -->
+
+<div id="auth" class="auth">
+
+    <div class="box">
+
+        <h1>ConnectSphere</h1>
+
+        <p id="authText">
+            Sign in to continue
+        </p>
+
+        <div id="authErr"></div>
+
+        <input
+            id="email"
+            type="email"
+            placeholder="Email"
+            autocomplete="email"
+        >
+
+        <input
+            id="pass"
+            type="password"
+            placeholder="Password"
+            autocomplete="current-password"
+        >
+
+        <input
+            id="name"
+            class="hide"
+            placeholder="Display name"
+            autocomplete="name"
+        >
+
+        <input
+            id="username"
+            class="hide"
+            placeholder="Username"
+            autocomplete="username"
+        >
+
+        <button
+            class="primary"
+            onclick="auth()"
+            id="authBtn"
+            type="button"
+        >
+            Sign in
+        </button>
+
+        <button
+            class="secondary"
+            onclick="mode()"
+            id="modeBtn"
+            type="button"
+        >
+            Create account
+        </button>
+
+    </div>
+
 </div>
-<div class="card"><h3>Blocked Users 🚫</h3><p class="sub">Unblock someone to allow a new request again.</p><div id="blocked"></div></div>
-<div class="card"><button class="danger" onclick="logout()">Log out</button></div></section>
 
-</main><nav class="nav">
-<button data-p="home" class="on" onclick="page('home')"><em>🏠</em>Home</button>
-<button data-p="search" onclick="page('search')"><em>🔎</em>Search</button>
-<button data-p="requests" onclick="page('requests')"><em>👥</em><i id="rb" class="badge hide">0</i>Requests</button>
-<button data-p="chats" onclick="page('chats')"><em>💬</em><i id="mb" class="badge hide">0</i>Chats</button>
-<button data-p="schedule" onclick="page('schedule')"><em>📅</em>Schedule</button>
-<button data-p="profile" onclick="page('profile')"><em>👤</em>Profile</button>
-</nav></div>
 
-<div id="modal" class="modal"><div class="box" id="modalBox"></div></div>
+<!-- =========================================================
+     MAIN APPLICATION
+========================================================= -->
+
+<div id="app" class="app hide">
+
+
+<header>
+
+    <div class="logo">
+        ConnectSphere
+    </div>
+
+    <button
+        class="secondary"
+        onclick="page('settings')"
+        type="button"
+    >
+        ⚙️
+    </button>
+
+</header>
+
+
+<main>
+
+
+<!-- =========================================================
+     HOME
+========================================================= -->
+
+<section id="home" class="page on">
+
+    <h1>
+        Welcome 👋
+    </h1>
+
+    <p class="sub">
+        New people on ConnectSphere.
+    </p>
+
+    <div id="suggestions"></div>
+
+</section>
+
+
+<!-- =========================================================
+     SEARCH
+========================================================= -->
+
+<section id="search" class="page">
+
+    <h1>
+        Search
+    </h1>
+
+    <p class="sub">
+        Find ConnectSphere users.
+    </p>
+
+    <input
+        class="search"
+        id="searchInput"
+        placeholder="Search username or name"
+        oninput="searchUsers()"
+    >
+
+    <div id="searchResults"></div>
+
+</section>
+
+
+<!-- =========================================================
+     REQUESTS / CONNECTIONS
+========================================================= -->
+
+<section id="requests" class="page">
+
+    <h1>
+        Requests
+    </h1>
+
+    <p class="sub">
+        Manage requests and connections.
+    </p>
+
+
+    <h3>
+        Incoming
+    </h3>
+
+    <div id="incoming"></div>
+
+
+    <h3>
+        Sent
+    </h3>
+
+    <div id="sent"></div>
+
+
+    <h3 id="connTitle">
+        Connections
+    </h3>
+
+    <div id="connections"></div>
+
+</section>
+
+
+<!-- =========================================================
+     CHATS
+========================================================= -->
+
+<section id="chats" class="page">
+
+    <h1>
+        Messages 💬
+
+        <span
+            id="chatTotal"
+            class="unread hide"
+        >
+            0
+        </span>
+
+    </h1>
+
+    <p class="sub">
+        Private conversations with your connections.
+    </p>
+
+
+    <div class="chat">
+
+
+        <!-- MEMBERS -->
+
+        <div class="members">
+
+            <h3>
+                Members
+            </h3>
+
+            <div id="members"></div>
+
+        </div>
+
+
+        <!-- CHAT WINDOW -->
+
+        <div class="window">
+
+
+            <div class="head">
+
+                <button
+                    class="secondary"
+                    onclick="closeChat()"
+                    type="button"
+                >
+                    ←
+                </button>
+
+
+                <div
+                    id="chatAv"
+                    class="avatar"
+                >
+                    ?
+                </div>
+
+
+                <div class="info">
+
+                    <b id="chatName">
+                        Select a connection
+                    </b>
+
+                    <small id="chatUser">
+                        Choose someone to chat.
+                    </small>
+
+                </div>
+
+
+                <button
+                    class="danger"
+                    onclick="deleteChat()"
+                    type="button"
+                >
+                    🗑️
+                </button>
+
+            </div>
+
+
+            <div
+                id="msgs"
+                class="msgs"
+            >
+
+                <div class="empty">
+                    Select a connection to start chatting.
+                </div>
+
+            </div>
+
+
+            <div class="send">
+
+                <textarea
+                    id="input"
+                    maxlength="2000"
+                    placeholder="Type a message..."
+                    disabled
+                    onkeydown="keydown(event)"
+                ></textarea>
+
+                <button
+                    class="primary"
+                    id="send"
+                    disabled
+                    onclick="send()"
+                    type="button"
+                >
+                    Send
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SCHEDULE
+========================================================= -->
+
+<section id="schedule" class="page">
+
+    <h1>
+        My Schedule 📅
+    </h1>
+
+    <p class="sub">
+        Daily, weekly and one-time plans.
+    </p>
+
+
+    <div class="card">
+
+        <button
+            class="primary"
+            onclick="addSchedule()"
+            type="button"
+        >
+            + Add
+        </button>
+
+        <p id="prog">
+            0% completed
+        </p>
+
+        <div class="progress">
+            <i id="fill"></i>
+        </div>
+
+    </div>
+
+
+    <div id="schedules"></div>
+
+</section>
+
+
+<!-- =========================================================
+     PROFILE
+========================================================= -->
+
+<section id="profile" class="page">
+
+
+    <div
+        class="card"
+        style="text-align:center"
+    >
+
+        <div
+            id="pAv"
+            class="avatar"
+            style="margin:auto;width:86px;height:86px;font-size:28px"
+        >
+            ?
+        </div>
+
+
+        <h2 id="pName">
+            Your Name
+        </h2>
+
+
+        <p id="pUser">
+            @username
+        </p>
+
+
+        <div class="stats">
+
+
+            <div
+                class="stat"
+                onclick="connections()"
+            >
+
+                <b id="count">
+                    0
+                </b>
+
+                <small>
+                    Connections
+                </small>
+
+            </div>
+
+
+            <div class="stat">
+
+                <b id="reqCount">
+                    0
+                </b>
+
+                <small>
+                    Requests
+                </small>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="primary"
+            onclick="editProfile()"
+            type="button"
+        >
+            Edit Profile
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>
+            About
+        </h3>
+
+        <p id="bio">
+            Your bio will appear here.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>
+            Connections
+        </h3>
+
+        <p class="sub">
+            Your current connections.
+        </p>
+
+        <div id="profileConnections"></div>
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================================================
+     SETTINGS
+========================================================= -->
+
+<section id="settings" class="page">
+
+    <h1>
+        Settings
+    </h1>
+
+    <p class="sub">
+        Control your account.
+    </p>
+
+
+    <div class="card">
+
+
+        <!-- PRIVATE ACCOUNT -->
+
+        <div class="setting">
+
+            <div>
+
+                <b>
+                    Private account
+                </b>
+
+                <small id="privateText">
+                    Require approval before someone becomes your connection.
+                </small>
+
+            </div>
+
+
+            <label class="switch">
+
+                <input
+                    id="private"
+                    type="checkbox"
+                >
+
+                <i></i>
+
+            </label>
+
+        </div>
+
+
+        <!-- ONLINE STATUS -->
+
+        <div class="setting">
+
+            <div>
+
+                <b>
+                    Show online status
+                </b>
+
+                <small>
+                    Let connections see your green online dot.
+                </small>
+
+            </div>
+
+
+            <label class="switch">
+
+                <input
+                    id="online"
+                    type="checkbox"
+                >
+
+                <i></i>
+
+            </label>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- BLOCKED USERS -->
+
+    <div class="card">
+
+        <h3>
+            Blocked Users 🚫
+        </h3>
+
+        <p class="sub">
+            Unblock someone to allow a new connection again.
+        </p>
+
+        <div id="blocked"></div>
+
+    </div>
+
+
+    <div class="card">
+
+        <button
+            class="danger"
+            onclick="logout()"
+            type="button"
+        >
+            Log out
+        </button>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================================================
+     BOTTOM NAVIGATION
+========================================================= -->
+
+<nav class="nav">
+
+
+    <button
+        data-p="home"
+        class="on"
+        onclick="page('home')"
+        type="button"
+    >
+
+        <em>
+            🏠
+        </em>
+
+        Home
+
+    </button>
+
+
+    <button
+        data-p="search"
+        onclick="page('search')"
+        type="button"
+    >
+
+        <em>
+            🔎
+        </em>
+
+        Search
+
+    </button>
+
+
+    <button
+        data-p="requests"
+        onclick="page('requests')"
+        type="button"
+    >
+
+        <em>
+            👥
+        </em>
+
+        <i
+            id="rb"
+            class="badge hide"
+        >
+            0
+        </i>
+
+        Requests
+
+    </button>
+
+
+    <button
+        data-p="chats"
+        onclick="page('chats')"
+        type="button"
+    >
+
+        <em>
+            💬
+        </em>
+
+        <i
+            id="mb"
+            class="badge hide"
+        >
+            0
+        </i>
+
+        Chats
+
+    </button>
+
+
+    <button
+        data-p="schedule"
+        onclick="page('schedule')"
+        type="button"
+    >
+
+        <em>
+            📅
+        </em>
+
+        Schedule
+
+    </button>
+
+
+    <button
+        data-p="profile"
+        onclick="page('profile')"
+        type="button"
+    >
+
+        <em>
+            👤
+        </em>
+
+        Profile
+
+    </button>
+
+
+</nav>
+
+
+</div>
+
+
+<!-- =========================================================
+     MODAL
+========================================================= -->
+
+<div
+    id="modal"
+    class="modal"
+>
+
+    <div
+        class="box"
+        id="modalBox"
+    ></div>
+
+</div>
+
 
 <script>
-const URL="https://hwjojlqhzeqtfcxmfrjk.supabase.co",KEY="sb_publishable_-GofAlZERkBVXbEOQpF3Rg_w0mGMaA4",db=supabase.createClient(URL,KEY);
-let me=null,profile=null,sel=null,chan=null,pres=null,badgeTimer=null,onlineUsers=new Set,searchTimer=null,loginMode=false;
-const $=id=>document.getElementById(id),esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c])),attr=x=>String(x??'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-const key=(k,id='')=>`cs_${k}_${me?.id||'guest'}${id?'_'+id:''}`;
-const blocked=()=>{try{return JSON.parse(localStorage.getItem(key('blocked'))||'[]')}catch{return[]}};
-const isBlocked=id=>blocked().includes(id);
-const saveBlocked=a=>localStorage.setItem(key('blocked'),JSON.stringify([...new Set(a)]));
-const readAt=id=>localStorage.getItem(key('read',id));
-const setRead=id=>{localStorage.setItem(key('read',id),new Date().toISOString());badges()};
-const setting=(k,d)=>localStorage.getItem(key(k))===null?d:localStorage.getItem(key(k))==='1';
-const setSetting=(k,v)=>localStorage.setItem(key(k),v?'1':'0');
 
-function page(p){
- document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));
- $(p)?.classList.add('on');
- document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('on',x.dataset.p===p));
- if(p==='home')people();
- if(p==='requests')requests();
- if(p==='chats'){members();if(sel){setRead(sel.id);messages()}}
- if(p==='schedule')schedules();
- if(p==='profile')ui();
- if(p==='settings'){loadSettings();blockedUI()}
+/* =========================================================
+   SUPABASE
+========================================================= */
+
+const SUPABASE_URL =
+    "https://hwjojlqhzeqtfcxmfrjk.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_-GofAlZERkBVXbEOQpF3Rg_w0mGMaA4";
+
+const db =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* =========================================================
+   GLOBAL STATE
+========================================================= */
+
+let me = null;
+
+let profile = null;
+
+let selectedUser = null;
+
+let messageChannel = null;
+
+let presenceChannel = null;
+
+let badgeTimer = null;
+
+let searchTimer = null;
+
+let loginMode = false;
+
+let onlineUsers = new Set();
+
+let realtimeStarting = false;
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function $(id) {
+    return document.getElementById(id);
 }
 
-function connections(){
- page('requests');
- setTimeout(()=>document.getElementById('connTitle')?.scrollIntoView({behavior:'smooth'}),50)
+
+function esc(value) {
+
+    return String(value ?? "")
+        .replace(/[&<>"']/g, function (char) {
+
+            const map = {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+            };
+
+            return map[char];
+
+        });
+
 }
 
-function mode(){
- loginMode=!loginMode;
- $('authText').textContent=loginMode?'Create your account':'Sign in to continue';
- $('authBtn').textContent=loginMode?'Create account':'Sign in';
- $('modeBtn').textContent=loginMode?'Back to sign in':'Create account';
- $('name').classList.toggle('hide',!loginMode);
- $('username').classList.toggle('hide',!loginMode);
- $('authErr').innerHTML=''
+
+function attr(value) {
+
+    return String(value ?? "")
+        .replace(/\\/g, "\\\\")
+        .replace(/'/g, "\\'");
+
 }
 
-async function auth(){
- const email=$('email').value.trim(),password=$('pass').value;
- if(!email||!password)return $('authErr').innerHTML='<div class="err">Enter email and password.</div>';
- let r;
- if(loginMode)r=await db.auth.signUp({email,password,options:{data:{display_name:$('name').value.trim(),username:$('username').value.trim().toLowerCase()}}});
- else r=await db.auth.signInWithPassword({email,password});
- if(r.error)return $('authErr').innerHTML=`<div class="err">${esc(r.error.message)}</div>`;
- if(loginMode&&!r.data.session)return $('authErr').innerHTML='<div>Check your email to confirm your account.</div>';
- if(r.data.user){me=r.data.user;await start()}
+
+/* =========================================================
+   LOCAL STORAGE KEYS
+========================================================= */
+
+function storageKey(type, id = "") {
+
+    return (
+        "cs_" +
+        type +
+        "_" +
+        (me?.id || "guest") +
+        (id ? "_" + id : "")
+    );
+
 }
 
-async function start(){
- let r=await db.from('profiles').select('*').eq('id',me.id).maybeSingle();
- if(r.error)return alert(r.error.message);
- if(!r.data){
-  let m=me.user_metadata||{},u=m.username||'user_'+me.id.replaceAll('-','').slice(0,8),n=m.display_name||me.email?.split('@')[0]||'User';
-  r=await db.from('profiles').insert({id:me.id,username:u,display_name:n,bio:'',avatar_url:null}).select().single();
-  if(r.error)return alert(r.error.message)
- }
- profile=r.data;
- $('auth').classList.add('hide');$('app').classList.remove('hide');
- ui();loadSettings();
- await Promise.all([people(),requests(),members(),schedules()]);
- blockedUI();presence();realtime();badges();
- if(badgeTimer)clearInterval(badgeTimer);
- badgeTimer=setInterval(async()=>{await badges();if(sel&&$('chats').classList.contains('on'))await messages()},3500)
+
+/* =========================================================
+   BLOCKED USERS
+========================================================= */
+
+function getBlockedUsers() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                storageKey("blocked")
+            ) || "[]"
+        );
+
+    } catch (error) {
+
+        return [];
+
+    }
+
 }
 
-function ui(){
- let n=profile.display_name||'User';
- $('pName').textContent=n;$('pUser').textContent='@'+(profile.username||'');
- $('bio').textContent=profile.bio||'Your bio will appear here.';
- $('pAv').textContent=n[0]?.toUpperCase()||'U'
+
+function isBlocked(id) {
+
+    return getBlockedUsers().includes(id);
+
 }
 
-async function status(id){
- let r=await db.from('connection_requests').select('sender_id,receiver_id,status,created_at')
- .or(`and(sender_id.eq.${me.id},receiver_id.eq.${id}),and(sender_id.eq.${id},receiver_id.eq.${me.id})`)
- .order('created_at',{ascending:false}).limit(1);
- if(r.error||!r.data?.length)return'none';
- let x=r.data[0];
- return x.status==='accepted'?'connected':x.sender_id===me.id?'sent':'incoming'
+
+function saveBlockedUsers(users) {
+
+    localStorage.setItem(
+        storageKey("blocked"),
+        JSON.stringify(
+            [...new Set(users)]
+        )
+    );
+
 }
 
-async function profiles(ids){
- if(!ids.length)return{};
- let r=await db.from('profiles').select('id,username,display_name,bio,avatar_url').in('id',ids);
- return Object.fromEntries((r.data||[]).map(x=>[x.id,x]))
+
+/* =========================================================
+   READ MESSAGE STATE
+========================================================= */
+
+function getReadTime(id) {
+
+    return localStorage.getItem(
+        storageKey("read", id)
+    );
+
 }
 
-function onlineDot(id){
- return onlineUsers.has(id)?'<span class="dot" title="Online"></span>':''
+
+function setReadTime(id) {
+
+    if (!id) {
+        return;
+    }
+
+    localStorage.setItem(
+        storageKey("read", id),
+        new Date().toISOString()
+    );
+
 }
 
-async function people(){
- if(!me)return;
- let r=await db.from('profiles').select('id,username,display_name,bio').neq('id',me.id).limit(100);
- if(r.error)return $('suggestions').innerHTML='<div class="empty">Unable to load people.</div>';
- let a=[];
- for(let u of r.data||[]){
-  if(!isBlocked(u.id)&&await status(u.id)==='none')a.push(u)
- }
- $('suggestions').innerHTML=a.length?(await Promise.all(a.map(card))).join(''):'<div class="empty">No new people right now.</div>'
+
+/* =========================================================
+   SETTINGS STORAGE
+========================================================= */
+
+function getSetting(name, defaultValue) {
+
+    const value =
+        localStorage.getItem(
+            storageKey(name)
+        );
+
+    if (value === null) {
+
+        return defaultValue;
+
+    }
+
+    return value === "1";
+
 }
 
-async function card(u){
- let n=u.display_name||'User';
- return `<div class="card"><div class="row"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}${onlineDot(u.id)}</b><small>@${esc(u.username||'')}</small><small>${esc(u.bio||'')}</small></div><button class="secondary" onclick="view('${attr(u.id)}')">View</button></div><div class="actions"><button class="primary" onclick="request('${attr(u.id)}')">Connect</button><button class="danger" onclick="block('${attr(u.id)}')">Block</button></div></div>`
+
+function setSetting(name, value) {
+
+    localStorage.setItem(
+        storageKey(name),
+        value ? "1" : "0"
+    );
+
 }
 
-async function view(id){
- let r=await db.from('profiles').select('display_name,username,bio').eq('id',id).single();
- if(!r.data)return;
- alert(`${r.data.display_name||'User'}\n@${r.data.username||''}\n\n${r.data.bio||''}`)
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+async function page(pageName) {
+
+    document
+        .querySelectorAll(".page")
+        .forEach(function (section) {
+
+            section.classList.remove("on");
+
+        });
+
+
+    const target =
+        $(pageName);
+
+    if (target) {
+
+        target.classList.add("on");
+
+    }
+
+
+    document
+        .querySelectorAll(".nav button")
+        .forEach(function (button) {
+
+            button.classList.toggle(
+                "on",
+                button.dataset.p === pageName
+            );
+
+        });
+
+
+    if (pageName === "home") {
+
+        await people();
+
+    }
+
+
+    if (pageName === "requests") {
+
+        await requests();
+
+    }
+
+
+    if (pageName === "chats") {
+
+        await members();
+
+        if (selectedUser) {
+
+            setReadTime(selectedUser.id);
+
+            await messages();
+
+        }
+
+        await badges();
+
+    }
+
+
+    if (pageName === "schedule") {
+
+        await schedules();
+
+    }
+
+
+    if (pageName === "profile") {
+
+        ui();
+
+        await requests();
+
+    }
+
+
+    if (pageName === "settings") {
+
+        loadSettings();
+
+        await blockedUI();
+
+    }
+
 }
 
-async function request(id){
- if(isBlocked(id))return alert('Unblock this person in Settings first.');
- let s=await status(id);
- if(s!=='none')return alert(s==='connected'?'Already connected.':s==='sent'?'Request already sent.':'They already sent you a request.');
- let r=await db.from('connection_requests').insert({sender_id:me.id,receiver_id:id,status:'pending'});
- if(r.error)return alert(r.error.message);
- await people();await requests();badges()
+
+/* =========================================================
+   CONNECTIONS SHORTCUT
+========================================================= */
+
+function connections() {
+
+    page("requests");
+
+    setTimeout(function () {
+
+        const title =
+            $("connTitle");
+
+        if (title) {
+
+            title.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+    }, 100);
+
 }
 
-async function searchUsers(){
- clearTimeout(searchTimer);
- searchTimer=setTimeout(async()=>{
-  let q=$('searchInput').value.trim().toLowerCase().replace(/[,%()]/g,''),box=$('searchResults');
-  if(!q)return box.innerHTML='<div class="empty">Start typing to search.</div>';
-  let r=await db.from('profiles').select('id,username,display_name,bio').neq('id',me.id).or(`username.ilike.%${q}%,display_name.ilike.%${q}%`).limit(30);
-  let a=(r.data||[]).filter(x=>!isBlocked(x.id));
-  box.innerHTML=a.length?(await Promise.all(a.map(async u=>{
-   let s=await status(u.id),n=u.display_name||'User';
-   let act=s==='connected'?`<button class="primary" onclick="openChat('${attr(u.id)}')">Message</button>`:s==='sent'?'<button class="secondary" disabled>Request Sent</button>':s==='incoming'?'<button class="success" onclick="page(\'requests\')">Review Request</button>':`<button class="primary" onclick="request('${attr(u.id)}')">Connect</button>`;
-   return `<div class="card"><div class="row"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}${onlineDot(u.id)}</b><small>@${esc(u.username||'')}</small></div></div><div class="actions">${act}<button class="danger" onclick="block('${attr(u.id)}')">Block</button></div></div>`
-  }))).join(''):'<div class="empty">No users found.</div>'
- },200)
+
+/* =========================================================
+   AUTH MODE
+========================================================= */
+
+function mode() {
+
+    loginMode =
+        !loginMode;
+
+
+    $("authText").textContent =
+        loginMode
+            ? "Create your account"
+            : "Sign in to continue";
+
+
+    $("authBtn").textContent =
+        loginMode
+            ? "Create account"
+            : "Sign in";
+
+
+    $("modeBtn").textContent =
+        loginMode
+            ? "Back to sign in"
+            : "Create account";
+
+
+    $("name")
+        .classList
+        .toggle(
+            "hide",
+            !loginMode
+        );
+
+
+    $("username")
+        .classList
+        .toggle(
+            "hide",
+            !loginMode
+        );
+
+
+    $("authErr").innerHTML = "";
+
 }
 
-async function requests(){
- let r=await db.from('connection_requests').select('id,sender_id,receiver_id,status,created_at').or(`sender_id.eq.${me.id},receiver_id.eq.${me.id}`).order('created_at',{ascending:false}),a=r.data||[];
- let inc=a.filter(x=>x.receiver_id===me.id&&x.status==='pending'),sent=a.filter(x=>x.sender_id===me.id&&x.status==='pending'),con=a.filter(x=>x.status==='accepted');
- let ids=[...new Set([...inc.map(x=>x.sender_id),...sent.map(x=>x.receiver_id),...con.flatMap(x=>[x.sender_id,x.receiver_id]).filter(x=>x!==me.id)])],map=await profiles(ids);
- $('incoming').innerHTML=inc.length?inc.map(x=>reqCard(x,map[x.sender_id],true)).join(''):'<div class="empty">No incoming requests.</div>';
- $('sent').innerHTML=sent.length?sent.map(x=>reqCard(x,map[x.receiver_id],false)).join(''):'<div class="empty">No sent requests.</div>';
- let cp=con.map(x=>x.sender_id===me.id?x.receiver_id:x.sender_id).filter(x=>!isBlocked(x));
- $('connections').innerHTML=cp.length?cp.map(id=>{
-  let u=map[id]||{},n=u.display_name||'User';
-  return `<div class="card"><div class="row"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}${onlineDot(id)}</b><small>@${esc(u.username||'')}</small><small>Connected ✅</small></div></div><div class="actions"><button class="primary" onclick="openChat('${attr(id)}')">Message</button><button class="danger" onclick="removeFriend('${attr(id)}')">Remove</button><button class="danger" onclick="block('${attr(id)}')">Block</button></div></div>`
- }).join(''):'<div class="empty">No connections yet.</div>';
- $('count').textContent=cp.length;$('reqCount').textContent=inc.length
+
+/* =========================================================
+   AUTHENTICATION
+========================================================= */
+
+async function auth() {
+
+    const email =
+        $("email")
+            .value
+            .trim();
+
+
+    const password =
+        $("pass")
+            .value;
+
+
+    if (!email || !password) {
+
+        $("authErr").innerHTML =
+            '<div class="err">Enter email and password.</div>';
+
+        return;
+
+    }
+
+
+    $("authBtn").disabled = true;
+
+    $("authBtn").textContent =
+        loginMode
+            ? "Creating..."
+            : "Signing in...";
+
+
+    try {
+
+        let result;
+
+
+        /* =========================
+           CREATE ACCOUNT
+        ========================= */
+
+        if (loginMode) {
+
+            const displayName =
+                $("name")
+                    .value
+                    .trim();
+
+
+            const username =
+                $("username")
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+
+            if (!displayName) {
+
+                $("authErr").innerHTML =
+                    '<div class="err">Enter your display name.</div>';
+
+                return;
+
+            }
+
+
+            if (
+                !/^[a-z0-9_]{3,30}$/
+                .test(username)
+            ) {
+
+                $("authErr").innerHTML =
+                    '<div class="err">Username must be 3-30 letters, numbers or underscore.</div>';
+
+                return;
+
+            }
+
+
+            result =
+                await db.auth.signUp({
+
+                    email: email,
+
+                    password: password,
+
+                    options: {
+
+                        data: {
+
+                            display_name:
+                                displayName,
+
+                            username:
+                                username
+
+                        }
+
+                    }
+
+                });
+
+        }
+
+        /* =========================
+           SIGN IN
+        ========================= */
+
+        else {
+
+            result =
+                await db.auth.signInWithPassword({
+
+                    email: email,
+
+                    password: password
+
+                });
+
+        }
+
+
+        if (result.error) {
+
+            $("authErr").innerHTML =
+                '<div class="err">' +
+                esc(result.error.message) +
+                "</div>";
+
+            return;
+
+        }
+
+
+        if (
+            loginMode &&
+            !result.data.session
+        ) {
+
+            $("authErr").innerHTML =
+                '<div class="success" style="padding:9px;border-radius:9px">Account created. Check your email to confirm your account.</div>';
+
+            return;
+
+        }
+
+
+        if (result.data.user) {
+
+            me =
+                result.data.user;
+
+            await start();
+
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "AUTH ERROR:",
+            error
+        );
+
+        $("authErr").innerHTML =
+            '<div class="err">' +
+            esc(
+                error.message ||
+                "Unable to sign in."
+            ) +
+            "</div>";
+
+    } finally {
+
+        $("authBtn").disabled = false;
+
+        $("authBtn").textContent =
+            loginMode
+                ? "Create account"
+                : "Sign in";
+
+    }
+
 }
 
-function reqCard(x,u,incoming){
- let n=u?.display_name||'User';
- return `<div class="card"><div class="row"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}</b><small>@${esc(u?.username||'')}</small></div></div><div class="actions">${incoming?`<button class="success" onclick="accept('${attr(x.id)}')">Accept</button><button class="danger" onclick="reject('${attr(x.id)}')">Reject</button>`:`<button class="secondary" onclick="cancel('${attr(x.id)}')">Cancel</button>`}</div></div>`
+
+/* =========================================================
+   START APP
+========================================================= */
+
+async function start() {
+
+    try {
+
+        const result =
+            await db
+                .from("profiles")
+                .select("*")
+                .eq("id", me.id)
+                .maybeSingle();
+
+
+        if (result.error) {
+
+            alert(
+                result.error.message
+            );
+
+            return;
+
+        }
+
+
+        let profileResult =
+            result;
+
+
+        /* =========================
+           CREATE PROFILE IF MISSING
+        ========================= */
+
+        if (!profileResult.data) {
+
+            const metadata =
+                me.user_metadata || {};
+
+
+            const username =
+                metadata.username ||
+                (
+                    "user_" +
+                    me.id
+                        .replaceAll("-", "")
+                        .slice(0, 8)
+                );
+
+
+            const displayName =
+                metadata.display_name ||
+                me.email?.split("@")[0] ||
+                "User";
+
+
+            profileResult =
+                await db
+                    .from("profiles")
+                    .insert({
+
+                        id: me.id,
+
+                        username:
+                            username,
+
+                        display_name:
+                            displayName,
+
+                        bio: "",
+
+                        avatar_url:
+                            null
+
+                    })
+                    .select()
+                    .single();
+
+
+            if (profileResult.error) {
+
+                alert(
+                    profileResult.error.message
+                );
+
+                return;
+
+            }
+
+        }
+
+
+        profile =
+            profileResult.data;
+
+
+        $("auth")
+            .classList
+            .add("hide");
+
+
+        $("app")
+            .classList
+            .remove("hide");
+
+
+        ui();
+
+        loadSettings();
+
+
+        await Promise.all([
+
+            people(),
+
+            requests(),
+
+            members(),
+
+            schedules()
+
+        ]);
+
+
+        await blockedUI();
+
+        presence();
+
+        realtime();
+
+        await badges();
+
+
+        if (badgeTimer) {
+
+            clearInterval(
+                badgeTimer
+            );
+
+        }
+
+
+        badgeTimer =
+            setInterval(
+                async function () {
+
+                    try {
+
+                        await badges();
+
+                        if (
+                            selectedUser &&
+                            $("chats")
+                                .classList
+                                .contains("on")
+                        ) {
+
+                            await messages();
+
+                        }
+
+                    } catch (error) {
+
+                        console.error(
+                            "BACKGROUND ERROR:",
+                            error
+                        );
+
+                    }
+
+                },
+                3500
+            );
+
+
+    } catch (error) {
+
+        console.error(
+            "START ERROR:",
+            error
+        );
+
+        alert(
+            error.message ||
+            "Unable to start ConnectSphere."
+        );
+
+    }
+
 }
 
-async function accept(id){
- let r=await db.from('connection_requests').update({status:'accepted'}).eq('id',id).eq('receiver_id',me.id);
- if(r.error)return alert(r.error.message);
- await requests();await people();await members();badges()
+
+/* =========================================================
+   USER INTERFACE
+========================================================= */
+
+function ui() {
+
+    if (!profile) {
+        return;
+    }
+
+
+    const name =
+        profile.display_name ||
+        "User";
+
+
+    const username =
+        profile.username ||
+        "";
+
+
+    const bio =
+        profile.bio ||
+        "Your bio will appear here.";
+
+
+    $("pName").textContent =
+        name;
+
+
+    $("pUser").textContent =
+        "@" + username;
+
+
+    $("bio").textContent =
+        bio;
+
+
+    $("pAv").textContent =
+        name[0]
+            ?.toUpperCase() ||
+        "U";
+
 }
 
-async function reject(id){
- await db.from('connection_requests').delete().eq('id',id).eq('receiver_id',me.id);
- await requests();await people();badges()
+
+/* =========================================================
+   CONNECTION STATUS
+========================================================= */
+
+async function status(id) {
+
+    if (!id || !me) {
+
+        return "none";
+
+    }
+
+
+    const result =
+        await db
+            .from("connection_requests")
+            .select(
+                "sender_id,receiver_id,status,created_at"
+            )
+            .or(
+                `and(sender_id.eq.${me.id},receiver_id.eq.${id}),and(sender_id.eq.${id},receiver_id.eq.${me.id})`
+            )
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            )
+            .limit(1);
+
+
+    if (
+        result.error ||
+        !result.data ||
+        !result.data.length
+    ) {
+
+        return "none";
+
+    }
+
+
+    const connection =
+        result.data[0];
+
+
+    if (
+        connection.status ===
+        "accepted"
+    ) {
+
+        return "connected";
+
+    }
+
+
+    if (
+        connection.sender_id ===
+        me.id
+    ) {
+
+        return "sent";
+
+    }
+
+
+    return "incoming";
+
 }
 
-async function cancel(id){
- await db.from('connection_requests').delete().eq('id',id).eq('sender_id',me.id);
- await requests();await people();badges()
+
+/* =========================================================
+   LOAD PROFILES
+========================================================= */
+
+async function profiles(ids) {
+
+    if (!ids.length) {
+
+        return {};
+
+    }
+
+
+    const result =
+        await db
+            .from("profiles")
+            .select(
+                "id,username,display_name,bio,avatar_url"
+            )
+            .in(
+                "id",
+                ids
+            );
+
+
+    return Object.fromEntries(
+
+        (result.data || [])
+            .map(function (user) {
+
+                return [
+                    user.id,
+                    user
+                ];
+
+            })
+
+    );
+
 }
 
-async function removeFriend(id){
- if(!confirm('Remove this connection?'))return;
- let r=await db.from('connection_requests').delete().or(`and(sender_id.eq.${me.id},receiver_id.eq.${id}),and(sender_id.eq.${id},receiver_id.eq.${me.id})`);
- if(r.error)return alert(r.error.message);
- if(sel?.id===id)closeChat();
- await requests();await people();await members()
+
+/* =========================================================
+   ONLINE INDICATOR
+========================================================= */
+
+function onlineDot(id) {
+
+    if (
+        !getSetting(
+            "online",
+            true
+        )
+    ) {
+
+        return "";
+
+    }
+
+
+    if (
+        onlineUsers.has(id)
+    ) {
+
+        return '<span class="dot" title="Online"></span>';
+
+    }
+
+
+    return "";
+
 }
 
-async function members(){
- if(!me)return;
- let r=await db.from('connection_requests').select('sender_id,receiver_id').eq('status','accepted');
- let ids=[...new Set((r.data||[]).filter(x=>x.sender_id===me.id||x.receiver_id===me.id).map(x=>x.sender_id===me.id?x.receiver_id:x.sender_id))].filter(x=>!isBlocked(x));
- let map=await profiles(ids),um=await unread(ids);
- $('members').innerHTML=ids.length?ids.map(id=>{
-  let u=map[id]||{},n=u.display_name||'User',c=um[id]||0;
-  return `<div class="member ${sel?.id===id?'sel':''}" onclick="openChat('${attr(id)}')"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}${onlineDot(id)}${c?`<span class="unread">${c>99?'99+':c}</span>`:''}</b><div class="last">@${esc(u.username||'')}</div></div></div>`
- }).join(''):'<div class="empty">No connections yet.</div>'
+
+/* =========================================================
+   HOME - NEW PEOPLE ONLY
+========================================================= */
+
+async function people() {
+
+    if (!me) {
+        return;
+    }
+
+
+    const result =
+        await db
+            .from("profiles")
+            .select(
+                "id,username,display_name,bio"
+            )
+            .neq(
+                "id",
+                me.id
+            )
+            .limit(100);
+
+
+    if (result.error) {
+
+        $("suggestions").innerHTML =
+            '<div class="empty">Unable to load people.</div>';
+
+        return;
+
+    }
+
+
+    const peopleList =
+        [];
+
+
+    for (
+        const user
+        of result.data || []
+    ) {
+
+        if (
+            isBlocked(user.id)
+        ) {
+
+            continue;
+
+        }
+
+
+        const connectionStatus =
+            await status(
+                user.id
+            );
+
+
+        if (
+            connectionStatus ===
+            "none"
+        ) {
+
+            peopleList.push(
+                user
+            );
+
+        }
+
+    }
+
+
+    if (!peopleList.length) {
+
+        $("suggestions").innerHTML =
+            '<div class="empty">No new people right now.</div>';
+
+        return;
+
+    }
+
+
+    const html =
+        await Promise.all(
+
+            peopleList.map(
+                function (user) {
+
+                    return personCard(
+                        user
+                    );
+
+                }
+            )
+
+        );
+
+
+    $("suggestions").innerHTML =
+        html.join("");
+
 }
 
-async function openChat(id){
- if(isBlocked(id))return alert('This user is blocked. Unblock them in Settings first.');
- if(await status(id)!=='connected')return alert('You can only message accepted connections.');
- let r=await db.from('profiles').select('id,username,display_name').eq('id',id).single();
- if(r.error)return alert(r.error.message);
- sel=r.data;
- page('chats');setRead(id);head();await members();await messages();
- $('input').disabled=false;$('send').disabled=false
+
+/* =========================================================
+   PERSON CARD
+========================================================= */
+
+async function personCard(user) {
+
+    const name =
+        user.display_name ||
+        "User";
+
+
+    return `
+
+        <div class="card">
+
+            <div class="row">
+
+                <div class="avatar">
+                    ${esc(name[0])}
+                </div>
+
+                <div class="info">
+
+                    <b>
+                        ${esc(name)}
+                        ${onlineDot(user.id)}
+                    </b>
+
+                    <small>
+                        @${esc(user.username || "")}
+                    </small>
+
+                    <small>
+                        ${esc(user.bio || "")}
+                    </small>
+
+                </div>
+
+                <button
+                    class="secondary"
+                    onclick="view('${attr(user.id)}')"
+                    type="button"
+                >
+                    View
+                </button>
+
+            </div>
+
+
+            <div class="actions">
+
+                <button
+                    class="primary"
+                    onclick="request('${attr(user.id)}')"
+                    type="button"
+                >
+                    Connect
+                </button>
+
+                <button
+                    class="danger"
+                    onclick="block('${attr(user.id)}')"
+                    type="button"
+                >
+                    Block
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
 }
 
-function head(){
- let n=sel?.display_name||'Select a connection';
- $('chatName').textContent=n;$('chatUser').textContent=sel?'@'+(sel.username||''):'Choose someone to chat.';
- $('chatAv').textContent=n[0]?.toUpperCase()||'?'
+
+/* =========================================================
+   VIEW PROFILE
+========================================================= */
+
+async function view(id) {
+
+    const result =
+        await db
+            .from("profiles")
+            .select(
+                "display_name,username,bio"
+            )
+            .eq(
+                "id",
+                id
+            )
+            .single();
+
+
+    if (
+        result.error ||
+        !result.data
+    ) {
+
+        return;
+
+    }
+
+
+    alert(
+
+        (result.data.display_name || "User") +
+        "\n@" +
+        (result.data.username || "") +
+        "\n\n" +
+        (result.data.bio || "")
+
+    );
+
 }
 
-function closeChat(){
- sel=null;$('input').value='';$('input').disabled=true;$('send').disabled=true;
- head();$('msgs').innerHTML='<div class="empty">Select a connection to start chatting.</div>';members()
+
+/* =========================================================
+   SEND CONNECTION REQUEST
+========================================================= */
+
+async function request(id) {
+
+    if (
+        !me ||
+        !id
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        isBlocked(id)
+    ) {
+
+        alert(
+            "Unblock this person in Settings first."
+        );
+
+        return;
+
+    }
+
+
+    const currentStatus =
+        await status(id);
+
+
+    if (
+        currentStatus !==
+        "none"
+    ) {
+
+        if (
+            currentStatus ===
+            "connected"
+        ) {
+
+            alert(
+                "Already connected."
+            );
+
+        } else if (
+            currentStatus ===
+            "sent"
+        ) {
+
+            alert(
+                "Request already sent."
+            );
+
+        } else {
+
+            alert(
+                "They already sent you a request."
+            );
+
+        }
+
+        return;
+
+    }
+
+
+    const result =
+        await db
+            .from("connection_requests")
+            .insert({
+
+                sender_id:
+                    me.id,
+
+                receiver_id:
+                    id,
+
+                status:
+                    "pending"
+
+            });
+
+
+    if (result.error) {
+
+        alert(
+            result.error.message
+        );
+
+        return;
+
+    }
+
+
+    await people();
+
+    await requests();
+
+    await badges();
+
 }
 
-async function unread(ids){
- if(!ids.length)return{};
- let r=await db.from('messages').select('sender_id,created_at').eq('receiver_id',me.id).in('sender_id',ids).order('created_at',{ascending:true}).limit(5000),o={};
- for(let m of r.data||[]){
-  let last=readAt(m.sender_id);
-  if(!last||new Date(m.created_at)>new Date(last))o[m.sender_id]=(o[m.sender_id]||0)+1
- }
- return o
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+async function searchUsers() {
+
+    clearTimeout(
+        searchTimer
+    );
+
+
+    searchTimer =
+        setTimeout(
+            async function () {
+
+                const query =
+                    $("searchInput")
+                        .value
+                        .trim()
+                        .toLowerCase()
+                        .replace(
+                            /[,%()]/g,
+                            ""
+                        );
+
+
+                const box =
+                    $("searchResults");
+
+
+                if (!query) {
+
+                    box.innerHTML =
+                        '<div class="empty">Start typing to search.</div>';
+
+                    return;
+
+                }
+
+
+                const result =
+                    await db
+                        .from("profiles")
+                        .select(
+                            "id,username,display_name,bio"
+                        )
+                        .neq(
+                            "id",
+                            me.id
+                        )
+                        .or(
+                            `username.ilike.%${query}%,display_name.ilike.%${query}%`
+                        )
+                        .limit(30);
+
+
+                if (result.error) {
+
+                    box.innerHTML =
+                        '<div class="empty">Unable to search right now.</div>';
+
+                    return;
+
+                }
+
+
+                const users =
+                    (result.data || [])
+                        .filter(function (user) {
+
+                            return !isBlocked(
+                                user.id
+                            );
+
+                        });
+
+
+                if (!users.length) {
+
+                    box.innerHTML =
+                        '<div class="empty">No users found.</div>';
+
+                    return;
+
+                }
+
+
+                const html =
+                    await Promise.all(
+
+                        users.map(
+                            async function (user) {
+
+                                const state =
+                                    await status(
+                                        user.id
+                                    );
+
+
+                                const name =
+                                    user.display_name ||
+                                    "User";
+
+
+                                let action = "";
+
+
+                                if (
+                                    state ===
+                                    "connected"
+                                ) {
+
+                                    action = `
+
+                                        <button
+                                            class="primary"
+                                            onclick="openChat('${attr(user.id)}')"
+                                            type="button"
+                                        >
+                                            Message
+                                        </button>
+
+                                    `;
+
+                                } else if (
+                                    state ===
+                                    "sent"
+                                ) {
+
+                                    action = `
+
+                                        <button
+                                            class="secondary"
+                                            disabled
+                                            type="button"
+                                        >
+                                            Request Sent
+                                        </button>
+
+                                    `;
+
+                                } else if (
+                                    state ===
+                                    "incoming"
+                                ) {
+
+                                    action = `
+
+                                        <button
+                                            class="success"
+                                            onclick="page('requests')"
+                                            type="button"
+                                        >
+                                            Review Request
+                                        </button>
+
+                                    `;
+
+                                } else {
+
+                                    action = `
+
+                                        <button
+                                            class="primary"
+                                            onclick="request('${attr(user.id)}')"
+                                            type="button"
+                                        >
+                                            Connect
+                                        </button>
+
+                                    `;
+
+                                }
+
+
+                                return `
+
+                                    <div class="card">
+
+                                        <div class="row">
+
+                                            <div class="avatar">
+                                                ${esc(name[0])}
+                                            </div>
+
+                                            <div class="info">
+
+                                                <b>
+                                                    ${esc(name)}
+                                                    ${onlineDot(user.id)}
+                                                </b>
+
+                                                <small>
+                                                    @${esc(user.username || "")}
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="actions">
+
+                                            ${action}
+
+                                            <button
+                                                class="danger"
+                                                onclick="block('${attr(user.id)}')"
+                                                type="button"
+                                            >
+                                                Block
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                `;
+
+                            }
+                        )
+
+                    );
+
+
+                box.innerHTML =
+                    html.join("");
+
+            },
+            200
+        );
+
 }
 
-async function badges(){
- if(!me)return;
- let [r,u]=await Promise.all([
-  db.from('connection_requests').select('id').eq('receiver_id',me.id).eq('status','pending'),
-  db.from('messages').select('sender_id,created_at').eq('receiver_id',me.id).order('created_at',{ascending:true}).limit(5000)
- ]);
- let n=0;
- for(let m of u.data||[]){
-  let last=readAt(m.sender_id);
-  if(!last||new Date(m.created_at)>new Date(last))n++
- }
- badge('mb',n);badge('chatTotal',n);badge('rb',r.data?.length||0);
- if($('chats').classList.contains('on'))members()
+
+/* =========================================================
+   REQUESTS + CONNECTIONS
+========================================================= */
+
+async function requests() {
+
+    if (!me) {
+        return;
+    }
+
+
+    const result =
+        await db
+            .from("connection_requests")
+            .select(
+                "id,sender_id,receiver_id,status,created_at"
+            )
+            .or(
+                `sender_id.eq.${me.id},receiver_id.eq.${me.id}`
+            )
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+
+
+    if (result.error) {
+
+        console.error(
+            result.error
+        );
+
+        return;
+
+    }
+
+
+    const all =
+        result.data || [];
+
+
+    const incoming =
+        all.filter(function (item) {
+
+            return (
+                item.receiver_id === me.id &&
+                item.status === "pending"
+            );
+
+        });
+
+
+    const sent =
+        all.filter(function (item) {
+
+            return (
+                item.sender_id === me.id &&
+                item.status === "pending"
+            );
+
+        });
+
+
+    const accepted =
+        all.filter(function (item) {
+
+            return (
+                item.status === "accepted"
+            );
+
+        });
+
+
+    const ids =
+        [
+            ...new Set(
+
+                [
+                    ...incoming.map(
+                        item => item.sender_id
+                    ),
+
+                    ...sent.map(
+                        item => item.receiver_id
+                    ),
+
+                    ...accepted
+                        .flatMap(
+                            item => [
+                                item.sender_id,
+                                item.receiver_id
+                            ]
+                        )
+                        .filter(
+                            id => id !== me.id
+                        )
+
+                ]
+
+            )
+        ];
+
+
+    const profileMap =
+        await profiles(
+            ids
+        );
+
+
+    /* =========================
+       INCOMING
+    ========================= */
+
+    $("incoming").innerHTML =
+        incoming.length
+
+            ? incoming
+                .map(function (item) {
+
+                    return requestCard(
+                        item,
+                        profileMap[
+                            item.sender_id
+                        ],
+                        true
+                    );
+
+                })
+                .join("")
+
+            : '<div class="empty">No incoming requests.</div>';
+
+
+    /* =========================
+       SENT
+    ========================= */
+
+    $("sent").innerHTML =
+        sent.length
+
+            ? sent
+                .map(function (item) {
+
+                    return requestCard(
+                        item,
+                        profileMap[
+                            item.receiver_id
+                        ],
+                        false
+                    );
+
+                })
+                .join("")
+
+            : '<div class="empty">No sent requests.</div>';
+
+
+    /* =========================
+       CONNECTIONS
+    ========================= */
+
+    const connectionIds =
+        accepted
+            .map(function (item) {
+
+                return (
+                    item.sender_id === me.id
+                        ? item.receiver_id
+                        : item.sender_id
+                );
+
+            })
+            .filter(function (id) {
+
+                return !isBlocked(id);
+
+            });
+
+
+    $("connections").innerHTML =
+        connectionIds.length
+
+            ? connectionIds
+                .map(function (id) {
+
+                    const user =
+                        profileMap[id] || {};
+
+                    const name =
+                        user.display_name ||
+                        "User";
+
+
+                    return `
+
+                        <div class="card">
+
+                            <div class="row">
+
+                                <div class="avatar">
+                                    ${esc(name[0])}
+                                </div>
+
+                                <div class="info">
+
+                                    <b>
+                                        ${esc(name)}
+                                        ${onlineDot(id)}
+                                    </b>
+
+                                    <small>
+                                        @${esc(user.username || "")}
+                                    </small>
+
+                                    <small>
+                                        Connected ✅
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="actions">
+
+                                <button
+                                    class="primary"
+                                    onclick="openChat('${attr(id)}')"
+                                    type="button"
+                                >
+                                    Message
+                                </button>
+
+                                <button
+                                    class="danger"
+                                    onclick="removeFriend('${attr(id)}')"
+                                    type="button"
+                                >
+                                    Remove
+                                </button>
+
+                                <button
+                                    class="danger"
+                                    onclick="block('${attr(id)}')"
+                                    type="button"
+                                >
+                                    Block
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                })
+                .join("")
+
+            : '<div class="empty">No connections yet.</div>';
+
+
+    $("count").textContent =
+        connectionIds.length;
+
+
+    $("reqCount").textContent =
+        incoming.length;
+
+
+    /* =========================
+       PROFILE CONNECTIONS
+    ========================= */
+
+    const profileBox =
+        $("profileConnections");
+
+
+    if (profileBox) {
+
+        profileBox.innerHTML =
+            connectionIds.length
+
+                ? connectionIds
+                    .map(function (id) {
+
+                        const user =
+                            profileMap[id] || {};
+
+                        const name =
+                            user.display_name ||
+                            "User";
+
+
+                        return `
+
+                            <div class="card">
+
+                                <div class="row">
+
+                                    <div class="avatar">
+                                        ${esc(name[0])}
+                                    </div>
+
+                                    <div class="info">
+
+                                        <b>
+                                            ${esc(name)}
+                                            ${onlineDot(id)}
+                                        </b>
+
+                                        <small>
+                                            @${esc(user.username || "")}
+                                        </small>
+
+                                    </div>
+
+                                    <button
+                                        class="primary"
+                                        onclick="openChat('${attr(id)}')"
+                                        type="button"
+                                    >
+                                        Message
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        `;
+
+                    })
+                    .join("")
+
+                : '<div class="empty">No connections yet.</div>';
+
+    }
+
 }
 
-function badge(id,n){
- let b=$(id);if(!b)return;
- b.textContent=n>99?'99+':n;b.classList.toggle('hide',!n)
+
+/* =========================================================
+   REQUEST CARD
+========================================================= */
+
+function requestCard(
+    item,
+    user,
+    incoming
+) {
+
+    const name =
+        user?.display_name ||
+        "User";
+
+
+    if (incoming) {
+
+        return `
+
+            <div class="card">
+
+                <div class="row">
+
+                    <div class="avatar">
+                        ${esc(name[0])}
+                    </div>
+
+                    <div class="info">
+
+                        <b>
+                            ${esc(name)}
+                        </b>
+
+                        <small>
+                            @${esc(user?.username || "")}
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        class="success"
+                        onclick="accept('${attr(item.id)}')"
+                        type="button"
+                    >
+                        Accept
+                    </button>
+
+                    <button
+                        class="danger"
+                        onclick="reject('${attr(item.id)}')"
+                        type="button"
+                    >
+                        Reject
+                    </button>
+
+                    <button
+                        class="danger"
+                        onclick="block('${attr(item.sender_id)}')"
+                        type="button"
+                    >
+                        Block
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    return `
+
+        <div class="card">
+
+            <div class="row">
+
+                <div class="avatar">
+                    ${esc(name[0])}
+                </div>
+
+                <div class="info">
+
+                    <b>
+                        ${esc(name)}
+                    </b>
+
+                    <small>
+                        @${esc(user?.username || "")}
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="actions">
+
+                <button
+                    class="secondary"
+                    onclick="cancel('${attr(item.id)}')"
+                    type="button"
+                >
+                    Cancel
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
 }
 
-async function messages(){
- if(!sel)return;
- let r=await db.from('messages').select('id,sender_id,receiver_id,content,created_at').or(`and(sender_id.eq.${me.id},receiver_id.eq.${sel.id}),and(sender_id.eq.${sel.id},receiver_id.eq.${me.id})`).order('created_at',{ascending:true}).limit(300);
- if(r.error)return $('msgs').innerHTML='<div class="empty">Unable to load messages.</div>';
- let ids=(r.data||[]).map(x=>x.id);
- if(!ids.length){
-  $('msgs').innerHTML='<div class="empty">No messages yet. Start the conversation! 👋</div>';
-  setRead(sel.id);return
- }
- let [rx,del]=await Promise.all([
-  db.from('message_reactions').select('message_id,user_id,reaction').in('message_id',ids),
-  db.from('message_deletions').select('message_id').eq('user_id',me.id).in('message_id',ids)
- ]);
- let ds=new Set((del.data||[]).map(x=>x.message_id)),rm={};
- for(let x of rx.data||[])(rm[x.message_id]??=[]).push(x);
- let a=(r.data||[]).filter(x=>!ds.has(x.id));
- $('msgs').innerHTML=a.length?a.map(x=>msgHTML(x,rm[x.id]||[])).join(''):'<div class="empty">No messages yet. Start the conversation! 👋</div>';
- $('msgs').scrollTop=$('msgs').scrollHeight;setRead(sel.id)
+
+/* =========================================================
+   ACCEPT REQUEST
+========================================================= */
+
+async function accept(id) {
+
+    const result =
+        await db
+            .from("connection_requests")
+            .update({
+                status: "accepted"
+            })
+            .eq(
+                "id",
+                id
+            )
+            .eq(
+                "receiver_id",
+                me.id
+            );
+
+
+    if (result.error) {
+
+        alert(
+            result.error.message
+        );
+
+        return;
+
+    }
+
+
+    await requests();
+
+    await people();
+
+    await members();
+
+    await badges();
+
 }
 
-function msgHTML(m,rs){
- let mine=m.sender_id===me.id,c={};
- rs.forEach(x=>c[x.reaction]=(c[x.reaction]||0)+1);
- let react=Object.entries(c).map(([r,n])=>`<button onclick="react('${attr(m.id)}','${attr(r)}')">${esc(r)} ${n}</button>`).join('');
- return `<div class="bubbleRow ${mine?'mine':'theirs'}"><div class="bubble"><div>${esc(m.content)}</div><div class="time">${new Date(m.created_at).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}</div>${react?`<div class="reacts">${react}</div>`:''}<div class="tools"><button onclick="actions('${attr(m.id)}','${attr(m.sender_id)}')">⋮</button></div></div></div>`
+
+/* =========================================================
+   REJECT REQUEST
+========================================================= */
+
+async function reject(id) {
+
+    const result =
+        await db
+            .from("connection_requests")
+            .delete()
+            .eq(
+                "id",
+                id
+            )
+            .eq(
+                "receiver_id",
+                me.id
+            );
+
+
+    if (result.error) {
+
+        alert(
+            result.error.message
+        );
+
+        return;
+
+    }
+
+
+    await requests();
+
+    await people();
+
+    await badges();
+
 }
 
-function keydown(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}}
 
-async function send(){
- let t=$('input').value.trim();
- if(!t||!sel)return;
- let r=await db.from('messages').insert({sender_id:me.id,receiver_id:sel.id,content:t});
- if(r.error)return alert(r.error.message);
- $('input').value='';await messages();members();badges()
+/* =========================================================
+   CANCEL SENT REQUEST
+========================================================= */
+
+async function cancel(id) {
+
+    const result =
+        await db
+            .from("connection_requests")
+            .delete()
+            .eq(
+                "id",
+                id
+            )
+            .eq(
+                "sender_id",
+                me.id
+            );
+
+
+    if (result.error) {
+
+        alert(
+            result.error.message
+        );
+
+        return;
+
+    }
+
+
+    await requests();
+
+    await people();
+
+    await badges();
+
 }
 
-function actions(id,sender){
- let r=prompt('Type: 👍 ❤️ 😂 😮 😢 or d=delete for me, e=delete for everyone');
- if(!r)return;
- if(r==='d')return delMe(id);
- if(r==='e'&&sender===me.id)return delAll(id);
- if(['👍','❤️','😂','😮','😢'].includes(r))react(id,r)
+
+/* =========================================================
+   REMOVE FRIEND
+========================================================= */
+
+async function removeFriend(id) {
+
+    if (
+        !confirm(
+            "Remove this connection?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const result =
+        await db
+            .from("connection_requests")
+            .delete()
+            .or(
+                `and(sender_id.eq.${me.id},receiver_id.eq.${id}),and(sender_id.eq.${id},receiver_id.eq.${me.id})`
+            );
+
+
+    if (result.error) {
+
+        alert(
+            result.error.message
+        );
+
+        return;
+
+    }
+
+
+    if (
+        selectedUser?.id === id
+    ) {
+
+        closeChat();
+
+    }
+
+
+    await requests();
+
+    await people();
+
+    await members();
+
+    await badges();
+
 }
 
-async function react(id,r){
- let q=await db.from('message_reactions').select('id').eq('message_id',id).eq('user_id',me.id).eq('reaction',r).maybeSingle();
- if(q.data)await db.from('message_reactions').delete().eq('id',q.data.id);
- else await db.from('message_reactions').insert({message_id:id,user_id:me.id,reaction:r});
- messages()
+
+/* =========================================================
+   CHAT MEMBERS
+========================================================= */
+
+async function members() {
+
+    if (!me) {
+        return;
+    }
+
+
+    const result =
+        await db
+            .from("connection_requests")
+            .select(
+                "sender_id,receiver_id"
+            )
+            .eq(
+                "status",
+                "accepted"
+            );
+
+
+    if (result.error) {
+
+        console.error(
+            result.error
+        );
+
+        return;
+
+    }
+
+
+    const ids =
+        [
+            ...new Set(
+
+                (result.data || [])
+                    .filter(function (item) {
+
+                        return (
+                            item.sender_id === me.id ||
+                            item.receiver_id === me.id
+                        );
+
+                    })
+                    .map(function (item) {
+
+                        return (
+                            item.sender_id === me.id
+                                ? item.receiver_id
+                                : item.sender_id
+                        );
+
+                    })
+
+            )
+        ]
+        .filter(function (id) {
+
+            return !isBlocked(id);
+
+        });
+
+
+    const profileMap =
+        await profiles(
+            ids
+        );
+
+
+    const unreadMap =
+        await unread(
+            ids
+        );
+
+
+    const box =
+        $("members");
+
+
+    if (!ids.length) {
+
+        box.innerHTML =
+            '<div class="empty">No connections yet.</div>';
+
+        return;
+
+    }
+
+
+    box.innerHTML =
+        ids
+            .map(function (id) {
+
+                const user =
+                    profileMap[id] || {};
+
+                const name =
+                    user.display_name ||
+                    "User";
+
+
+                const count =
+                    unreadMap[id] || 0;
+
+
+                return `
+
+                    <div
+                        class="member ${
+                            selectedUser?.id === id
+                                ? "sel"
+                                : ""
+                        }"
+                        onclick="openChat('${attr(id)}')"
+                    >
+
+                        <div class="avatar">
+                            ${esc(name[0])}
+                        </div>
+
+
+                        <div class="info">
+
+                            <b>
+
+                                ${esc(name)}
+
+                                ${onlineDot(id)}
+
+                                ${
+                                    count
+                                        ? `
+                                            <span class="unread">
+                                                ${
+                                                    count > 99
+                                                        ? "99+"
+                                                        : count
+                                                }
+                                            </span>
+                                        `
+                                        : ""
+                                }
+
+                            </b>
+
+
+                            <div class="last">
+                                @${esc(
+                                    user.username || ""
+                                )}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            })
+            .join("");
+
 }
 
-async function delMe(id){
- await db.from('message_deletions').upsert({message_id:id,user_id:me.id});
- messages()
+
+/* =========================================================
+   OPEN CHAT
+========================================================= */
+
+async function openChat(id) {
+
+    if (
+        !id ||
+        !me
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        isBlocked(id)
+    ) {
+
+        alert(
+            "This user is blocked. Unblock them in Settings first."
+        );
+
+        return;
+
+    }
+
+
+    const connectionStatus =
+        await status(id);
+
+
+    if (
+        connectionStatus !==
+        "connected"
+    ) {
+
+        alert(
+            "You can only message accepted connections."
+        );
+
+        return;
+
+    }
+
+
+    const result =
+        await db
+            .from("profiles")
+            .select(
+                "id,username,display_name"
+            )
+            .eq(
+                "id",
+                id
+            )
+            .single();
+
+
+    if (result.error) {
+
+        alert(
+            result.error.message
+        );
+
+        return;
+
+    }
+
+
+    selectedUser =
+        result.data;
+
+
+    await page("chats");
+
+
+    setReadTime(
+        id
+    );
+
+
+    updateChatHeader();
+
+    await members();
+
+    await messages();
+
+
+    $("input").disabled =
+        false;
+
+
+    $("send").disabled =
+        false;
+
+
+    $("input").focus();
+
 }
 
-async function delAll(id){
- if(!confirm('Delete this message for everyone?'))return;
- await db.from('messages').delete().eq('id',id).eq('sender_id',me.id);
- messages()
+
+/* =========================================================
+   CHAT HEADER
+========================================================= */
+
+function updateChatHeader() {
+
+    const name =
+        selectedUser?.display_name ||
+        "Select a connection";
+
+
+    $("chatName").textContent =
+        name;
+
+
+    $("chatUser").textContent =
+        selectedUser
+            ? "@" +
+              (
+                  selectedUser.username ||
+                  ""
+              )
+            : "Choose someone to chat.";
+
+
+    $("chatAv").textContent =
+        name[0]
+            ?.toUpperCase() ||
+        "?";
+
 }
 
-function presence(){
- if(pres)db.removeChannel(pres);
- pres=db.channel('cs-presence',{config:{presence:{key:me.id}}})
- .on('presence',{event:'sync'},()=>{
-  onlineUsers=new Set(Object.keys(pres.presenceState()).filter(x=>x!==me.id));
-  people();members()
- })
- .on('presence',{event:'join'},x=>{onlineUsers.add(x.key);people();members()})
- .on('presence',{event:'leave'},x=>{onlineUsers.delete(x.key);people();members()})
- .subscribe(s=>{
-  if(s==='SUBSCRIBED'&&setting('online',true))pres.track({online:true})
- })
+
+/* =========================================================
+   CLOSE CHAT
+========================================================= */
+
+function closeChat() {
+
+    selectedUser =
+        null;
+
+
+    $("input").value =
+        "";
+
+
+    $("input").disabled =
+        true;
+
+
+    $("send").disabled =
+        true;
+
+
+    updateChatHeader();
+
+
+    $("msgs").innerHTML =
+        '<div class="empty">Select a connection to start chatting.</div>';
+
+
+    members();
+
 }
 
-function realtime(){
- if(chan)db.removeChannel(chan);
- chan=db.channel('cs-live-'+me.id)
- .on('postgres_changes',{event:'*',schema:'public',table:'messages'},async x=>{
-  let n=x.new||x.old||{};
-  if(n.sender_id===me.id||n.receiver_id===me.id){
-   if(sel&&$('chats').classList.contains('on'))await messages();
-   await members();await badges()
-  }
- })
- .on('postgres_changes',{event:'*',schema:'public',table:'connection_requests'},async()=>{
-  await requests();await people();await members();await badges()
- })
- .subscribe()
+
+/* =========================================================
+   UNREAD COUNTS
+========================================================= */
+
+async function unread(ids) {
+
+    if (!ids.length) {
+
+        return {};
+
+    }
+
+
+    const result =
+        await db
+            .from("messages")
+            .select(
+                "sender_id,created_at"
+            )
+            .eq(
+                "receiver_id",
+                me.id
+            )
+            .in(
+                "sender_id",
+                ids
+            )
+            .order(
+                "created_at",
+                {
+                    ascending: true
+                }
+            )
+            .limit(5000);
+
+
+    const counts = {};
+
+
+    for (
+        const message
+        of result.data || []
+    ) {
+
+        const lastRead =
+            getReadTime(
+                message.sender_id
+            );
+
+
+        if (
+            !lastRead ||
+            new Date(
+                message.created_at
+            ) >
+            new Date(
+                lastRead
+            )
+        ) {
+
+            counts[
+                message.sender_id
+            ] =
+                (
+                    counts[
+                        message.sender_id
+                    ] || 0
+                ) + 1;
+
+        }
+
+    }
+
+
+    return counts;
+
 }
 
-function loadSettings(){
- $('private').checked=setting('private',false);
- $('online').checked=setting('online',true);
- $('private').onchange=()=>{
-  setSetting('private',$('private').checked);
-  $('privateText').textContent=$('private').checked?'Private account is ON — approve connection requests before connecting.':'Private account is OFF.';
- };
- $('privateText').textContent=$('private').checked?'Private account is ON — approve connection requests before connecting.':'Private account is OFF.';
- $('online').onchange=()=>{
-  setSetting('online',$('online').checked);
-  if($('online').checked)pres?.track({online:true});else pres?.untrack();
-  people();members()
- }
+
+/* =========================================================
+   TOTAL BADGES
+========================================================= */
+
+async function badges() {
+
+    if (!me) {
+        return;
+    }
+
+
+    const [
+        requestResult,
+        messageResult
+    ] =
+        await Promise.all([
+
+            db
+                .from("connection_requests")
+                .select("id")
+                .eq(
+                    "receiver_id",
+                    me.id
+                )
+                .eq(
+                    "status",
+                    "pending"
+                ),
+
+            db
+                .from("messages")
+                .select(
+                    "sender_id,created_at"
+                )
+                .eq(
+                    "receiver_id",
+                    me.id
+                )
+                .order(
+                    "created_at",
+                    {
+                        ascending: true
+                    }
+                )
+                .limit(5000)
+
+        ]);
+
+
+    let unreadTotal =
+        0;
+
+
+    for (
+        const message
+        of messageResult.data || []
+    ) {
+
+        const lastRead =
+            getReadTime(
+                message.sender_id
+            );
+
+
+        if (
+            !lastRead ||
+            new Date(
+                message.created_at
+            ) >
+            new Date(
+                lastRead
+            )
+        ) {
+
+            unreadTotal++;
+
+        }
+
+    }
+
+
+    setBadge(
+        "mb",
+        unreadTotal
+    );
+
+
+    setBadge(
+        "chatTotal",
+        unreadTotal
+    );
+
+
+    setBadge(
+        "rb",
+        requestResult.data?.length || 0
+    );
+
+
+    if (
+        $("chats")
+            .classList
+            .contains("on")
+    ) {
+
+        await members();
+
+    }
+
 }
 
-async function block(id){
- if(!confirm('Block this person?'))return;
- saveBlocked([...blocked(),id]);
- if(sel?.id===id)closeChat();
- await db.from('connection_requests').delete().or(`and(sender_id.eq.${me.id},receiver_id.eq.${id}),and(sender_id.eq.${id},receiver_id.eq.${me.id})`);
- blockedUI();await requests();await people();members();badges()
+
+/* =========================================================
+   BADGE DISPLAY
+========================================================= */
+
+function setBadge(
+    id,
+    number
+) {
+
+    const element =
+        $(id);
+
+
+    if (!element) {
+        return;
+    }
+
+
+    element.textContent =
+        number > 99
+            ? "99+"
+            : number;
+
+
+    element.classList.toggle(
+        "hide",
+        !number
+    );
+
 }
 
-function blockedUI(){
- let ids=blocked();
- if(!ids.length)return $('blocked').innerHTML='<div class="empty">No blocked users.</div>';
- profiles(ids).then(m=>{
-  $('blocked').innerHTML=ids.map(id=>{
-   let u=m[id]||{},n=u.display_name||'User';
-   return `<div class="card"><div class="row"><div class="avatar">${esc(n[0])}</div><div class="info"><b>${esc(n)}</b><small>@${esc(u.username||'')}</small></div><button class="success" onclick="unblock('${attr(id)}')">Unblock</button></div></div>`
-  }).join('')
- })
+
+/* =========================================================
+   LOAD MESSAGES
+========================================================= */
+
+async function messages() {
+
+    if (!selectedUser) {
+        return;
+    }
+
+
+    const result =
+        await db
+            .from("messages")
+            .select(
+                "id,sender_id,receiver_id,content,created_at"
+            )
+            .or(
+                `and(sender_id.eq.${me.id},receiver_id.eq.${selectedUser.id}),and(sender_id.eq.${selectedUser.id},receiver_id.eq.${me.id})`
+            )
+            .order(
+                "created_at",
+                {
+                    ascending: true
+                }
+            )
+            .limit(300);
+
+
+    if (result.error) {
+
+        $("msgs").innerHTML =
+            '<div class="empty">Unable to load messages.</div>';
+
+        return;
+
+    }
+
+
+    const messageList =
+        result.data || [];
+
+
+    if (!messageList.length) {
+
+        $("msgs").innerHTML =
+            '<div class="empty">No messages yet. Start the conversation! 👋</div>';
+
+        setReadTime(
+            selectedUser.id
+        );
+
+        return;
+
+    }
+
+
+    const ids =
+        messageList.map(
+            message => message.id
+        );
+
+
+    let reactions = [];
+
+    let deletions = [];
+
+
+    if (ids.length) {
+
+        const [
+            reactionResult,
+            deletionResult
+        ] =
+            await Promise.all([
+
+                db
+                    .from("message_reactions")
+                    .select(
+                        "message_id,user_id,reaction"
+                    )
+                    .in(
+                        "message_id",
+                        ids
+                    ),
+
+                db
+                    .from("message_deletions")
+                    .select(
+                        "message_id"
+                    )
+                    .eq(
+                        "user_id",
+                        me.id
+                    )
+                    .in(
+                        "message_id",
+                        ids
+                    )
+
+            ]);
+
+
+        reactions =
+            reactionResult.data || [];
+
+
+        deletions =
+            deletionResult.data || [];
+
+    }
+
+
+    const deletedIds =
+        new Set(
+            deletions.map(
+                item => item.message_id
+            )
+        );
+
+
+    const reactionMap = {};
+
+
+    for (
+        const reaction
+        of reactions
+    ) {
+
+        if (
+            !reactionMap[
+                reaction.message_id
+            ]
+        ) {
+
+            reactionMap[
+                reaction.message_id
+            ] = [];
+
+        }
+
+
+        reactionMap[
+            reaction.message_id
+        ].push(
+            reaction
+        );
+
+    }
+
+
+    const visibleMessages =
+        messageList.filter(
+            message =>
+                !deletedIds.has(
+                    message.id
+                )
+        );
+
+
+    if (!visibleMessages.length) {
+
+        $("msgs").innerHTML =
+            '<div class="empty">No messages yet. Start the conversation! 👋</div>';
+
+    } else {
+
+        $("msgs").innerHTML =
+            visibleMessages
+                .map(function (message) {
+
+                    return messageHTML(
+                        message,
+                        reactionMap[
+                            message.id
+                        ] || []
+                    );
+
+                })
+                .join("");
+
+    }
+
+
+    $("msgs").scrollTop =
+        $("msgs").scrollHeight;
+
+
+    setReadTime(
+        selectedUser.id
+    );
+
+
+    await badges();
+
 }
 
-function unblock(id){
- saveBlocked(blocked().filter(x=>x!==id));
- blockedUI();people();members();searchUsers()
+
+/* =========================================================
+   MESSAGE HTML
+========================================================= */
+
+function messageHTML(
+    message,
+    reactions
+) {
+
+    const mine =
+        message.sender_id ===
+        me.id;
+
+
+    const counts = {};
+
+
+    reactions.forEach(
+        function (reaction) {
+
+            counts[
+                reaction.reaction
+            ] =
+                (
+                    counts[
+                        reaction.reaction
+                    ] || 0
+                ) + 1;
+
+        }
+    );
+
+
+    const reactionHTML =
+        Object.entries(
+            counts
+        )
+        .map(
+            function (
+                [reaction, count]
+            ) {
+
+                return `
+
+                    <button
+                        onclick="react('${attr(message.id)}','${attr(reaction)}')"
+                        type="button"
+                    >
+                        ${esc(reaction)}
+                        ${count}
+                    </button>
+
+                `;
+
+            }
+        )
+        .join("");
+
+
+    const time =
+        new Date(
+            message.created_at
+        )
+        .toLocaleTimeString(
+            [],
+            {
+                hour:
+                    "numeric",
+
+                minute:
+                    "2-digit"
+            }
+        );
+
+
+    return `
+
+        <div class="bubbleRow ${
+            mine
+                ? "mine"
+                : "theirs"
+        }">
+
+            <div class="bubble">
+
+                <div>
+                    ${esc(message.content)}
+                </div>
+
+
+                <div class="time">
+                    ${time}
+                </div>
+
+
+                ${
+                    reactionHTML
+                        ? `
+                            <div class="reacts">
+                                ${reactionHTML}
+                            </div>
+                        `
+                        : ""
+                }
+
+
+                <div class="tools">
+
+                    <button
+                        onclick="actions('${attr(message.id)}','${attr(message.sender_id)}')"
+                        type="button"
+                    >
+                        ⋮
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
 }
 
-function editProfile(){
- $('modalBox').innerHTML='<h2>Edit Profile</h2><input id="en" value="'+esc(profile.display_name||'')+'" placeholder="Name"><input id="eu" value="'+esc(profile.username||'')+'" placeholder="Username"><textarea id="eb" placeholder="Bio">'+esc(profile.bio||'')+'</textarea><div class="actions"><button class="primary" onclick="saveProfile()">Save</button><button class="secondary" onclick="modal(false)">Cancel</button></div>';
- modal(true)
+
+/* =========================================================
+   ENTER TO SEND
+========================================================= */
+
+function keydown(event) {
+
+    if (
+        event.key === "Enter" &&
+        !event.shiftKey
+    ) {
+
+        event.preventDefault();
+
+        send();
+
+    }
+
 }
 
-async function saveProfile(){
- let n=$('en').value.trim(),u=$('eu').value.trim().toLowerCase(),b=$('eb').value.trim();
- if(!/^[a-z0-9_]{3,30}$/.test(u))return alert('Username must be 3-30 letters, numbers or underscore.');
- let r=await db.from('profiles').update({display_name:n,username:u,bio:b}).eq('id',me.id).select().single();
- if(r.error)return alert(r.error.message);
- profile=r.data;ui();modal(false);people()
+
+/* =========================================================
+   SEND MESSAGE
+========================================================= */
+
+async function send() {
+
+    const text =
+        $("input")
+            .value
+            .trim();
+
+
+    if (
+        !text ||
+        !selectedUser
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        isBlocked(
+            selectedUser.id
+        )
+    ) {
+
+        alert(
+            "This user is blocked."
+        );
+
+        return;
+
+    }
+
+
+    const connectionStatus =
+        await status(
+            selectedUser.id
+        );
+
+
+    if (
+        connectionStatus !==
+        "connected"
+    ) {
+
+        alert(
+            "You can only message accepted connections."
+        );
+
+        return;
+
+    }
+
+
+    $("send").disabled =
+        true;
+
+
+    const result =
+        await db
+            .from("messages")
+            .insert({
+
+                sender_id:
+                    me.id,
+
+                receiver_id:
+                    selectedUser.id,
+
+                content:
+                    text
+
+            });
+
+
+    $("send").disabled =
+        false;
+
+
+    if (result.error) {
+
+        alert(
+            result.error.message
+        );
+
+        return;
+
+    }
+
+
+    $("input").value =
+        "";
+
+
+    await messages();
+
+    await members();
+
+    await badges();
+
 }
 
-function modal(on){$('modal').classList.toggle('on',on)}
-$('modal').onclick=e=>{if(e.target.id==='modal')modal(false)}
 
-async function schedules(){
- let r=await db.from('schedules').select('*').eq('user_id',me.id).order('created_at',{ascending:false}),a=r.data||[],done=a.filter(x=>x.completed).length,p=a.length?Math.round(done/a.length*100):0;
- $('prog').textContent=`${p}% completed (${done}/${a.length})`;
- $('fill').style.width=p+'%';
- $('schedules').innerHTML=a.length?a.map(x=>`<div class="schedule"><b>${esc(x.title)}</b><p>${esc(x.description||'')}</p><small>${esc(x.schedule_type||'')}</small><div class="actions"><button class="${x.completed?'secondary':'primary'}" onclick="complete('${attr(x.id)}',${!x.completed})">${x.completed?'Mark active':'Complete'}</button><button class="danger" onclick="removeSchedule('${attr(x.id)}')">Delete</button></div></div>`).join(''):'<div class="empty">No schedules yet.</div>'
+/* =========================================================
+   MESSAGE ACTION MENU
+========================================================= */
+
+function actions(
+    id,
+    senderId
+) {
+
+    const choice =
+        prompt(
+            "Type:\n" +
+            "👍 ❤️ 😂 😮 😢\n\n" +
+            "d = Delete for me\n" +
+            "e = Delete for everyone"
+        );
+
+
+    if (!choice) {
+        return;
+    }
+
+
+    const value =
+        choice.trim();
+
+
+    if (
+        value === "d"
+    ) {
+
+        delMe(id);
+
+        return;
+
+    }
+
+
+    if (
+        value === "e"
+    ) {
+
+        if (
+            senderId !==
+            me.id
+        ) {
+
+            alert(
+                "You can delete for everyone only your own message."
+            );
+
+            return;
+
+        }
+
+
+        delAll(id);
+
+        return;
+
+    }
+
+
+    if (
+        [
+            "👍",
+            "❤️",
+            "😂",
+            "😮",
+            "😢"
+        ].includes(value)
+    ) {
+
+        react(
+            id,
+            value
+        );
+
+    }
+
 }
 
-function addSchedule(){
- $('modalBox').innerHTML='<h2>Add Schedule</h2><input id="st" placeholder="Title"><input id="sd" placeholder="Description"><select id="sy"><option value="daily">Daily</option><option value="weekly">Weekly</option><option value="once">One-time</option></select><input id="stime" type="time"><input id="sdate" type="date"><div class="actions"><button class="primary" onclick="saveSchedule()">Save</button><button class="secondary" onclick="modal(false)">Cancel</button></div>';
- modal(true)
+
+/* =========================================================
+   REACTION
+========================================================= */
+
+async function react(
+    messageId,
+    reaction
+) {
+
+    const existing =
+        await db
+            .from("message_reactions")
+            .select("id")
+            .eq(
+                "message_id",
+                messageId
+            )
+            .eq(
+                "user_id",
+                me.id
+            )
+            .eq(
+                "reaction",
+                reaction
+            )
+            .maybeSingle();
+
+
+    if (existing.error) {
+
+        console.error(
+            existing.error
+        );
+
+        return;
+
+    }
+
+
+    if (existing.data) {
+
+        await db
+            .from("message_reactions")
+            .delete()
+            .eq(
+                "id",
+                existing.data.id
+            );
+
+    } else {
+
+        await db
+            .from("message_reactions")
+            .insert({
+
+                message_id:
+                    messageId,
+
+                user_id:
+                    me.id,
+
+                reaction:
+                    reaction
+
+            });
+
+    }
+
+
+    await messages();
+
 }
 
-async function saveSchedule(){
- let title=$('st').value.trim();
- if(!title)return alert('Enter a title.');
- let type=$('sy').value,r={user_id:me.id,title,description:$('sd').value.trim(),schedule_type:type,reminder_time:$('stime').value||null,reminder_date:type==='once'?$('sdate').value:null,day_of_week:null,completed:false};
- if(type==='weekly')r.day_of_week=new Date().getDay();
- let q=await db.from('schedules').insert(r);
- if(q.error)return alert(q.error.message);
- modal(false);schedules()
+
+/* =========================================================
+   DELETE FOR ME
+========================================================= */
+
+async function delMe(
+    messageId
+) {
+
+    const result =
+        await db
+            .from("message_deletions")
+            .upsert(
+
+                {
+                    message_id:
+                        messageId,
+
+                    user_id:
+                        me.id
+                },
+
+                {
+                    onConflict:
+                        "message_id,user_id"
+                }
+
+            );
+
+
+    if (result.error) {
+
+        alert(
+            result.error.message
+        );
+
+        return;
+
+    }
+
+
+    await messages();
+
 }
 
-async function complete(id,v){
- await db.from('schedules').update({completed:v}).eq('id',id).eq('user_id',me.id);schedules()
+
+/* =========================================================
+   DELETE FOR EVERYONE
+========================================================= */
+
+async function delAll(
+    messageId
+) {
+
+    if (
+        !confirm(
+            "Delete this message for everyone?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const result =
+        await db
+            .from("messages")
+            .delete()
+            .eq(
+                "id",
+                messageId
+            )
+            .eq(
+                "sender_id",
+                me.id
+            );
+
+
+    if (result.error) {
+
+        alert(
+            result.error.message
+        );
+
+        return;
+
+    }
+
+
+    await messages();
+
 }
 
-async function removeSchedule(id){
- if(confirm('Delete this schedule?')){await db.from('schedules').delete().eq('id',id).eq('user_id',me.id);schedules()}
+
+/* =========================================================
+   DELETE CHAT FOR ME
+========================================================= */
+
+async function deleteChat() {
+
+    if (
+        !selectedUser
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        !confirm(
+            "Delete this chat feed for you?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const result =
+        await db
+            .from("messages")
+            .select("id")
+            .or(
+                `and(sender_id.eq.${me.id},receiver_id.eq.${selectedUser.id}),and(sender_id.eq.${selectedUser.id},receiver_id.eq.${me.id})`
+            );
+
+
+    if (result.error) {
+
+        alert(
+            result.error.message
+        );
+
+        return;
+
+    }
+
+
+    const ids =
+        (result.data || [])
+            .map(function (message) {
+
+                return {
+
+                    message_id:
+                        message.id,
+
+                    user_id:
+                        me.id
+
+                };
+
+            });
+
+
+    if (ids.length) {
+
+        const deletion =
+            await db
+                .from("message_deletions")
+                .upsert(
+                    ids,
+                    {
+                        onConflict:
+                            "message_id,user_id"
+                    }
+                );
+
+
+        if (deletion.error) {
+
+            alert(
+                deletion.error.message
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    await messages();
+
+    await members();
+
 }
 
-async function logout(){
- if(chan)db.removeChannel(chan);
- if(pres)db.removeChannel(pres);
- clearInterval(badgeTimer);
- await db.auth.signOut();
- location.reload()
+
+/* =========================================================
+   PRESENCE
+========================================================= */
+
+function presence() {
+
+    if (
+        presenceChannel
+    ) {
+
+        db.removeChannel(
+            presenceChannel
+        );
+
+    }
+
+
+    onlineUsers =
+        new Set();
+
+
+    presenceChannel =
+        db.channel(
+            "cs-presence",
+            {
+                config: {
+
+                    presence: {
+                        key: me.id
+                    }
+
+                }
+            }
+        );
+
+
+    presenceChannel
+        .on(
+            "presence",
+            {
+                event:
+                    "sync"
+            },
+            function () {
+
+                const state =
+                    presenceChannel
+                        .presenceState();
+
+
+                onlineUsers =
+                    new Set(
+                        Object.keys(
+                            state
+                        )
+                        .filter(
+                            id =>
+                                id !== me.id
+                        )
+                    );
+
+
+                people();
+
+                members();
+
+            }
+        )
+        .on(
+            "presence",
+            {
+                event:
+                    "join"
+            },
+            function (event) {
+
+                if (
+                    event.key !==
+                    me.id
+                ) {
+
+                    onlineUsers.add(
+                        event.key
+                    );
+
+                }
+
+
+                people();
+
+                members();
+
+            }
+        )
+        .on(
+            "presence",
+            {
+                event:
+                    "leave"
+            },
+            function (event) {
+
+                onlineUsers.delete(
+                    event.key
+                );
+
+
+                people();
+
+                members();
+
+            }
+        )
+        .subscribe(
+            async function (status) {
+
+                if (
+                    status ===
+                    "SUBSCRIBED"
+                ) {
+
+                    if (
+                        getSetting(
+                            "online",
+                            true
+                        )
+                    ) {
+
+                        try {
+
+                            await presenceChannel.track(
+                                {
+                                    online:
+                                        true
+                                }
+                            );
+
+                        } catch (error) {
+
+                            console.error(
+                                "Presence track error:",
+                                error
+                            );
+
+                        }
+
+                    }
+
+                }
+
+            }
+        );
+
 }
 
-db.auth.getSession().then(async x=>{
- if(x.data.session){me=x.data.session.user;await start()}
-});
 
-db.auth.onAuthStateChange((e,s)=>{
- if(e==='SIGNED_OUT')location.reload()
-});
-</script></body></html>
+/* =========================================================
+   REALTIME
+========================================================= */
+
+function realtime() {
+
+    if (
+        realtimeStarting
+    ) {
+
+        return;
+
+    }
+
+
+    realtimeStarting =
+        true;
+
+
+    if (
+        messageChannel
+    ) {
+
+        db.removeChannel(
+            messageChannel
+        );
+
+    }
+
+
+    messageChannel =
+        db.channel(
+            "cs-live-" +
+            me.id +
+            "-" +
+            Date.now()
+        );
+
+
+    messageChannel
+        .on(
+            "postgres_changes",
+            {
+                event:
+                    "*",
+
+                schema:
+                    "public",
+
+                table:
+                    "messages"
+            },
+            async function (event) {
+
+                try {
+
+                    const data =
+                        event.new ||
+                        event.old ||
+                        {};
+
+
+                    const belongs =
+                        data.sender_id === me.id ||
+                        data.receiver_id === me.id;
+
+
+                    if (!belongs) {
+
+                        return;
+
+                    }
+
+
+                    if (
+                        selectedUser &&
+                        $("chats")
+                            .classList
+                            .contains("on")
+                    ) {
+
+                        const isThisChat =
+                            data.sender_id ===
+                                selectedUser.id ||
+                            data.receiver_id ===
+                                selectedUser.id;
+
+
+                        if (isThisChat) {
+
+                            await messages();
+
+                        }
+
+                    }
+
+
+                    await members();
+
+                    await badges();
+
+                } catch (error) {
+
+                    console.error(
+                        "Realtime message error:",
+                        error
+                    );
+
+                }
+
+            }
+        )
+        .on(
+            "postgres_changes",
+            {
+                event:
+                    "*",
+
+                schema:
+                    "public",
+
+                table:
+                    "connection_requests"
+            },
+            async function () {
+
+                try {
+
+                    await requests();
+
+                    await people();
+
+                    await members();
+
+                    await badges();
+
+                } catch (error) {
+
+                    console.error(
+                        "Realtime request error:",
+                        error
+                    );
+
+                }
+
+            }
+        )
+        .subscribe(
+            function (status) {
+
+                console.log(
+                    "Realtime status:",
+                    status
+                );
+
+            }
+        );
+
+
+    realtimeStarting =
+        false;
+
+}
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+function loadSettings() {
+
+    const privateSwitch =
+        $("private");
+
+
+    const onlineSwitch =
+        $("online");
+
+
+    if (
+        !privateSwitch ||
+        !onlineSwitch
+    ) {
+
+        return;
+
+    }
+
+
+    privateSwitch.checked =
+        getSetting(
+            "private",
+            false
+        );
+
+
+    onlineSwitch.checked =
+        getSetting(
+            "online",
+            true
+        );
+
+
+    updatePrivateText();
+
+
+    privateSwitch.onchange =
+        function () {
+
+            setSetting(
+                "private",
+                privateSwitch.checked
+            );
+
+
+            updatePrivateText();
+
+        };
+
+
+    onlineSwitch.onchange =
+        async function () {
+
+            setSetting(
+                "online",
+                onlineSwitch.checked
+            );
+
+
+            if (
+                onlineSwitch.checked
+            ) {
+
+                try {
+
+                    if (
+                        presenceChannel
+                    ) {
+
+                        await presenceChannel.track(
+                            {
+                                online:
+                                    true
+                            }
+                        );
+
+                    }
+
+                } catch (error) {
+
+                    console.error(
+                        "Online track error:",
+                        error
+                    );
+
+                }
+
+            } else {
+
+                try {
+
+                    if (
+                        presenceChannel
+                    ) {
+
+                        await presenceChannel.untrack();
+
+                    }
+
+                } catch (error) {
+
+                    console.error(
+                        "Online untrack error:",
+                        error
+                    );
+
+                }
+
+            }
+
+
+            await people();
+
+            await members();
+
+        };
+
+}
+
+
+/* =========================================================
+   PRIVATE ACCOUNT TEXT
+========================================================= */
+
+function updatePrivateText() {
+
+    const enabled =
+        getSetting(
+            "private",
+            false
+        );
+
+
+    const text =
+        $("privateText");
+
+
+    if (!text) {
+        return;
+    }
+
+
+    if (enabled) {
+
+        text.textContent =
+            "Private account is ON — connection requests need your approval.";
+
+    } else {
+
+        text.textContent =
+            "Private account is OFF — connection requests can be sent normally.";
+
+    }
+
+}
+
+
+/* =========================================================
+   BLOCK USER
+========================================================= */
+
+async function block(id) {
+
+    if (
+        !id ||
+        id === me.id
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        !confirm(
+            "Block this person?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const current =
+        getBlockedUsers();
+
+
+    if (
+        !current.includes(id)
+    ) {
+
+        current.push(
+            id
+        );
+
+    }
+
+
+    saveBlockedUsers(
+        current
+    );
+
+
+    if (
+        selectedUser?.id === id
+    ) {
+
+        closeChat();
+
+    }
+
+
+    const result =
+        await db
+            .from("connection_requests")
+            .delete()
+            .or(
+                `and(sender_id.eq.${me.id},receiver_id.eq.${id}),and(sender_id.eq.${id},receiver_id.eq.${me.id})`
+            );
+
+
+    if (result.error) {
+
+        console.error(
+            "Block connection cleanup:",
+            result.error
+        );
+
+    }
+
+
+    await blockedUI();
+
+    await requests();
+
+    await people();
+
+    await members();
+
+    await badges();
+
+}
+
+
+/* =========================================================
+   BLOCKED USERS UI
+========================================================= */
+
+async function blockedUI() {
+
+    const ids =
+        getBlockedUsers();
+
+
+    if (!ids.length) {
+
+        $("blocked").innerHTML =
+            '<div class="empty">No blocked users.</div>';
+
+        return;
+
+    }
+
+
+    const profileMap =
+        await profiles(
+            ids
+        );
+
+
+    $("blocked").innerHTML =
+        ids
+            .map(function (id) {
+
+                const user =
+                    profileMap[id] || {};
+
+
+                const name =
+                    user.display_name ||
+                    "User";
+
+
+                return `
+
+                    <div class="card">
+
+                        <div class="row">
+
+                            <div class="avatar">
+                                ${esc(name[0])}
+                            </div>
+
+                            <div class="info">
+
+                                <b>
+                                    ${esc(name)}
+                                </b>
+
+                                <small>
+                                    @${esc(user.username || "")}
+                                </small>
+
+                            </div>
+
+
+                            <button
+                                class="success"
+                                onclick="unblock('${attr(id)}')"
+                                type="button"
+                            >
+                                Unblock
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            })
+            .join("");
+
+}
+
+
+/* =========================================================
+   UNBLOCK
+========================================================= */
+
+async function unblock(id) {
+
+    const updated =
+        getBlockedUsers()
+            .filter(function (userId) {
+
+                return userId !== id;
+
+            });
+
+
+    saveBlockedUsers(
+        updated
+    );
+
+
+    await blockedUI();
+
+    await people();
+
+    await members();
+
+    await requests();
+
+    await badges();
+
+
+    const searchInput =
+        $("searchInput");
+
+
+    if (
+        searchInput &&
+        searchInput.value.trim()
+    ) {
+
+        await searchUsers();
+
+    }
+
+}
+
+
+/* =========================================================
+   EDIT PROFILE
+========================================================= */
+
+function editProfile() {
+
+    $("modalBox").innerHTML = `
+
+        <h2>
+            Edit Profile
+        </h2>
+
+
+        <input
+            id="en"
+            value="${esc(profile.display_name || "")}"
+            placeholder="Name"
+        >
+
+
+        <input
+            id="eu"
+            value="${esc(profile.username || "")}"
+            placeholder="Username"
+        >
+
+
+        <textarea
+            id="eb"
+            placeholder="Bio"
+        >${esc(profile.bio || "")}</textarea>
+
+
+        <div class="actions">
+
+            <button
+                class="primary"
+                onclick="saveProfile()"
+                type="button"
+            >
+                Save
+            </button>
+
+
+            <button
+                class="secondary"
+                onclick="modal(false)"
+                type="button"
+            >
+                Cancel
+            </button>
+
+        </div>
+
+    `;
+
+
+    modal(true);
+
+}
+
+
+/* =========================================================
+   SAVE PROFILE
+========================================================= */
+
+async function saveProfile() {
+
+    const name =
+        $("en")
+            .value
+            .trim();
+
+
+    const username =
+        $("eu")
+            .value
+            .trim()
+            .toLowerCase();
+
+
+    const bio =
+        $("eb")
+            .value
+            .trim();
+
+
+    if (
+        !/^[a-z0-9_]{3,30}$/
+            .test(username)
+    ) {
+
+        alert(
+            "Username must be 3-30 letters, numbers or underscore."
+        );
+
+        return;
+
+    }
+
+
+    const result =
+        await db
+            .from("profiles")
+            .update({
+
+                display_name:
+                    name,
+
+                username:
+                    username,
+
+                bio:
+                    bio
+
+            })
+            .eq(
+                "id",
+                me.id
+            )
+            .select()
+            .single();
+
+
+    if (result.error) {
+
+        alert(
+            result.error.message
+        );
+
+        return;
+
+    }
+
+
+    profile =
+        result.data;
+
+
+    ui();
+
+    modal(false);
+
+    await people();
+
+    await requests();
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function modal(show) {
+
+    $("modal")
+        .classList
+        .toggle(
+            "on",
+            show
+        );
+
+}
+
+
+$("modal").onclick =
+    function (event) {
+
+        if (
+            event.target.id ===
+            "modal"
+        ) {
+
+            modal(false);
+
+        }
+
+    };
+
+
+/* =========================================================
+   SCHEDULES
+========================================================= */
+
+async function schedules() {
+
+    if (!me) {
+        return;
+    }
+
+
+    const result =
+        await db
+            .from("schedules")
+            .select("*")
+            .eq(
+                "user_id",
+                me.id
+            )
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+
+
+    if (result.error) {
+
+        console.error(
+            result.error
+        );
+
+        return;
+
+    }
+
+
+    const list =
+        result.data || [];
+
+
+    const completed =
+        list.filter(
+            item =>
+                item.completed
+        ).length;
+
+
+    const percent =
+        list.length
+            ? Math.round(
+                completed /
+                list.length *
+                100
+            )
+            : 0;
+
+
+    $("prog").textContent =
+        `${percent}% completed (${completed}/${list.length})`;
+
+
+    $("fill").style.width =
+        percent + "%";
+
+
+    if (!list.length) {
+
+        $("schedules").innerHTML =
+            '<div class="empty">No schedules yet.</div>';
+
+        return;
+
+    }
+
+
+    $("schedules").innerHTML =
+        list
+            .map(function (item) {
+
+                return `
+
+                    <div class="schedule">
+
+                        <b>
+                            ${esc(item.title)}
+                        </b>
+
+                        <p>
+                            ${esc(
+                                item.description || ""
+                            )}
+                        </p>
+
+                        <small>
+                            ${esc(
+                                item.schedule_type || ""
+                            )}
+                        </small>
+
+
+                        <div class="actions">
+
+                            <button
+                                class="${
+                                    item.completed
+                                        ? "secondary"
+                                        : "primary"
+                                }"
+                                onclick="complete('${attr(item.id)}',${!item.completed})"
+                                type="button"
+                            >
+                                ${
+                                    item.completed
+                                        ? "Mark active"
+                                        : "Complete"
+                                }
+                            </button>
+
+
+                            <button
+                                class="danger"
+                                onclick="removeSchedule('${attr(item.id)}')"
+                                type="button"
+                            >
+                                Delete
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            })
+            .join("");
+
+}
+
+
+/* =========================================================
+   ADD SCHEDULE
+========================================================= */
+
+function addSchedule() {
+
+    $("modalBox").innerHTML = `
+
+        <h2>
+            Add Schedule
+        </h2>
+
+
+        <input
+            id="st"
+            placeholder="Title"
+        >
+
+
+        <input
+            id="sd"
+            placeholder="Description"
+        >
+
+
+        <select id="sy">
+
+            <option value="daily">
+                Daily
+            </option>
+
+            <option value="weekly">
+                Weekly
+            </option>
+
+            <option value="once">
+                One-time
+            </option>
+
+        </select>
+
+
+        <input
+            id="stime"
+            type="time"
+        >
+
+
+        <input
+            id="sdate"
+            type="date"
+        >
+
+
+        <div class="actions">
+
+            <button
+                class="primary"
+                onclick="saveSchedule()"
+                type="button"
+            >
+                Save
+            </button>
+
+
+            <button
+                class="secondary"
+                onclick="modal(false)"
+                type="button"
+            >
+                Cancel
+            </button>
+
+        </div>
+
+    `;
+
+
+    modal(true);
+
+}
+
+
+/* =========================================================
+   SAVE SCHEDULE
+========================================================= */
+
+async function saveSchedule() {
+
+    const title =
+        $("st")
+            .value
+            .trim();
+
+
+    if (!title) {
+
+        alert(
+            "Enter a title."
+        );
+
+        return;
+
+    }
+
+
+    const type =
+        $("sy")
+            .value;
+
+
+    const schedule =
+        {
+
+            user_id:
+                me.id,
+
+            title:
+                title,
+
+            description:
+                $("sd")
+                    .value
+                    .trim(),
+
+            schedule_type:
+                type,
+
+            reminder_time:
+                $("stime")
+                    .value ||
+                null,
+
+            reminder_date:
+                type === "once"
+                    ? (
+                        $("sdate")
+                            .value ||
+                        null
+                    )
+                    : null,
+
+            day_of_week:
+                null,
+
+            completed:
+                false
+
+        };
+
+
+    if (
+        type ===
+        "weekly"
+    ) {
+
+        schedule.day_of_week =
+            new Date()
+                .getDay();
+
+    }
+
+
+    const result =
+        await db
+            .from("schedules")
+            .insert(
+                schedule
+            );
+
+
+    if (result.error) {
+
+        alert(
+            result.error.message
+        );
+
+        return;
+
+    }
+
+
+    modal(false);
+
+    await schedules();
+
+}
+
+
+/* =========================================================
+   COMPLETE SCHEDULE
+========================================================= */
+
+async function complete(
+    id,
+    value
+) {
+
+    const result =
+        await db
+            .from("schedules")
+            .update({
+
+                completed:
+                    value
+
+            })
+            .eq(
+                "id",
+                id
+            )
+            .eq(
+                "user_id",
+                me.id
+            );
+
+
+    if (result.error) {
+
+        alert(
+            result.error.message
+        );
+
+        return;
+
+    }
+
+
+    await schedules();
+
+}
+
+
+/* =========================================================
+   DELETE SCHEDULE
+========================================================= */
+
+async function removeSchedule(
+    id
+) {
+
+    if (
+        !confirm(
+            "Delete this schedule?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const result =
+        await db
+            .from("schedules")
+            .delete()
+            .eq(
+                "id",
+                id
+            )
+            .eq(
+                "user_id",
+                me.id
+            );
+
+
+    if (result.error) {
+
+        alert(
+            result.error.message
+        );
+
+        return;
+
+    }
+
+
+    await schedules();
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+async function logout() {
+
+    if (
+        messageChannel
+    ) {
+
+        await db.removeChannel(
+            messageChannel
+        );
+
+        messageChannel =
+            null;
+
+    }
+
+
+    if (
+        presenceChannel
+    ) {
+
+        await db.removeChannel(
+            presenceChannel
+        );
+
+        presenceChannel =
+            null;
+
+    }
+
+
+    if (
+        badgeTimer
+    ) {
+
+        clearInterval(
+            badgeTimer
+        );
+
+        badgeTimer =
+            null;
+
+    }
+
+
+    await db.auth.signOut();
+
+    location.reload();
+
+}
+
+
+/* =========================================================
+   EXISTING SESSION
+========================================================= */
+
+async function checkExistingSession() {
+
+    try {
+
+        const result =
+            await db.auth.getSession();
+
+
+        if (
+            result.data &&
+            result.data.session &&
+            result.data.session.user
+        ) {
+
+            me =
+                result.data.session.user;
+
+
+            await start();
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "SESSION ERROR:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   AUTH STATE CHANGE
+========================================================= */
+
+db.auth.onAuthStateChange(
+    function (event, session) {
+
+        console.log(
+            "Auth state:",
+            event
+        );
+
+
+        if (
+            event ===
+            "SIGNED_OUT"
+        ) {
+
+            location.reload();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   START
+========================================================= */
+
+checkExistingSession();
+
+</script>
+
+</body>
+</html>
