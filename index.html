@@ -43,6 +43,7 @@ width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;outline:0;margi
 .search-box:focus,.chat-input:focus{border-color:#5b4bdb}
 
 .user-row{display:flex;align-items:center;gap:12px}
+.online-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#20b954;margin-left:5px;box-shadow:0 0 0 2px #fff}.online-dot.off{display:none}
 .avatar{width:48px;height:48px;border-radius:50%;background:#5b4bdb;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0}
 .user-info{flex:1;min-width:0}
 .user-info strong{display:block}
@@ -131,7 +132,7 @@ flex-direction:column
 .chat-contact:hover,.chat-contact.active{background:#f2f1fd}
 .chat-contact-info{flex:1;min-width:0}
 .chat-contact-name{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.chat-last-message{font-size:12px;color:#777;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}
+.chat-contact .avatar{position:relative}.chat-last-message{font-size:12px;color:#777;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}
 .chat-window{border:1px solid #eee;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;min-width:0;min-height:0;background:#fafaff}
 .chat-header{min-height:65px;background:#fff;border-bottom:1px solid #eee;display:flex;align-items:center;gap:10px;padding:10px 14px}
 .chat-header-info{flex:1;min-width:0}
@@ -360,12 +361,12 @@ h1{font-size:23px}
 <div class="card">
 <div class="setting">
 <div><strong>Private account</strong><small>Require requests before connecting.</small></div>
-<input type="checkbox" id="privateAccount">
+<label class="switch"><input type="checkbox" id="privateAccount"><span class="slider"></span></label>
 </div>
 
 <div class="setting">
 <div><strong>Show online status</strong><small>Allow connections to see your status.</small></div>
-<input type="checkbox" id="onlineStatus" checked>
+<label class="switch"><input type="checkbox" id="onlineStatus" checked><span class="slider"></span></label>
 </div>
 </div>
 
@@ -387,6 +388,8 @@ h1{font-size:23px}
 
 <div id="notificationStatus" class="notification-status">Notifications are not enabled.</div>
 </div>
+
+<div class="card"><h3>Blocked Users 🚫</h3><p class="notification-status">People you block cannot be interacted with from this device until you unblock them.</p><div id="blockedUsers"><div class="empty">No blocked users.</div></div></div>
 
 <div class="card">
 <h3>Account</h3><br>
@@ -543,13 +546,22 @@ const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHA
 let currentUser=null,currentProfile=null,loginMode=false;
 let connectionProfiles=[],selectedChatUser=null;
 let selectedMessageId=null,selectedMessageSenderId=null;
-let chatPollTimer=null,badgeTimer=null,searchTimer=null;
+let chatPollTimer=null,badgeTimer=null,searchTimer=null,messageChannel=null,presenceChannel=null;
+let onlineUsers=new Set;
 
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 const attr=v=>String(v??"").replace(/\\/g,"\\\\").replace(/'/g,"\\'");
 const show=(id,on=true)=>$(id)?.classList.toggle("show",on);
 const msg=(id,text)=>$(id).textContent=text;
+const userKey=k=>`cs_${k}_${currentUser?.id||"guest"}`;
+const isBlocked=id=>{try{return JSON.parse(localStorage.getItem(userKey("blocked"))||"[]").includes(id)}catch{return false}};
+const getSetting=(k,d)=>localStorage.getItem(userKey(k))===null?d:localStorage.getItem(userKey(k))==="1";
+const saveSetting=(k,v)=>localStorage.setItem(userKey(k),v?"1":"0");
+function setOnlineDot(id){return onlineUsers.has(id)?'<span class="online-dot" title="Online"></span>':''}
+function blockedIds(){try{return JSON.parse(localStorage.getItem(userKey("blocked"))||"[]")}catch{return[]}}
+function saveBlocked(a){localStorage.setItem(userKey("blocked"),JSON.stringify([...new Set(a)]))}
+
 
 /* =========================
 AUTH
@@ -643,6 +655,10 @@ currentProfile=p;
 
 showApp();
 updateProfileUI();
+loadSettings();
+startPresence();
+startRealtime();
+renderBlockedUsers();
 
 await Promise.all([
 loadPeople(),
@@ -693,10 +709,10 @@ async function loadPeople(){
 if(!currentUser)return;
 const {data,error}=await supabaseClient.from("profiles")
 .select("id,username,display_name,bio,avatar_url")
-.neq("id",currentUser.id).limit(20);
+.neq("id",currentUser.id).limit(50);
 
 if(error)return $("suggestions").innerHTML='<div class="empty">Unable to load profiles.</div>';
-renderPeople(data||[]);
+renderPeople((data||[]).filter(u=>!isBlocked(u.id)));
 }
 
 async function renderPeople(users){
@@ -709,6 +725,7 @@ box.innerHTML=(await Promise.all(users.map(profileCard))).join("");
 
 async function profileCard(user){
 const name=user.display_name||"User",letter=name.charAt(0).toUpperCase();
+if(isBlocked(user.id))return "";
 const status=await getConnectionStatus(user.id);
 
 let action;
@@ -724,12 +741,12 @@ action=`<button class="primary" onclick="sendConnectionRequest('${attr(user.id)}
 return `<div class="card"><div class="user-row">
 <div class="avatar">${esc(letter)}</div>
 <div class="user-info">
-<strong>${esc(name)}</strong>
+<strong>${esc(name)}${setOnlineDot(user.id)}</strong>
 <span>@${esc(user.username||"")}</span>
 <span>${esc(user.bio||"")}</span>
 </div>
 <div style="display:flex;flex-direction:column;gap:7px;align-items:flex-end">
-<button class="secondary" onclick="viewProfile('${attr(user.id)}')">View</button>${action}
+<button class="secondary" onclick="viewProfile('${attr(user.id)}')">View</button><button class="danger" onclick="blockUser('${attr(user.id)}')">Block</button>${action}
 </div>
 </div></div>`;
 }
@@ -753,7 +770,7 @@ const {data,error}=await supabaseClient.from("profiles")
 if(error)return box.innerHTML='<div class="empty">Search failed.</div>';
 if(!data?.length)return box.innerHTML='<div class="empty">No users found.</div>';
 
-box.innerHTML=(await Promise.all(data.map(profileCard))).join("");
+box.innerHTML=(await Promise.all(data.filter(u=>!isBlocked(u.id)).map(profileCard))).join("");
 }
 
 async function viewProfile(id){
@@ -929,7 +946,7 @@ box.innerHTML=ids.map(id=>{
 const u=map[id]||{},name=u.display_name||"ConnectSphere User";
 return `<div class="connection-card"><div class="user-row">
 <div class="avatar">${esc(name[0])}</div>
-<div class="user-info"><strong>${esc(name)}</strong><span>@${esc(u.username||"")}</span><span>Connected ✅</span></div>
+<div class="user-info"><strong>${esc(name)}${setOnlineDot(id)}</strong><span>@${esc(u.username||"")}</span><span>Connected ✅</span></div>
 </div>
 <div class="connection-actions">
 <button class="primary" onclick="openChatWithUser('${attr(id)}')">💬 Message</button>
@@ -938,7 +955,7 @@ return `<div class="connection-card"><div class="user-row">
 }).join("");
 
 $("connectionCount").textContent=ids.length;
-connectionProfiles=ids.map(id=>map[id]).filter(Boolean);
+connectionProfiles=ids.map(id=>map[id]).filter(Boolean).filter(u=>!isBlocked(u.id));
 }
 
 async function removeConnection(otherId){
@@ -980,7 +997,7 @@ const name=u.display_name||"User";
 return `<div class="chat-contact ${selectedChatUser?.id===u.id?"active":""}" onclick="openChatWithUser('${attr(u.id)}')">
 <div class="avatar">${esc(name[0])}</div>
 <div class="chat-contact-info">
-<div class="chat-contact-name">${esc(name)}</div>
+<div class="chat-contact-name">${esc(name)}${setOnlineDot(u.id)}</div>
 <div class="chat-last-message">@${esc(u.username||"")}</div>
 </div>
 </div>`;
@@ -989,6 +1006,7 @@ return `<div class="chat-contact ${selectedChatUser?.id===u.id?"active":""}" onc
 
 async function openChatWithUser(userId){
 if(!currentUser||!userId||userId===currentUser.id)return;
+if(isBlocked(userId))return alert("This user is blocked. Unblock them in Settings first.");
 
 if(await getConnectionStatus(userId)!=="connected")
 return alert("You can only message accepted connections.");
@@ -1027,6 +1045,46 @@ updateChatHeader();
 $("chatMessages").innerHTML='<div class="chat-empty">Select a connection to start a private conversation.</div>';
 loadChatContacts();
 }
+
+/* =========================
+REALTIME + PRESENCE
+========================= */
+async function startRealtime(){
+if(!currentUser)return;
+if(messageChannel)await supabaseClient.removeChannel(messageChannel);
+messageChannel=supabaseClient.channel("cs-msg-"+currentUser.id).on("postgres_changes",{event:"INSERT",schema:"public",table:"messages",filter:`receiver_id=eq.${currentUser.id}`},async p=>{
+if(selectedChatUser?.id===p.new.sender_id&&$("chats").classList.contains("active")){await loadMessages(true);markChatRead(p.new.sender_id)}
+else await refreshUnreadBadges();
+}).on("postgres_changes",{event:"INSERT",schema:"public",table:"connection_requests",filter:`receiver_id=eq.${currentUser.id}`},async()=>{await loadConnectionRequests();await refreshUnreadBadges()}).subscribe();
+}
+async function startPresence(){
+if(!currentUser)return;
+if(presenceChannel)await supabaseClient.removeChannel(presenceChannel);
+presenceChannel=supabaseClient.channel("cs-presence",{config:{presence:{key:currentUser.id}}});
+presenceChannel.on("presence",{event:"sync"},()=>{
+const state=presenceChannel.presenceState();onlineUsers=new Set(Object.keys(state).filter(id=>id!==currentUser.id));
+loadPeople();loadChatContacts();
+}).on("presence",{event:"join"},({key})=>{onlineUsers.add(key);loadPeople();loadChatContacts()}).on("presence",{event:"leave"},({key})=>{onlineUsers.delete(key);loadPeople();loadChatContacts()});
+presenceChannel.subscribe(async status=>{if(status==="SUBSCRIBED"&&getSetting("online",true))await presenceChannel.track({online:true});});
+}
+async function updatePresence(){
+if(!presenceChannel)return;
+if($("onlineStatus").checked)await presenceChannel.track({online:true});else await presenceChannel.untrack();
+}
+
+function loadSettings(){
+const p=$("privateAccount"),o=$("onlineStatus");
+if(p){p.checked=getSetting("private",false);p.onchange=()=>saveSetting("private",p.checked)}
+if(o){o.checked=getSetting("online",true);o.onchange=async()=>{saveSetting("online",o.checked);await updatePresence();loadPeople();loadChatContacts()}}
+}
+function renderBlockedUsers(){
+const box=$("blockedUsers");if(!box)return;
+const ids=blockedIds();
+if(!ids.length)return box.innerHTML='<div class="empty">No blocked users.</div>';
+profilesFor(ids).then(map=>{box.innerHTML=ids.map(id=>{const u=map[id]||{display_name:"User",username:""};return `<div class="connection-card"><div class="user-row"><div class="avatar">${esc((u.display_name||"U")[0])}</div><div class="user-info"><strong>${esc(u.display_name||"User")}</strong><span>@${esc(u.username||"")}</span></div><button class="success-btn" onclick="unblockUser('${attr(id)}')">Unblock</button></div></div>`}).join("")})
+}
+function blockUser(id){if(!id||id===currentUser?.id)return;if(!confirm("Block this user?"))return;saveBlocked([...blockedIds(),id]);if(selectedChatUser?.id===id)closeSelectedChat();renderBlockedUsers();loadPeople();loadChatContacts();}
+function unblockUser(id){saveBlocked(blockedIds().filter(x=>x!==id));renderBlockedUsers();loadPeople();loadChatContacts();}
 
 /* =========================
 CHAT POLLING + UNREAD
@@ -1069,8 +1127,6 @@ let unread=0;
 const last=localStorage.getItem(readKey(m.sender_id));
 if(!last||new Date(m.created_at)>new Date(last))unread++;
 });
-
-if(selectedChatUser)markChatRead(selectedChatUser.id);
 
 setBadge("requestBadge",requestCount);
 setBadge("messageBadge",unread);
@@ -1597,6 +1653,8 @@ LOGOUT
 
 async function logout(){
 stopChatPolling();
+if(messageChannel){supabaseClient.removeChannel(messageChannel);messageChannel=null}
+if(presenceChannel){supabaseClient.removeChannel(presenceChannel);presenceChannel=null}
 if(badgeTimer)clearInterval(badgeTimer);
 
 await supabaseClient.auth.signOut();
@@ -1629,6 +1687,8 @@ $("authScreen").classList.remove("hidden");
 supabaseClient.auth.onAuthStateChange((event,session)=>{
 if(event==="SIGNED_OUT"){
 stopChatPolling();
+if(messageChannel){supabaseClient.removeChannel(messageChannel);messageChannel=null}
+if(presenceChannel){supabaseClient.removeChannel(presenceChannel);presenceChannel=null}
 if(badgeTimer)clearInterval(badgeTimer);
 $("app").classList.add("hidden");
 $("authScreen").classList.remove("hidden");
