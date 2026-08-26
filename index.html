@@ -6,7 +6,6 @@
 <meta name="theme-color" content="#5b4bdb">
 <meta name="description" content="ConnectSphere - secure social connections, private messaging and schedules">
 <title>ConnectSphere</title>
-
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,Helvetica,sans-serif;background:#f4f5fb;color:#171724}
@@ -14,36 +13,29 @@ button,input,select,textarea{font:inherit}
 button{cursor:pointer;border:0}
 button:disabled{opacity:.55;cursor:not-allowed}
 .hidden{display:none!important}
-
 .app{max-width:1100px;min-height:100vh;margin:auto;background:#fff;position:relative}
 header{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid #eee;position:sticky;top:0;background:#fff;z-index:30}
 .logo{font-size:22px;font-weight:800;color:#5b4bdb}
 .header-actions{display:flex;gap:8px}
 .icon-btn{width:40px;height:40px;border-radius:50%;background:#f1f1f7}
 .icon-btn.active{background:#5b4bdb;color:#fff}
-
 main{padding:20px;padding-bottom:100px}
 .page{display:none!important}
 .page.active{display:block!important}
 .page.chat-page.active{display:flex!important}
-
 h1{font-size:26px;margin-bottom:8px}
 .subtitle{color:#777;margin-bottom:20px}
-
 .card{background:#fff;border:1px solid #eee;border-radius:18px;padding:16px;margin-bottom:12px;box-shadow:0 3px 12px rgba(0,0,0,.04)}
 .primary,.secondary,.danger,.success-btn{padding:10px 14px;border-radius:10px;font-weight:600}
 .primary{background:#5b4bdb;color:#fff}
 .secondary{background:#eeeef5;color:#333}
 .danger{background:#ffe8e8;color:#c62828}
 .success-btn{background:#e7f7ea;color:#287a35}
-
 .search-box,.auth-box input,.modal-box input,.modal-box textarea,.modal-box select{
 width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;outline:0;margin-bottom:10px
 }
 .search-box:focus,.chat-input:focus{border-color:#5b4bdb}
-
 .user-row{display:flex;align-items:center;gap:12px}
-.online-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#20b954;margin-left:5px;box-shadow:0 0 0 2px #fff}.online-dot.off{display:none}
 .avatar{width:48px;height:48px;border-radius:50%;background:#5b4bdb;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0}
 .user-info{flex:1;min-width:0}
 .user-info strong{display:block}
@@ -55,7 +47,6 @@ width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;outline:0;margi
 .stat strong{display:block;font-size:20px}
 .stat span{color:#777;font-size:13px}
 .empty{text-align:center;padding:35px 15px;color:#888}
-
 .bottom-nav{
 position:fixed;bottom:0;left:50%;transform:translateX(-50%);
 width:min(1100px,100%);height:72px;background:#fff;border-top:1px solid #eee;
@@ -70,13 +61,11 @@ border-radius:20px;background:#e53935;color:#fff;font-size:10px;
 display:none;align-items:center;justify-content:center;font-weight:bold
 }
 .nav-badge.show{display:flex}
-
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;align-items:center;justify-content:center;padding:15px}
 .modal.show{display:flex}
 .modal-box{width:min(500px,100%);background:#fff;border-radius:20px;padding:20px;max-height:90vh;overflow:auto}
 .modal-box h2{margin-bottom:15px}
 .close{float:right;background:#eee;border-radius:50%;width:34px;height:34px;font-size:20px}
-
 .auth-screen{min-height:100vh;background:#f4f5fb;display:flex;align-items:center;justify-content:center;padding:20px}
 .auth-box{width:min(430px,100%);background:#fff;border-radius:22px;padding:25px;box-shadow:0 5px 25px rgba(0,0,0,.08)}
 .auth-box h1{text-align:center;color:#5b4bdb;margin-bottom:5px}
@@ -90,13 +79,11 @@ display:none;align-items:center;justify-content:center;font-weight:bold
 .error,.success{padding:10px;border-radius:10px;margin-bottom:10px;display:none}
 .error{color:#c62828;background:#ffecec}
 .success{color:#287a35;background:#eaf8ed}
-
 .request-section-title{font-size:17px;margin:18px 0 10px}
 .connection-card,.schedule-item{border:1px solid #eee;border-radius:16px;padding:15px;margin-bottom:10px}
 .request-actions,.connection-actions,.schedule-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .request-actions button,.connection-actions button,.schedule-actions button{padding:8px 11px;border-radius:9px;font-size:13px}
 .request-status{display:inline-block;padding:5px 9px;border-radius:20px;background:#eeeef5;color:#666;font-size:12px;margin-top:6px}
-
 .schedule-top{display:flex;gap:10px;align-items:flex-start}
 .schedule-top>div:first-child{flex:1}
 .schedule-title{font-weight:700;font-size:16px}
@@ -107,18 +94,15 @@ display:none;align-items:center;justify-content:center;font-weight:bold
 .progress-bar{height:10px;background:#eee;border-radius:20px;overflow:hidden;margin-top:10px}
 .progress-fill{height:100%;background:#5b4bdb;width:0;transition:.3s}
 .form-label{display:block;font-size:13px;font-weight:600;margin:8px 0 6px}
-
 .setting{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:5px 0;margin-bottom:12px}
 .setting small{display:block;color:#777;margin-top:4px}
 .notification-status{color:#777;font-size:13px;line-height:1.5;margin-top:10px}
-
 .switch{position:relative;display:inline-block;width:52px;height:30px;flex-shrink:0}
 .switch input{opacity:0;width:0;height:0}
 .slider{position:absolute;inset:0;background:#ccc;border-radius:30px;transition:.25s}
 .slider:before{content:"";position:absolute;width:24px;height:24px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.25s;box-shadow:0 1px 4px rgba(0,0,0,.2)}
 .switch input:checked+.slider{background:#5b4bdb}
 .switch input:checked+.slider:before{transform:translateX(22px)}
-
 .chat-page{
 height:calc(100vh - 180px);
 min-height:0;
@@ -132,19 +116,17 @@ flex-direction:column
 .chat-contact:hover,.chat-contact.active{background:#f2f1fd}
 .chat-contact-info{flex:1;min-width:0}
 .chat-contact-name{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.chat-contact .avatar{position:relative}.chat-last-message{font-size:12px;color:#777;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}
+.chat-last-message{font-size:12px;color:#777;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}
 .chat-window{border:1px solid #eee;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;min-width:0;min-height:0;background:#fafaff}
 .chat-header{min-height:65px;background:#fff;border-bottom:1px solid #eee;display:flex;align-items:center;gap:10px;padding:10px 14px}
 .chat-header-info{flex:1;min-width:0}
 .chat-header-name{font-weight:700}
 .chat-header-username{font-size:12px;color:#777;margin-top:3px}
-
 .chat-messages{
 flex:1;min-height:0;overflow-y:auto;padding:14px;
 display:flex;flex-direction:column;gap:7px
 }
 .chat-empty{flex:1;display:flex;align-items:center;justify-content:center;color:#888;text-align:center;padding:20px}
-
 .message-row{display:flex;width:100%}
 .message-row.mine{justify-content:flex-end}
 .message-row.theirs{justify-content:flex-start}
@@ -166,7 +148,6 @@ word-break:break-word;white-space:pre-wrap
 .chat-input{flex:1;min-height:44px;max-height:120px;resize:none;padding:12px;border:1px solid #ddd;border-radius:14px;outline:0;overflow-y:auto}
 .chat-send{height:44px;padding:0 16px;border-radius:12px;background:#5b4bdb;color:#fff;font-weight:700}
 .chat-mobile-back{display:none}
-
 @media(max-width:800px){
 main{padding:16px;padding-bottom:96px}
 .chat-page{height:calc(100vh - 155px)}
@@ -174,7 +155,6 @@ main{padding:16px;padding-bottom:96px}
 .chat-list{max-height:150px}
 .chat-window{min-height:0}
 }
-
 @media(max-width:600px){
 header{padding:0 14px}
 h1{font-size:23px}
@@ -186,57 +166,42 @@ h1{font-size:23px}
 .modal{padding:10px}
 .modal-box{border-radius:16px}
 }
-</style>
+.online-dot{display:inline-block;width:9px;height:9px;background:#22c55e;border-radius:50%;margin-left:5px;vertical-align:middle}.contact-unread{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#e53935;color:#fff;font-size:11px;font-weight:700;margin-left:6px}.chat-contact-name{display:flex;align-items:center;gap:2px}</style>
 </head>
-
 <body>
-
-<!-- AUTH -->
 <div id="authScreen" class="auth-screen">
 <div class="auth-box">
 <h1>ConnectSphere</h1>
 <p id="authSubtitle">Create your account and connect.</p>
 <div id="authError" class="error"></div>
 <div id="authSuccess" class="success"></div>
-
 <div id="signupFields">
 <input id="signupName" placeholder="Full name" autocomplete="name">
 <input id="signupUsername" placeholder="Username" autocomplete="username">
 </div>
-
 <input id="authEmail" type="email" placeholder="Email" autocomplete="email">
-
 <div class="password-wrap">
 <input id="authPassword" type="password" placeholder="Password" autocomplete="current-password">
 <button type="button" class="password-toggle" id="passwordToggle" onclick="togglePassword()">👁️</button>
 </div>
-
 <button id="authButton" class="primary" onclick="handleAuth()">Sign Up</button>
-
 <div class="auth-switch">
 <span id="switchText">Already have an account?</span>
 <button onclick="toggleAuthMode()" id="switchButton">Log In</button>
 </div>
 </div>
 </div>
-
-<!-- APP -->
 <div id="app" class="app hidden">
-
 <header>
 <div class="logo">ConnectSphere</div>
 <div class="header-actions">
 <button id="settingsHeaderButton" class="icon-btn" onclick="showPage('settings')" aria-label="Settings">⚙️</button>
 </div>
 </header>
-
 <main>
-
-<!-- HOME -->
 <section id="home" class="page active">
 <h1>Welcome 👋</h1>
 <p class="subtitle">Connect with people and start conversations.</p>
-
 <div class="card">
 <div class="user-row">
 <div class="avatar" id="homeAvatar">Y</div>
@@ -246,51 +211,37 @@ h1{font-size:23px}
 </div>
 </div>
 </div>
-
 <div class="card">
 <h3>People on ConnectSphere</h3>
 <br>
 <div id="suggestions"><div class="empty">Loading profiles...</div></div>
 </div>
 </section>
-
-<!-- SEARCH -->
 <section id="search" class="page">
 <h1>Search</h1>
 <p class="subtitle">Find registered ConnectSphere users.</p>
 <input id="searchInput" class="search-box" placeholder="Search people..." oninput="searchUsers()">
 <div id="searchResults"><div class="empty">Start typing to search.</div></div>
 </section>
-
-<!-- REQUESTS -->
 <section id="requests" class="page">
 <h1>Requests</h1>
 <p class="subtitle">Manage your connection requests.</p>
-
 <div class="request-section-title">Incoming Requests</div>
 <div id="incomingRequests"><div class="empty">Loading requests...</div></div>
-
 <div class="request-section-title">Sent Requests</div>
 <div id="sentRequests"><div class="empty">Loading requests...</div></div>
-
 <div class="request-section-title">Your Connections</div>
 <div id="connectionsList"><div class="empty">Loading connections...</div></div>
 </section>
-
-<!-- CHATS -->
 <section id="chats" class="page chat-page">
 <h1>Messages 💬</h1>
 <p class="subtitle">Private conversations with your connections.</p>
-
 <div class="chat-layout">
-
 <div class="chat-list">
 <div class="chat-list-header">Connections</div>
 <div id="chatContacts"><div class="empty">Loading chats...</div></div>
 </div>
-
 <div class="chat-window">
-
 <div class="chat-header">
 <button class="secondary chat-mobile-back" onclick="closeSelectedChat()">←</button>
 <div id="chatHeaderAvatar" class="avatar">?</div>
@@ -299,25 +250,19 @@ h1{font-size:23px}
 <div id="chatHeaderUsername" class="chat-header-username">Choose someone to start chatting.</div>
 </div>
 </div>
-
 <div id="chatMessages" class="chat-messages">
 <div class="chat-empty">Select a connection to start a private conversation.</div>
 </div>
-
 <div class="chat-input-area">
 <textarea id="chatInput" class="chat-input" maxlength="2000" placeholder="Type a message..." disabled onkeydown="handleChatKeydown(event)"></textarea>
 <button id="chatSendButton" class="chat-send" onclick="sendMessage()" disabled>Send</button>
 </div>
-
 </div>
 </div>
 </section>
-
-<!-- SCHEDULE -->
 <section id="schedule" class="page">
 <h1>My Schedule 📅</h1>
 <p class="subtitle">Build daily habits, weekly plans and one-time reminders.</p>
-
 <div class="card">
 <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
 <div>
@@ -328,76 +273,58 @@ h1{font-size:23px}
 </div>
 <div class="progress-bar"><div id="scheduleProgressFill" class="progress-fill"></div></div>
 </div>
-
 <div id="scheduleList"><div class="empty">Loading your schedules...</div></div>
 </section>
-
-<!-- PROFILE -->
 <section id="profile" class="page">
 <div class="card profile">
 <div class="avatar" id="profileAvatar">Y</div>
 <h2 id="profileName">Your Name</h2>
 <p id="profileUsername">@username</p>
-
 <div class="stat-row">
-<div class="stat"><strong id="connectionCount">0</strong><span>Connections</span></div>
+<div class="stat" onclick="showPage('requests');loadConnectionRequests()" style="cursor:pointer"><strong id="connectionCount">0</strong><span>Connections</span></div>
 <div class="stat"><strong id="requestCount">0</strong><span>Requests</span></div>
 </div>
-
 <button class="primary" onclick="editProfile()">Edit Profile</button>
 </div>
-
 <div class="card">
 <h3>About</h3><br>
 <p id="profileBio">Your bio will appear here.</p>
 </div>
 </section>
-
-<!-- SETTINGS -->
 <section id="settings" class="page">
 <h1>Settings</h1>
 <p class="subtitle">Control your account.</p>
-
 <div class="card">
 <div class="setting">
 <div><strong>Private account</strong><small>Require requests before connecting.</small></div>
-<label class="switch"><input type="checkbox" id="privateAccount"><span class="slider"></span></label>
+<input type="checkbox" id="privateAccount">
 </div>
-
 <div class="setting">
 <div><strong>Show online status</strong><small>Allow connections to see your status.</small></div>
-<label class="switch"><input type="checkbox" id="onlineStatus" checked><span class="slider"></span></label>
+<input type="checkbox" id="onlineStatus" checked>
 </div>
 </div>
-
 <div class="card">
 <h3>Notifications 🔔</h3>
 <p class="notification-status">Turn browser notifications ON or OFF for ConnectSphere reminders.</p>
-
 <div class="setting">
 <div>
 <strong>Push Notifications</strong>
 <small id="notificationSwitchText">Notifications are OFF.</small>
 </div>
-
 <label class="switch">
 <input type="checkbox" id="notificationToggle" onchange="togglePushNotifications()">
 <span class="slider"></span>
 </label>
 </div>
-
 <div id="notificationStatus" class="notification-status">Notifications are not enabled.</div>
 </div>
-
-<div class="card"><h3>Blocked Users 🚫</h3><p class="notification-status">People you block cannot be interacted with from this device until you unblock them.</p><div id="blockedUsers"><div class="empty">No blocked users.</div></div></div>
-
 <div class="card">
 <h3>Account</h3><br>
 <button class="secondary" onclick="editProfile()">Edit profile</button>
 <br><br>
 <button class="danger" onclick="logout()">Log out</button>
 </div>
-
 <div class="card">
 <h3>Security 🔐</h3><br>
 <p style="color:#777;line-height:1.6">
@@ -406,44 +333,32 @@ Private messages are restricted to participants of accepted connections.
 </p>
 </div>
 </section>
-
 </main>
-
-<!-- NAV -->
 <nav class="bottom-nav">
-
 <button class="nav-btn active" data-page="home" onclick="showPage('home',this)">
 <span class="nav-icon">🏠</span>Home
 </button>
-
 <button class="nav-btn" data-page="search" onclick="showPage('search',this)">
 <span class="nav-icon">🔎</span>Search
 </button>
-
 <button class="nav-btn" data-page="requests" onclick="showPage('requests',this)">
 <span class="nav-icon">👥</span>
 <span class="nav-badge" id="requestBadge">0</span>
 Requests
 </button>
-
 <button class="nav-btn" data-page="chats" onclick="showPage('chats',this)">
 <span class="nav-icon">💬</span>
 <span class="nav-badge" id="messageBadge">0</span>
 Chats
 </button>
-
 <button class="nav-btn" data-page="schedule" onclick="showPage('schedule',this)">
 <span class="nav-icon">📅</span>Schedule
 </button>
-
 <button class="nav-btn" data-page="profile" onclick="showPage('profile',this)">
 <span class="nav-icon">👤</span>Profile
 </button>
-
 </nav>
 </div>
-
-<!-- PROFILE MODAL -->
 <div class="modal" id="profileModal">
 <div class="modal-box">
 <button class="close" onclick="closeModal('profileModal')">×</button>
@@ -454,29 +369,22 @@ Chats
 <button class="primary" onclick="saveProfile()">Save Profile</button>
 </div>
 </div>
-
-<!-- SCHEDULE MODAL -->
 <div class="modal" id="scheduleModal">
 <div class="modal-box">
 <button class="close" onclick="closeModal('scheduleModal')">×</button>
 <h2>Add Schedule</h2>
-
 <label class="form-label">Title</label>
 <input id="scheduleTitle" maxlength="150" placeholder="Example: Study for 30 minutes">
-
 <label class="form-label">Description</label>
 <textarea id="scheduleDescription" rows="3" maxlength="500" placeholder="Optional details"></textarea>
-
 <label class="form-label">Type</label>
 <select id="scheduleType" onchange="updateScheduleFields()">
 <option value="daily">Daily</option>
 <option value="weekly">Weekly</option>
 <option value="once">One-time</option>
 </select>
-
 <label class="form-label">Reminder time</label>
 <input id="scheduleTime" type="time">
-
 <div id="weeklyField" class="hidden">
 <label class="form-label">Day of week</label>
 <select id="scheduleDay">
@@ -489,35 +397,27 @@ Chats
 <option value="6">Saturday</option>
 </select>
 </div>
-
 <div id="onceField" class="hidden">
 <label class="form-label">Date</label>
 <input id="scheduleDate" type="date">
 </div>
-
 <button class="primary" style="width:100%;margin-top:8px" onclick="saveSchedule()">Save Schedule</button>
 </div>
 </div>
-
-<!-- MESSAGE ACTION MODAL -->
 <div class="modal" id="messageActionModal">
 <div class="modal-box">
 <button class="close" onclick="closeModal('messageActionModal')">×</button>
 <h2>Message</h2>
 <p id="messageActionText" style="color:#777;margin-bottom:15px">Choose an action.</p>
-
 <button class="secondary" style="width:100%;margin-bottom:8px" onclick="openReactionPickerFromModal()">❤️ React</button>
 <button class="secondary" style="width:100%;margin-bottom:8px" onclick="deleteMessageForMe()">🗑️ Delete for me</button>
 <button id="deleteForEveryoneButton" class="danger" style="width:100%" onclick="deleteMessageForEveryone()">🗑️ Delete for everyone</button>
 </div>
 </div>
-
-<!-- REACTION MODAL -->
 <div class="modal" id="reactionModal">
 <div class="modal-box">
 <button class="close" onclick="closeModal('reactionModal')">×</button>
 <h2>React to message</h2>
-
 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
 <button class="secondary" onclick="reactToSelectedMessage('❤️')">❤️</button>
 <button class="secondary" onclick="reactToSelectedMessage('😂')">😂</button>
@@ -528,51 +428,27 @@ Chats
 </div>
 </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
-/* =========================
-SUPABASE
-========================= */
-
 const SUPABASE_URL="https://hwjojlqhzeqtfcxmfrjk.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY="sb_publishable_-GofAlZERkBVXbEOQpF3Rg_w0mGMaA4";
 const PUSH_FUNCTION_URL=SUPABASE_URL+"/functions/v1/hyper-processor";
 const VAPID_PUBLIC_KEY="BPXQwAeUakIVhv46REqOG4rbgPeOG2vA3XD4dcU62Njv_QBuiumeMdMKaP-slpYsWEKt7k8oWRDNNt4qpJX670A";
-
 const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
-
 let currentUser=null,currentProfile=null,loginMode=false;
 let connectionProfiles=[],selectedChatUser=null;
 let selectedMessageId=null,selectedMessageSenderId=null;
-let chatPollTimer=null,badgeTimer=null,searchTimer=null,messageChannel=null,presenceChannel=null;
-let onlineUsers=new Set;
-
+let chatPollTimer=null,badgeTimer=null,searchTimer=null;
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 const attr=v=>String(v??"").replace(/\\/g,"\\\\").replace(/'/g,"\\'");
 const show=(id,on=true)=>$(id)?.classList.toggle("show",on);
 const msg=(id,text)=>$(id).textContent=text;
-const userKey=k=>`cs_${k}_${currentUser?.id||"guest"}`;
-const isBlocked=id=>{try{return JSON.parse(localStorage.getItem(userKey("blocked"))||"[]").includes(id)}catch{return false}};
-const getSetting=(k,d)=>localStorage.getItem(userKey(k))===null?d:localStorage.getItem(userKey(k))==="1";
-const saveSetting=(k,v)=>localStorage.setItem(userKey(k),v?"1":"0");
-function setOnlineDot(id){return onlineUsers.has(id)?'<span class="online-dot" title="Online"></span>':''}
-function blockedIds(){try{return JSON.parse(localStorage.getItem(userKey("blocked"))||"[]")}catch{return[]}}
-function saveBlocked(a){localStorage.setItem(userKey("blocked"),JSON.stringify([...new Set(a)]))}
-
-
-/* =========================
-AUTH
-========================= */
-
 function togglePassword(){
 const p=$("authPassword");
 p.type=p.type==="password"?"text":"password";
 $("passwordToggle").textContent=p.type==="password"?"👁️":"🙈";
 }
-
 function toggleAuthMode(){
 loginMode=!loginMode;
 $("signupFields").classList.toggle("hidden",loginMode);
@@ -582,19 +458,15 @@ $("switchText").textContent=loginMode?"Don't have an account?":"Already have an 
 $("switchButton").textContent=loginMode?"Sign Up":"Log In";
 clearMessages();
 }
-
 function showError(t){msg("authError",t);$("authError").style.display="block";$("authSuccess").style.display="none"}
 function showSuccess(t){msg("authSuccess",t);$("authSuccess").style.display="block";$("authError").style.display="none"}
 function clearMessages(){$("authError").style.display="none";$("authSuccess").style.display="none"}
-
 async function handleAuth(){
 clearMessages();
 const email=$("authEmail").value.trim(),password=$("authPassword").value;
 if(!email||!password)return showError("Please enter your email and password.");
 if(password.length<6)return showError("Password must be at least 6 characters.");
-
 const btn=$("authButton");btn.disabled=true;
-
 try{
 if(loginMode){
 const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
@@ -607,7 +479,6 @@ const name=$("signupName").value.trim(),username=$("signupUsername").value.trim(
 if(!name||!username)return showError("Please enter your name and username.");
 if(!/^[a-z0-9_]{3,30}$/.test(username))
 return showError("Username must be 3-30 characters using letters, numbers or underscore.");
-
 const {data,error}=await supabaseClient.auth.signUp({
 email,password,
 options:{
@@ -617,7 +488,6 @@ data:{display_name:name,username}
 });
 if(error)throw error;
 if(!data.user)throw new Error("Signup did not return a user.");
-
 showSuccess("Account created! Check your email, confirm your account, then log in.");
 loginMode=true;
 toggleAuthMode();
@@ -629,37 +499,24 @@ $("authSubtitle").textContent="Check your email, then log in.";
 }catch(e){console.error(e);showError(e.message||"Authentication failed.")}
 finally{btn.disabled=false}
 }
-
-/* =========================
-PROFILE
-========================= */
-
 async function loadProfile(){
 if(!currentUser)return;
-
 const {data,error}=await supabaseClient.from("profiles").select("*").eq("id",currentUser.id).maybeSingle();
 if(error)return showError("Could not load your profile: "+error.message);
-
 if(!data){
 const m=currentUser.user_metadata||{};
 const username=m.username||"user_"+currentUser.id.replace(/-/g,"").slice(0,8);
 const display_name=m.display_name||currentUser.email?.split("@")[0]||"User";
-
 const {data:p,error:e}=await supabaseClient.from("profiles").insert({
 id:currentUser.id,username,display_name,bio:"",avatar_url:null
 }).select().single();
-
 if(e)return showError("Your account is logged in, but profile creation failed: "+e.message);
 currentProfile=p;
 }else currentProfile=data;
-
 showApp();
 updateProfileUI();
-loadSettings();
-startPresence();
-startRealtime();
-renderBlockedUsers();
-
+setupSettings();
+trackPresence();
 await Promise.all([
 loadPeople(),
 loadConnectionRequests(),
@@ -667,67 +524,50 @@ loadSchedules(),
 loadChatContacts(),
 checkNotificationStatus()
 ]);
-
 startBadgePolling();
 }
-
 function showApp(){$("authScreen").classList.add("hidden");$("app").classList.remove("hidden")}
-
 function updateProfileUI(){
 if(!currentProfile)return;
 const name=currentProfile.display_name||"Your Name";
 const username=currentProfile.username||"username";
 const bio=currentProfile.bio||"Your bio will appear here.";
 const letter=name.charAt(0).toUpperCase()||"Y";
-
 ["homeName","profileName"].forEach(id=>msg(id,name));
 ["homeUsername","profileUsername"].forEach(id=>msg(id,"@"+username));
 msg("profileBio",bio);
 ["homeAvatar","profileAvatar"].forEach(id=>msg(id,letter));
 }
-
-/* =========================
-PEOPLE / CONNECTIONS
-========================= */
-
 async function getConnectionStatus(otherId){
 if(!currentUser||!otherId)return"none";
-
 const {data,error}=await supabaseClient.from("connection_requests")
 .select("id,sender_id,receiver_id,status,created_at")
 .or(`and(sender_id.eq.${currentUser.id},receiver_id.eq.${otherId}),and(sender_id.eq.${otherId},receiver_id.eq.${currentUser.id})`)
 .order("created_at",{ascending:false}).limit(1);
-
 if(error||!data?.length)return"none";
 const r=data[0];
 if(r.status==="accepted")return"connected";
 if(r.status==="pending")return r.sender_id===currentUser.id?"sent":"incoming";
 return"none";
 }
-
 async function loadPeople(){
 if(!currentUser)return;
-const {data,error}=await supabaseClient.from("profiles")
-.select("id,username,display_name,bio,avatar_url")
-.neq("id",currentUser.id).limit(50);
-
+const {data:rels,error:re}=await supabaseClient.from("connection_requests").select("sender_id,receiver_id,status").or(`sender_id.eq.${currentUser.id},receiver_id.eq.${currentUser.id}`);
+if(re)return $("suggestions").innerHTML='<div class="empty">Unable to load profiles.</div>';
+const related=new Set((rels||[]).map(r=>r.sender_id===currentUser.id?r.receiver_id:r.sender_id));
+const {data,error}=await supabaseClient.from("profiles").select("id,username,display_name,bio,avatar_url").neq("id",currentUser.id).limit(100);
 if(error)return $("suggestions").innerHTML='<div class="empty">Unable to load profiles.</div>';
-renderPeople((data||[]).filter(u=>!isBlocked(u.id)));
+renderPeople((data||[]).filter(u=>!related.has(u.id)));
 }
-
 async function renderPeople(users){
 const box=$("suggestions");
 if(!users.length)return box.innerHTML='<div class="empty">No other users yet.</div>';
-
 box.innerHTML='<div class="empty">Loading people...</div>';
 box.innerHTML=(await Promise.all(users.map(profileCard))).join("");
 }
-
 async function profileCard(user){
 const name=user.display_name||"User",letter=name.charAt(0).toUpperCase();
-if(isBlocked(user.id))return "";
 const status=await getConnectionStatus(user.id);
-
 let action;
 if(status==="connected")
 action=`<button class="primary" onclick="openChatWithUser('${attr(user.id)}')">💬 Message</button>`;
@@ -737,48 +577,40 @@ else if(status==="incoming")
 action=`<button class="success-btn" onclick="showPage('requests')">Review Request</button>`;
 else
 action=`<button class="primary" onclick="sendConnectionRequest('${attr(user.id)}')">Connect</button>`;
-
 return `<div class="card"><div class="user-row">
 <div class="avatar">${esc(letter)}</div>
 <div class="user-info">
-<strong>${esc(name)}${setOnlineDot(user.id)}</strong>
+<strong>${esc(name)}</strong>
 <span>@${esc(user.username||"")}</span>
 <span>${esc(user.bio||"")}</span>
 </div>
 <div style="display:flex;flex-direction:column;gap:7px;align-items:flex-end">
-<button class="secondary" onclick="viewProfile('${attr(user.id)}')">View</button><button class="danger" onclick="blockUser('${attr(user.id)}')">Block</button>${action}
+<button class="secondary" onclick="viewProfile('${attr(user.id)}')">View</button>${action}
 </div>
 </div></div>`;
 }
-
 function searchUsers(){
 clearTimeout(searchTimer);
 searchTimer=setTimeout(performSearch,250);
 }
-
 async function performSearch(){
 const q=$("searchInput").value.trim().toLowerCase(),box=$("searchResults");
 if(!q)return box.innerHTML='<div class="empty">Start typing to search.</div>';
 if(!currentUser)return box.innerHTML='<div class="empty">Please log in again.</div>';
 if(q.length>50)return box.innerHTML='<div class="empty">Search text is too long.</div>';
-
 const safe=q.replace(/[%_]/g,"\\$&");
 const {data,error}=await supabaseClient.from("profiles")
 .select("id,username,display_name,bio,avatar_url").neq("id",currentUser.id)
 .or(`username.ilike.%${safe}%,display_name.ilike.%${safe}%`).limit(20);
-
 if(error)return box.innerHTML='<div class="empty">Search failed.</div>';
 if(!data?.length)return box.innerHTML='<div class="empty">No users found.</div>';
-
-box.innerHTML=(await Promise.all(data.filter(u=>!isBlocked(u.id)).map(profileCard))).join("");
+box.innerHTML=(await Promise.all(data.map(profileCard))).join("");
 }
-
 async function viewProfile(id){
 if(!id||id===currentUser?.id)return;
 const {data,error}=await supabaseClient.from("profiles").select("*").eq("id",id).single();
 if(!error)alert(`${data.display_name||"User"}\n@${data.username||""}\n\n${data.bio||""}`);
 }
-
 function editProfile(){
 if(!currentProfile)return;
 $("editName").value=currentProfile.display_name||"";
@@ -786,86 +618,63 @@ $("editUsername").value=currentProfile.username||"";
 $("editBio").value=currentProfile.bio||"";
 show("profileModal");
 }
-
 async function saveProfile(){
 if(!currentUser)return;
 const name=$("editName").value.trim();
 const username=$("editUsername").value.trim().toLowerCase();
 const bio=$("editBio").value.trim();
-
 if(!name||!username)return alert("Name and username are required.");
 if(!/^[a-z0-9_]{3,30}$/.test(username))
 return alert("Username must be 3-30 characters using letters, numbers or underscore.");
-
 const {data,error}=await supabaseClient.from("profiles").update({
 display_name:name,username,bio
 }).eq("id",currentUser.id).select().single();
-
 if(error)return alert(error.code==="23505"?"That username is already taken.":error.message);
-
 currentProfile=data;
 updateProfileUI();
 closeModal("profileModal");
 await loadPeople();
 }
-
-/* =========================
-REQUESTS
-========================= */
-
 async function sendConnectionRequest(receiverId){
 if(!currentUser)return alert("Please log in again.");
 if(!receiverId||receiverId===currentUser.id)return alert("You cannot send a request to yourself.");
-
 const status=await getConnectionStatus(receiverId);
 if(status==="connected")return alert("You are already connected. Use Message instead.");
 if(status==="sent")return alert("Connection request already sent.");
 if(status==="incoming")return alert("This user has already sent you a request. Check Requests.");
-
 const {error}=await supabaseClient.from("connection_requests").insert({
 sender_id:currentUser.id,receiver_id:receiverId,status:"pending"
 });
-
 if(error)return alert(error.code==="23505"?"Connection request already exists.":"Could not send connection request: "+error.message);
-
 alert("Connection request sent successfully! ✅");
 await loadConnectionRequests();
 await loadPeople();
 }
-
 async function loadConnectionRequests(){
 if(!currentUser)return;
-
 const [{data:incoming,incomingError},{data:sent,sentError},{data:accepted,acceptedError}]=await Promise.all([
 supabaseClient.from("connection_requests").select("id,sender_id,receiver_id,status,created_at").eq("receiver_id",currentUser.id).order("created_at",{ascending:false}),
 supabaseClient.from("connection_requests").select("id,sender_id,receiver_id,status,created_at").eq("sender_id",currentUser.id).order("created_at",{ascending:false}),
 supabaseClient.from("connection_requests").select("id,sender_id,receiver_id,status,created_at").eq("status","accepted")
 ]);
-
 if(incomingError) $("incomingRequests").innerHTML='<div class="empty">Unable to load incoming requests.</div>';
 else await renderIncomingRequests(incoming||[]);
-
 if(sentError) $("sentRequests").innerHTML='<div class="empty">Unable to load sent requests.</div>';
 else await renderSentRequests(sent||[]);
-
 if(acceptedError) $("connectionsList").innerHTML='<div class="empty">Unable to load connections.</div>';
 else await renderConnections((accepted||[]).filter(r=>r.sender_id===currentUser.id||r.receiver_id===currentUser.id));
-
 $("requestCount").textContent=(incoming||[]).filter(r=>r.status==="pending").length;
 await refreshUnreadBadges();
 }
-
 async function profilesFor(ids){
 if(!ids.length)return{};
 const {data}=await supabaseClient.from("profiles")
 .select("id,username,display_name,bio,avatar_url").in("id",[...new Set(ids)]);
 return Object.fromEntries((data||[]).map(p=>[p.id,p]));
 }
-
 async function renderIncomingRequests(requests){
 const pending=requests.filter(r=>r.status==="pending"),box=$("incomingRequests");
 if(!pending.length)return box.innerHTML='<div class="empty">No pending incoming requests.</div>';
-
 const map=await profilesFor(pending.map(r=>r.sender_id));
 box.innerHTML=pending.map(r=>{
 const u=map[r.sender_id]||{},name=u.display_name||"ConnectSphere User";
@@ -879,16 +688,13 @@ return `<div class="connection-card"><div class="user-row">
 </div></div>`;
 }).join("");
 }
-
 async function renderSentRequests(requests){
 const box=$("sentRequests");
 if(!requests.length)return box.innerHTML='<div class="empty">You have not sent any requests.</div>';
-
 const map=await profilesFor(requests.map(r=>r.receiver_id));
 box.innerHTML=requests.map(r=>{
 const u=map[r.receiver_id]||{},name=u.display_name||"ConnectSphere User";
 const status=r.status==="accepted"?"Accepted":r.status==="rejected"?"Rejected":"Pending";
-
 return `<div class="connection-card"><div class="user-row">
 <div class="avatar">${esc(name[0])}</div>
 <div class="user-info"><strong>${esc(name)}</strong><span>@${esc(u.username||"")}</span><span class="request-status">${status}</span></div>
@@ -898,23 +704,18 @@ r.status==="accepted"?`<div class="request-actions"><button class="primary" oncl
 </div>`;
 }).join("");
 }
-
 async function acceptConnectionRequest(id){
 if(!currentUser)return;
 const {data,error}=await supabaseClient.from("connection_requests")
 .select("id,sender_id,receiver_id,status").eq("id",id).eq("receiver_id",currentUser.id).eq("status","pending").single();
-
 if(error)return alert("Could not find this request.");
 const {error:e}=await supabaseClient.from("connection_requests").update({status:"accepted"})
 .eq("id",id).eq("receiver_id",currentUser.id).eq("status","pending");
-
 if(e)return alert("Could not accept request: "+e.message);
-
 alert("Connection accepted! 🎉");
 await loadConnectionRequests();
 await loadPeople();
 }
-
 async function rejectConnectionRequest(id){
 if(!currentUser||!confirm("Reject this connection request?"))return;
 const {error}=await supabaseClient.from("connection_requests").update({status:"rejected"})
@@ -923,7 +724,6 @@ if(error)return alert("Could not reject request: "+error.message);
 await loadConnectionRequests();
 await loadPeople();
 }
-
 async function cancelConnectionRequest(id){
 if(!currentUser||!confirm("Cancel this connection request?"))return;
 const {error}=await supabaseClient.from("connection_requests").delete().eq("id",id).eq("sender_id",currentUser.id);
@@ -931,94 +731,57 @@ if(error)return alert("Could not cancel request: "+error.message);
 await loadConnectionRequests();
 await loadPeople();
 }
-
 async function renderConnections(requests){
 const box=$("connectionsList");
 if(!requests.length){
 $("connectionCount").textContent="0";
 return box.innerHTML='<div class="empty">No connections yet.</div>';
 }
-
 const ids=[...new Set(requests.map(r=>r.sender_id===currentUser.id?r.receiver_id:r.sender_id))];
 const map=await profilesFor(ids);
-
 box.innerHTML=ids.map(id=>{
 const u=map[id]||{},name=u.display_name||"ConnectSphere User";
 return `<div class="connection-card"><div class="user-row">
 <div class="avatar">${esc(name[0])}</div>
-<div class="user-info"><strong>${esc(name)}${setOnlineDot(id)}</strong><span>@${esc(u.username||"")}</span><span>Connected ✅</span></div>
+<div class="user-info"><strong>${esc(name)}</strong><span>@${esc(u.username||"")}</span><span>Connected ✅</span></div>
 </div>
 <div class="connection-actions">
 <button class="primary" onclick="openChatWithUser('${attr(id)}')">💬 Message</button>
 <button class="danger" onclick="removeConnection('${attr(id)}')">Remove</button>
 </div></div>`;
 }).join("");
-
 $("connectionCount").textContent=ids.length;
-connectionProfiles=ids.map(id=>map[id]).filter(Boolean).filter(u=>!isBlocked(u.id));
+connectionProfiles=ids.map(id=>map[id]).filter(Boolean);
 }
-
 async function removeConnection(otherId){
 if(!currentUser||!otherId||!confirm("Remove this connection?"))return;
-
 const {error}=await supabaseClient.from("connection_requests").delete()
 .or(`and(sender_id.eq.${currentUser.id},receiver_id.eq.${otherId}),and(sender_id.eq.${otherId},receiver_id.eq.${currentUser.id})`);
-
 if(error)return alert("Could not remove connection: "+error.message);
-
 if(selectedChatUser?.id===otherId)closeSelectedChat();
 await loadConnectionRequests();
 await loadPeople();
 }
-
-/* =========================
-CHAT CONTACTS
-========================= */
-
 async function loadChatContacts(){
 if(!currentUser)return;
-
-const {data,error}=await supabaseClient.from("connection_requests")
-.select("sender_id,receiver_id,status").eq("status","accepted");
-
+const {data,error}=await supabaseClient.from("connection_requests").select("sender_id,receiver_id,status").eq("status","accepted");
 if(error)return $("chatContacts").innerHTML='<div class="empty">Unable to load chats.</div>';
-
-const ids=[...new Set((data||[])
-.filter(r=>r.sender_id===currentUser.id||r.receiver_id===currentUser.id)
-.map(r=>r.sender_id===currentUser.id?r.receiver_id:r.sender_id))];
-
+const ids=[...new Set((data||[]).filter(r=>r.sender_id===currentUser.id||r.receiver_id===currentUser.id).map(r=>r.sender_id===currentUser.id?r.receiver_id:r.sender_id))];
 if(!ids.length)return $("chatContacts").innerHTML='<div class="empty">Connect with someone to start chatting.</div>';
-
-const map=await profilesFor(ids);
-connectionProfiles=ids.map(id=>map[id]).filter(Boolean);
-
-$("chatContacts").innerHTML=connectionProfiles.map(u=>{
-const name=u.display_name||"User";
-return `<div class="chat-contact ${selectedChatUser?.id===u.id?"active":""}" onclick="openChatWithUser('${attr(u.id)}')">
-<div class="avatar">${esc(name[0])}</div>
-<div class="chat-contact-info">
-<div class="chat-contact-name">${esc(name)}${setOnlineDot(u.id)}</div>
-<div class="chat-last-message">@${esc(u.username||"")}</div>
-</div>
-</div>`;
-}).join("");
+const map=await profilesFor(ids);connectionProfiles=ids.map(id=>map[id]).filter(Boolean);
+const unreadMap=await getUnreadMap(ids);
+$("chatContacts").innerHTML=connectionProfiles.map(u=>{const name=u.display_name||"User",n=unreadMap[u.id]||0,on=onlineUsers.has(u.id)&&isOnlineVisible(u.id);return `<div class="chat-contact ${selectedChatUser?.id===u.id?"active":""}" onclick="openChatWithUser('${attr(u.id)}')"><div class="avatar">${esc(name[0])}</div><div class="chat-contact-info"><div class="chat-contact-name">${esc(name)} ${on?'<span class="online-dot" title="Online"></span>':''}${n?`<span class="contact-unread">${n>99?"99+":n}</span>`:""}</div><div class="chat-last-message">@${esc(u.username||"")}</div></div></div>`;}).join("");
 }
-
 async function openChatWithUser(userId){
 if(!currentUser||!userId||userId===currentUser.id)return;
-if(isBlocked(userId))return alert("This user is blocked. Unblock them in Settings first.");
-
 if(await getConnectionStatus(userId)!=="connected")
 return alert("You can only message accepted connections.");
-
 let user=connectionProfiles.find(p=>p.id===userId);
-
 if(!user){
 const {data,error}=await supabaseClient.from("profiles").select("id,username,display_name,bio,avatar_url").eq("id",userId).single();
 if(error)return alert("Unable to open this chat.");
 user=data;
 }
-
 selectedChatUser=user;
 markChatRead(userId);
 showPage("chats");
@@ -1028,7 +791,6 @@ await loadMessages();
 startChatPolling();
 await refreshUnreadBadges();
 }
-
 function updateChatHeader(){
 const name=selectedChatUser?.display_name||"Select a connection";
 $("chatHeaderName").textContent=name;
@@ -1037,7 +799,6 @@ $("chatHeaderAvatar").textContent=name[0]?.toUpperCase()||"?";
 $("chatInput").disabled=!selectedChatUser;
 $("chatSendButton").disabled=!selectedChatUser;
 }
-
 function closeSelectedChat(){
 selectedChatUser=null;
 stopChatPolling();
@@ -1045,51 +806,6 @@ updateChatHeader();
 $("chatMessages").innerHTML='<div class="chat-empty">Select a connection to start a private conversation.</div>';
 loadChatContacts();
 }
-
-/* =========================
-REALTIME + PRESENCE
-========================= */
-async function startRealtime(){
-if(!currentUser)return;
-if(messageChannel)await supabaseClient.removeChannel(messageChannel);
-messageChannel=supabaseClient.channel("cs-msg-"+currentUser.id).on("postgres_changes",{event:"INSERT",schema:"public",table:"messages",filter:`receiver_id=eq.${currentUser.id}`},async p=>{
-if(selectedChatUser?.id===p.new.sender_id&&$("chats").classList.contains("active")){await loadMessages(true);markChatRead(p.new.sender_id)}
-else await refreshUnreadBadges();
-}).on("postgres_changes",{event:"INSERT",schema:"public",table:"connection_requests",filter:`receiver_id=eq.${currentUser.id}`},async()=>{await loadConnectionRequests();await refreshUnreadBadges()}).subscribe();
-}
-async function startPresence(){
-if(!currentUser)return;
-if(presenceChannel)await supabaseClient.removeChannel(presenceChannel);
-presenceChannel=supabaseClient.channel("cs-presence",{config:{presence:{key:currentUser.id}}});
-presenceChannel.on("presence",{event:"sync"},()=>{
-const state=presenceChannel.presenceState();onlineUsers=new Set(Object.keys(state).filter(id=>id!==currentUser.id));
-loadPeople();loadChatContacts();
-}).on("presence",{event:"join"},({key})=>{onlineUsers.add(key);loadPeople();loadChatContacts()}).on("presence",{event:"leave"},({key})=>{onlineUsers.delete(key);loadPeople();loadChatContacts()});
-presenceChannel.subscribe(async status=>{if(status==="SUBSCRIBED"&&getSetting("online",true))await presenceChannel.track({online:true});});
-}
-async function updatePresence(){
-if(!presenceChannel)return;
-if($("onlineStatus").checked)await presenceChannel.track({online:true});else await presenceChannel.untrack();
-}
-
-function loadSettings(){
-const p=$("privateAccount"),o=$("onlineStatus");
-if(p){p.checked=getSetting("private",false);p.onchange=()=>saveSetting("private",p.checked)}
-if(o){o.checked=getSetting("online",true);o.onchange=async()=>{saveSetting("online",o.checked);await updatePresence();loadPeople();loadChatContacts()}}
-}
-function renderBlockedUsers(){
-const box=$("blockedUsers");if(!box)return;
-const ids=blockedIds();
-if(!ids.length)return box.innerHTML='<div class="empty">No blocked users.</div>';
-profilesFor(ids).then(map=>{box.innerHTML=ids.map(id=>{const u=map[id]||{display_name:"User",username:""};return `<div class="connection-card"><div class="user-row"><div class="avatar">${esc((u.display_name||"U")[0])}</div><div class="user-info"><strong>${esc(u.display_name||"User")}</strong><span>@${esc(u.username||"")}</span></div><button class="success-btn" onclick="unblockUser('${attr(id)}')">Unblock</button></div></div>`}).join("")})
-}
-function blockUser(id){if(!id||id===currentUser?.id)return;if(!confirm("Block this user?"))return;saveBlocked([...blockedIds(),id]);if(selectedChatUser?.id===id)closeSelectedChat();renderBlockedUsers();loadPeople();loadChatContacts();}
-function unblockUser(id){saveBlocked(blockedIds().filter(x=>x!==id));renderBlockedUsers();loadPeople();loadChatContacts();}
-
-/* =========================
-CHAT POLLING + UNREAD
-========================= */
-
 function startChatPolling(){
 stopChatPolling();
 chatPollTimer=setInterval(async()=>{
@@ -1099,114 +815,66 @@ await refreshUnreadBadges();
 }
 },2000);
 }
-
 function stopChatPolling(){
 if(chatPollTimer){clearInterval(chatPollTimer);chatPollTimer=null}
 }
-
 function readKey(id){return"cs_read_"+currentUser.id+"_"+id}
-
-function markChatRead(id){
-if(!currentUser||!id)return;
-localStorage.setItem(readKey(id),new Date().toISOString());
-refreshUnreadBadges();
-}
-
-async function refreshUnreadBadges(){
-if(!currentUser)return;
-
-const [{data:reqs},{data:received}]=await Promise.all([
-supabaseClient.from("connection_requests").select("id").eq("receiver_id",currentUser.id).eq("status","pending"),
-supabaseClient.from("messages").select("id,sender_id,created_at").eq("receiver_id",currentUser.id).order("created_at",{ascending:false}).limit(500)
-]);
-
-const requestCount=reqs?.length||0;
-let unread=0;
-
-(received||[]).forEach(m=>{
-const last=localStorage.getItem(readKey(m.sender_id));
-if(!last||new Date(m.created_at)>new Date(last))unread++;
-});
-
-setBadge("requestBadge",requestCount);
-setBadge("messageBadge",unread);
-}
-
+function markChatRead(id){if(!currentUser||!id)return;localStorage.setItem(readKey(id),new Date().toISOString());refreshUnreadBadges();loadChatContacts()}
+async function getUnreadMap(ids=[]){if(!currentUser)return{};const {data}=await supabaseClient.from("messages").select("sender_id,created_at").eq("receiver_id",currentUser.id).in("sender_id",ids).order("created_at",{ascending:false}).limit(1000);const out={};(data||[]).forEach(m=>{const last=localStorage.getItem(readKey(m.sender_id));if(!last||new Date(m.created_at)>new Date(last))out[m.sender_id]=(out[m.sender_id]||0)+1});return out}
+async function refreshUnreadBadges(){if(!currentUser)return;const [{data:reqs},{data:received}]=await Promise.all([supabaseClient.from("connection_requests").select("id").eq("receiver_id",currentUser.id).eq("status","pending"),supabaseClient.from("messages").select("sender_id,created_at").eq("receiver_id",currentUser.id).order("created_at",{ascending:false}).limit(1000)]);let unread=0;(received||[]).forEach(m=>{const last=localStorage.getItem(readKey(m.sender_id));if(!last||new Date(m.created_at)>new Date(last))unread++});setBadge("requestBadge",reqs?.length||0);setBadge("messageBadge",unread);if($("chats")?.classList.contains("active"))loadChatContacts()}
 function setBadge(id,count){
 const b=$(id);
 if(!b)return;
 b.textContent=count>99?"99+":count;
 b.classList.toggle("show",count>0);
 }
-
 function startBadgePolling(){
 if(badgeTimer)clearInterval(badgeTimer);
 refreshUnreadBadges();
 badgeTimer=setInterval(refreshUnreadBadges,4000);
 }
-
-/* =========================
-LOAD MESSAGES
-========================= */
-
 async function loadMessages(silent=false){
 if(!currentUser||!selectedChatUser)return;
-
 const other=selectedChatUser.id,box=$("chatMessages");
 const {data,error}=await supabaseClient.from("messages")
 .select("id,sender_id,receiver_id,content,created_at")
 .or(`and(sender_id.eq.${currentUser.id},receiver_id.eq.${other}),and(sender_id.eq.${other},receiver_id.eq.${currentUser.id})`)
 .order("created_at",{ascending:true}).limit(200);
-
 if(error){
 console.error(error);
 if(!silent)box.innerHTML='<div class="chat-empty">Unable to load messages.</div>';
 return;
 }
-
 const messages=data||[];
 if(!messages.length){
 box.innerHTML='<div class="chat-empty">No messages yet.<br>Start the conversation! 👋</div>';
 return;
 }
-
 const ids=messages.map(m=>m.id);
-
 const [{data:reactions},{data:deletions}]=await Promise.all([
 supabaseClient.from("message_reactions").select("message_id,user_id,reaction").in("message_id",ids),
 supabaseClient.from("message_deletions").select("message_id").eq("user_id",currentUser.id).in("message_id",ids)
 ]);
-
 const deleted=new Set((deletions||[]).map(x=>x.message_id));
 const visible=messages.filter(m=>!deleted.has(m.id));
-
 if(!visible.length){
 box.innerHTML='<div class="chat-empty">No visible messages.</div>';
 return;
 }
-
 const reactionMap={};
 (reactions||[]).forEach(r=>(reactionMap[r.message_id]??=[]).push(r));
-
 const nearBottom=box.scrollHeight-box.scrollTop-box.clientHeight<120;
 box.innerHTML=visible.map(m=>renderMessage(m,reactionMap[m.id]||[])).join("");
-
 if(nearBottom||!silent)box.scrollTop=box.scrollHeight;
-
-if(selectedChatUser)markChatRead(selectedChatUser.id);
 }
-
 function renderMessage(m,reactions){
 const mine=m.sender_id===currentUser.id;
 const counts={};
 reactions.forEach(r=>counts[r.reaction]=(counts[r.reaction]||0)+1);
-
 const reactionHTML=Object.entries(counts).map(([r,n])=>
 `<button class="reaction-chip" onclick="reactToMessage('${attr(m.id)}','${attr(r)}')">${esc(r)} ${n}</button>`
 ).join("");
-
 const time=new Date(m.created_at).toLocaleTimeString([],{hour:"numeric",minute:"2-digit"});
-
 return `<div class="message-row ${mine?"mine":"theirs"}">
 <div class="message-bubble">
 <div class="message-text">${esc(m.content)}</div>
@@ -1218,52 +886,34 @@ ${reactionHTML?`<div class="reaction-row">${reactionHTML}</div>`:""}
 </div>
 </div>`;
 }
-
-/* =========================
-SEND MESSAGE
-========================= */
-
 function autoResizeChatInput(){
 const i=$("chatInput");
 i.style.height="44px";
 i.style.height=Math.min(i.scrollHeight,120)+"px";
 }
-
 function handleChatKeydown(e){
 if(e.key==="Enter"&&!e.shiftKey){
 e.preventDefault();
 sendMessage();
 }
 }
-
 async function sendMessage(){
 if(!currentUser||!selectedChatUser)return;
-
 const input=$("chatInput"),button=$("chatSendButton"),content=input.value.trim();
 if(!content)return;
 if(content.length>2000)return alert("Message is too long. Maximum 2000 characters.");
 if(await getConnectionStatus(selectedChatUser.id)!=="connected")
 return alert("This conversation is no longer available because you are not connected.");
-
 button.disabled=true;
-
 const {error}=await supabaseClient.from("messages").insert({
 sender_id:currentUser.id,receiver_id:selectedChatUser.id,content
 });
-
 button.disabled=false;
-
 if(error)return alert("Could not send message: "+error.message);
-
 input.value="";
 autoResizeChatInput();
 await loadMessages();
 }
-
-/* =========================
-MESSAGE ACTIONS
-========================= */
-
 function openMessageActions(id,sender){
 selectedMessageId=id;
 selectedMessageSenderId=sender;
@@ -1273,32 +923,24 @@ $("messageActionText").textContent=sender===currentUser.id
 :"You can react or delete this message for yourself.";
 show("messageActionModal");
 }
-
 function openReactionPickerFromModal(){
 closeModal("messageActionModal");
 show("reactionModal");
 }
-
 async function reactToSelectedMessage(r){
 if(selectedMessageId)await reactToMessage(selectedMessageId,r);
 closeModal("reactionModal");
 }
-
 async function reactToMessage(messageId,reaction){
 const allowed=["❤️","😂","👍","😮","😢","🔥"];
 if(!currentUser||!allowed.includes(reaction))return;
-
 const {data:message,error}=await supabaseClient.from("messages")
 .select("id,sender_id,receiver_id").eq("id",messageId).single();
-
 if(error||!message)return;
-
 if(message.sender_id!==currentUser.id&&message.receiver_id!==currentUser.id)
 return alert("You cannot react to this message.");
-
 const {data:existing}=await supabaseClient.from("message_reactions")
 .select("id,reaction").eq("message_id",messageId).eq("user_id",currentUser.id).maybeSingle();
-
 if(existing){
 if(existing.reaction===reaction)
 await supabaseClient.from("message_reactions").delete().eq("id",existing.id).eq("user_id",currentUser.id);
@@ -1307,61 +949,43 @@ await supabaseClient.from("message_reactions").update({reaction}).eq("id",existi
 }else{
 await supabaseClient.from("message_reactions").insert({message_id:messageId,user_id:currentUser.id,reaction});
 }
-
 await loadMessages(true);
 }
-
 async function deleteMessageForMe(){
 if(!currentUser||!selectedMessageId)return;
-
 const {error}=await supabaseClient.from("message_deletions").upsert({
 message_id:selectedMessageId,user_id:currentUser.id
 },{onConflict:"message_id,user_id"});
-
 if(error)return alert("Could not delete the message: "+error.message);
-
 closeModal("messageActionModal");
 selectedMessageId=null;
 await loadMessages();
 }
-
 async function deleteMessageForEveryone(){
 if(!currentUser||!selectedMessageId)return;
 if(selectedMessageSenderId!==currentUser.id)return alert("Only the sender can delete a message for everyone.");
 if(!confirm("Delete this message for everyone?"))return;
-
 const {error}=await supabaseClient.from("messages").delete()
 .eq("id",selectedMessageId).eq("sender_id",currentUser.id);
-
 if(error)return alert("Could not delete this message: "+error.message);
-
 closeModal("messageActionModal");
 selectedMessageId=null;
 selectedMessageSenderId=null;
 await loadMessages();
 }
-
-/* =========================
-SCHEDULES
-========================= */
-
 async function loadSchedules(){
 if(!currentUser)return;
-
 const {data,error}=await supabaseClient.from("schedules").select("*")
 .eq("user_id",currentUser.id).order("created_at",{ascending:false});
-
 if(error)return $("scheduleList").innerHTML=`<div class="empty">Unable to load schedules: ${esc(error.message)}</div>`;
 renderSchedules(data||[]);
 }
-
 function formatTime(t){
 if(!t)return"";
 const [h,m]=t.split(":").map(Number),d=new Date();
 d.setHours(h,m,0,0);
 return d.toLocaleTimeString([],{hour:"numeric",minute:"2-digit"});
 }
-
 function formatSchedule(s){
 if(s.schedule_type==="daily")return"Every day"+(s.reminder_time?" at "+formatTime(s.reminder_time):"");
 if(s.schedule_type==="weekly"){
@@ -1370,14 +994,12 @@ return"Every "+days[Number(s.day_of_week)]+(s.reminder_time?" at "+formatTime(s.
 }
 return"One-time"+(s.reminder_date?" on "+s.reminder_date:"")+(s.reminder_time?" at "+formatTime(s.reminder_time):"");
 }
-
 function renderSchedules(list){
 const box=$("scheduleList");
 if(!list.length){
 updateScheduleProgress([]);
 return box.innerHTML='<div class="empty">No schedules yet. Tap + Add to create your first one.</div>';
 }
-
 box.innerHTML=list.map(s=>`
 <div class="schedule-item ${s.completed?"completed":""}">
 <div class="schedule-top">
@@ -1392,16 +1014,13 @@ box.innerHTML=list.map(s=>`
 <button class="danger" onclick="deleteSchedule('${attr(s.id)}')">Delete</button>
 </div>
 </div>`).join("");
-
 updateScheduleProgress(list);
 }
-
 function updateScheduleProgress(list){
 const done=list.filter(x=>x.completed).length,total=list.length,pct=total?Math.round(done/total*100):0;
 $("scheduleProgressText").textContent=`${pct}% completed (${done}/${total})`;
 $("scheduleProgressFill").style.width=pct+"%";
 }
-
 function openScheduleModal(){
 $("scheduleTitle").value="";
 $("scheduleDescription").value="";
@@ -1412,43 +1031,33 @@ $("scheduleDay").value=new Date().getDay();
 updateScheduleFields();
 show("scheduleModal");
 }
-
 function updateScheduleFields(){
 const type=$("scheduleType").value;
 $("weeklyField").classList.toggle("hidden",type!=="weekly");
 $("onceField").classList.toggle("hidden",type!=="once");
 }
-
 async function saveSchedule(){
 if(!currentUser)return alert("Please log in again.");
-
 const title=$("scheduleTitle").value.trim();
 const description=$("scheduleDescription").value.trim();
 const type=$("scheduleType").value;
 const time=$("scheduleTime").value||null;
-
 if(!title)return alert("Please enter a schedule title.");
-
 const payload={
 user_id:currentUser.id,title,description,schedule_type:type,
 reminder_time:time,reminder_date:null,day_of_week:null,completed:false
 };
-
 if(type==="weekly")payload.day_of_week=Number($("scheduleDay").value);
-
 if(type==="once"){
 const date=$("scheduleDate").value;
 if(!date)return alert("Please choose a date.");
 payload.reminder_date=date;
 }
-
 const {error}=await supabaseClient.from("schedules").insert(payload);
 if(error)return alert("Could not save schedule: "+error.message);
-
 closeModal("scheduleModal");
 await loadSchedules();
 }
-
 async function setScheduleCompleted(id,value){
 if(!currentUser)return;
 const {error}=await supabaseClient.from("schedules").update({completed:value})
@@ -1456,7 +1065,6 @@ const {error}=await supabaseClient.from("schedules").update({completed:value})
 if(error)return alert("Could not update schedule: "+error.message);
 await loadSchedules();
 }
-
 async function deleteSchedule(id){
 if(!currentUser||!confirm("Delete this schedule?"))return;
 const {error}=await supabaseClient.from("schedules").delete()
@@ -1464,17 +1072,11 @@ const {error}=await supabaseClient.from("schedules").delete()
 if(error)return alert("Could not delete schedule: "+error.message);
 await loadSchedules();
 }
-
-/* =========================
-PUSH NOTIFICATIONS
-========================= */
-
 function urlBase64ToUint8Array(s){
 const p="=".repeat((4-s.length%4)%4);
 const b=(s+p).replace(/-/g,"+").replace(/_/g,"/");
 return Uint8Array.from(atob(b),c=>c.charCodeAt(0));
 }
-
 async function getVapidPublicKey(){
 try{
 const r=await fetch(PUSH_FUNCTION_URL,{headers:{apikey:SUPABASE_PUBLISHABLE_KEY}});
@@ -1485,51 +1087,36 @@ if(d?.publicKey)return d.publicKey;
 }catch(e){console.warn("Could not get VAPID key from function.")}
 return VAPID_PUBLIC_KEY;
 }
-
 async function getServiceWorkerRegistration(){
 return navigator.serviceWorker.register("./sw.js",{scope:"./"});
 }
-
 async function savePushSubscription(sub){
 if(!currentUser)throw new Error("You must be logged in.");
-
 const j=sub.toJSON();
 if(!j.endpoint||!j.keys?.p256dh||!j.keys?.auth)
 throw new Error("Invalid push subscription.");
-
 await supabaseClient.from("push_subscriptions").delete()
 .eq("user_id",currentUser.id).eq("endpoint",j.endpoint);
-
 const {error}=await supabaseClient.from("push_subscriptions").insert({
 user_id:currentUser.id,endpoint:j.endpoint,p256dh:j.keys.p256dh,auth:j.keys.auth
 });
-
 if(error)throw new Error("Push subscription could not be saved: "+error.message);
-
 localStorage.setItem("connectsphere_push_subscription",JSON.stringify(j));
 }
-
 async function enablePushNotifications(){
 if(!currentUser)throw new Error("Please log in first.");
 if(!("Notification"in window))throw new Error("This browser does not support notifications.");
 if(!("serviceWorker"in navigator))throw new Error("Service workers are not supported.");
 if(!("PushManager"in window))throw new Error("Push notifications are not supported.");
-
 msg("notificationStatus","Requesting notification permission...");
 const permission=await Notification.requestPermission();
-
 if(permission!=="granted")throw new Error("Notification permission was not granted.");
-
 msg("notificationStatus","Registering notification service...");
-
 const reg=await getServiceWorkerRegistration();
 await navigator.serviceWorker.ready;
-
 const key=await getVapidPublicKey();
 if(!key)throw new Error("VAPID public key is missing.");
-
 let sub=await reg.pushManager.getSubscription();
-
 if(!sub){
 msg("notificationStatus","Creating secure push subscription...");
 sub=await reg.pushManager.subscribe({
@@ -1537,37 +1124,30 @@ userVisibleOnly:true,
 applicationServerKey:urlBase64ToUint8Array(key)
 });
 }
-
 msg("notificationStatus","Saving notification subscription...");
 await savePushSubscription(sub);
-
 msg("notificationStatus","Notifications are ON ✅");
 msg("notificationSwitchText","Notifications are ON.");
 return sub;
 }
-
 async function disablePushNotifications(){
 try{
 const reg=await getServiceWorkerRegistration();
 const sub=await reg.pushManager.getSubscription();
-
 if(sub){
 const endpoint=sub.endpoint;
 await sub.unsubscribe();
 await supabaseClient.from("push_subscriptions").delete()
 .eq("user_id",currentUser.id).eq("endpoint",endpoint);
 }
-
 localStorage.removeItem("connectsphere_push_subscription");
 msg("notificationStatus","Notifications are OFF.");
 msg("notificationSwitchText","Notifications are OFF.");
 }catch(e){throw e}
 }
-
 async function togglePushNotifications(){
 const t=$("notificationToggle");
 t.disabled=true;
-
 try{
 if(t.checked)await enablePushNotifications();
 else await disablePushNotifications();
@@ -1577,23 +1157,19 @@ t.checked=!t.checked;
 msg("notificationStatus",e.message||"Unable to change notification setting.");
 }finally{t.disabled=false}
 }
-
 async function checkNotificationStatus(){
 const t=$("notificationToggle");
 if(!t)return;
-
 if(!("Notification"in window)){
 msg("notificationStatus","Notifications are not supported by this browser.");
 return;
 }
-
 if(Notification.permission==="denied"){
 t.checked=false;
 msg("notificationStatus","Notifications are blocked by your browser. Enable them in browser settings.");
 msg("notificationSwitchText","Notifications are OFF.");
 return;
 }
-
 try{
 const reg=await getServiceWorkerRegistration();
 const sub=await reg.pushManager.getSubscription();
@@ -1605,28 +1181,20 @@ console.warn("Notification status check failed:",e);
 t.checked=false;
 }
 }
-
-/* =========================
-NAVIGATION
-========================= */
-
+function loadLocalSettings(){const p=localStorage.getItem("cs_private_"+(currentUser?.id||""));const o=localStorage.getItem(onlinePrefKey());if($("privateAccount"))$("privateAccount").checked=p==="1";if($("onlineStatus"))$("onlineStatus").checked=o!=="0"}
+function setupSettings(){loadLocalSettings();$("privateAccount")?.addEventListener("change",()=>localStorage.setItem("cs_private_"+currentUser.id,$("privateAccount").checked?"1":"0"));$("onlineStatus")?.addEventListener("change",()=>{localStorage.setItem(onlinePrefKey(),$("onlineStatus").checked?"1":"0");trackPresence();});}
+function isOnlineVisible(id){return onlineUsers.has(id)}
+async function trackPresence(){if(!currentUser||!supabaseClient.channel)return;const show=$("onlineStatus")?.checked!==false;if(!presenceChannel){presenceChannel=supabaseClient.channel("connectsphere-presence",{config:{presence:{key:currentUser.id}}});presenceChannel.on("presence",{event:"sync"},()=>{const state=presenceChannel.presenceState();onlineUsers=new Set(Object.keys(state).filter(id=>id!==currentUser.id&&Object.values(state[id]||{}).some(x=>x.show!==false)));loadChatContacts()});await presenceChannel.subscribe(async status=>{if(status==="SUBSCRIBED")await presenceChannel.track({show});});}else await presenceChannel.track({show});}
 function showPage(page,button=null){
 document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-
 const target=$(page);
 if(!target)return;
-
 target.classList.add("active");
-
 document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
-
 const nav=button||document.querySelector(`.nav-btn[data-page="${page}"]`);
 nav?.classList.add("active");
-
 $("settingsHeaderButton")?.classList.toggle("active",page==="settings");
-
 if(page==="requests")loadConnectionRequests();
-
 if(page==="chats"){
 loadChatContacts();
 if(selectedChatUser){
@@ -1636,46 +1204,24 @@ startChatPolling();
 }
 }else stopChatPolling();
 }
-
-/* =========================
-MODALS
-========================= */
-
 function closeModal(id){show(id,false)}
-
 document.addEventListener("click",e=>{
 if(e.target.classList.contains("modal"))e.target.classList.remove("show");
 });
-
-/* =========================
-LOGOUT
-========================= */
-
 async function logout(){
 stopChatPolling();
-if(messageChannel){supabaseClient.removeChannel(messageChannel);messageChannel=null}
-if(presenceChannel){supabaseClient.removeChannel(presenceChannel);presenceChannel=null}
 if(badgeTimer)clearInterval(badgeTimer);
-
 await supabaseClient.auth.signOut();
-
 currentUser=null;
 currentProfile=null;
 selectedChatUser=null;
-
 $("app").classList.add("hidden");
 $("authScreen").classList.remove("hidden");
 $("authEmail").value="";
 $("authPassword").value="";
 }
-
-/* =========================
-START
-========================= */
-
 async function startApp(){
 const {data}=await supabaseClient.auth.getSession();
-
 if(data.session){
 currentUser=data.session.user;
 await loadProfile();
@@ -1683,20 +1229,15 @@ await loadProfile();
 $("authScreen").classList.remove("hidden");
 }
 }
-
 supabaseClient.auth.onAuthStateChange((event,session)=>{
 if(event==="SIGNED_OUT"){
 stopChatPolling();
-if(messageChannel){supabaseClient.removeChannel(messageChannel);messageChannel=null}
-if(presenceChannel){supabaseClient.removeChannel(presenceChannel);presenceChannel=null}
 if(badgeTimer)clearInterval(badgeTimer);
 $("app").classList.add("hidden");
 $("authScreen").classList.remove("hidden");
 }
 });
-
 $("chatInput")?.addEventListener("input",autoResizeChatInput);
-
 startApp();
 </script>
 </body>
