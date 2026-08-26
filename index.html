@@ -93,6 +93,15 @@ main{
   display:block
 }
 
+/* Chat is hidden unless the Chats page is active. */
+.page.chat-page{
+  display:none
+}
+
+.page.chat-page.active{
+  display:flex
+}
+
 h1{
   font-size:26px;
   margin-bottom:8px
@@ -277,7 +286,29 @@ BOTTOM NAV
 }
 
 .nav-icon{
-  font-size:21px
+  font-size:21px;
+  position:relative
+}
+
+.nav-badge{
+  position:absolute;
+  top:-7px;
+  right:-13px;
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  border-radius:20px;
+  background:#e53935;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:10px;
+  font-weight:800;
+  line-height:18px;
+  border:2px solid white;
+  box-shadow:0 2px 6px rgba(0,0,0,.18);
+  z-index:2
 }
 
 /* =========================
@@ -854,7 +885,9 @@ CHAT
 }
 
 .chat-input{
-  flex:1;
+  flex:1 1 auto;
+  width:100%;
+  min-width:0;
   min-height:44px;
   max-height:120px;
   resize:none;
@@ -1701,7 +1734,7 @@ BOTTOM NAV
     data-page="requests"
     onclick="showPage('requests',this)"
   >
-    <span class="nav-icon">👥</span>
+    <span class="nav-icon">👥<span id="requestsBadge" class="nav-badge hidden">0</span></span>
     Requests
   </button>
 
@@ -1710,7 +1743,7 @@ BOTTOM NAV
     data-page="chats"
     onclick="showPage('chats',this)"
   >
-    <span class="nav-icon">💬</span>
+    <span class="nav-icon">💬<span id="chatsBadge" class="nav-badge hidden">0</span></span>
     Chats
   </button>
 
@@ -2080,7 +2113,12 @@ let selectedChatUser = null;
 let selectedMessageId = null;
 let selectedMessageSenderId = null;
 let chatPollTimer = null;
+let notificationPollTimer = null;
+let messageRealtimeChannel = null;
+let requestRealtimeChannel = null;
 let searchTimer = null;
+let unreadMessageCount = 0;
+let pendingRequestCount = 0;
 
 
 /* =========================================================
@@ -2417,6 +2455,8 @@ async function loadProfile(){
   await loadChatContacts();
 
   await checkNotificationStatus();
+  await refreshUnreadBadges();
+  startLiveUpdates();
 
 }
 
@@ -3791,6 +3831,208 @@ async function removeConnection(otherUserId){
 
 
 /* =========================================================
+LIVE BADGES + REALTIME
+========================================================= */
+
+function setNavBadge(id,count){
+
+  const badge = document.getElementById(id);
+  if(!badge) return;
+
+  const safeCount = Math.max(0, Number(count) || 0);
+
+  badge.textContent = safeCount > 99 ? "99+" : String(safeCount);
+  badge.classList.toggle("hidden", safeCount === 0);
+
+}
+
+function chatReadKey(userId){
+  return `connectsphere_chat_read_${userId}`;
+}
+
+function getChatReadAt(otherUserId){
+
+  if(!currentUser || !otherUserId) return null;
+
+  return localStorage.getItem(chatReadKey(otherUserId));
+
+}
+
+function markChatRead(otherUserId){
+
+  if(!currentUser || !otherUserId) return;
+
+  localStorage.setItem(
+    chatReadKey(otherUserId),
+    new Date().toISOString()
+  );
+
+}
+
+async function refreshUnreadBadges(){
+
+  if(!currentUser) return;
+
+  try{
+
+    const {count:requestCount,error:requestError} =
+      await supabaseClient
+        .from("connection_requests")
+        .select("id",{count:"exact",head:true})
+        .eq("receiver_id",currentUser.id)
+        .eq("status","pending");
+
+    if(!requestError){
+      pendingRequestCount = requestCount || 0;
+      setNavBadge("requestsBadge",pendingRequestCount);
+    }
+
+    /*
+      Message unread state is intentionally kept client-side so this
+      feature does not require a new database table. A message becomes
+      read when its conversation is opened. This also avoids exposing
+      additional message-read metadata through the client.
+    */
+    const {data:recentMessages,error:messageError} =
+      await supabaseClient
+        .from("messages")
+        .select("id,sender_id,receiver_id,created_at")
+        .eq("receiver_id",currentUser.id)
+        .order("created_at",{ascending:false})
+        .limit(200);
+
+    if(!messageError){
+
+      let unread = 0;
+
+      (recentMessages || []).forEach(message => {
+
+        const readAt = getChatReadAt(message.sender_id);
+
+        if(!readAt || new Date(message.created_at) > new Date(readAt)){
+          unread++;
+        }
+
+      });
+
+      unreadMessageCount = unread;
+      setNavBadge("chatsBadge",unreadMessageCount);
+
+    }
+
+  }catch(error){
+
+    console.warn("Unread badge refresh failed:",error);
+
+  }
+
+}
+
+function startLiveUpdates(){
+
+  stopLiveUpdates();
+
+  if(!currentUser) return;
+
+  /* Fallback polling keeps badges working even if Realtime is not
+     enabled for one of the Supabase tables. */
+  notificationPollTimer = setInterval(
+    async () => {
+      if(currentUser) await refreshUnreadBadges();
+    },
+    3000
+  );
+
+  try{
+
+    messageRealtimeChannel =
+      supabaseClient
+        .channel(`connectsphere-messages-${currentUser.id}-${Date.now()}`)
+        .on(
+          "postgres_changes",
+          {
+            event:"INSERT",
+            schema:"public",
+            table:"messages",
+            filter:`receiver_id=eq.${currentUser.id}`
+          },
+          async payload => {
+
+            await refreshUnreadBadges();
+
+            if(
+              selectedChatUser &&
+              payload?.new?.sender_id === selectedChatUser.id &&
+              document.getElementById("chats")?.classList.contains("active")
+            ){
+              markChatRead(selectedChatUser.id);
+              await loadMessages(true);
+              await refreshUnreadBadges();
+            }
+
+          }
+        )
+        .subscribe();
+
+    requestRealtimeChannel =
+      supabaseClient
+        .channel(`connectsphere-requests-${currentUser.id}-${Date.now()}`)
+        .on(
+          "postgres_changes",
+          {
+            event:"INSERT",
+            schema:"public",
+            table:"connection_requests",
+            filter:`receiver_id=eq.${currentUser.id}`
+          },
+          async () => {
+            await refreshUnreadBadges();
+            await loadConnectionRequests();
+          }
+        )
+        .on(
+          "postgres_changes",
+          {
+            event:"UPDATE",
+            schema:"public",
+            table:"connection_requests",
+            filter:`receiver_id=eq.${currentUser.id}`
+          },
+          async () => {
+            await refreshUnreadBadges();
+            await loadConnectionRequests();
+          }
+        )
+        .subscribe();
+
+  }catch(error){
+
+    console.warn("Realtime subscription setup failed; polling remains active.",error);
+
+  }
+
+}
+
+function stopLiveUpdates(){
+
+  if(notificationPollTimer){
+    clearInterval(notificationPollTimer);
+    notificationPollTimer = null;
+  }
+
+  if(messageRealtimeChannel){
+    supabaseClient.removeChannel(messageRealtimeChannel);
+    messageRealtimeChannel = null;
+  }
+
+  if(requestRealtimeChannel){
+    supabaseClient.removeChannel(requestRealtimeChannel);
+    requestRealtimeChannel = null;
+  }
+
+}
+
+/* =========================================================
 CHAT CONTACTS
 ========================================================= */
 
@@ -3991,6 +4233,9 @@ async function openChatWithUser(userId){
   }
 
   selectedChatUser = user;
+
+  markChatRead(user.id);
+  await refreshUnreadBadges();
 
   showPage("chats");
 
@@ -4371,6 +4616,16 @@ function renderMessage(message,reactions){
 SEND MESSAGE
 ========================================================= */
 
+function autoResizeChatInput(){
+
+  const input = document.getElementById("chatInput");
+  if(!input) return;
+
+  input.style.height = "44px";
+  input.style.height = Math.min(input.scrollHeight,120) + "px";
+
+}
+
 function handleChatKeydown(event){
 
   if(
@@ -4463,8 +4718,11 @@ async function sendMessage(){
   }
 
   input.value = "";
+  input.style.height = "44px";
 
+  markChatRead(selectedChatUser.id);
   await loadMessages();
+  await refreshUnreadBadges();
 
 }
 
@@ -5884,8 +6142,9 @@ function showPage(
 
     if(selectedChatUser){
 
+      markChatRead(selectedChatUser.id);
       loadMessages();
-
+      refreshUnreadBadges();
       startChatPolling();
 
     }
@@ -5906,6 +6165,7 @@ LOGOUT
 async function logout(){
 
   stopChatPolling();
+  stopLiveUpdates();
 
   await supabaseClient
     .auth
@@ -6125,6 +6385,11 @@ supabaseClient
 /* =========================================================
 INITIALIZE
 ========================================================= */
+
+const chatInputElement = document.getElementById("chatInput");
+if(chatInputElement){
+  chatInputElement.addEventListener("input",autoResizeChatInput);
+}
 
 startApp();
 
